@@ -2708,31 +2708,145 @@
                     </div>
                     <div id="admin-ads-list" class="space-y-3"></div>
                 </div>
+
+                <!-- 5. Footer Legal & Custom Pages Manager -->
+                <div class="mt-6 p-5 rounded-2xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-4">
+                    <div class="flex flex-wrap justify-between items-center gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <span class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider">Legal & Policy Pages</span>
+                            <h4 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-link text-indigo-600"></i> Footer Pages & Custom Redirect Links Manager</h4>
+                            <p class="text-[11px] text-neutral-500 mt-0.5">Add legal pages (Privacy Policy, Terms, Disclaimer, Contact Us) with their URLs—they appear live in the app footer and redirect on click.</p>
+                        </div>
+                        <button type="button" onclick="saveFooterCustomLinks()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Footer Pages
+                        </button>
+                    </div>
+
+                    <!-- Add New Page Name + URL Form -->
+                    <form onsubmit="addFooterCustomLink(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
+                        <div class="sm:col-span-4">
+                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">Page Name (e.g. Privacy Policy) *</label>
+                            <input type="text" id="admin-footer-page-title" required placeholder="e.g. Privacy Policy" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div class="sm:col-span-6">
+                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">Page Redirect Link / URL *</label>
+                            <input type="url" id="admin-footer-page-url" required placeholder="https://example.com/privacy-policy" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono font-semibold focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div class="sm:col-span-2 flex items-end">
+                            <button type="submit" class="w-full py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition shadow-sm flex items-center justify-center gap-1.5 active:scale-95">
+                                <i class="fa-solid fa-plus"></i> Add Page
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Active Footer Pages List (Editable & Removable) -->
+                    <div id="admin-footer-links-list" class="space-y-2"></div>
+
+                    <!-- Social Media Handles Manager (Platform Logo + Profile URL) -->
+                    <div class="pt-4 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-pink-600 text-white text-[10px] font-black uppercase tracking-wider">Social Media Handles</span>
+                                <h5 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-share-nodes text-pink-600"></i> Footer Social Media Logos & Handle URLs</h5>
+                                <p class="text-[11px] text-neutral-500 mt-0.5">Select a social media logo and paste your profile URL—icons appear neatly below Backup & Restore in the footer.</p>
+                            </div>
+                            <button type="button" onclick="saveFooterSocialHandles()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
+                                <i class="fa-solid fa-floppy-disk"></i> Save Social Handles
+                            </button>
+                        </div>
+
+                        <form onsubmit="addFooterSocialHandle(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
+                            <div class="sm:col-span-4">
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Platform & Logo *</label>
+                                <select id="admin-footer-social-platform" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold focus:outline-none focus:border-pink-500">
+                                    <option value="instagram">Instagram</option>
+                                    <option value="twitter">X (Twitter)</option>
+                                    <option value="youtube">YouTube</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="whatsapp">WhatsApp Channel / Chat</option>
+                                    <option value="telegram">Telegram</option>
+                                    <option value="linkedin">LinkedIn</option>
+                                    <option value="website">Website / Globe</option>
+                                </select>
+                            </div>
+                            <div class="sm:col-span-6">
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Social Handle Profile URL *</label>
+                                <input type="url" id="admin-footer-social-url" required placeholder="https://instagram.com/yourhandle" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono font-semibold focus:outline-none focus:border-pink-500">
+                            </div>
+                            <div class="sm:col-span-2 flex items-end">
+                                <button type="submit" class="w-full py-2.5 px-3 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-black text-xs transition shadow-sm flex items-center justify-center gap-1.5 active:scale-95">
+                                    <i class="fa-solid fa-plus"></i> Add Handle
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="admin-footer-socials-list" class="space-y-2"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="mt-12 pt-8 pb-4 border-t border-neutral-200/80 dark:border-neutral-800/80">
-            <div class="glass-card p-6 rounded-3xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-3 text-center md:text-left">
-                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-600 to-primary-500 flex items-center justify-center text-white shadow-md text-lg font-bold"><i class="fa-solid fa-wallet"></i></div>
-                    <div>
-                        <h4 class="text-sm font-black tracking-tight text-neutral-900 dark:text-neutral-100">NeoKhata</h4>
-                        <p class="text-[11px] text-neutral-500">Smart Daily Expense, Budget Splitter & Shopping OS</p>
+        <!-- Redesigned Executive & Legal-Ready Footer -->
+        <footer class="mt-14 pt-6 pb-8">
+            <div class="glass-card rounded-[2rem] border border-neutral-200/90 dark:border-neutral-800/90 shadow-lg overflow-hidden">
+                <!-- Top Accent Strip -->
+                <div class="h-1 w-full bg-gradient-to-r from-primary-600 via-indigo-500 to-emerald-500"></div>
+
+                <div class="p-6 sm:p-8 space-y-6">
+                    <!-- Upper Brand & Stacked Actions Column (Backup/Restore on Top, Social Handles Directly Below) -->
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+                        <div class="flex items-center gap-3.5">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-primary-500/25 text-lg font-bold flex-shrink-0">
+                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                    <path d="M21 7.28V5c0-1.1-.9-2-2-2H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a2 2 0 0 0 2-2v-2.28c.59-.35 1-.99 1-1.72V9c0-.73-.41-1.37-1-1.72zM20 9v6h-3a3 3 0 0 1 0-6h3zM5 5h14v.28c-.59.35-1 .99-1 1.72v.5H5a1 1 0 0 1-1-1c0-.55.45-1 1-1zm14 14H5a1 1 0 0 1-1-1V9.26A2.96 2.96 0 0 0 5 9.5h12v.5a3 3 0 0 1 0 4v.5h3v2zm-2-5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h4 id="footer-brand-title" class="text-base sm:text-lg font-black tracking-tight text-neutral-900 dark:text-white">NeoKhata</h4>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[9px] font-black uppercase tracking-wider">Verified OS</span>
+                                </div>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Smart Daily Expense, Digital Bahi-Khata, Dairy & Shopping OS</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-start md:items-end gap-2.5 w-full md:w-auto">
+                            <!-- Row 1: Backup Vault & Restore -->
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <button type="button" onclick="backupAppData()" class="px-4 py-2 rounded-xl bg-primary-50 hover:bg-primary-100 dark:bg-primary-950/50 dark:hover:bg-primary-900/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-extrabold transition flex items-center gap-1.5 active:scale-95 shadow-2xs">
+                                    <i class="fa-solid fa-download"></i> Backup Vault
+                                </button>
+                                <button type="button" onclick="document.getElementById('restore-file-input').click()" class="px-4 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-200 text-xs font-extrabold transition flex items-center gap-1.5 active:scale-95 shadow-2xs">
+                                    <i class="fa-solid fa-upload"></i> Restore
+                                </button>
+                                <input type="file" id="restore-file-input" onchange="restoreAppData(event)" accept=".json" class="hidden">
+                            </div>
+
+                            <!-- Row 2: Dynamic Social Media Logos Positioned Neatly Below Backup & Restore -->
+                            <div id="footer-social-handles-bar" class="flex items-center gap-2 flex-wrap"></div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Admin-Controlled Legal & Policy Pages Bar -->
+                    <div id="footer-custom-pages-wrapper" class="pt-5 border-t border-neutral-200/80 dark:border-neutral-800/80">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-neutral-400 flex items-center gap-1.5 flex-shrink-0">
+                                <i class="fa-solid fa-scale-balanced text-primary-600"></i> Legal & Quick Pages
+                            </span>
+                            <nav id="footer-dynamic-links-bar" class="flex flex-wrap items-center gap-2"></nav>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Copyright & Security Strip -->
+                    <div class="pt-4 border-t border-neutral-200/70 dark:border-neutral-800/70 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-neutral-400 font-semibold">
+                        <p id="footer-copyright-display">© 2026 NeoKhata. All rights reserved.</p>
+                        <div class="flex items-center gap-3">
+                            <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i> 256-Bit Cloud Sync</span>
+                            <span>•</span>
+                            <span>Made in India 🇮🇳</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex items-center gap-2 flex-wrap justify-center">
-                    <button onclick="backupAppData()" class="px-3 py-2 rounded-xl bg-primary-50 dark:bg-primary-950/40 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold flex items-center gap-1.5"><i class="fa-solid fa-download"></i> Backup Data</button>
-                    <button onclick="document.getElementById('restore-file-input').click()" class="px-3 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-semibold flex items-center gap-1.5"><i class="fa-solid fa-upload"></i> Restore Data</button>
-                    <input type="file" id="restore-file-input" onchange="restoreAppData(event)" accept=".json" class="hidden">
-
-                    <a href="https://instagram.com/theamitmto" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-pink-600 border text-sm" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://x.com/theamitmto" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-800 dark:text-neutral-200 border text-sm" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <p class="text-[11px] text-neutral-400 font-medium">© 2026 NeoKhata. All rights reserved.</p>
             </div>
         </footer>
     </div>
@@ -4537,6 +4651,7 @@
                 }
             });
 
+            // Budget Left strictly depends on Monthly Budget minus 30-Day Expenses; Income does not alter Budget Left
             const budget = Number(appState.budget) || 0;
             const budgetLeft = budget - exp30;
             const netCashflow = totalInc - totalExp;
@@ -7842,8 +7957,32 @@
             adsterraDirectUrl: '',
             adsterraTopHeight: '95',
             adsterraFeedHeight: '255',
+            footerLinks: [
+                { id: 'flink_privacy', title: 'Privacy Policy', url: 'https://neokhata.app/privacy-policy' },
+                { id: 'flink_terms', title: 'Terms & Conditions', url: 'https://neokhata.app/terms' },
+                { id: 'flink_disclaimer', title: 'Disclaimer', url: 'https://neokhata.app/disclaimer' },
+                { id: 'flink_contact', title: 'Contact Us', url: 'https://neokhata.app/contact' }
+            ],
+            socialHandles: [
+                { id: 'soc_ig', platform: 'instagram', url: 'https://instagram.com/theamitmto' },
+                { id: 'soc_x', platform: 'twitter', url: 'https://x.com/theamitmto' }
+            ],
             places: { top: true, dashboard: true, history: true, grocery: true, udhar: true, hub: true, analytics: true, bottom: true }
         };
+        if (!Array.isArray(adminConfig.footerLinks)) {
+            adminConfig.footerLinks = [
+                { id: 'flink_privacy', title: 'Privacy Policy', url: 'https://neokhata.app/privacy-policy' },
+                { id: 'flink_terms', title: 'Terms & Conditions', url: 'https://neokhata.app/terms' },
+                { id: 'flink_disclaimer', title: 'Disclaimer', url: 'https://neokhata.app/disclaimer' },
+                { id: 'flink_contact', title: 'Contact Us', url: 'https://neokhata.app/contact' }
+            ];
+        }
+        if (!Array.isArray(adminConfig.socialHandles)) {
+            adminConfig.socialHandles = [
+                { id: 'soc_ig', platform: 'instagram', url: 'https://instagram.com/theamitmto' },
+                { id: 'soc_x', platform: 'twitter', url: 'https://x.com/theamitmto' }
+            ];
+        }
         if (!adminConfig.places) {
             adminConfig.places = { top: true, dashboard: true, history: true, grocery: true, udhar: true, hub: true, analytics: true, bottom: true };
         }
@@ -8172,7 +8311,210 @@
                 const cb = document.getElementById(elId);
                 if (cb) cb.checked = checked;
             });
+            renderFooterCustomLinks();
+            renderFooterSocialHandles();
             renderAdmobSlots();
+        }
+
+        const SOCIAL_PLATFORM_META = {
+            instagram: { label: 'Instagram', icon: 'fa-brands fa-instagram', pillClass: 'bg-pink-500/10 hover:bg-pink-600 text-pink-600 hover:text-white border-pink-200 dark:border-pink-800/70' },
+            twitter: { label: 'X (Twitter)', icon: 'fa-brands fa-x-twitter', pillClass: 'bg-neutral-900/10 hover:bg-neutral-900 dark:bg-white/10 dark:hover:bg-white text-neutral-800 dark:text-neutral-100 hover:text-white dark:hover:text-neutral-900 border-neutral-300 dark:border-neutral-700' },
+            youtube: { label: 'YouTube', icon: 'fa-brands fa-youtube', pillClass: 'bg-red-500/10 hover:bg-red-600 text-red-600 hover:text-white border-red-200 dark:border-red-800/70' },
+            facebook: { label: 'Facebook', icon: 'fa-brands fa-facebook-f', pillClass: 'bg-blue-600/10 hover:bg-blue-600 text-blue-600 hover:text-white border-blue-200 dark:border-blue-800/70' },
+            whatsapp: { label: 'WhatsApp', icon: 'fa-brands fa-whatsapp', pillClass: 'bg-emerald-500/10 hover:bg-emerald-600 text-emerald-600 hover:text-white border-emerald-200 dark:border-emerald-800/70' },
+            telegram: { label: 'Telegram', icon: 'fa-brands fa-telegram', pillClass: 'bg-sky-500/10 hover:bg-sky-600 text-sky-600 hover:text-white border-sky-200 dark:border-sky-800/70' },
+            linkedin: { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', pillClass: 'bg-indigo-500/10 hover:bg-indigo-600 text-indigo-600 hover:text-white border-indigo-200 dark:border-indigo-800/70' },
+            website: { label: 'Website', icon: 'fa-solid fa-globe', pillClass: 'bg-primary-500/10 hover:bg-primary-600 text-primary-600 hover:text-white border-primary-200 dark:border-primary-800/70' }
+        };
+
+        function renderFooterSocialHandles() {
+            const handles = Array.isArray(adminConfig.socialHandles) ? adminConfig.socialHandles : [];
+            const publicBar = document.getElementById('footer-social-handles-bar');
+            if (publicBar) {
+                if (handles.length === 0) {
+                    publicBar.classList.add('hidden');
+                    publicBar.innerHTML = '';
+                } else {
+                    publicBar.classList.remove('hidden');
+                    publicBar.innerHTML = handles.map(h => {
+                        const meta = SOCIAL_PLATFORM_META[h.platform] || SOCIAL_PLATFORM_META.website;
+                        const safeHref = normalizeFooterUrl(h.url);
+                        return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" aria-label="${meta.label}" title="${meta.label}" class="w-9 h-9 rounded-xl border flex items-center justify-center text-sm transition shadow-2xs active:scale-95 ${meta.pillClass}">
+                            <i class="${meta.icon}"></i>
+                        </a>`;
+                    }).join('');
+                }
+            }
+
+            const adminList = document.getElementById('admin-footer-socials-list');
+            if (adminList) {
+                adminList.innerHTML = handles.length ? handles.map((h, idx) => {
+                    const meta = SOCIAL_PLATFORM_META[h.platform] || SOCIAL_PLATFORM_META.website;
+                    return `<div class="p-2.5 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 grid grid-cols-1 sm:grid-cols-12 gap-2 items-center text-xs">
+                        <div class="sm:col-span-4 flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-xl border flex items-center justify-center flex-shrink-0 ${meta.pillClass}"><i class="${meta.icon}"></i></span>
+                            <select onchange="updateFooterSocialHandleField(${idx}, 'platform', this.value)" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
+                                ${Object.entries(SOCIAL_PLATFORM_META).map(([k, m]) => `<option value="${k}" ${h.platform === k ? 'selected' : ''}>${m.label}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="sm:col-span-6">
+                            <input type="url" value="${String(h.url || '').replace(/"/g, '&quot;')}" onchange="updateFooterSocialHandleField(${idx}, 'url', this.value)" placeholder="https://..." class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px]">
+                        </div>
+                        <div class="sm:col-span-2 flex items-center justify-end gap-1.5">
+                            <a href="${normalizeFooterUrl(h.url)}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-primary-600/10 hover:bg-primary-600 text-primary-600 hover:text-white transition" title="Open Handle Link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <button type="button" onclick="deleteFooterSocialHandle(${idx})" class="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-600 text-rose-600 hover:text-white transition" title="Remove Handle">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>`;
+                }).join('') : '<div class="text-xs text-neutral-400 text-center py-2">No social media handles added yet.</div>';
+            }
+        }
+
+        function addFooterSocialHandle(e) {
+            e.preventDefault();
+            const platSel = document.getElementById('admin-footer-social-platform');
+            const urlInp = document.getElementById('admin-footer-social-url');
+            const platform = platSel?.value || 'instagram';
+            const url = normalizeFooterUrl(urlInp?.value || '');
+            if (!url) return;
+
+            if (!Array.isArray(adminConfig.socialHandles)) adminConfig.socialHandles = [];
+            adminConfig.socialHandles.push({
+                id: `soc_${Date.now()}`,
+                platform,
+                url
+            });
+            if (urlInp) urlInp.value = '';
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterSocialHandles();
+            saveAllAdminChangesLive();
+            showToast(`${(SOCIAL_PLATFORM_META[platform]?.label || 'Social')} handle added to Footer!`);
+        }
+
+        function updateFooterSocialHandleField(idx, field, val) {
+            if (!Array.isArray(adminConfig.socialHandles) || !adminConfig.socialHandles[idx]) return;
+            adminConfig.socialHandles[idx][field] = field === 'url' ? normalizeFooterUrl(val) : val;
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterSocialHandles();
+        }
+
+        function deleteFooterSocialHandle(idx) {
+            if (!Array.isArray(adminConfig.socialHandles)) return;
+            adminConfig.socialHandles.splice(idx, 1);
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterSocialHandles();
+            saveAllAdminChangesLive();
+            showToast('Social media handle removed');
+        }
+
+        function saveFooterSocialHandles() {
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterSocialHandles();
+            saveAllAdminChangesLive();
+            showToast('Social media handles saved live!');
+        }
+
+        function normalizeFooterUrl(rawUrl) {
+            const trimmed = (rawUrl || '').trim();
+            if (!trimmed) return '';
+            if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/') || trimmed.startsWith('#') || /^mailto:|^tel:/i.test(trimmed)) {
+                return trimmed;
+            }
+            return `https://${trimmed}`;
+        }
+
+        function renderFooterCustomLinks() {
+            const links = Array.isArray(adminConfig.footerLinks) ? adminConfig.footerLinks : [];
+            const publicBar = document.getElementById('footer-dynamic-links-bar');
+            const wrapper = document.getElementById('footer-custom-pages-wrapper');
+
+            if (publicBar && wrapper) {
+                if (links.length === 0) {
+                    wrapper.classList.add('hidden');
+                    publicBar.innerHTML = '';
+                } else {
+                    wrapper.classList.remove('hidden');
+                    publicBar.innerHTML = links.map(item => {
+                        const safeHref = normalizeFooterUrl(item.url);
+                        const safeTitle = String(item.title || 'Page').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                        return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-neutral-100/90 hover:bg-primary-600 dark:bg-neutral-800/90 dark:hover:bg-primary-600 text-neutral-700 hover:text-white dark:text-neutral-200 border border-neutral-200/80 dark:border-neutral-700/80 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs">
+                            <span>${safeTitle}</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-70"></i>
+                        </a>`;
+                    }).join('');
+                }
+            }
+
+            const adminList = document.getElementById('admin-footer-links-list');
+            if (adminList) {
+                adminList.innerHTML = links.length ? links.map((item, idx) => `
+                    <div class="p-2.5 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 grid grid-cols-1 sm:grid-cols-12 gap-2 items-center text-xs">
+                        <div class="sm:col-span-4">
+                            <input type="text" value="${String(item.title || '').replace(/"/g, '&quot;')}" onchange="updateFooterCustomLinkField(${idx}, 'title', this.value)" placeholder="Page Name" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
+                        </div>
+                        <div class="sm:col-span-6">
+                            <input type="url" value="${String(item.url || '').replace(/"/g, '&quot;')}" onchange="updateFooterCustomLinkField(${idx}, 'url', this.value)" placeholder="https://..." class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px]">
+                        </div>
+                        <div class="sm:col-span-2 flex items-center justify-end gap-1.5">
+                            <a href="${normalizeFooterUrl(item.url)}" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-primary-600/10 hover:bg-primary-600 text-primary-600 hover:text-white transition" title="Test Redirect Link">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <button type="button" onclick="deleteFooterCustomLink(${idx})" class="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-600 text-rose-600 hover:text-white transition" title="Remove Page">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('') : '<div class="text-xs text-neutral-400 text-center py-3">No footer pages added yet. Add your Privacy Policy, Terms, or Contact Us URLs above.</div>';
+            }
+        }
+
+        function addFooterCustomLink(e) {
+            e.preventDefault();
+            const titleInp = document.getElementById('admin-footer-page-title');
+            const urlInp = document.getElementById('admin-footer-page-url');
+            const title = (titleInp?.value || '').trim();
+            const url = normalizeFooterUrl(urlInp?.value || '');
+            if (!title || !url) return;
+
+            if (!Array.isArray(adminConfig.footerLinks)) adminConfig.footerLinks = [];
+            adminConfig.footerLinks.push({
+                id: `flink_${Date.now()}`,
+                title,
+                url
+            });
+            if (titleInp) titleInp.value = '';
+            if (urlInp) urlInp.value = '';
+
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterCustomLinks();
+            saveAllAdminChangesLive();
+            showToast(`Added "${title}" to Footer!`);
+        }
+
+        function updateFooterCustomLinkField(idx, field, val) {
+            if (!Array.isArray(adminConfig.footerLinks) || !adminConfig.footerLinks[idx]) return;
+            adminConfig.footerLinks[idx][field] = field === 'url' ? normalizeFooterUrl(val) : val.trim();
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterCustomLinks();
+        }
+
+        function deleteFooterCustomLink(idx) {
+            if (!Array.isArray(adminConfig.footerLinks)) return;
+            const removed = adminConfig.footerLinks.splice(idx, 1);
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterCustomLinks();
+            saveAllAdminChangesLive();
+            showToast(`Removed "${removed[0]?.title || 'Page'}" from Footer`);
+        }
+
+        function saveFooterCustomLinks() {
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderFooterCustomLinks();
+            saveAllAdminChangesLive();
+            showToast('Footer pages & redirect links saved live!');
         }
 
         function dismissAnnouncement() {
@@ -11015,6 +11357,12 @@ ${JSON.stringify(liveSnapshot)}`;
             if (document.getElementById('app-brand-name-display')) {
                 document.getElementById('app-brand-name-display').textContent = brandTitle;
             }
+            if (document.getElementById('footer-brand-title')) {
+                document.getElementById('footer-brand-title').textContent = brandTitle;
+            }
+            if (vals.footerCopyright && document.getElementById('footer-copyright-display')) {
+                document.getElementById('footer-copyright-display').textContent = vals.footerCopyright;
+            }
             if (document.getElementById('gate-brand-title')) {
                 document.getElementById('gate-brand-title').textContent = brandTitle;
             }
@@ -11096,6 +11444,8 @@ ${JSON.stringify(liveSnapshot)}`;
                 renderAdmin70ControlsGrid();
                 renderAdminUsersList();
                 renderAdminAdsList();
+                renderFooterCustomLinks();
+                renderFooterSocialHandles();
             } else if (tabId === 'milk') {
                 renderMilkModuleAll();
             } else if (tabId === 'analytics') {
@@ -11198,9 +11548,9 @@ ${JSON.stringify(liveSnapshot)}`;
             appState.transactions.unshift({
                 id: `tx_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
                 sourceRefId: entryId,
-                type: 'expense',
+                type: 'income',
                 amount: total,
-                category: 'Kirana',
+                category: 'Milk Income',
                 mode: 'UPI',
                 section: 'milk',
                 note: `[Milk Ledger - ${cust ? cust.name : 'Customer'}] ${liters.toFixed(2)}L (${shift}) @ ₹${rate}`,
@@ -11211,7 +11561,41 @@ ${JSON.stringify(liveSnapshot)}`;
             calcMilkQuickTotal();
             saveState();
             updateAll();
-            showToast(`Saved ${liters.toFixed(2)}L milk entry (₹${total.toFixed(2)})!`);
+            showToast(`Saved ${liters.toFixed(2)}L milk entry (+₹${total.toFixed(2)} Income)!`);
+        }
+
+        function handleMilkDetailedEntry(e) {
+            e.preventDefault();
+            const md = ensureMilkDataState();
+            const date = document.getElementById('milk-de-date')?.value || new Date().toISOString().split('T')[0];
+            const customerId = document.getElementById('milk-de-customer')?.value;
+            const shift = document.getElementById('milk-de-shift')?.value || 'Morning';
+            const liters = parseFloat(document.getElementById('milk-de-liters')?.value) || 0;
+            const rate = parseFloat(document.getElementById('milk-de-rate')?.value) || 0;
+            if (!customerId || liters <= 0 || rate <= 0) return;
+
+            const total = Number((liters * rate).toFixed(2));
+            const entryId = `me_${Date.now()}`;
+            md.entries.unshift({ id: entryId, customerId, date, shift, liters, rate, total });
+
+            const cust = md.customers.find(c => c.id === customerId);
+            appState.transactions.unshift({
+                id: `tx_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+                sourceRefId: entryId,
+                type: 'income',
+                amount: total,
+                category: 'Milk Income',
+                mode: 'UPI',
+                section: 'milk',
+                note: `[Milk Ledger - ${cust ? cust.name : 'Customer'}] ${liters.toFixed(2)}L (${shift}) @ ₹${rate}`,
+                date: new Date(`${date}T00:00:00`).toISOString()
+            });
+
+            document.getElementById('milk-de-liters').value = '';
+            calcMilkDetailedTotal();
+            saveState();
+            updateAll();
+            showToast(`Added ${liters.toFixed(2)}L milk record (+₹${total.toFixed(2)} Income)!`);
         }
 
         function handleMilkDetailedEntry(e) {
@@ -11522,6 +11906,8 @@ ${JSON.stringify(liveSnapshot)}`;
             exportCSV, downloadHistoryPDF, handleAnalyticsTimeFilterChange, updateCharts,
             changeAdSlide, closeLiveInterstitialAd, dismissAnnouncement,
             openAddAdModal, openEditAdModal, closeAdminBannerModal, previewAdminBannerImage, saveAdminBannerSlideForm, deleteAdminAdSlide, saveSponsoredBannerChanges,
+            renderFooterCustomLinks, addFooterCustomLink, updateFooterCustomLinkField, deleteFooterCustomLink, saveFooterCustomLinks,
+            renderFooterSocialHandles, addFooterSocialHandle, updateFooterSocialHandleField, deleteFooterSocialHandle, saveFooterSocialHandles,
             openAdminAddUserModal, closeAdminAddUserModal, handleAdminCreateUser, forceAdminCloudReSync,
             inspectAdminUserDetails, deleteAdminRegisteredUser, closeAdminUserInspector, switchInspectorTab,
             handleSaveAnnouncement, setAdDeliveryMode, handleSaveAdMobConfig, handleSaveAdsterraConfig, saveAllAdminChangesLive, resetAdminCustomizationsToDefault
