@@ -537,11 +537,11 @@
                             <div class="flex items-center gap-3 min-w-0">
                                 <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-cloud text-xs"></i></span>
                                 <div class="text-left min-w-0">
-                                    <div class="truncate">Firebase Cloud</div>
+                                    <div class="truncate">Update Cloud</div>
                                     <div class="text-[10px] font-medium text-emerald-600 flex items-center gap-1"><span id="cloud-sync-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> <span id="cloud-sync-text">Cloud Synced</span></div>
                                 </div>
                             </div>
-                            <span class="px-2.5 py-1 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] flex items-center gap-1 flex-shrink-0"><i class="fa-solid fa-rotate"></i> Sync</span>
+                            <span class="px-2.5 py-1 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] flex items-center gap-1 flex-shrink-0"><i class="fa-solid fa-rotate"></i>Data Sync</span>
                         </button>
 
                         <!-- Appearance Theme Toggle Button -->
@@ -601,7 +601,7 @@
                     <i class="fa-solid fa-right-from-bracket"></i> Sign Out Safely
                 </button>
                 <div class="flex items-center justify-between text-[10px] text-neutral-400 font-semibold px-1">
-                    <span>NeoKhata • v3.0 Ultra</span>
+                    <span>NeoKhata • Ultra</span>
                     <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i> Encrypted</span>
                 </div>
             </div>
@@ -729,9 +729,9 @@
                 <div class="flex items-center justify-between px-1">
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-primary-600"></span>
-                        <h3 class="text-xs font-black uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Expense Velocity & Spend Summary</h3>
+                        <h3 class="text-xs font-black uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Spend Summary Data</h3>
                     </div>
-                    <span class="px-2.5 py-0.5 rounded-full bg-primary-50 dark:bg-primary-950/60 border border-primary-200/70 dark:border-primary-800/70 text-[10px] font-bold text-primary-700 dark:text-primary-300">Live Metrics</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-primary-50 dark:bg-primary-950/60 border border-primary-200/70 dark:border-primary-800/70 text-[10px] font-bold text-primary-700 dark:text-primary-300">Metrics</span>
                 </div>
 
                 <!-- 2x2 Grid for Today, Yesterday, 7 Days, 30 Days -->
@@ -1337,7 +1337,7 @@
                     <div>
                         <div class="flex items-center gap-2 mb-1">
                             <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 text-[10px] font-black uppercase tracking-wider border border-rose-200 dark:border-rose-800">Digital Bahi-Khata</span>
-                            <span class="text-xs text-neutral-400 font-mono">UDHAR_LEDGER_V1</span>
+                            <span class="text-xs text-neutral-400 font-mono"></span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-black flex items-center gap-2 text-neutral-900 dark:text-neutral-100">
                             <i class="fa-solid fa-book-open text-rose-600"></i> Udhar Khata (उधार खाता बुक)
@@ -2350,13 +2350,13 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-black uppercase">A-to-Z Master Studio</span>
-                                <span class="text-xs text-neutral-500 font-mono">ADMIN_CORE_v3.0</span>
+                                <span class="text-xs text-neutral-500 font-mono"></span>
                             </div>
                             <h3 class="text-xl font-black tracking-tight mt-0.5">App Design, Layout & Feature Admin</h3>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
-                        <button onclick="saveAllAdminChangesLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-cloud-arrow-up"></i> Save All Live Changes</button>
+                        <button onclick="saveAllAdminChangesLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-cloud-arrow-up"></i> Save Changes</button>
                         <button onclick="resetAdminCustomizationsToDefault()" class="px-3.5 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 text-xs font-bold"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
                         <button onclick="logoutCurrentUser()" class="px-3.5 py-2 rounded-xl bg-error-500 hover:bg-error-600 text-white text-xs font-bold"><i class="fa-solid fa-right-from-bracket"></i> Exit Admin Mode</button>
                     </div>
@@ -2538,7 +2538,7 @@
                                 <span id="admin-users-total-pill" class="text-[10px] font-bold text-neutral-400">Total Users: 0</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button type="button" onclick="forceAdminCloudReSync()" class="px-2.5 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[11px] font-bold"><i class="fa-solid fa-rotate"></i> Sync</button>
+                                <button type="button" onclick="forceAdminCloudReSync()" class="px-2.5 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[11px] font-bold"><i class="fa-solid fa-rotate"></i> Sync Data</button>
                                 <button type="button" onclick="openAdminAddUserModal()" class="px-3 py-1.5 rounded-xl bg-purple-600 text-white text-[11px] font-bold"><i class="fa-solid fa-user-plus"></i> Add User</button>
                             </div>
                         </div>
@@ -2609,7 +2609,7 @@
                     <form onsubmit="handleSaveAdMobConfig(event)" class="p-4 sm:p-5 rounded-2xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-800/60 space-y-4">
                         <div class="flex items-center justify-between">
                             <h5 class="text-xs sm:text-sm font-black text-blue-900 dark:text-blue-200 flex items-center gap-2">
-                                <i class="fa-brands fa-google text-blue-600"></i> Google AdMob / AdSense Settings
+                                <i class="fa-brands fa-google text-blue-600"></i> AdMob / AdSense Settings
                             </h5>
                             <span class="text-[10px] font-bold text-blue-600">Google Ads</span>
                         </div>
@@ -2804,7 +2804,7 @@
                             <div>
                                 <div class="flex items-center gap-2">
                                     <h4 id="footer-brand-title" class="text-base sm:text-lg font-black tracking-tight text-neutral-900 dark:text-white">NeoKhata</h4>
-                                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[9px] font-black uppercase tracking-wider">Verified OS</span>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[9px] font-black uppercase tracking-wider"></span>
                                 </div>
                                 <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Smart Daily Expense, Digital Bahi-Khata, Dairy & Shopping OS</p>
                             </div>
@@ -2841,7 +2841,7 @@
                     <div class="pt-4 border-t border-neutral-200/70 dark:border-neutral-800/70 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-neutral-400 font-semibold">
                         <p id="footer-copyright-display">© 2026 NeoKhata. All rights reserved.</p>
                         <div class="flex items-center gap-3">
-                            <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i> 256-Bit Cloud Sync</span>
+                            <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i></span>
                             <span>•</span>
                             <span>Made in India 🇮🇳</span>
                         </div>
