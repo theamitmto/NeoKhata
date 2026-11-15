@@ -1628,7 +1628,7 @@
                     <div>
                         <div class="flex items-center gap-2 mb-1">
                             <span class="px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/70 text-cyan-700 dark:text-cyan-300 text-[10px] font-black uppercase tracking-wider border border-cyan-200 dark:border-cyan-800">Isolated Dairy Module</span>
-                            <span class="text-xs text-neutral-400 font-mono">FIREBASE_CLOUD_SYNCED</span>
+                            <span class="text-xs text-neutral-400 font-mono"></span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-black flex items-center gap-2 text-neutral-900 dark:text-white">
                             <i class="fa-solid fa-cow text-cyan-600"></i> Milk Ledger (दूध बही-खाता)
@@ -9237,7 +9237,7 @@
             const p = getKhataFlowAiPersonaInfo();
             const titleEl = document.getElementById('kf-ai-persona-title');
             const avatarEl = document.getElementById('kf-ai-avatar-badge');
-            if (titleEl) titleEl.textContent = `${p.nameEn} • NeoKhata AI`;
+            if (titleEl) titleEl.textContent = `${p.nameEn} •`;
             if (avatarEl) avatarEl.innerHTML = `<i class="fa-solid ${p.icon}"></i>`;
             if (!kfAiSelectedLang) {
                 renderKhataFlowAiWelcome();
@@ -9597,7 +9597,7 @@
                     </div>
 
                     <div class="text-[10px] text-neutral-400 font-semibold pt-1 border-t border-neutral-200/60 dark:border-neutral-800">
-                        🙏 Thank you — <strong>${p.nameEn} & NeoKhata AI Team</strong>
+                        🙏 Thank you — <strong>${p.nameEn} & Team</strong>
                     </div>
                 </div>
             `;
@@ -9774,9 +9774,9 @@
                 await queryKhataFlowAiBackend(q);
             } else {
                 const introMap = {
-                    hi: `प्रणाम **${getPrimaryUserName()} जी**! मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'} — आपका पर्सनल **NeoKhata AI Advisor**। अब हमारी पूरी बातचीत **शुद्ध हिंदी** में होगी।\n\nमैं आपके लाइव खाते का विश्लेषण, महीने के अंत का खर्च प्रेडिक्शन, उधार रिमाइंडर और सीधे चैट से नई आय/खर्च एंट्री जोड़ने में आपकी पूरी मदद ${isMale ? 'करूँगा' : 'करूँगी'}। नीचे दिए गए बटन चुनें या अपना सवाल लिखें!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & NeoKhata AI Team**`,
-                    hinglish: `Namaste **${getPrimaryUserName()} ji**! Main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'} — aapka personal **NeoKhata AI Advisor**। Ab humari poori baat **Hinglish** mein hogi.\n\nMain aapke live dashboard ka analysis, month-end spending prediction, Udhar Khata alert aur seedhe chat se naya expense/income add karne mein aapki poori help ${isMale ? 'karunga' : 'karungi'}. Neeche diye quick buttons try karein ya apna sawaal likhein!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`,
-                    en: `Hello **${getPrimaryUserName()}**! I am **${p.nameEn}**, your personal **NeoKhata AI Advisor**. Our entire conversation will now stay in **English**.\n\nI am here to help you analyze your live ledger, forecast month-end spending, track Udhar Khata receivables, and log new transactions directly from chat. Tap a quick chip below or ask away!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`
+                    hi: `प्रणाम **${getPrimaryUserName()} जी**! मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'} — आपका पर्सनल **NeoKhata AI Advisor**। अब हमारी पूरी बातचीत **शुद्ध हिंदी** में होगी।\n\nमैं आपके लाइव खाते का विश्लेषण, महीने के अंत का खर्च प्रेडिक्शन, उधार रिमाइंडर और सीधे चैट से नई आय/खर्च एंट्री जोड़ने में आपकी पूरी मदद ${isMale ? 'करूँगा' : 'करूँगी'}। नीचे दिए गए बटन चुनें या अपना सवाल लिखें!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & Team**`,
+                    hinglish: `Namaste **${getPrimaryUserName()} ji**! Main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'} — aapka personal **NeoKhata AI Advisor**। Ab humari poori baat **Hinglish** mein hogi.\n\nMain aapke live dashboard ka analysis, month-end spending prediction, Udhar Khata alert aur seedhe chat se naya expense/income add karne mein aapki poori help ${isMale ? 'karunga' : 'karungi'}. Neeche diye quick buttons try karein ya apna sawaal likhein!\n\n🙏 **Thank you — ${p.nameEn} & Team**`,
+                    en: `Hello **${getPrimaryUserName()}**! I am **${p.nameEn}**, your personal **NeoKhata AI Advisor**. Our entire conversation will now stay in **English**.\n\nI am here to help you analyze your live ledger, forecast month-end spending, track Udhar Khata receivables, and log new transactions directly from chat. Tap a quick chip below or ask away!\n\n🙏 **Thank you — ${p.nameEn} & Team**`
                 };
                 appendKhataFlowAiBubble('ai', introMap[lang] || introMap.en);
             }
@@ -9834,12 +9834,12 @@
             const isMale = kfAiSelectedPersona === 'male';
             const fmtAmt = `₹${amount.toLocaleString('en-IN')}`;
             if (lang === 'hi') {
-                return `नमस्ते **${getPrimaryUserName()} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}। मैंने आपकी नई एंट्री डैशबोर्ड और हिस्ट्री में जोड़ दी है:\n\n• **प्रकार:** ${isIncome ? 'आय (Income +)' : 'खर्च (Expense -)'}\n• **राशि:** ${fmtAmt}\n• **कैटेगरी:** ${matchedCat}\n• **विवरण:** ${note}\n\nआपका डैशबोर्ड और बजट तुरंत अपडेट हो गया है!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & NeoKhata AI Team**`;
+                return `नमस्ते **${getPrimaryUserName()} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}। मैंने आपकी नई एंट्री डैशबोर्ड और हिस्ट्री में जोड़ दी है:\n\n• **प्रकार:** ${isIncome ? 'आय (Income +)' : 'खर्च (Expense -)'}\n• **राशि:** ${fmtAmt}\n• **कैटेगरी:** ${matchedCat}\n• **विवरण:** ${note}\n\nआपका डैशबोर्ड और बजट तुरंत अपडेट हो गया है!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & Team**`;
             }
             if (lang === 'hinglish') {
-                return `Namaste **${getPrimaryUserName()} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}. Maine aapki nayi entry Dashboard aur History mein add kar di hai:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nAapka live dashboard aur budget turant update ho gaya hai!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`;
+                return `Namaste **${getPrimaryUserName()} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}. Maine aapki nayi entry Dashboard aur History mein add kar di hai:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nAapka live dashboard aur budget turant update ho gaya hai!\n\n🙏 **Thank you — ${p.nameEn} & Team**`;
             }
-            return `Hello **${getPrimaryUserName()}**, this is **${p.nameEn}** speaking! I have logged this transaction directly into your Dashboard & History:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nYour live dashboard and budget totals have been updated immediately.\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`;
+            return `Hello **${getPrimaryUserName()}**, this is **${p.nameEn}** speaking! I have logged this transaction directly into your Dashboard & History:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nYour live dashboard and budget totals have been updated immediately.\n\n🙏 **Thank you — ${p.nameEn} & Team**`;
         }
         function wrapKhataFlowAiGreetingAndSignoff(replyText, lang) {
             const p = getKhataFlowAiPersonaInfo();
@@ -9855,15 +9855,15 @@
                     ? `प्रणाम **${userName} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}।\n\n`
                     : (lang === 'hinglish'
                         ? `Namaste **${userName} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}.\n\n`
-                        : `Hello **${userName}**, this is **${p.nameEn}** speaking from NeoKhata AI.\n\n`);
+                        : `Hello **${userName}**, this is **${p.nameEn}** speaking from.\n\n`);
                 text = intro + text;
             }
             if (!hasSignoff) {
                 const signoff = lang === 'hi'
-                    ? `\n\n🙏 **धन्यवाद (Thank you) ${userName} जी — ${p.nameEn} & NeoKhata AI Team**`
+                    ? `\n\n🙏 **धन्यवाद (Thank you) ${userName} जी — ${p.nameEn} & Team**`
                     : (lang === 'hinglish'
-                        ? `\n\n🙏 **Thank you ${userName} ji — ${p.nameEn} & NeoKhata AI Team**`
-                        : `\n\n🙏 **Thank you, ${userName} — ${p.nameEn} & NeoKhata AI Team**`);
+                        ? `\n\n🙏 **Thank you ${userName} ji — ${p.nameEn} & Team**`
+                        : `\n\n🙏 **Thank you, ${userName} — ${p.nameEn} & Team**`);
                 text = text + signoff;
             }
             return text;
@@ -10515,15 +10515,15 @@
             const p = getKhataFlowAiPersonaInfo();
             const isMale = kfAiSelectedPersona === 'male';
             const langRuleMap = {
-                hi: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational Hindi (Devanagari script). Start your message with "प्रणाम ${getPrimaryUserName()} जी, मैं ${p.nameHi} ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}..." and end with "🙏 धन्यवाद (Thank you) ${getPrimaryUserName()} जी — ${p.nameEn} & NeoKhata AI Team".`,
-                hinglish: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm conversational Hinglish (Hindi written in Roman English script). Start your message with "Namaste ${getPrimaryUserName()} ji, main ${p.nameHi} ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}..." and end with "🙏 Thank you ${getPrimaryUserName()} ji — ${p.nameEn} & NeoKhata AI Team".`,
-                en: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameEn} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational English. Start your message with "Hello ${getPrimaryUserName()}, this is ${p.nameEn} speaking..." and end with "🙏 Thank you, ${getPrimaryUserName()} — ${p.nameEn} & NeoKhata AI Team".`
+                hi: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational Hindi (Devanagari script). Start your message with "प्रणाम ${getPrimaryUserName()} जी, मैं ${p.nameHi} ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}..." and end with "🙏 धन्यवाद (Thank you) ${getPrimaryUserName()} जी — ${p.nameEn} & Team".`,
+                hinglish: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm conversational Hinglish (Hindi written in Roman English script). Start your message with "Namaste ${getPrimaryUserName()} ji, main ${p.nameHi} ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}..." and end with "🙏 Thank you ${getPrimaryUserName()} ji — ${p.nameEn} & Team".`,
+                en: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameEn} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational English. Start your message with "Hello ${getPrimaryUserName()}, this is ${p.nameEn} speaking..." and end with "🙏 Thank you, ${getPrimaryUserName()} — ${p.nameEn} & Team".`
             };
             const langRule = langRuleMap[kfAiSelectedLang] || langRuleMap.en;
             const systemPrompt = `You are ${p.nameEn}, the respectful, highly professional personal financial advisor inside NeoKhata.
 ${langRule}
 STRICT RULES:
-1. ALWAYS introduce yourself by name (${p.nameEn}) at the start and sign off with "Thank you — ${p.nameEn} & NeoKhata AI Team" at the end.
+1. ALWAYS introduce yourself by name (${p.nameEn}) at the start and sign off with "Thank you — ${p.nameEn} & Team" at the end.
 2. NEVER invent or hallucinate fake numbers. Use ONLY the exact real numbers from LIVE COMPLETE APP SNAPSHOT below across ALL 7 modules:
    - 1. Dashboard (todaySpend, yesterdaySpend, last7DaysSpend, last30DaysSpend, monthlyBudget, budgetLeft, netCashflowBalance)
    - 2. History (totalTransactionLogs, recentTransactions)
