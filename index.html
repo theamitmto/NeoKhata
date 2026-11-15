@@ -616,8 +616,12 @@
             <button type="button" onclick="dismissAnnouncement()" class="text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 text-sm px-1 flex-shrink-0" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <!-- Clean Full-Bleed Sponsored Banner Carousel & Top Adsterra Slot -->
-        <div id="adsterra-slot-top" class="hidden mb-6 rounded-3xl overflow-hidden shadow-md border border-neutral-200/80 dark:border-neutral-800/80 bg-white/80 dark:bg-neutral-900/80 flex items-center justify-center"></div>
+        <div id="adsterra-slot-top" class="hidden mb-6 w-full rounded-3xl overflow-visible transition-all duration-300 flex flex-col items-center justify-center"></div>
         <div id="sponsored-ad-banner" class="mb-6 rounded-3xl overflow-hidden shadow-md border border-neutral-200/80 dark:border-neutral-800/80 relative h-44 sm:h-56 md:h-64 select-none">
+            <div class="absolute top-2.5 left-3 z-30 pointer-events-none flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-950/75 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider border border-white/20 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <span>Sponsored Ad • विज्ञापन</span>
+            </div>
             <div id="ad-slides-track" class="w-full h-full"></div>
             <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/15 z-20">
                 <div id="ad-progress-bar" class="h-full bg-white/80 transition-all duration-150" style="width: 0%"></div>
@@ -2623,79 +2627,52 @@
                                 <input type="text" id="admin-admob-slot-id" placeholder="1234567890" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-mono">
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs font-bold">
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-top" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Top Header</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-dashboard" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Dashboard Feed</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-history" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>History Feed</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-grocery" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Shopping Screen</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-udhar" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Udhar Khata</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-hub" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Friends Hub</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-analytics" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Reports & Analytics</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-bottom" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Sticky Bottom</span></label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-top" class="accent-blue-600"> Top Header</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-dashboard" class="accent-blue-600"> Dashboard</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-history" class="accent-blue-600"> History</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-grocery" class="accent-blue-600"> Shopping</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-udhar" class="accent-blue-600"> Udhar Khata</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-hub" class="accent-blue-600"> Friends Hub</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-analytics" class="accent-blue-600"> Reports</label>
+                            <label class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-bottom" class="accent-blue-600"> Sticky Bottom</label>
                         </div>
-                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-sm transition active:scale-95">
+                        <button type="submit" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-sm">
                             <i class="fa-solid fa-floppy-disk mr-1"></i> Save Google AdMob Settings
                         </button>
                     </form>
 
-                    <!-- Dedicated Adsterra Ad Code Manager -->
-                    <form onsubmit="handleSaveAdsterraConfig(event)" class="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-800/60 space-y-3.5">
-                        <div class="flex flex-wrap items-center justify-between gap-2">
+                    <!-- Adsterra 8-Unit Dedicated Ad Code Manager -->
+                    <form onsubmit="handleSaveAdsterraConfig(event)" class="p-4 sm:p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-800/60 space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-emerald-200/70 dark:border-emerald-800/60">
                             <div>
                                 <h5 class="text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-200 flex items-center gap-2">
-                                    <i class="fa-solid fa-code text-emerald-600"></i> Adsterra Ad Code Manager (Paste Script / Banner Tags)
+                                    <i class="fa-solid fa-code text-emerald-600"></i> Adsterra 8 Ad Units Manager (Separate Code & Controls)
                                 </h5>
-                                <p class="text-[11px] text-neutral-500 mt-0.5">Paste the exact <code>&lt;script&gt;</code> or <code>atOptions</code> code from your Adsterra dashboard. Runs safely in sandboxed frames.</p>
+                                <p class="text-[11px] text-neutral-500 mt-0.5">Paste the exact <code>&lt;&gt; GET CODE</code> script for each of your 8 Adsterra units, toggle Active/Off, set placement, or customize dimensions.</p>
                             </div>
-                            <label class="flex items-center gap-2 text-xs font-extrabold text-emerald-800 dark:text-emerald-300 bg-white dark:bg-neutral-900 px-3 py-1.5 rounded-xl border border-emerald-300 dark:border-emerald-700 cursor-pointer">
-                                <input type="checkbox" id="admin-adsterra-enabled" class="w-4 h-4 accent-emerald-600">
-                                <span>Enable Adsterra Ads</span>
-                            </label>
-                        </div>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 text-xs">
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="font-bold text-neutral-700 dark:text-neutral-300">1. Top Banner Adsterra Code (728×90 / 320×50)</label>
-                                    <button type="button" onclick="document.getElementById('admin-adsterra-top-code').value=''" class="text-[10px] text-rose-500 font-bold hover:underline">Clear</button>
-                                </div>
-                                <textarea id="admin-adsterra-top-code" rows="4" placeholder='<script type="text/javascript">atOptions = { "key" : "YOUR_ADSTERRA_KEY", "format" : "iframe", "height" : 90, "width" : 728, "params" : {} };</script><script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY/invoke.js"></script>' class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px] focus:outline-none focus:border-emerald-500"></textarea>
-                            </div>
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="font-bold text-neutral-700 dark:text-neutral-300">2. In-Feed / Native / Social Bar Adsterra Code</label>
-                                    <button type="button" onclick="document.getElementById('admin-adsterra-feed-code').value=''" class="text-[10px] text-rose-500 font-bold hover:underline">Clear</button>
-                                </div>
-                                <textarea id="admin-adsterra-feed-code" rows="4" placeholder='<script async="async" data-cfasync="false" src="//pl12345678.highperformanceformat.com/YOUR_NATIVE_KEY/invoke.js"></script><div id="container-YOUR_NATIVE_KEY"></div>' class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px] focus:outline-none focus:border-emerald-500"></textarea>
+                            <div class="flex items-center gap-2">
+                                <label class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-extrabold cursor-pointer">
+                                    <input type="checkbox" id="admin-adsterra-enabled" class="w-4 h-4 accent-emerald-600">
+                                    <span>Master Adsterra On</span>
+                                </label>
+                                <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition active:scale-95">
+                                    <i class="fa-solid fa-floppy-disk mr-1"></i> Save All 8 Units
+                                </button>
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                            <div>
+                        <!-- 8 Individual Adsterra Ad Unit Cards -->
+                        <div id="admin-adsterra-8-units-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs"></div>
+
+                        <!-- Optional Global Direct Smartlink & Footer Save -->
+                        <div class="pt-3 border-t border-emerald-200/70 dark:border-emerald-800/60 flex flex-col sm:flex-row items-stretch sm:items-end justify-between gap-3">
+                            <div class="flex-1">
                                 <label class="block text-[10px] font-bold text-neutral-500 mb-1">Adsterra Direct / Smartlink URL (Optional)</label>
                                 <input type="url" id="admin-adsterra-direct-url" placeholder="https://www.highcpmgate.com/..." class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-mono">
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Top Banner Height (px)</label>
-                                <select id="admin-adsterra-top-height" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-bold">
-                                    <option value="60">60px (Mobile Banner 320×50)</option>
-                                    <option value="95" selected>95px (Leaderboard 728×90)</option>
-                                    <option value="255">255px (Rectangle 300×250)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">In-Feed Slot Height (px)</label>
-                                <select id="admin-adsterra-feed-height" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-bold">
-                                    <option value="95">95px (Compact Banner)</option>
-                                    <option value="255" selected>255px (Native / 300×250 Box)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-                            <span class="text-[10px] font-semibold text-neutral-500">Supports Banner JS, Native Banner, Social Bar & Direct Smartlinks</span>
-                            <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Adsterra Ad Codes
+                            <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-md transition active:scale-95 whitespace-nowrap">
+                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save & Publish Adsterra Units
                             </button>
                         </div>
                     </form>
@@ -7841,24 +7818,197 @@
             announcementText: '🎉 Welcome to NeoKhata • Live Firebase Cloud Sync Active!',
             announcementType: 'info',
             adDeliveryMode: 'hybrid',
-            admobPubId: '',
-            admobSlotId: '',
             adsterraEnabled: true,
             adsterraTopCode: '',
             adsterraFeedCode: '',
             adsterraDirectUrl: '',
-            adsterraTopHeight: '95',
-            adsterraFeedHeight: '255',
+            adsterraTopHeight: '90',
+            adsterraTopCustomW: '',
+            adsterraTopCustomH: '',
+            adsterraFeedHeight: '250',
+            adsterraFeedCustomW: '',
+            adsterraFeedCustomH: '',
+            adsterraUnits: {},
+            admobPubId: 'ca-pub-9624198207640000',
+            admobSlotId: '1234567890',
             places: { top: true, dashboard: true, history: true, grocery: true, udhar: true, hub: true, analytics: true, bottom: true }
         };
-        if (!adminConfig.places) {
-            adminConfig.places = { top: true, dashboard: true, history: true, grocery: true, udhar: true, hub: true, analytics: true, bottom: true };
-        }
-
         let currentAdSlideIndex = 0;
         let adProgressTimer = null;
 
-        function renderSandboxedAdsterraFrame(containerEl, rawCode, heightPx = 95) {
+        const ADSTERRA_8_UNITS_CATALOG = [
+            { key: '728x90_1', label: 'Banner 728×90', defaultId: '32200681', w: 728, h: 90, defaultSlot: 'top', badge: 'Leaderboard' },
+            { key: '468x60_1', label: 'Banner 468×60', defaultId: '32200682', w: 468, h: 60, defaultSlot: 'top', badge: 'Full Banner' },
+            { key: 'NativeBanner_1', label: 'Native Banner', defaultId: '32200693', w: 0, h: 0, defaultSlot: 'dashboard', badge: 'Fluid Native' },
+            { key: '300x250_1', label: 'Banner 300×250', defaultId: '32289899', w: 300, h: 250, defaultSlot: 'dashboard', badge: 'Medium Box' },
+            { key: '160x600_1', label: 'Banner 160×600', defaultId: '32289900', w: 160, h: 600, defaultSlot: 'analytics', badge: 'Wide Skyscraper' },
+            { key: '160x300_1', label: 'Banner 160×300', defaultId: '32289901', w: 160, h: 300, defaultSlot: 'udhar', badge: 'Half Skyscraper' },
+            { key: 'SocialBar_1', label: 'Social Bar', defaultId: '32289902', w: 0, h: 0, defaultSlot: 'global_bar', badge: 'Floating Bar' },
+            { key: '320x50_1', label: 'Banner 320×50', defaultId: '32291027', w: 320, h: 50, defaultSlot: 'bottom', badge: 'Mobile Banner' }
+        ];
+
+        function ensureAdsterra8UnitsState() {
+            if (!adminConfig.adsterraUnits || typeof adminConfig.adsterraUnits !== 'object') {
+                adminConfig.adsterraUnits = {};
+            }
+            ADSTERRA_8_UNITS_CATALOG.forEach(u => {
+                if (!adminConfig.adsterraUnits[u.key]) {
+                    let migratedCode = '';
+                    if (u.key === '728x90_1' && adminConfig.adsterraTopCode) migratedCode = adminConfig.adsterraTopCode;
+                    if (u.key === 'NativeBanner_1' && adminConfig.adsterraFeedCode) migratedCode = adminConfig.adsterraFeedCode;
+                    adminConfig.adsterraUnits[u.key] = {
+                        enabled: true,
+                        unitId: u.defaultId,
+                        placement: u.defaultSlot,
+                        customW: u.w ? `${u.w}px` : '100%',
+                        customH: u.h ? String(u.h) : 'auto',
+                        code: migratedCode
+                    };
+                }
+            });
+            return adminConfig.adsterraUnits;
+        }
+
+        function renderAdminAdsterra8Units() {
+            const grid = document.getElementById('admin-adsterra-8-units-grid');
+            if (!grid) return;
+            const units = ensureAdsterra8UnitsState();
+            grid.innerHTML = ADSTERRA_8_UNITS_CATALOG.map(meta => {
+                const st = units[meta.key] || {};
+                const hasCode = Boolean((st.code || '').trim());
+                return `
+                    <div class="p-3.5 rounded-2xl bg-white dark:bg-neutral-900 border ${hasCode && st.enabled ? 'border-emerald-400 dark:border-emerald-700' : 'border-neutral-200 dark:border-neutral-800'} space-y-2.5 shadow-2xs">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="font-black text-neutral-900 dark:text-white">${meta.label}</span>
+                                    <span class="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold">${meta.key}</span>
+                                    <span class="text-[9px] font-bold text-neutral-400">ID: ${st.unitId || meta.defaultId}</span>
+                                </div>
+                            </div>
+                            <label class="flex items-center gap-1.5 text-[11px] font-extrabold cursor-pointer flex-shrink-0">
+                                <input type="checkbox" id="adst-en-${meta.key}" ${st.enabled !== false ? 'checked' : ''} class="w-4 h-4 accent-emerald-600">
+                                <span class="${st.enabled !== false ? 'text-emerald-600' : 'text-neutral-400'}">${st.enabled !== false ? 'Active' : 'Off'}</span>
+                            </label>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="block text-[9px] font-bold text-neutral-400 mb-0.5">Placement Slot</label>
+                                <select id="adst-slot-${meta.key}" class="w-full p-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-[11px] font-bold">
+                                    <option value="top" ${st.placement === 'top' ? 'selected' : ''}>Top Header</option>
+                                    <option value="dashboard" ${st.placement === 'dashboard' ? 'selected' : ''}>Dashboard</option>
+                                    <option value="history" ${st.placement === 'history' ? 'selected' : ''}>History</option>
+                                    <option value="grocery" ${st.placement === 'grocery' ? 'selected' : ''}>Shopping</option>
+                                    <option value="udhar" ${st.placement === 'udhar' ? 'selected' : ''}>Udhar Khata</option>
+                                    <option value="hub" ${st.placement === 'hub' ? 'selected' : ''}>Friends Hub</option>
+                                    <option value="analytics" ${st.placement === 'analytics' ? 'selected' : ''}>Reports</option>
+                                    <option value="bottom" ${st.placement === 'bottom' ? 'selected' : ''}>Sticky Bottom</option>
+                                    <option value="global_bar" ${st.placement === 'global_bar' ? 'selected' : ''}>Global Social Bar</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-neutral-400 mb-0.5">Width (px / %)</label>
+                                <input type="text" id="adst-w-${meta.key}" value="${st.customW || (meta.w ? meta.w + 'px' : '100%')}" placeholder="auto / 100%" class="w-full p-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-[11px] font-mono font-bold">
+                            </div>
+                            <div>
+                                <label class="block text-[9px] font-bold text-neutral-400 mb-0.5">Height (px / auto)</label>
+                                <input type="text" id="adst-h-${meta.key}" value="${st.customH || (meta.h ? String(meta.h) : 'auto')}" placeholder="auto" class="w-full p-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-[11px] font-mono font-bold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="text-[10px] font-bold text-neutral-500">Paste Adsterra <code>&lt;&gt; GET CODE</code> for ${meta.label}:</label>
+                                <button type="button" onclick="document.getElementById('adst-code-${meta.key}').value=''" class="text-[10px] font-bold text-rose-500 hover:underline">Clear</button>
+                            </div>
+                            <textarea id="adst-code-${meta.key}" rows="2" placeholder="Paste <script> or atOptions code for ${meta.label} (ID ${meta.defaultId})..." class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-[11px] font-mono">${st.code || ''}</textarea>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="button" onclick="saveSingleAdsterraUnit('${meta.key}')" class="px-3 py-1.5 rounded-xl bg-emerald-600/15 hover:bg-emerald-600 text-emerald-700 dark:text-emerald-300 hover:text-white font-extrabold text-[11px] transition">
+                                <i class="fa-solid fa-check mr-1"></i> Save ${meta.label}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function saveSingleAdsterraUnit(unitKey) {
+            const units = ensureAdsterra8UnitsState();
+            const meta = ADSTERRA_8_UNITS_CATALOG.find(u => u.key === unitKey);
+            if (!meta) return;
+            units[unitKey] = {
+                ...(units[unitKey] || {}),
+                enabled: !!document.getElementById(`adst-en-${unitKey}`)?.checked,
+                unitId: meta.defaultId,
+                placement: document.getElementById(`adst-slot-${unitKey}`)?.value || meta.defaultSlot,
+                customW: document.getElementById(`adst-w-${unitKey}`)?.value.trim() || (meta.w ? `${meta.w}px` : '100%'),
+                customH: document.getElementById(`adst-h-${unitKey}`)?.value.trim() || (meta.h ? String(meta.h) : 'auto'),
+                code: document.getElementById(`adst-code-${unitKey}`)?.value.trim() || ''
+            };
+            adminConfig.adsterraUnits = units;
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderAdminAdsterra8Units();
+            renderAdsterraSlots();
+            renderAdmobSlots();
+            saveAllAdminChangesLive();
+            showToast(`Saved ${meta.label} (${unitKey}) live!`);
+        }
+
+        function getActiveAdsterraUnitsForPlacement(placementName) {
+            const units = ensureAdsterra8UnitsState();
+            return ADSTERRA_8_UNITS_CATALOG
+                .map(meta => ({ ...meta, ...(units[meta.key] || {}) }))
+                .filter(u => u.enabled !== false && (u.code || '').trim() && u.placement === placementName);
+        }
+
+        function renderMultiUnitAdsterraSlot(containerEl, unitList) {
+            if (!containerEl) return;
+            if (!Array.isArray(unitList) || unitList.length === 0) {
+                containerEl.classList.add('hidden');
+                containerEl.style.display = 'none';
+                containerEl.innerHTML = '';
+                delete containerEl.dataset.multiSig;
+                return;
+            }
+            const sig = unitList.map(u => `${u.key}:${u.customW}:${u.customH}:${u.code}`).join('||');
+            containerEl.classList.remove('hidden');
+            containerEl.style.display = 'flex';
+            containerEl.style.flexDirection = 'column';
+            containerEl.style.alignItems = 'center';
+            containerEl.style.gap = '10px';
+            containerEl.style.width = '100%';
+            if (containerEl.dataset.multiSig === sig) return;
+            containerEl.dataset.multiSig = sig;
+            containerEl.innerHTML = '';
+
+            unitList.forEach(u => {
+                const subBox = document.createElement('div');
+                subBox.className = 'w-full flex flex-col items-center justify-center';
+                containerEl.appendChild(subBox);
+                renderSandboxedAdsterraFrame(subBox, u.code, 'custom', {
+                    customW: u.customW || (u.w ? `${u.w}px` : '100%'),
+                    customH: u.customH || (u.h ? String(u.h) : 'auto'),
+                    unitLabel: u.label
+                });
+            });
+        }
+
+        window.addEventListener('message', (ev) => {
+            if (ev?.data?.type === 'NEOKHATA_FLUID_AD_RESIZE' && ev.data.frameId && ev.data.height > 0) {
+                const frame = document.getElementById(ev.data.frameId);
+                if (frame) {
+                    const h = Math.ceil(Number(ev.data.height));
+                    frame.style.height = `${h}px`;
+                    frame.style.minHeight = `${h}px`;
+                    if (frame.parentElement) frame.parentElement.style.height = 'auto';
+                }
+            }
+        });
+
+        function renderSandboxedAdsterraFrame(containerEl, rawCode, slotKind = 'feed', overrideDims = null) {
             if (!containerEl) return;
             const code = (rawCode || '').trim();
             if (!code) {
@@ -7868,78 +8018,214 @@
                 delete containerEl.dataset.adsterraSig;
                 return;
             }
-            // Fix protocol-relative URLs (//...) so srcdoc iframes load via https:// instead of failing on about://
+            const sizePreset = overrideDims
+                ? 'override'
+                : (slotKind === 'top'
+                    ? (adminConfig.adsterraTopHeight || 'auto')
+                    : (adminConfig.adsterraFeedHeight || 'auto'));
+            const customW = overrideDims
+                ? (overrideDims.customW || '100%').trim()
+                : (slotKind === 'top'
+                    ? (adminConfig.adsterraTopCustomW || '100%').trim()
+                    : (adminConfig.adsterraFeedCustomW || '100%').trim());
+            const customH = overrideDims
+                ? (overrideDims.customH && overrideDims.customH !== 'auto' ? (Number(overrideDims.customH) || 0) : 0)
+                : (slotKind === 'top'
+                    ? (Number(adminConfig.adsterraTopCustomH) || 0)
+                    : (Number(adminConfig.adsterraFeedCustomH) || 0));
+
+            let resolvedHeightPx = 0;
+            let resolvedMaxWidth = '100%';
+            if (sizePreset === 'override' || sizePreset === 'custom') {
+                resolvedHeightPx = customH > 0 ? customH : 0;
+                if (customW && customW !== 'auto') {
+                    resolvedMaxWidth = /^\d+$/.test(customW) ? `${customW}px` : customW;
+                }
+            } else if (sizePreset === '970x90') {
+                resolvedHeightPx = 90;
+                resolvedMaxWidth = '970px';
+            } else if (sizePreset === '970x250') {
+                resolvedHeightPx = 250;
+                resolvedMaxWidth = '970px';
+            } else if (sizePreset !== 'auto' && !isNaN(Number(sizePreset))) {
+                resolvedHeightPx = Number(sizePreset);
+            }
+
+            // Fix protocol-relative URLs (//...) so scripts always resolve via https://
             const normalizedCode = code.replace(/(src\s*=\s*["'])\/\//gi, '$1https://');
-            const sig = `${heightPx}::${normalizedCode}`;
+            const sig = `fluid::${sizePreset}::${resolvedMaxWidth}::${resolvedHeightPx}::${normalizedCode}`;
             containerEl.classList.remove('hidden');
-            containerEl.style.display = 'block';
+            containerEl.style.display = 'flex';
+            containerEl.style.flexDirection = 'column';
+            containerEl.style.alignItems = 'center';
+            containerEl.style.justifyContent = 'center';
+            containerEl.style.width = '100%';
+            containerEl.style.maxWidth = resolvedMaxWidth;
+            containerEl.style.marginLeft = 'auto';
+            containerEl.style.marginRight = 'auto';
+            containerEl.style.height = resolvedHeightPx > 0 ? `${resolvedHeightPx + 28}px` : 'auto';
+            containerEl.style.minHeight = resolvedHeightPx > 0 ? `${resolvedHeightPx + 28}px` : '0px';
+            containerEl.style.overflow = 'visible';
             if (containerEl.dataset.adsterraSig === sig) return;
             containerEl.dataset.adsterraSig = sig;
 
-            const directSmartlink = (adminConfig.adsterraDirectUrl || '').trim();
-            const fallbackSlide = (Array.isArray(SPONSORED_ADS_LIST) && SPONSORED_ADS_LIST[0]) || DEFAULT_SPONSORED_ADS[0];
-            const clickAction = directSmartlink
-                ? `window.open('${directSmartlink.replace(/'/g, "\\'")}', '_blank', 'noopener,noreferrer')`
-                : `switchTab('${fallbackSlide?.targetTab || 'dashboard'}')`;
+            const badgeSuffix = overrideDims?.unitLabel ? ` • ${overrideDims.unitLabel}` : '';
+            const makeSponsoredLabel = () => {
+                const lbl = document.createElement('div');
+                lbl.className = 'w-full flex items-center justify-between px-2 py-1 mb-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[9px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-300 select-none';
+                lbl.innerHTML = `<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Sponsored Ad • Advertisement${badgeSuffix}</span><span>विज्ञापन</span>`;
+                return lbl;
+            };
 
+            // Detect if the pasted tag is a native container / social bar / popunder script vs document.write iframe banner
+            const isNativeOrGlobalScript = /container-|async|data-cfasync/i.test(normalizedCode) && !/document\.write|atOptions/i.test(normalizedCode);
+
+            if (isNativeOrGlobalScript) {
+                containerEl.innerHTML = '';
+                containerEl.appendChild(makeSponsoredLabel());
+                const hostDiv = document.createElement('div');
+                hostDiv.style.width = '100%';
+                hostDiv.style.height = 'auto';
+                hostDiv.style.display = 'flex';
+                hostDiv.style.flexDirection = 'column';
+                hostDiv.style.alignItems = 'center';
+                hostDiv.style.justifyContent = 'center';
+
+                const temp = document.createElement('div');
+                temp.innerHTML = normalizedCode;
+                Array.from(temp.childNodes).forEach(node => {
+                    if (node.nodeName === 'SCRIPT') {
+                        const s = document.createElement('script');
+                        Array.from(node.attributes).forEach(attr => s.setAttribute(attr.name, attr.value));
+                        if (node.textContent) s.textContent = node.textContent;
+                        hostDiv.appendChild(s);
+                    } else {
+                        hostDiv.appendChild(node.cloneNode(true));
+                    }
+                });
+                containerEl.appendChild(hostDiv);
+                return;
+            }
+
+            // Fluid auto-resizing iframe for atOptions / document.write ad tags (adapts automatically to any height & width)
+            const frameId = `fluid_ad_frame_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
             const wrapper = document.createElement('div');
-            wrapper.style.position = 'relative';
             wrapper.style.width = '100%';
-            wrapper.style.minHeight = `${heightPx}px`;
-            wrapper.style.overflow = 'hidden';
-
-            // Rich visible layer behind the ad iframe so if an AdBlocker blocks external ad JS, there is NEVER a blank white box
-            const underLayer = document.createElement('div');
-            underLayer.setAttribute('onclick', clickAction);
-            underLayer.className = `w-full bg-gradient-to-r ${fallbackSlide?.gradient || 'from-primary-700 via-primary-600 to-emerald-600'} text-white px-4 py-3 flex items-center justify-between gap-3 cursor-pointer`;
-            underLayer.style.minHeight = `${heightPx}px`;
-            underLayer.innerHTML = `
-                <div class="flex items-center gap-3 min-w-0">
-                    <span class="px-2.5 py-1 rounded-lg bg-white/20 text-[10px] font-black uppercase tracking-wider flex-shrink-0">SPONSORED</span>
-                    <div class="min-w-0 text-left">
-                        <div class="text-xs sm:text-sm font-black truncate">${fallbackSlide?.title || 'NeoKhata Partner Offer'}</div>
-                        <div class="text-[10px] sm:text-xs text-white/85 truncate">${fallbackSlide?.subtitle || 'Tap to view exclusive partner offer'}</div>
-                    </div>
-                </div>
-                <span class="px-3 py-1.5 rounded-xl bg-white text-neutral-900 font-black text-[11px] flex-shrink-0 shadow-sm">${fallbackSlide?.ctaText || 'Open'} →</span>
-            `;
+            wrapper.style.height = 'auto';
+            wrapper.style.display = 'flex';
+            wrapper.style.alignItems = 'center';
+            wrapper.style.justifyContent = 'center';
+            wrapper.style.overflow = 'visible';
 
             const iframe = document.createElement('iframe');
-            iframe.style.position = 'relative';
-            iframe.style.zIndex = '10';
+            iframe.id = frameId;
             iframe.style.width = '100%';
-            iframe.style.height = `${heightPx}px`;
+            iframe.style.height = resolvedHeightPx > 0 ? `${resolvedHeightPx}px` : 'auto';
+            iframe.style.minHeight = resolvedHeightPx > 0 ? `${resolvedHeightPx}px` : '1px';
             iframe.style.border = '0';
             iframe.style.overflow = 'hidden';
             iframe.style.display = 'block';
+            iframe.style.background = 'transparent';
             iframe.setAttribute('scrolling', 'no');
             iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-forms');
-            iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="https://"><style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden;}</style></head><body>${normalizedCode}</body></html>`;
 
-            underLayer.style.position = 'absolute';
-            underLayer.style.inset = '0';
-            underLayer.style.zIndex = '1';
+            const autoResizeScript = `
+                <script>
+                (function() {
+                    var fid = ${JSON.stringify(frameId)};
+                    var fixedH = ${JSON.stringify(resolvedHeightPx)};
+                    function reportSize() {
+                        var root = document.getElementById('ad-fluid-root');
+                        if (!root) return;
+                        var rect = root.getBoundingClientRect();
+                        var naturalW = Math.max(root.scrollWidth || 0, rect.width || 0);
+                        var naturalH = fixedH > 0 ? fixedH : Math.max(root.scrollHeight || 0, rect.height || 0);
+                        var vw = window.innerWidth || document.documentElement.clientWidth || naturalW;
+                        if (naturalW > vw && vw > 0) {
+                            var scale = vw / naturalW;
+                            root.style.transformOrigin = 'top center';
+                            root.style.transform = 'scale(' + scale + ')';
+                            if (!fixedH) naturalH = Math.ceil(naturalH * scale);
+                        } else {
+                            root.style.transform = 'none';
+                        }
+                        if (!fixedH && naturalH > 0 && window.parent) {
+                            window.parent.postMessage({ type: 'NEOKHATA_FLUID_AD_RESIZE', frameId: fid, height: Math.ceil(naturalH) }, '*');
+                        }
+                    }
+                    window.addEventListener('load', reportSize);
+                    setInterval(reportSize, 450);
+                    if (typeof ResizeObserver !== 'undefined') {
+                        new ResizeObserver(reportSize).observe(document.body);
+                    }
+                })();
+                <\/script>
+            `;
 
-            wrapper.appendChild(underLayer);
+            iframe.srcdoc = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="https://"><style>html,body{margin:0;padding:0;width:100%;height:${resolvedHeightPx > 0 ? resolvedHeightPx + 'px' : 'auto'};display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden;}#ad-fluid-root{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;max-width:none;}</style></head><body><div id="ad-fluid-root">${normalizedCode}</div>${autoResizeScript}</body></html>`;
+
             wrapper.appendChild(iframe);
             containerEl.innerHTML = '';
+            containerEl.appendChild(makeSponsoredLabel());
             containerEl.appendChild(wrapper);
+        }
+
+        function toggleCustomAdSizeInputs(slotKind) {
+            const sel = document.getElementById(slotKind === 'top' ? 'admin-adsterra-top-height' : 'admin-adsterra-feed-height');
+            const box = document.getElementById(slotKind === 'top' ? 'admin-adsterra-top-custom-box' : 'admin-adsterra-feed-custom-box');
+            if (sel && box) {
+                box.classList.toggle('hidden', sel.value !== 'custom');
+            }
         }
 
         function renderAdsterraSlots() {
             const topBox = document.getElementById('adsterra-slot-top');
             const mode = adminConfig.adDeliveryMode || 'hybrid';
             const allowAdsterra = mode !== 'admob-only' && adminConfig.adsterraEnabled !== false;
-            const topCode = (adminConfig.adsterraTopCode || '').trim();
+
+            // Execute Global Social Bar units in document body if active
+            const socialUnits = allowAdsterra ? getActiveAdsterraUnitsForPlacement('global_bar') : [];
+            let globalHost = document.getElementById('adsterra-global-social-bar-host');
+            if (socialUnits.length > 0) {
+                if (!globalHost) {
+                    globalHost = document.createElement('div');
+                    globalHost.id = 'adsterra-global-social-bar-host';
+                    document.body.appendChild(globalHost);
+                }
+                const sSig = socialUnits.map(u => u.code).join('||');
+                if (globalHost.dataset.sSig !== sSig) {
+                    globalHost.dataset.sSig = sSig;
+                    globalHost.innerHTML = '';
+                    socialUnits.forEach(u => {
+                        const norm = (u.code || '').replace(/(src\s*=\s*["'])\/\//gi, '$1https://');
+                        const temp = document.createElement('div');
+                        temp.innerHTML = norm;
+                        Array.from(temp.childNodes).forEach(node => {
+                            if (node.nodeName === 'SCRIPT') {
+                                const s = document.createElement('script');
+                                Array.from(node.attributes).forEach(attr => s.setAttribute(attr.name, attr.value));
+                                if (node.textContent) s.textContent = node.textContent;
+                                globalHost.appendChild(s);
+                            } else {
+                                globalHost.appendChild(node.cloneNode(true));
+                            }
+                        });
+                    });
+                }
+            } else if (globalHost) {
+                globalHost.innerHTML = '';
+                delete globalHost.dataset.sSig;
+            }
 
             if (topBox) {
-                if (allowAdsterra && topCode) {
-                    renderSandboxedAdsterraFrame(topBox, topCode, Number(adminConfig.adsterraTopHeight) || 95);
+                const topUnits = allowAdsterra ? getActiveAdsterraUnitsForPlacement('top') : [];
+                if (topUnits.length > 0) {
+                    renderMultiUnitAdsterraSlot(topBox, topUnits);
                 } else {
                     topBox.classList.add('hidden');
                     topBox.style.display = 'none';
                     topBox.innerHTML = '';
-                    delete topBox.dataset.adsterraSig;
+                    delete topBox.dataset.multiSig;
                 }
             }
         }
@@ -8097,11 +8383,8 @@
             if (document.getElementById('admin-admob-pub-id')) document.getElementById('admin-admob-pub-id').value = adminConfig.admobPubId || '';
             if (document.getElementById('admin-admob-slot-id')) document.getElementById('admin-admob-slot-id').value = adminConfig.admobSlotId || '';
             if (document.getElementById('admin-adsterra-enabled')) document.getElementById('admin-adsterra-enabled').checked = adminConfig.adsterraEnabled !== false;
-            if (document.getElementById('admin-adsterra-top-code')) document.getElementById('admin-adsterra-top-code').value = adminConfig.adsterraTopCode || '';
-            if (document.getElementById('admin-adsterra-feed-code')) document.getElementById('admin-adsterra-feed-code').value = adminConfig.adsterraFeedCode || '';
             if (document.getElementById('admin-adsterra-direct-url')) document.getElementById('admin-adsterra-direct-url').value = adminConfig.adsterraDirectUrl || '';
-            if (document.getElementById('admin-adsterra-top-height')) document.getElementById('admin-adsterra-top-height').value = adminConfig.adsterraTopHeight || '95';
-            if (document.getElementById('admin-adsterra-feed-height')) document.getElementById('admin-adsterra-feed-height').value = adminConfig.adsterraFeedHeight || '255';
+            renderAdminAdsterra8Units();
             updateAdModeButtonsUI();
 
             const p = adminConfig.places || {};
@@ -8535,16 +8818,26 @@
         function handleSaveAdsterraConfig(e) {
             e.preventDefault();
             adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
-            adminConfig.adsterraTopCode = document.getElementById('admin-adsterra-top-code')?.value.trim() || '';
-            adminConfig.adsterraFeedCode = document.getElementById('admin-adsterra-feed-code')?.value.trim() || '';
             adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
-            adminConfig.adsterraTopHeight = document.getElementById('admin-adsterra-top-height')?.value || '95';
-            adminConfig.adsterraFeedHeight = document.getElementById('admin-adsterra-feed-height')?.value || '255';
+            const units = ensureAdsterra8UnitsState();
+            ADSTERRA_8_UNITS_CATALOG.forEach(meta => {
+                units[meta.key] = {
+                    ...(units[meta.key] || {}),
+                    enabled: !!document.getElementById(`adst-en-${meta.key}`)?.checked,
+                    unitId: meta.defaultId,
+                    placement: document.getElementById(`adst-slot-${meta.key}`)?.value || meta.defaultSlot,
+                    customW: document.getElementById(`adst-w-${meta.key}`)?.value.trim() || (meta.w ? `${meta.w}px` : '100%'),
+                    customH: document.getElementById(`adst-h-${meta.key}`)?.value.trim() || (meta.h ? String(meta.h) : 'auto'),
+                    code: document.getElementById(`adst-code-${meta.key}`)?.value.trim() || ''
+                };
+            });
+            adminConfig.adsterraUnits = units;
             localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            renderAdminAdsterra8Units();
             renderAdsterraSlots();
             renderAdmobSlots();
             saveAllAdminChangesLive();
-            showToast('Adsterra Ad Codes saved & published live!');
+            showToast('All 8 Adsterra Ad Units saved & published live!');
         }
 
         function handleSaveAdMobConfig(e) {
@@ -8570,18 +8863,35 @@
             if (!container) return;
 
             const mode = adminConfig.adDeliveryMode || 'hybrid';
-            const feedAdsterraCode = (adminConfig.adsterraFeedCode || '').trim();
-            const topAdsterraCode = (adminConfig.adsterraTopCode || '').trim();
-            const activeAdsterraCode = feedAdsterraCode || topAdsterraCode;
-            const allowAdsterra = mode !== 'admob-only' && adminConfig.adsterraEnabled !== false && !!activeAdsterraCode;
+            const slotPlacementMap = {
+                'admob-slot-top': 'top',
+                'admob-slot-dashboard': 'dashboard',
+                'admob-slot-dashboard-2': 'dashboard',
+                'admob-slot-history-top': 'history',
+                'admob-slot-history': 'history',
+                'admob-slot-grocery-top': 'grocery',
+                'admob-slot-grocery': 'grocery',
+                'admob-slot-udhar-top': 'udhar',
+                'admob-slot-udhar': 'udhar',
+                'admob-slot-hub-top': 'hub',
+                'admob-slot-hub': 'hub',
+                'admob-slot-analytics-top': 'analytics',
+                'admob-slot-analytics-2': 'analytics',
+                'admob-slot-bottom': 'bottom'
+            };
+            const placementKey = slotPlacementMap[containerId] || 'dashboard';
+            const matchingAdsterraUnits = (mode !== 'admob-only' && adminConfig.adsterraEnabled !== false)
+                ? getActiveAdsterraUnitsForPlacement(placementKey)
+                : [];
+            const allowAdsterra = matchingAdsterraUnits.length > 0;
             const allowAdMob = mode !== 'custom-only';
 
             const pubId = (adminConfig.admobPubId || '').trim();
             const slotId = (adminConfig.admobSlotId || '').trim();
             const hasGoogleCreds = Boolean(pubId && slotId);
 
-            // Never leave an empty white box when neither Adsterra code nor Google AdMob IDs are configured
-            if (!isEnabled || (!allowAdsterra && (!allowAdMob || !hasGoogleCreds))) {
+            // Never leave an empty box when neither Adsterra code nor Google AdMob IDs are configured
+            if ((!isEnabled && !allowAdsterra) || (!allowAdsterra && (!allowAdMob || !hasGoogleCreds))) {
                 container.classList.add('hidden');
                 container.style.display = 'none';
                 container.innerHTML = '';
@@ -8590,12 +8900,16 @@
 
             container.classList.remove('hidden');
             container.style.display = 'block';
+            container.style.width = '100%';
+            container.style.height = 'auto';
+            container.style.overflow = 'visible';
             const targetBox = isBottomAnchor ? (document.getElementById('admob-bottom-container') || container) : container;
+            targetBox.style.height = 'auto';
+            targetBox.style.minHeight = '0px';
 
-            if (allowAdsterra && (mode === 'custom-only' || !hasGoogleCreds || containerId.endsWith('-2') || containerId.endsWith('-top'))) {
-                const h = isBottomAnchor ? 60 : (Number(adminConfig.adsterraFeedHeight) || 255);
+            if (allowAdsterra && (mode === 'custom-only' || !hasGoogleCreds || !containerId.endsWith('-top'))) {
                 delete targetBox.dataset.adSig;
-                renderSandboxedAdsterraFrame(targetBox, activeAdsterraCode, h);
+                renderMultiUnitAdsterraSlot(targetBox, matchingAdsterraUnits);
                 return;
             }
 
@@ -8605,7 +8919,13 @@
                 if (targetBox.dataset.adSig !== sig) {
                     delete targetBox.dataset.adsterraSig;
                     targetBox.dataset.adSig = sig;
-                    targetBox.innerHTML = `<ins class="adsbygoogle" style="display:block;width:100%;min-height:${isBottomAnchor ? '52px' : '90px'}" data-ad-client="${pubId}" data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+                    targetBox.innerHTML = `
+                        <div class="w-full flex items-center justify-between px-2 py-1 mb-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[9px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-300 select-none">
+                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Sponsored Ad • Google AdMob</span>
+                            <span>विज्ञापन</span>
+                        </div>
+                        <ins class="adsbygoogle" style="display:block;width:100%;height:auto;" data-ad-client="${pubId}" data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    `;
                     try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
                 }
             }
@@ -8638,12 +8958,27 @@
             adminConfig.announcementEnabled = !!document.getElementById('admin-announcement-enabled')?.checked;
             adminConfig.admobPubId = document.getElementById('admin-admob-pub-id')?.value.trim() || '';
             adminConfig.admobSlotId = document.getElementById('admin-admob-slot-id')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-enabled')) adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
-            if (document.getElementById('admin-adsterra-top-code')) adminConfig.adsterraTopCode = document.getElementById('admin-adsterra-top-code')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-feed-code')) adminConfig.adsterraFeedCode = document.getElementById('admin-adsterra-feed-code')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-direct-url')) adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-top-height')) adminConfig.adsterraTopHeight = document.getElementById('admin-adsterra-top-height')?.value || '95';
-            if (document.getElementById('admin-adsterra-feed-height')) adminConfig.adsterraFeedHeight = document.getElementById('admin-adsterra-feed-height')?.value || '255';
+            if (document.getElementById('admin-adsterra-enabled')) {
+                adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
+            }
+            if (document.getElementById('admin-adsterra-direct-url')) {
+                adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
+            }
+            const units = ensureAdsterra8UnitsState();
+            ADSTERRA_8_UNITS_CATALOG.forEach(meta => {
+                if (document.getElementById(`adst-code-${meta.key}`)) {
+                    units[meta.key] = {
+                        ...(units[meta.key] || {}),
+                        enabled: !!document.getElementById(`adst-en-${meta.key}`)?.checked,
+                        unitId: meta.defaultId,
+                        placement: document.getElementById(`adst-slot-${meta.key}`)?.value || meta.defaultSlot,
+                        customW: document.getElementById(`adst-w-${meta.key}`)?.value.trim() || (meta.w ? `${meta.w}px` : '100%'),
+                        customH: document.getElementById(`adst-h-${meta.key}`)?.value.trim() || (meta.h ? String(meta.h) : 'auto'),
+                        code: document.getElementById(`adst-code-${meta.key}`)?.value.trim() || ''
+                    };
+                }
+            });
+            adminConfig.adsterraUnits = units;
             adminConfig.places = {
                 top: !!document.getElementById('admob-place-top')?.checked,
                 dashboard: !!document.getElementById('admob-place-dashboard')?.checked,
@@ -8699,7 +9034,11 @@
             const mode = adminConfig.adDeliveryMode || 'hybrid';
             const pubId = (adminConfig.admobPubId || '').trim();
             const slotId = (adminConfig.admobSlotId || '').trim();
-            const adsterraCode = (adminConfig.adsterraFeedCode || adminConfig.adsterraTopCode || '').trim();
+            const units = ensureAdsterra8UnitsState();
+            const firstActiveAdsterra = ADSTERRA_8_UNITS_CATALOG
+                .map(m => ({ ...m, ...(units[m.key] || {}) }))
+                .find(u => u.enabled !== false && (u.code || '').trim() && u.placement !== 'global_bar');
+            const adsterraCode = firstActiveAdsterra ? firstActiveAdsterra.code : '';
 
             const canShowAdMob = mode !== 'custom-only' && pubId && slotId;
             const canShowAdsterra = mode !== 'admob-only' && adminConfig.adsterraEnabled !== false && adsterraCode;
@@ -8717,7 +9056,7 @@
                 slot.innerHTML = `<ins class="adsbygoogle" style="display:block;width:300px;height:250px" data-ad-client="${pubId}" data-ad-slot="${slotId}"></ins>`;
                 try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
             } else if (canShowAdsterra) {
-                renderSandboxedAdsterraFrame(slot, adsterraCode, 255);
+                renderSandboxedAdsterraFrame(slot, adsterraCode, 'feed');
             }
 
             let sec = 3;
@@ -8749,7 +9088,8 @@
             ['admin-new-user-name', 'admin-new-user-phone', 'admin-new-user-email', 'admin-new-user-password'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.value = '';
-            });
+            handleSaveAnnouncement, setAdDeliveryMode, toggleCustomAdSizeInputs, handleSaveAdMobConfig, handleSaveAdsterraConfig, saveAllAdminChangesLive, resetAdminCustomizationsToDefault
+        });
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -11467,7 +11807,7 @@ ${JSON.stringify(liveSnapshot)}`;
             openAddAdModal, openEditAdModal, closeAdminBannerModal, previewAdminBannerImage, saveAdminBannerSlideForm, deleteAdminAdSlide, saveSponsoredBannerChanges,
             openAdminAddUserModal, closeAdminAddUserModal, handleAdminCreateUser, forceAdminCloudReSync,
             inspectAdminUserDetails, deleteAdminRegisteredUser, closeAdminUserInspector, switchInspectorTab,
-            handleSaveAnnouncement, setAdDeliveryMode, handleSaveAdMobConfig, handleSaveAdsterraConfig, saveAllAdminChangesLive, resetAdminCustomizationsToDefault
+            handleSaveAnnouncement, setAdDeliveryMode, toggleCustomAdSizeInputs, handleSaveAdMobConfig, handleSaveAdsterraConfig, saveSingleAdsterraUnit, renderAdminAdsterra8Units, saveAllAdminChangesLive, resetAdminCustomizationsToDefault
         });
 
         document.addEventListener('DOMContentLoaded', () => {
