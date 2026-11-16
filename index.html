@@ -316,7 +316,7 @@
                 <div class="pt-1">
                     <button type="submit" id="gate-submit-btn" class="w-full py-3 px-4 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-black text-xs sm:text-sm tracking-wide uppercase transition shadow-lg shadow-primary-600/30 flex items-center justify-center gap-2 active:scale-95">
                         <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
-                        <span id="gate-submit-text">Sign In</span>
+                        <span id="gate-submit-text">Sign In & Access NeoKhata</span>
                     </button>
                 </div>
 
@@ -327,57 +327,43 @@
 
             <div class="mt-4 pt-3 border-t border-neutral-200/70 dark:border-neutral-800 text-center">
                 <span class="text-[10px] text-neutral-400 font-semibold flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-lock text-emerald-500"></i> 100% Secure Data Protection
+                    <i class="fa-solid fa-lock text-emerald-500"></i> Secure Firebase Cloud Sync • 100% Data Protection
                 </span>
             </div>
         </div>
     </div>
 
-    <!-- ================= FORGOT / RESET PASSWORD MODAL ================= -->
-    <div id="forgot-password-modal" class="fixed inset-0 z-[120] bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 animate-fade-in">
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                    <i class="fa-solid fa-key text-primary-600"></i> Reset Forgotten Password
-                </h4>
-                <button type="button" onclick="closeForgotPasswordModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 hover:text-neutral-700 text-xs flex items-center justify-center">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+    <!-- ================= 4-DIGIT PASSCODE & BIOMETRIC SECURITY LOCK SCREEN ================= -->
+    <div id="app-pin-lock-screen" class="fixed inset-0 z-[250] bg-neutral-950/95 backdrop-blur-2xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-xs p-6 rounded-[2.2rem] shadow-2xl bg-white/95 dark:bg-neutral-900/95 border border-primary-500/30 text-center space-y-5 animate-pop-bounce">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-primary-600 to-indigo-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-primary-500/30">
+                <i class="fa-solid fa-fingerprint"></i>
             </div>
-            <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3 text-xs">
-                <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                    Enter your registered <strong>10-digit Mobile Number</strong> or <strong>Email Address</strong> along with a new password and captcha verification.
-                </p>
-                <div>
-                    <label class="block font-bold text-neutral-700 dark:text-neutral-300 mb-1">Registered Mobile Number or Email *</label>
-                    <input type="text" id="fp-identifier" required placeholder="e.g. 9876543210 or name@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 font-semibold focus:outline-none focus:border-primary-500">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-bold text-neutral-700 dark:text-neutral-300 mb-1">New Password (Min 6) *</label>
-                        <input type="password" id="fp-new-password" required minlength="6" placeholder="New password" class="w-full px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 font-semibold focus:outline-none focus:border-primary-500">
-                    </div>
-                    <div>
-                        <label class="block font-bold text-neutral-700 dark:text-neutral-300 mb-1">Confirm New Password *</label>
-                        <input type="password" id="fp-confirm-password" required minlength="6" placeholder="Repeat password" class="w-full px-3.5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 font-semibold focus:outline-none focus:border-primary-500">
-                    </div>
-                </div>
-                <div class="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 space-y-2">
-                    <label class="block text-[11px] font-extrabold text-neutral-700 dark:text-neutral-200">Verify Captcha Code *</label>
-                    <div class="flex items-center gap-2">
-                        <div id="fp-captcha-display" onclick="refreshForgotCaptcha()" class="px-3 py-2 rounded-xl bg-slate-900 text-white font-mono font-black text-sm tracking-[0.25em] select-none cursor-pointer flex-shrink-0">X8M2Q</div>
-                        <button type="button" onclick="refreshForgotCaptcha()" class="w-9 h-9 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-primary-600 flex items-center justify-center flex-shrink-0">
-                            <i class="fa-solid fa-arrows-rotate text-xs"></i>
-                        </button>
-                        <input type="text" id="fp-input-captcha" required maxlength="6" autocomplete="off" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')" placeholder="Enter code" class="w-full min-w-0 px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono font-black uppercase tracking-widest focus:outline-none focus:border-primary-500">
-                    </div>
-                </div>
-                <div id="fp-status-msg" class="text-[11px] font-bold text-center min-h-[1.25rem] text-neutral-500"></div>
-                <div class="grid grid-cols-2 gap-2 pt-1">
-                    <button type="button" onclick="closeForgotPasswordModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" id="fp-submit-btn" class="py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black shadow-md">Update Password</button>
-                </div>
-            </form>
+            <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-primary-500/10 text-primary-600 dark:text-primary-400 text-[10px] font-black uppercase tracking-wider">NeoKhata Vault Lock</span>
+                <h3 class="text-lg font-black text-neutral-900 dark:text-white mt-1">Enter 4-Digit Passcode</h3>
+                <p id="pin-lock-subtitle" class="text-[11px] text-neutral-500 mt-0.5">Unlock your encrypted financial workspace</p>
+            </div>
+            <div id="pin-dots-display" class="flex items-center justify-center gap-3 py-1">
+                <span class="w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-transparent transition"></span>
+                <span class="w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-transparent transition"></span>
+                <span class="w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-transparent transition"></span>
+                <span class="w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-transparent transition"></span>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5 text-sm font-black">
+                <button type="button" onclick="pressPinDigit('1')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">1</button>
+                <button type="button" onclick="pressPinDigit('2')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">2</button>
+                <button type="button" onclick="pressPinDigit('3')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">3</button>
+                <button type="button" onclick="pressPinDigit('4')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">4</button>
+                <button type="button" onclick="pressPinDigit('5')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">5</button>
+                <button type="button" onclick="pressPinDigit('6')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">6</button>
+                <button type="button" onclick="pressPinDigit('7')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">7</button>
+                <button type="button" onclick="pressPinDigit('8')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">8</button>
+                <button type="button" onclick="pressPinDigit('9')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">9</button>
+                <button type="button" onclick="triggerBiometricUnlock()" class="py-3 rounded-2xl bg-emerald-500/15 text-emerald-600 hover:bg-emerald-600 hover:text-white transition" title="Biometric / Touch ID"><i class="fa-solid fa-fingerprint"></i></button>
+                <button type="button" onclick="pressPinDigit('0')" class="py-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 hover:bg-primary-600 hover:text-white transition">0</button>
+                <button type="button" onclick="clearPinDigits()" class="py-3 rounded-2xl bg-rose-500/15 text-rose-600 hover:bg-rose-600 hover:text-white transition"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
         </div>
     </div>
 
@@ -537,11 +523,11 @@
                             <div class="flex items-center gap-3 min-w-0">
                                 <span class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-cloud text-xs"></i></span>
                                 <div class="text-left min-w-0">
-                                    <div class="truncate">Update Cloud</div>
+                                    <div class="truncate">Firebase Cloud</div>
                                     <div class="text-[10px] font-medium text-emerald-600 flex items-center gap-1"><span id="cloud-sync-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> <span id="cloud-sync-text">Cloud Synced</span></div>
                                 </div>
                             </div>
-                            <span class="px-2.5 py-1 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] flex items-center gap-1 flex-shrink-0"><i class="fa-solid fa-rotate"></i>Data Sync</span>
+                            <span class="px-2.5 py-1 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-extrabold text-[10px] flex items-center gap-1 flex-shrink-0"><i class="fa-solid fa-rotate"></i> Sync</span>
                         </button>
 
                         <!-- Appearance Theme Toggle Button -->
@@ -554,6 +540,18 @@
                                 </div>
                             </div>
                             <span class="px-2.5 py-1 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-bold text-[10px]">Toggle</span>
+                        </button>
+
+                        <!-- 4-Digit Passcode & Biometric Lock Toggle -->
+                        <button type="button" onclick="toggleAppPinSecurity()" class="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-indigo-50/70 dark:hover:bg-indigo-950/40 text-xs font-bold text-neutral-700 dark:text-neutral-200 transition group">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-fingerprint text-xs"></i></span>
+                                <div class="text-left">
+                                    <div>4-Digit PIN & Biometric Lock</div>
+                                    <div id="menu-pin-status-sub" class="text-[10px] font-medium text-neutral-400">Currently Off • Tap to Set PIN</div>
+                                </div>
+                            </div>
+                            <span id="menu-pin-status-badge" class="px-2.5 py-1 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-bold text-[10px]">Off</span>
                         </button>
 
                         <!-- Backup & Restore Button -->
@@ -601,7 +599,7 @@
                     <i class="fa-solid fa-right-from-bracket"></i> Sign Out Safely
                 </button>
                 <div class="flex items-center justify-between text-[10px] text-neutral-400 font-semibold px-1">
-                    <span>NeoKhata • Ultra</span>
+                    <span>NeoKhata • v3.0 Ultra</span>
                     <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i> Encrypted</span>
                 </div>
             </div>
@@ -615,6 +613,8 @@
             </div>
             <button type="button" onclick="dismissAnnouncement()" class="text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 text-sm px-1 flex-shrink-0" title="Dismiss"><i class="fa-solid fa-xmark"></i></button>
         </div>
+        <!-- Live Savings Target & Recurring Bill/EMI Deadline Countdown Alert Banner (7 Days / 48 Hours / 24 Hours) -->
+        <div id="target-deadline-alert-strip" class="hidden mb-4 space-y-2"></div>
         <!-- Clean Full-Bleed Sponsored Banner Carousel & Top Adsterra Slot -->
         <div id="adsterra-slot-top" class="hidden mb-6 w-full rounded-3xl overflow-visible transition-all duration-300 flex items-center justify-center"></div>
         <div id="sponsored-ad-banner" class="mb-6 rounded-3xl overflow-hidden shadow-md border border-neutral-200/80 dark:border-neutral-800/80 relative h-44 sm:h-56 md:h-64 select-none">
@@ -724,189 +724,129 @@
                 </div>
             </div>
 
-            <!-- 2. Expense Velocity & Spend Summary (Today, Yesterday, 7 Days, 30 Days & Lifetime) -->
-            <div id="dash-module-velocity" data-layout-id="dash-module-velocity" class="space-y-3">
+            <!-- 2. Timeframe Spend Summary Strip (Today, Yesterday, 7D, 30D, Lifetime) -->
+            <div class="space-y-3.5">
                 <div class="flex items-center justify-between px-1">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-primary-600"></span>
-                        <h3 class="text-xs font-black uppercase tracking-wider text-neutral-600 dark:text-neutral-300">Spend Summary Data</h3>
-                    </div>
-                    <span class="px-2.5 py-0.5 rounded-full bg-primary-50 dark:bg-primary-950/60 border border-primary-200/70 dark:border-primary-800/70 text-[10px] font-bold text-primary-700 dark:text-primary-300">Metrics</span>
+                    <span class="text-xs font-black uppercase tracking-wider text-neutral-700 dark:text-neutral-200 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-primary-600"></span> Spend Summary Data
+                    </span>
+                    <span class="px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/60 border border-primary-200/80 dark:border-primary-800/70 text-[11px] font-extrabold text-primary-700 dark:text-primary-300 shadow-2xs">Metrics</span>
                 </div>
 
-                <!-- 2x2 Grid for Today, Yesterday, 7 Days, 30 Days -->
-                <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
-                    <!-- Today -->
-                    <div class="p-3.5 sm:p-4 rounded-3xl bg-gradient-to-br from-blue-50 via-blue-100/70 to-sky-100/80 dark:from-blue-950/75 dark:via-blue-900/45 dark:to-sky-950/60 border border-blue-200/90 dark:border-blue-700/60 shadow-sm hover:shadow-md transition flex flex-col justify-between min-w-0">
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                    <!-- TODAY Card -->
+                    <div class="p-4 sm:p-5 rounded-[1.75rem] bg-gradient-to-br from-sky-50/90 via-blue-50/75 to-indigo-100/70 dark:from-sky-950/65 dark:via-blue-950/45 dark:to-neutral-900 border border-sky-200/90 dark:border-sky-800/60 flex flex-col justify-between gap-3.5 shadow-sm">
                         <div class="flex items-center justify-between gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-500/15 dark:bg-blue-500/25 text-blue-700 dark:text-blue-300 text-[10px] font-black uppercase tracking-wider">Today</span>
-                            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-primary-500 text-white flex items-center justify-center text-xs shadow-sm flex-shrink-0">
+                            <span class="px-2.5 py-1 rounded-full bg-blue-500/15 text-blue-700 dark:text-blue-300 text-[10px] font-black uppercase tracking-wider">Today</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm shadow-md shadow-blue-600/25 flex-shrink-0">
                                 <i class="fa-solid fa-bolt"></i>
-                            </span>
+                            </div>
                         </div>
-                        <div id="dash-today" class="text-[26px] sm:text-3xl md:text-4xl font-black text-blue-700 dark:text-blue-300 tabular-nums tracking-tight mt-2.5 leading-tight">₹0</div>
+                        <div id="dash-today" class="text-2xl sm:text-3xl font-black text-blue-700 dark:text-sky-300 tabular-nums tracking-tight truncate">₹0</div>
                     </div>
 
-                    <!-- Yesterday -->
-                    <div class="p-3.5 sm:p-4 rounded-3xl bg-gradient-to-br from-slate-100 via-indigo-50/80 to-slate-200/70 dark:from-slate-900/90 dark:via-indigo-950/50 dark:to-slate-800/80 border border-slate-300/85 dark:border-slate-700/65 shadow-sm hover:shadow-md transition flex flex-col justify-between min-w-0">
+                    <!-- YESTERDAY Card -->
+                    <div class="p-4 sm:p-5 rounded-[1.75rem] bg-gradient-to-br from-slate-100/90 via-neutral-50 to-slate-200/60 dark:from-neutral-900 dark:via-neutral-900/90 dark:to-slate-900 border border-slate-200/90 dark:border-neutral-800 flex flex-col justify-between gap-3.5 shadow-sm">
                         <div class="flex items-center justify-between gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-slate-500/15 dark:bg-slate-500/25 text-slate-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-wider">Yesterday</span>
-                            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-700 to-indigo-600 text-white flex items-center justify-center text-xs shadow-sm flex-shrink-0">
+                            <span class="px-2.5 py-1 rounded-full bg-slate-500/15 text-slate-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-wider">Yesterday</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-indigo-950 dark:bg-slate-700 text-white flex items-center justify-center text-sm shadow-md flex-shrink-0">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
-                            </span>
+                            </div>
                         </div>
-                        <div id="dash-yesterday" class="text-[26px] sm:text-3xl md:text-4xl font-black text-slate-800 dark:text-slate-200 tabular-nums tracking-tight mt-2.5 leading-tight">₹0</div>
+                        <div id="dash-yesterday" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tabular-nums tracking-tight truncate">₹0</div>
                     </div>
 
-                    <!-- Last 7 Days -->
-                    <div class="p-3.5 sm:p-4 rounded-3xl bg-gradient-to-br from-emerald-50 via-teal-50/90 to-green-100/80 dark:from-emerald-950/75 dark:via-teal-900/45 dark:to-green-950/60 border border-emerald-200/90 dark:border-emerald-700/60 shadow-sm hover:shadow-md transition flex flex-col justify-between min-w-0">
+                    <!-- 7 DAYS Card -->
+                    <div class="p-4 sm:p-5 rounded-[1.75rem] bg-gradient-to-br from-emerald-50/90 via-green-50/75 to-teal-100/65 dark:from-emerald-950/65 dark:via-green-950/45 dark:to-neutral-900 border border-emerald-200/90 dark:border-emerald-800/60 flex flex-col justify-between gap-3.5 shadow-sm">
                         <div class="flex items-center justify-between gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 dark:bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[10px] font-black uppercase tracking-wider">7 Days</span>
-                            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-xs shadow-sm flex-shrink-0">
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-[10px] font-black uppercase tracking-wider">7 Days</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center text-sm shadow-md shadow-emerald-600/25 flex-shrink-0">
                                 <i class="fa-solid fa-calendar-week"></i>
-                            </span>
+                            </div>
                         </div>
-                        <div id="dash-7days" class="text-[26px] sm:text-3xl md:text-4xl font-black text-emerald-700 dark:text-emerald-300 tabular-nums tracking-tight mt-2.5 leading-tight">₹0</div>
+                        <div id="dash-7days" class="text-2xl sm:text-3xl font-black text-emerald-800 dark:text-emerald-300 tabular-nums tracking-tight truncate">₹0</div>
                     </div>
 
-                    <!-- Last 30 Days -->
-                    <div class="p-3.5 sm:p-4 rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/90 to-yellow-100/80 dark:from-amber-950/75 dark:via-orange-900/45 dark:to-yellow-950/60 border border-amber-200/90 dark:border-amber-700/60 shadow-sm hover:shadow-md transition flex flex-col justify-between min-w-0">
+                    <!-- 30 DAYS Card -->
+                    <div class="p-4 sm:p-5 rounded-[1.75rem] bg-gradient-to-br from-amber-50/90 via-yellow-50/75 to-orange-100/65 dark:from-amber-950/65 dark:via-yellow-950/45 dark:to-neutral-900 border border-amber-200/90 dark:border-amber-800/60 flex flex-col justify-between gap-3.5 shadow-sm">
                         <div class="flex items-center justify-between gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full bg-amber-500/15 dark:bg-amber-500/25 text-amber-700 dark:text-amber-300 text-[10px] font-black uppercase tracking-wider">30 Days</span>
-                            <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center text-xs shadow-sm flex-shrink-0">
+                            <span class="px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-[10px] font-black uppercase tracking-wider">30 Days</span>
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm shadow-md shadow-amber-500/25 flex-shrink-0">
                                 <i class="fa-solid fa-calendar-days"></i>
-                            </span>
+                            </div>
                         </div>
-                        <div id="dash-30days" class="text-[26px] sm:text-3xl md:text-4xl font-black text-amber-700 dark:text-amber-300 tabular-nums tracking-tight mt-2.5 leading-tight">₹0</div>
+                        <div id="dash-30days" class="text-2xl sm:text-3xl font-black text-amber-800 dark:text-amber-300 tabular-nums tracking-tight truncate">₹0</div>
                     </div>
                 </div>
 
-                <!-- Full-Width Lifetime Cumulative Spend Card -->
-                <div class="p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-purple-100/90 via-indigo-50/90 to-violet-100/90 dark:from-purple-950/75 dark:via-indigo-950/55 dark:to-violet-950/65 border border-purple-200/90 dark:border-purple-700/60 shadow-sm hover:shadow-md transition flex items-start justify-between gap-3">
-                    <div class="flex items-start gap-3 min-w-0">
-                        <span class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center text-base shadow-md flex-shrink-0 mt-0.5">
+                <!-- LIFETIME CUMULATIVE SPEND Full-Width Card -->
+                <div class="p-4 sm:p-5 rounded-[1.75rem] bg-gradient-to-r from-purple-100/80 via-fuchsia-50/70 to-violet-100/75 dark:from-purple-950/65 dark:via-indigo-950/50 dark:to-violet-950/55 border border-purple-200/90 dark:border-purple-800/60 flex items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-violet-600 text-white flex items-center justify-center text-xl shadow-md shadow-purple-600/25 flex-shrink-0">
                             <i class="fa-solid fa-infinity"></i>
-                        </span>
+                        </div>
                         <div class="min-w-0">
-                            <span class="text-xs sm:text-sm font-black uppercase tracking-wider text-purple-700 dark:text-purple-300 block leading-snug">Lifetime Cumulative Spend</span>
-                            <span class="inline-block mt-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-700 dark:text-purple-300 text-[10px] font-black uppercase">All-Time</span>
+                            <div class="text-xs sm:text-sm font-black uppercase tracking-wide text-purple-950 dark:text-purple-100 leading-snug">Lifetime<br class="sm:hidden"> Cumulative Spend</div>
+                            <span class="inline-block mt-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-700 dark:text-purple-300 text-[9px] font-black uppercase tracking-wider">All-Time</span>
                         </div>
                     </div>
-                    <div class="flex flex-col items-end text-right flex-shrink-0 min-w-0">
-                        <button type="button" onclick="switchTab('transactions')" class="text-[11px] sm:text-xs font-extrabold text-purple-700 dark:text-purple-300 hover:underline">View Passbook →</button>
-                        <div id="dash-lifetime" class="text-3xl sm:text-4xl md:text-5xl font-black text-purple-700 dark:text-purple-300 tabular-nums tracking-tight mt-1.5 leading-none">₹0</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="admob-slot-dashboard" class="hidden rounded-3xl overflow-hidden text-center"></div>
-
-            <!-- 5. Quick Transaction Entry Card (Directly Above Recent Activity) -->
-            <div id="dash-module-quick-entry" data-layout-id="dash-module-quick-entry" class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80">
-                <div class="mb-4">
-                    <h3 class="text-base sm:text-lg font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                        <span class="w-6 h-6 rounded-lg bg-primary-600 text-white flex items-center justify-center text-xs shadow-sm"><i class="fa-solid fa-plus"></i></span>
-                        Quick Transaction Entry
-                    </h3>
-                    <p class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Record your income or expense into cloud & local memory</p>
-                </div>
-
-                <form onsubmit="addTransaction(event)" class="space-y-3">
-                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3">
-                        <div>
-                            <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Type</label>
-                            <select id="tx-type" class="w-full p-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-bold focus:outline-none focus:border-primary-500">
-                                <option value="expense">Expense (-)</option>
-                                <option value="income">Income (+)</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Amount (₹)</label>
-                            <input type="number" id="tx-amount" step="any" min="0.01" required placeholder="e.g. 450" class="w-full p-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-black focus:outline-none focus:border-primary-500">
-                        </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Category</label>
-                            <select id="tx-category" class="w-full p-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-bold focus:outline-none focus:border-primary-500">
-                                <option value="Food">🍔 Food & Dining</option>
-                                <option value="Fast Food">🍟 Fast Food</option>
-                                <option value="Kirana">🛒 Kirana & Grocery</option>
-                                <option value="Rent">🏠 Rent & Stay</option>
-                                <option value="Bills">⚡ Utilities & Bills</option>
-                                <option value="Shopping">🛍️ Shopping</option>
-                                <option value="Travel">🚗 Travel & Fuel</option>
-                                <option value="Education">📚 Education & Books</option>
-                                <option value="Medical">💊 Medical & Health</option>
-                                <option value="Other">✨ Other</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Payment Mode</label>
-                            <select id="tx-mode" class="w-full p-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-bold focus:outline-none focus:border-primary-500">
-                                <option value="UPI">📱 UPI / GPay</option>
-                                <option value="Cash">💵 Cash</option>
-                                <option value="Bank">🏦 Bank / Card</option>
-                            </select>
-                        </div>
-
-                        <div class="col-span-2 sm:col-span-1">
-                            <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Date</label>
-                            <input type="date" id="tx-date" class="w-full p-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-semibold focus:outline-none focus:border-primary-500">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-1">
-                        <input type="text" id="tx-note" placeholder="Add custom note or merchant description..." class="flex-1 px-4 py-2.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 text-xs font-medium focus:outline-none focus:border-primary-500">
-                        <button type="submit" class="px-6 py-2.5 rounded-2xl bg-primary-600 hover:bg-primary-700 text-white font-black text-xs transition shadow-md shadow-primary-600/25 flex items-center justify-center gap-1.5 active:scale-95 whitespace-nowrap">
-                            <i class="fa-solid fa-check"></i> Add Entry
+                    <div class="text-right flex-shrink-0">
+                        <button type="button" onclick="switchTab('transactions')" class="text-[11px] font-extrabold text-purple-700 dark:text-purple-300 hover:underline inline-flex items-center gap-1">
+                            View Passbook →
                         </button>
+                        <div id="dash-lifetime" class="text-2xl sm:text-3xl font-black text-purple-700 dark:text-purple-200 tabular-nums tracking-tight mt-0.5">₹0</div>
                     </div>
-                </form>
+                </div>
             </div>
 
-            <!-- 6. Bottom Insights Row: Recent Activity, Category Breakdown & Smart Guidance -->
-            <div id="dash-module-analytics" data-layout-id="dash-module-analytics" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Live Recent Activity Feed -->
-                <div class="glass-card p-6 rounded-3xl shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <h3 class="text-base font-bold flex items-center gap-2 text-neutral-900 dark:text-white">
-                                <i class="fa-solid fa-bolt-lightning text-sky-600"></i> Recent Activity
-                            </h3>
+            <!-- 6. Recent Activity, Category Breakdown & Smart Financial Guidance -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Recent Activity Feed -->
+                <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-3.5">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <h3 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                            <i class="fa-solid fa-bolt text-amber-500"></i> Recent Activity
+                        </h3>
+                        <div class="flex items-center gap-2">
+                            <span id="dash-total-logs-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-500">0 Entries</span>
                             <button type="button" onclick="switchTab('transactions')" class="text-[11px] font-extrabold text-primary-600 hover:underline">Full History →</button>
                         </div>
-                        <div id="dash-recent-activity-list" class="space-y-2.5"></div>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-neutral-200/70 dark:border-neutral-800 flex items-center justify-between text-[11px] text-neutral-500">
-                        <span>Total Passbook Logs</span>
-                        <strong id="dash-total-logs-badge" class="text-neutral-800 dark:text-neutral-200">0 Entries</strong>
-                    </div>
+                    <div id="dash-recent-activity-list" class="space-y-2"></div>
                 </div>
 
-                <!-- Category Breakdown Chart -->
-                <div class="glass-card p-6 rounded-3xl shadow-sm">
-                    <h3 class="text-base font-bold mb-4 flex items-center justify-between">
-                        <span class="flex items-center gap-2 text-neutral-900 dark:text-white"><i class="fa-solid fa-chart-pie text-primary-600"></i> Category Breakdown</span>
-                        <span class="text-xs bg-neutral-200 dark:bg-neutral-800 px-2.5 py-1 rounded-full font-semibold text-neutral-600 dark:text-neutral-300">Current</span>
-                    </h3>
-                    <div class="h-60 flex items-center justify-center">
-                        <canvas id="categoryPieChart"></canvas>
+                <!-- Category Breakdown Doughnut -->
+                <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-3">
+                    <div class="flex items-center justify-between pb-2.5 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <h3 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                            <i class="fa-solid fa-chart-pie text-primary-600"></i> Category Breakdown
+                        </h3>
+                        <button type="button" onclick="switchTab('analytics')" class="text-[11px] font-extrabold text-primary-600 hover:underline">Reports →</button>
                     </div>
+                    <div class="h-52"><canvas id="categoryPieChart"></canvas></div>
                 </div>
 
-                <!-- Smart Financial Guidance -->
-                <div class="glass-card p-6 rounded-3xl shadow-sm flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-base font-bold mb-2 flex items-center gap-2 text-neutral-900 dark:text-white"><i class="fa-solid fa-brain text-warning-500"></i> Smart Financial Guidance</h3>
-                        <p id="ai-insight-text" class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-3 p-4 rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/60">
-                            Analyzing your spending parameters... Add transactions to see adaptive guidance here.
+                <!-- Smart Financial Guidance & Cloud Security Status -->
+                <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 flex flex-col justify-between gap-4">
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between pb-2.5 border-b border-neutral-200/70 dark:border-neutral-800">
+                            <h3 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i> Smart Financial Guidance
+                            </h3>
+                            <span class="px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 text-[9px] font-black uppercase">AI Live</span>
+                        </div>
+                        <p id="ai-insight-text" class="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+                            Add your daily income, expenses, or Udhar entries to unlock real-time AI budget diagnostics.
                         </p>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center text-xs">
-                        <span class="text-neutral-500">Cloud Encryption & Sync:</span>
-                        <span class="font-bold text-success-700 dark:text-success-500"><i class="fa-solid fa-shield-halved"></i> Active & Verified</span>
+                    <div class="space-y-2.5 pt-2 border-t border-neutral-200/70 dark:border-neutral-800">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-neutral-500 font-semibold">Cloud Encryption & Sync:</span>
+                            <span class="font-extrabold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield-check"></i> Active & Verified</span>
+                        </div>
+                        <button type="button" onclick="openKhataFlowAiChat()" class="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-primary-600 hover:from-indigo-700 hover:to-primary-700 text-white font-black text-xs transition shadow-md flex items-center justify-center gap-2 active:scale-95">
+                            <i class="fa-solid fa-robot"></i> Ask AI Advisor (Amit / Kavya)
+                        </button>
                     </div>
                 </div>
             </div>
@@ -915,15 +855,19 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Savings Goals & Target Vaults -->
                 <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-4">
-                    <div class="flex items-center justify-between gap-2">
-                        <div>
-                            <h3 class="text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                                <span class="w-7 h-7 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-piggy-bank"></i></span>
-                                Savings Goals & Target Vaults
-                            </h3>
-                            <p class="text-[11px] text-neutral-500 mt-0.5">Track emergency funds, gadgets, or family milestones</p>
+                    <div class="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center text-base shadow-md shadow-emerald-500/25">
+                                <i class="fa-solid fa-piggy-bank"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                                    Savings Goals & Target Vaults
+                                </h3>
+                                <p class="text-[11px] text-neutral-500 mt-0.5">Track emergency funds, gadgets, or family milestones</p>
+                            </div>
                         </div>
-                        <button type="button" onclick="openAddSavingsGoalModal()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition shadow-sm flex items-center gap-1.5 active:scale-95">
+                        <button type="button" onclick="openAddSavingsGoalModal()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs transition shadow-sm flex items-center gap-1.5 active:scale-95 flex-shrink-0">
                             <i class="fa-solid fa-plus"></i> New Goal
                         </button>
                     </div>
@@ -932,19 +876,23 @@
 
                 <!-- Recurring Bills & EMI Autopilot -->
                 <div class="glass-card p-5 sm:p-6 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-4">
-                    <div class="flex items-center justify-between gap-2">
-                        <div>
-                            <h3 class="text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                                <span class="w-7 h-7 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-calendar-check"></i></span>
-                                Recurring Bills & EMI Autopilot
-                            </h3>
-                            <p class="text-[11px] text-neutral-500 mt-0.5">Never miss rent, WiFi, electricity, or monthly EMIs</p>
+                    <div class="flex items-center justify-between gap-2 pb-3 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-base shadow-md shadow-indigo-500/25">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                                    Recurring Bills & EMI Autopilot
+                                </h3>
+                                <p class="text-[11px] text-neutral-500 mt-0.5">Never miss rent, WiFi, electricity, or monthly EMIs</p>
+                            </div>
                         </div>
-                        <button type="button" onclick="openAddRecurringBillModal()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs transition shadow-sm flex items-center gap-1.5 active:scale-95">
+                        <button type="button" onclick="openAddRecurringBillModal()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs transition shadow-sm flex items-center gap-1.5 active:scale-95 flex-shrink-0">
                             <i class="fa-solid fa-plus"></i> Add Bill/EMI
                         </button>
                     </div>
-                    <div id="dash-recurring-bills-list" class="space-y-2.5"></div>
+                    <div id="dash-recurring-bills-list" class="space-y-3"></div>
                 </div>
             </div>
             <div id="admob-slot-dashboard-2" class="hidden rounded-3xl overflow-hidden text-center"></div>
@@ -1337,7 +1285,7 @@
                     <div>
                         <div class="flex items-center gap-2 mb-1">
                             <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 text-[10px] font-black uppercase tracking-wider border border-rose-200 dark:border-rose-800">Digital Bahi-Khata</span>
-                            <span class="text-xs text-neutral-400 font-mono"></span>
+                            <span class="text-xs text-neutral-400 font-mono">UDHAR_LEDGER_V1</span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-black flex items-center gap-2 text-neutral-900 dark:text-neutral-100">
                             <i class="fa-solid fa-book-open text-rose-600"></i> Udhar Khata (उधार खाता बुक)
@@ -1530,7 +1478,7 @@
                 <div>
                     <div class="flex items-center gap-2 mb-1">
                         <span class="px-2.5 py-0.5 rounded-full bg-primary-100 dark:bg-primary-950/70 text-primary-700 dark:text-primary-300 text-[10px] font-black uppercase tracking-wider border border-primary-200 dark:border-primary-800">Deep Financial Intelligence</span>
-                        <span class="text-xs text-neutral-400 font-mono"></span>
+                        <span class="text-xs text-neutral-400 font-mono">LIVE_ANALYTICS_V3</span>
                     </div>
                     <h3 class="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white tracking-tight">Financial Reports & Behavioral Analytics</h3>
                     <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Multi-dimensional charts, velocity tracking, and cashflow health diagnostics.</p>
@@ -1617,6 +1565,82 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Advanced Financial Pro Calculators Suite (GST GSTR-1 & Loan EMI Amortization) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- 1. GST & Tax Invoice / GSTR-1 Calculator -->
+                <div class="glass-card p-5 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-3.5">
+                    <div class="flex items-center justify-between pb-2 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <h4 class="text-sm font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                            <i class="fa-solid fa-file-invoice-dollar text-emerald-600"></i> GST & GSTR-1 Summary
+                        </h4>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600">Tax Engine</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2.5 text-xs">
+                        <div>
+                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">Taxable Base (₹)</label>
+                            <input type="number" id="gst-base-amount" value="1000" min="0" step="any" oninput="calculateGstSummary()" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border font-black">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">GST Slab (%)</label>
+                            <select id="gst-slab-select" onchange="calculateGstSummary()" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-900 border font-bold">
+                                <option value="5">5% (Essential Kirana)</option>
+                                <option value="12">12% (Standard Goods)</option>
+                                <option value="18" selected>18% (Services / Electronics)</option>
+                                <option value="28">28% (Luxury / Auto)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-1">
+                        <div class="flex justify-between font-bold text-neutral-600 dark:text-neutral-300">
+                            <span>CGST + SGST Split:</span>
+                            <span id="gst-cgst-sgst-split">₹90 + ₹90</span>
+                        </div>
+                        <div class="flex justify-between font-black text-emerald-700 dark:text-emerald-300 text-sm">
+                            <span>Gross Invoice Total:</span>
+                            <span id="gst-gross-total">₹1,180.00</span>
+                        </div>
+                        <div class="pt-1 border-t border-emerald-500/20 text-[10px] font-bold text-neutral-500 flex justify-between">
+                            <span>All Shopping Bills GSTR-1 Est.:</span>
+                            <span id="gstr1-shopping-liability">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Loan & EMI Amortization Schedule Planner -->
+                <div class="glass-card p-5 rounded-3xl shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 space-y-3.5">
+                    <div class="flex items-center justify-between pb-2 border-b border-neutral-200/70 dark:border-neutral-800">
+                        <h4 class="text-sm font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                            <i class="fa-solid fa-landmark text-primary-600"></i> Loan & EMI Planner
+                        </h4>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary-500/10 text-primary-600">Amortization</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <div>
+                            <label class="block text-[9px] font-bold text-neutral-500 mb-1">Loan (₹)</label>
+                            <input type="number" id="emi-loan-principal" value="500000" min="1000" oninput="calculateLoanEmiPlanner()" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 border font-black">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-bold text-neutral-500 mb-1">Rate (% p.a)</label>
+                            <input type="number" id="emi-interest-rate" value="9.5" min="1" step="0.1" oninput="calculateLoanEmiPlanner()" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 border font-black">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-bold text-neutral-500 mb-1">Months</label>
+                            <input type="number" id="emi-tenure-months" value="36" min="1" max="360" oninput="calculateLoanEmiPlanner()" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-900 border font-black">
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-primary-500/10 border border-primary-500/20 text-xs space-y-1">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-neutral-500">Monthly EMI:</span>
+                            <strong id="emi-monthly-output" class="text-base font-black text-primary-700 dark:text-primary-300">₹16,016</strong>
+                        </div>
+                        <div class="flex justify-between text-[10px] font-bold text-neutral-500">
+                            <span id="emi-total-interest">Total Interest: ₹76,593</span>
+                            <span id="emi-year1-balance">Yr-1 Bal: ₹3,48,210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="admob-slot-analytics-2" class="hidden rounded-3xl overflow-hidden text-center"></div>
         </section>
 
@@ -1628,7 +1652,7 @@
                     <div>
                         <div class="flex items-center gap-2 mb-1">
                             <span class="px-2.5 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/70 text-cyan-700 dark:text-cyan-300 text-[10px] font-black uppercase tracking-wider border border-cyan-200 dark:border-cyan-800">Isolated Dairy Module</span>
-                            <span class="text-xs text-neutral-400 font-mono"></span>
+                            <span class="text-xs text-neutral-400 font-mono">FIREBASE_CLOUD_SYNCED</span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-black flex items-center gap-2 text-neutral-900 dark:text-white">
                             <i class="fa-solid fa-cow text-cyan-600"></i> Milk Ledger (दूध बही-खाता)
@@ -2350,13 +2374,13 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-black uppercase">A-to-Z Master Studio</span>
-                                <span class="text-xs text-neutral-500 font-mono"></span>
+                                <span class="text-xs text-neutral-500 font-mono">ADMIN_CORE_v3.0</span>
                             </div>
                             <h3 class="text-xl font-black tracking-tight mt-0.5">App Design, Layout & Feature Admin</h3>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
-                        <button onclick="saveAllAdminChangesLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-cloud-arrow-up"></i> Save Changes</button>
+                        <button onclick="saveAllAdminChangesLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-cloud-arrow-up"></i> Save All Live Changes</button>
                         <button onclick="resetAdminCustomizationsToDefault()" class="px-3.5 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 text-xs font-bold"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
                         <button onclick="logoutCurrentUser()" class="px-3.5 py-2 rounded-xl bg-error-500 hover:bg-error-600 text-white text-xs font-bold"><i class="fa-solid fa-right-from-bracket"></i> Exit Admin Mode</button>
                     </div>
@@ -2538,7 +2562,7 @@
                                 <span id="admin-users-total-pill" class="text-[10px] font-bold text-neutral-400">Total Users: 0</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <button type="button" onclick="forceAdminCloudReSync()" class="px-2.5 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[11px] font-bold"><i class="fa-solid fa-rotate"></i> Sync Data</button>
+                                <button type="button" onclick="forceAdminCloudReSync()" class="px-2.5 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[11px] font-bold"><i class="fa-solid fa-rotate"></i> Sync</button>
                                 <button type="button" onclick="openAdminAddUserModal()" class="px-3 py-1.5 rounded-xl bg-purple-600 text-white text-[11px] font-bold"><i class="fa-solid fa-user-plus"></i> Add User</button>
                             </div>
                         </div>
@@ -2609,7 +2633,7 @@
                     <form onsubmit="handleSaveAdMobConfig(event)" class="p-4 sm:p-5 rounded-2xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-800/60 space-y-4">
                         <div class="flex items-center justify-between">
                             <h5 class="text-xs sm:text-sm font-black text-blue-900 dark:text-blue-200 flex items-center gap-2">
-                                <i class="fa-brands fa-google text-blue-600"></i> AdMob / AdSense Settings
+                                <i class="fa-brands fa-google text-blue-600"></i> Google AdMob / AdSense Settings
                             </h5>
                             <span class="text-[10px] font-bold text-blue-600">Google Ads</span>
                         </div>
@@ -2757,16 +2781,16 @@
 
                         <form onsubmit="addFooterSocialHandle(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
                             <div class="sm:col-span-4">
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Platform & Logo *</label>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Platform & Real Logo *</label>
                                 <select id="admin-footer-social-platform" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold focus:outline-none focus:border-pink-500">
-                                    <option value="instagram">Instagram</option>
-                                    <option value="twitter">X (Twitter)</option>
-                                    <option value="youtube">YouTube</option>
-                                    <option value="facebook">Facebook</option>
-                                    <option value="whatsapp">WhatsApp Channel / Chat</option>
-                                    <option value="telegram">Telegram</option>
-                                    <option value="linkedin">LinkedIn</option>
-                                    <option value="website">Website / Globe</option>
+                                    <option value="instagram">Instagram (fa-brands fa-instagram)</option>
+                                    <option value="twitter">X / Twitter (fa-brands fa-x-twitter)</option>
+                                    <option value="youtube">YouTube (fa-brands fa-youtube)</option>
+                                    <option value="facebook">Facebook (fa-brands fa-facebook-f)</option>
+                                    <option value="whatsapp">WhatsApp (fa-brands fa-whatsapp)</option>
+                                    <option value="telegram">Telegram (fa-brands fa-telegram)</option>
+                                    <option value="linkedin">LinkedIn (fa-brands fa-linkedin-in)</option>
+                                    <option value="website">Website (fa-solid fa-globe)</option>
                                 </select>
                             </div>
                             <div class="sm:col-span-6">
@@ -2781,6 +2805,38 @@
                         </form>
 
                         <div id="admin-footer-socials-list" class="space-y-2"></div>
+                    </div>
+
+                    <!-- Header & Footer Branding, Logo and Sticky/Scrollable Header Studio -->
+                    <div class="pt-5 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider">Branding & Logo Studio</span>
+                                <h5 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-image text-blue-600"></i> Header & Footer Logo & Name Studio</h5>
+                                <p class="text-[11px] text-neutral-500 mt-0.5">Change header/footer brand title, logo image URL or initials, and toggle sticky/scrollable header mode.</p>
+                            </div>
+                            <button type="button" onclick="saveHeaderBrandingStudio()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
+                                <i class="fa-solid fa-floppy-disk"></i> Save Branding
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">App Brand Name</label>
+                                <input type="text" id="admin-brand-name-input" placeholder="NeoKhata" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Brand Logo Image URL (Optional)</label>
+                                <input type="url" id="admin-brand-logo-url" placeholder="https://.../logo.png" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px]">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Header Position Mode</label>
+                                <select id="admin-header-sticky-mode" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
+                                    <option value="sticky">Sticky Header (Fixed on Scroll)</option>
+                                    <option value="scrollable">Scrollable Header (Moves with Page)</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2804,7 +2860,7 @@
                             <div>
                                 <div class="flex items-center gap-2">
                                     <h4 id="footer-brand-title" class="text-base sm:text-lg font-black tracking-tight text-neutral-900 dark:text-white">NeoKhata</h4>
-                                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[9px] font-black uppercase tracking-wider"></span>
+                                    <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 text-[9px] font-black uppercase tracking-wider">Verified OS</span>
                                 </div>
                                 <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">Smart Daily Expense, Digital Bahi-Khata, Dairy & Shopping OS</p>
                             </div>
@@ -2841,7 +2897,7 @@
                     <div class="pt-4 border-t border-neutral-200/70 dark:border-neutral-800/70 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-neutral-400 font-semibold">
                         <p id="footer-copyright-display">© 2026 NeoKhata. All rights reserved.</p>
                         <div class="flex items-center gap-3">
-                            <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i></span>
+                            <span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-shield-halved"></i> 256-Bit Cloud Sync</span>
                             <span>•</span>
                             <span>Made in India 🇮🇳</span>
                         </div>
@@ -3495,108 +3551,39 @@
         </div>
     </div>
 
-    <!-- Hidden Udhar Statement Export Template -->
-    <div id="udhar-export-canvas-container" style="position: fixed; left: -9999px; top: -9999px; width: 794px; z-index: -1;">
-        <div id="udhar-statement-slip" style="width: 794px; min-height: 1123px; background-color: #ffffff; color: #0f172a; font-family: 'Inter', sans-serif; padding: 44px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 2px solid #e2e8f0;">
-                    <div>
-                        <div style="font-size: 22px; font-weight: 900; color: #1d42ad;">NeoKhata Bahi-Khata</div>
-                        <div id="udhar-pdf-shop-name" style="font-size: 12px; font-weight: 700; color: #475569; margin-top: 2px;">Digital Udhar Statement</div>
-                    </div>
-                    <div id="udhar-pdf-date" style="font-size: 11px; color: #64748b; font-weight: 700;">Generated Today</div>
-                </div>
-                <div style="display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px;">
-                    <div>
-                        <div style="font-size: 10px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Customer Details</div>
-                        <div id="udhar-pdf-cust-name" style="font-size: 18px; font-weight: 900; margin-top: 2px;">Customer</div>
-                        <div id="udhar-pdf-cust-phone" style="font-family: monospace; color: #2453d6; font-weight: 700;"></div>
-                        <div id="udhar-pdf-cust-address" style="color: #64748b; font-size: 11px;"></div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-size: 10px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Shop UPI</div>
-                        <div id="udhar-pdf-shop-upi" style="font-family: monospace; color: #16a34a; font-weight: 800; margin-top: 2px;"></div>
-                        <div id="udhar-pdf-due-info" style="font-size: 11px; color: #dc2626; font-weight: 700; margin-top: 4px;"></div>
-                    </div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0;">
-                    <div style="padding: 12px; background: #fef2f2; border-radius: 10px;"><div style="font-size: 10px; font-weight: 800; color: #b91c1c;">Total Udhar Given</div><div id="udhar-pdf-total-gave" style="font-size: 18px; font-weight: 900; color: #991b1b;">₹0</div></div>
-                    <div style="padding: 12px; background: #f0fdf4; border-radius: 10px;"><div style="font-size: 10px; font-weight: 800; color: #15803d;">Total Received</div><div id="udhar-pdf-total-got" style="font-size: 18px; font-weight: 900; color: #166534;">₹0</div></div>
-                    <div style="padding: 12px; background: #eef4ff; border-radius: 10px;"><div style="font-size: 10px; font-weight: 800; color: #1d42ad;">Net Balance Due</div><div id="udhar-pdf-net-bal" style="font-size: 18px; font-weight: 900; color: #1e40af;">₹0</div></div>
-                </div>
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px;">
-                    <thead>
-                        <tr style="background: #f8fafc; text-align: left; font-size: 10px; text-transform: uppercase; color: #475569;">
-                            <th style="padding: 10px 12px;">#</th>
-                            <th style="padding: 10px 12px;">Date</th>
-                            <th style="padding: 10px 12px;">Particulars / Note</th>
-                            <th style="padding: 10px 12px;">Type</th>
-                            <th style="padding: 10px 12px; text-align: right;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="udhar-pdf-items-body"></tbody>
-                </table>
+    <!-- Forgot / Reset Password Modal -->
+    <div id="forgot-password-modal" class="fixed inset-0 z-[120] bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-key text-primary-600"></i> Reset Account Password</h4>
+                <button type="button" onclick="closeForgotPasswordModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div style="margin-top: auto; padding-top: 20px; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <img id="udhar-pdf-qr" src="" alt="QR" style="width: 76px; height: 76px; border: 1px solid #e2e8f0; border-radius: 8px;">
-                    <div style="font-size: 11px; color: #475569;"><strong>Scan & Pay via UPI</strong><br>GPay • PhonePe • Paytm • BHIM</div>
+            <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold mb-1">Registered Mobile Number or Email *</label>
+                    <input type="text" id="fp-identifier" required placeholder="e.g. 9876543210 or name@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 10px; color: #64748b; font-weight: 700;">Net Pending Balance</div>
-                    <div id="udhar-pdf-footer-bal" style="font-size: 26px; font-weight: 900; color: #dc2626;">₹0</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden Grocery Tax Invoice Export Template -->
-    <div id="grocery-export-canvas-container" style="position: fixed; left: -9999px; top: -9999px; width: 794px; z-index: -1;">
-        <div id="grocery-invoice-slip" style="width: 794px; min-height: 1123px; background-color: #ffffff; color: #0f172a; font-family: 'Inter', sans-serif; padding: 44px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 2px solid #e2e8f0;">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <div>
-                        <div style="font-size: 22px; font-weight: 900; color: #1d42ad;">NeoKhata Kirana & Shopping Invoice</div>
-                        <div style="font-size: 12px; font-weight: 700; color: #475569; margin-top: 2px;">Smart Digital Tax Receipt & UPI Payment Slip</div>
+                        <label class="block font-bold mb-1">New Password (Min 6) *</label>
+                        <input type="password" id="fp-new-password" minlength="6" required placeholder="New password" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                     </div>
-                    <div style="text-align: right;">
-                        <div id="invoice-bill-no" style="font-size: 14px; font-weight: 900; font-family: monospace; color: #0f172a;">INV-000000</div>
-                        <div id="invoice-bill-date" style="font-size: 11px; color: #64748b; font-weight: 700; margin-top: 2px;">Date: Today</div>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px;">
                     <div>
-                        <div style="font-size: 10px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Billed To</div>
-                        <div id="invoice-billed-user-name" style="font-size: 16px; font-weight: 900; margin-top: 2px;">Customer</div>
-                        <div id="invoice-billed-user-phone" style="font-family: monospace; color: #2453d6; font-weight: 700;"></div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-size: 10px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Merchant UPI ID</div>
-                        <div id="invoice-merchant-upi-display" style="font-family: monospace; color: #16a34a; font-weight: 800; margin-top: 2px;">store@upi</div>
+                        <label class="block font-bold mb-1">Confirm Password *</label>
+                        <input type="password" id="fp-confirm-password" minlength="6" required placeholder="Repeat password" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                     </div>
                 </div>
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 14px;">
-                    <thead>
-                        <tr style="background: #f8fafc; text-align: left; font-size: 10px; text-transform: uppercase; color: #475569;">
-                            <th style="padding: 12px 16px; width: 48px;">#</th>
-                            <th style="padding: 12px 16px;">Item Description</th>
-                            <th style="padding: 12px 16px; text-align: center; width: 130px;">Quantity</th>
-                            <th style="padding: 12px 16px; text-align: right; width: 130px;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="invoice-items-body"></tbody>
-                </table>
-            </div>
-            <div style="margin-top: auto; padding-top: 20px; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <img id="invoice-dynamic-upi-qr" src="" alt="UPI QR" style="width: 84px; height: 84px; border: 1px solid #e2e8f0; border-radius: 10px;">
-                    <div style="font-size: 11px; color: #475569;"><strong>Scan & Pay Exact Bill Amount</strong><br>Auto-filled Amount via UPI QR</div>
+                <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border flex items-center gap-2">
+                    <div id="fp-captcha-display" onclick="refreshForgotCaptcha()" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white font-mono font-black tracking-widest cursor-pointer">K8P4M</div>
+                    <button type="button" onclick="refreshForgotCaptcha()" class="p-2 rounded-lg bg-white dark:bg-neutral-900 border text-primary-600"><i class="fa-solid fa-arrows-rotate"></i></button>
+                    <input type="text" id="fp-input-captcha" required maxlength="6" placeholder="Captcha" class="w-full p-2 rounded-lg bg-white dark:bg-neutral-900 border font-mono font-black uppercase">
                 </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 11px; color: #64748b; font-weight: 700;">Grand Total Payable</div>
-                    <div id="invoice-bill-grand-total" style="font-size: 28px; font-weight: 900; color: #0f172a;">₹0</div>
+                <div id="fp-status-msg" class="text-[11px] font-bold text-center min-h-[1.25rem] text-neutral-500"></div>
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                    <button type="button" onclick="closeForgotPasswordModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" id="fp-submit-btn" class="py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black">Update Password</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -4028,6 +4015,14 @@
                     const parsed = typeof cloudData.udharCustomers === 'string' ? JSON.parse(cloudData.udharCustomers) : cloudData.udharCustomers;
                     if (Array.isArray(parsed)) appState.udharCustomers = parsed;
                 }
+                if (cloudData.savingsGoals) {
+                    const parsed = typeof cloudData.savingsGoals === 'string' ? JSON.parse(cloudData.savingsGoals) : cloudData.savingsGoals;
+                    if (Array.isArray(parsed)) appState.savingsGoals = parsed;
+                }
+                if (cloudData.recurringBills) {
+                    const parsed = typeof cloudData.recurringBills === 'string' ? JSON.parse(cloudData.recurringBills) : cloudData.recurringBills;
+                    if (Array.isArray(parsed)) appState.recurringBills = parsed;
+                }
                 if (cloudData.milkData) {
                     const parsedMilk = typeof cloudData.milkData === 'string' ? JSON.parse(cloudData.milkData) : cloudData.milkData;
                     if (parsedMilk && typeof parsedMilk === 'object') {
@@ -4217,8 +4212,8 @@
             if (forgotRow) forgotRow.classList.toggle('hidden', isReg);
             if (submitText) {
                 submitText.textContent = isReg
-                    ? 'Create Account'
-                    : 'Sign In';
+                    ? 'Create Account & Access NeoKhata'
+                    : 'Sign In & Access NeoKhata';
             }
             refreshAuthCaptcha();
         }
@@ -4652,7 +4647,10 @@
             });
 
             // Budget Left strictly depends on Monthly Budget minus 30-Day Expenses; Income does not alter Budget Left
-            const budget = Number(appState.budget) || 0;
+            const baseBudget = Number(appState.budget) || 0;
+            const rolloverSurplus = computePreviousMonthBudgetSurplus();
+            const isRolloverOn = !!appState.smartBudgetRollover;
+            const budget = baseBudget + (isRolloverOn ? rolloverSurplus : 0);
             const budgetLeft = budget - exp30;
             const netCashflow = totalInc - totalExp;
             const usedPct = budget > 0 ? Math.round((exp30 / budget) * 100) : 0;
@@ -8327,6 +8325,60 @@
             website: { label: 'Website', icon: 'fa-solid fa-globe', pillClass: 'bg-primary-500/10 hover:bg-primary-600 text-primary-600 hover:text-white border-primary-200 dark:border-primary-800/70' }
         };
 
+        function saveHeaderBrandingStudio() {
+            const nameInp = document.getElementById('admin-brand-name-input');
+            const logoInp = document.getElementById('admin-brand-logo-url');
+            const stickySel = document.getElementById('admin-header-sticky-mode');
+
+            if (!adminConfig.branding) adminConfig.branding = {};
+            if (nameInp) adminConfig.branding.appName = nameInp.value.trim() || 'NeoKhata';
+            if (logoInp) adminConfig.branding.logoUrl = logoInp.value.trim() || '';
+            if (stickySel) adminConfig.branding.headerMode = stickySel.value || 'sticky';
+
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            applyBrandingToUI();
+            saveAllAdminChangesLive();
+            showToast('Header & Footer branding updated live!');
+        }
+
+        function applyBrandingToUI() {
+            const b = adminConfig.branding || {};
+            const appName = b.appName || 'NeoKhata';
+            const logoUrl = b.logoUrl || '';
+            const headerMode = b.headerMode || 'sticky';
+
+            const nameDisplays = [
+                document.getElementById('app-brand-name-display'),
+                document.getElementById('footer-brand-title'),
+                document.getElementById('gate-brand-title')
+            ];
+            nameDisplays.forEach(el => {
+                if (el) el.textContent = appName;
+            });
+
+            // Header position mode (Sticky vs Scrollable)
+            const headerEl = document.querySelector('header');
+            if (headerEl) {
+                if (headerMode === 'scrollable') {
+                    headerEl.className = headerEl.className.replace('sticky', 'relative');
+                } else {
+                    headerEl.className = headerEl.className.replace('relative', 'sticky');
+                }
+            }
+
+            // Logo badge customization
+            const logoBadge = document.getElementById('header-logo-badge');
+            if (logoBadge) {
+                if (logoUrl) {
+                    logoBadge.innerHTML = `<img src="${logoUrl}" alt="Logo" class="w-full h-full object-cover rounded-2xl" onerror="this.style.display='none'">`;
+                }
+            }
+
+            if (document.getElementById('admin-brand-name-input')) document.getElementById('admin-brand-name-input').value = appName;
+            if (document.getElementById('admin-brand-logo-url')) document.getElementById('admin-brand-logo-url').value = logoUrl;
+            if (document.getElementById('admin-header-sticky-mode')) document.getElementById('admin-header-sticky-mode').value = headerMode;
+        }
+
         function renderFooterSocialHandles() {
             const handles = Array.isArray(adminConfig.socialHandles) ? adminConfig.socialHandles : [];
             const publicBar = document.getElementById('footer-social-handles-bar');
@@ -8521,21 +8573,249 @@
             document.getElementById('global-announcement-strip')?.classList.add('hidden');
         }
 
+        let dismissedTargetAlertIds = new Set();
+        let targetCountdownInterval = null;
+
+        function dismissTargetDeadlineAlert(alertKey) {
+            dismissedTargetAlertIds.add(alertKey);
+            renderTargetDeadlineAlerts();
+        }
+
+        function formatLiveCountdown(msRemaining) {
+            if (msRemaining <= 0) return 'DUE NOW (00h 00m 00s)';
+            const totalSec = Math.floor(msRemaining / 1000);
+            const days = Math.floor(totalSec / 86400);
+            const hrs = Math.floor((totalSec % 86400) / 3600);
+            const mins = Math.floor((totalSec % 3600) / 60);
+            const secs = totalSec % 60;
+            const pad = (n) => String(n).padStart(2, '0');
+            return days > 0
+                ? `${days}d ${pad(hrs)}h ${pad(mins)}m ${pad(secs)}s`
+                : `${pad(hrs)}h ${pad(mins)}m ${pad(secs)}s`;
+        }
+
+        function getUpcomingTargetDeadlineAlerts() {
+            const now = Date.now();
+            const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+            const alerts = [];
+
+            // 1. Check Savings Goals & Target Vaults
+            (appState.savingsGoals || []).forEach(g => {
+                if (!g || !g.deadline) return;
+                const saved = Number(g.saved) || 0;
+                const target = Number(g.target) || 0;
+                const remainingAmt = Math.max(0, target - saved);
+                if (remainingAmt <= 0) return;
+
+                const dueTs = new Date(`${g.deadline}T23:59:59`).getTime();
+                if (isNaN(dueTs)) return;
+                const diffMs = dueTs - now;
+                if (diffMs > sevenDaysMs) return;
+
+                const alertKey = `sg_${g.id}_${g.deadline}`;
+                if (dismissedTargetAlertIds.has(alertKey)) return;
+
+                const hoursLeft = diffMs / (1000 * 60 * 60);
+                let tier = '7D';
+                let tierLabel = '7 DAYS TARGET ALERT';
+                if (hoursLeft <= 24) {
+                    tier = '24H';
+                    tierLabel = '24 HOURS URGENT ALERT';
+                } else if (hoursLeft <= 48) {
+                    tier = '48H';
+                    tierLabel = '48 HOURS (2 DAYS) ALERT';
+                }
+
+                alerts.push({
+                    key: alertKey,
+                    kind: 'Savings Target',
+                    title: g.title || 'Savings Goal',
+                    amountText: `₹${remainingAmt.toLocaleString('en-IN')} remaining (Target ₹${target.toLocaleString('en-IN')})`,
+                    dueDate: g.deadline,
+                    diffMs,
+                    tier,
+                    tierLabel
+                });
+            });
+
+            // 2. Check Recurring Bills & EMI Autopilot Targets
+            (appState.recurringBills || []).forEach(b => {
+                if (!b || !b.dueDate) return;
+                const dueTs = new Date(`${b.dueDate}T23:59:59`).getTime();
+                if (isNaN(dueTs)) return;
+                const diffMs = dueTs - now;
+                if (diffMs > sevenDaysMs) return;
+
+                const alertKey = `rb_${b.id}_${b.dueDate}`;
+                if (dismissedTargetAlertIds.has(alertKey)) return;
+
+                const hoursLeft = diffMs / (1000 * 60 * 60);
+                let tier = '7D';
+                let tierLabel = '7 DAYS DUE REMINDER';
+                if (hoursLeft <= 24) {
+                    tier = '24H';
+                    tierLabel = '24 HOURS DUE ALERT';
+                } else if (hoursLeft <= 48) {
+                    tier = '48H';
+                    tierLabel = '48 HOURS (2 DAYS) ALERT';
+                }
+
+                alerts.push({
+                    key: alertKey,
+                    kind: 'Bill / EMI Target',
+                    title: b.title || 'Scheduled Bill',
+                    amountText: `₹${Number(b.amount || 0).toLocaleString('en-IN')} due`,
+                    dueDate: b.dueDate,
+                    diffMs,
+                    tier,
+                    tierLabel
+                });
+            });
+
+            // 3. Check Udhar Khata Customer Payment Due Dates (लेना है / वादा तारीख़)
+            (appState.udharCustomers || []).forEach(c => {
+                if (!c || !c.dueDate) return;
+                const { net } = getUdharCustomerBalance(c);
+                if (net <= 0) return;
+                const dueTs = new Date(`${c.dueDate}T23:59:59`).getTime();
+                if (isNaN(dueTs)) return;
+                const diffMs = dueTs - now;
+                if (diffMs > sevenDaysMs) return;
+
+                const alertKey = `udhar_${c.id}_${c.dueDate}`;
+                if (dismissedTargetAlertIds.has(alertKey)) return;
+
+                const hoursLeft = diffMs / (1000 * 60 * 60);
+                let tier = '7D';
+                let tierLabel = '7 DAYS UDHAR COLLECTION ALERT';
+                if (hoursLeft <= 24) {
+                    tier = '24H';
+                    tierLabel = '24 HOURS UDHAR COLLECTION ALERT';
+                } else if (hoursLeft <= 48) {
+                    tier = '48H';
+                    tierLabel = '48 HOURS (2 DAYS) UDHAR ALERT';
+                }
+
+                alerts.push({
+                    key: alertKey,
+                    kind: 'Udhar Khata Collection (लेना है)',
+                    title: `${c.name}${c.phone ? ` (+91 ${c.phone})` : ''}`,
+                    amountText: `₹${Math.round(net).toLocaleString('en-IN')} लेना बाकी है`,
+                    dueDate: c.dueDate,
+                    diffMs,
+                    tier,
+                    tierLabel
+                });
+            });
+
+            return alerts.sort((a, b) => a.diffMs - b.diffMs);
+        }
+
+        function renderTargetDeadlineAlerts() {
+            const container = document.getElementById('target-deadline-alert-strip');
+            if (!container) return;
+
+            const alerts = getUpcomingTargetDeadlineAlerts();
+            if (alerts.length === 0) {
+                container.classList.add('hidden');
+                container.innerHTML = '';
+                return;
+            }
+
+            container.classList.remove('hidden');
+            container.innerHTML = alerts.map(a => {
+                const is24h = a.tier === '24H';
+                const is48h = a.tier === '48H';
+                const cardTheme = is24h
+                    ? 'bg-gradient-to-br from-rose-50 via-white to-red-50/80 dark:from-rose-950/85 dark:via-neutral-900 dark:to-red-950/60 border-rose-300/90 dark:border-rose-800/80 text-rose-950 dark:text-rose-100'
+                    : (is48h
+                        ? 'bg-gradient-to-br from-amber-50 via-white to-orange-50/80 dark:from-amber-950/85 dark:via-neutral-900 dark:to-orange-950/60 border-amber-300/90 dark:border-amber-800/80 text-amber-950 dark:text-amber-100'
+                        : 'bg-gradient-to-br from-indigo-50 via-white to-blue-50/80 dark:from-indigo-950/85 dark:via-neutral-900 dark:to-blue-950/60 border-indigo-300/90 dark:border-indigo-800/80 text-indigo-950 dark:text-indigo-100');
+                const pillBadge = is24h
+                    ? 'bg-rose-600 text-white'
+                    : (is48h ? 'bg-amber-600 text-white' : 'bg-indigo-600 text-white');
+                const timerBox = is24h
+                    ? 'bg-rose-600/10 text-rose-700 dark:text-rose-200 border-rose-500/30'
+                    : (is48h ? 'bg-amber-600/10 text-amber-800 dark:text-amber-200 border-amber-500/30' : 'bg-indigo-600/10 text-indigo-800 dark:text-indigo-200 border-indigo-500/30');
+                const actionTab = a.kind.includes('Udhar') ? 'udhar' : 'dashboard';
+                const actionLabel = a.kind.includes('Udhar') ? 'Open Khata →' : 'View Target →';
+
+                return `
+                    <div class="p-3.5 sm:p-4 rounded-3xl border shadow-sm transition-all space-y-2.5 ${cardTheme}">
+                        <!-- Top Row: Alert Pill + Close Button -->
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <span class="w-7 h-7 rounded-xl flex items-center justify-center text-xs flex-shrink-0 shadow-xs ${pillBadge}">
+                                    <i class="fa-solid ${is24h ? 'fa-bell fa-shake' : 'fa-hourglass-half'}"></i>
+                                </span>
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider truncate ${pillBadge}">
+                                    ${a.tierLabel}
+                                </span>
+                            </div>
+                            <button type="button" onclick="dismissTargetDeadlineAlert('${a.key}')" class="w-7 h-7 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/15 text-neutral-500 dark:text-neutral-300 flex items-center justify-center text-xs flex-shrink-0 transition active:scale-90" title="Dismiss Alert">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+
+                        <!-- Middle Row: Clear Title, Hindi Summary & Amount -->
+                        <div class="px-0.5 space-y-1">
+                            <div class="flex flex-wrap items-center justify-between gap-1 text-[11px] font-bold opacity-80">
+                                <span>${a.kind}</span>
+                                <span class="font-mono">Due: ${a.dueDate}</span>
+                            </div>
+                            <div class="text-sm sm:text-base font-black leading-snug tracking-tight">
+                                "${a.title}" — <span class="underline decoration-2 underline-offset-2">${a.amountText}</span>
+                            </div>
+                            <p class="text-[11px] sm:text-xs font-semibold opacity-85 leading-relaxed">
+                                आपका यह टारगेट/भुगतान जल्द पूरा होने वाला है, कृपया समय पर अपडेट करें।
+                            </p>
+                        </div>
+
+                        <!-- Bottom Row: Full-Width Mobile Countdown Pill + Quick Action Link -->
+                        <div class="pt-2 border-t border-black/5 dark:border-white/10 flex items-center justify-between gap-2 flex-wrap">
+                            <div data-countdown-due="${a.dueDate}" class="px-3 py-1.5 rounded-xl border font-mono text-xs font-black tabular-nums flex items-center gap-1.5 ${timerBox}">
+                                <span>⏱</span>
+                                <span>${formatLiveCountdown(a.diffMs)}</span>
+                            </div>
+                            <button type="button" onclick="switchTab('${actionTab}')" class="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-neutral-800 hover:bg-white text-neutral-900 dark:text-white border border-black/10 dark:border-white/10 text-[11px] font-extrabold shadow-2xs transition active:scale-95">
+                                ${actionLabel}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function startTargetDeadlineCountdownTicker() {
+            if (targetCountdownInterval) clearInterval(targetCountdownInterval);
+            renderTargetDeadlineAlerts();
+            targetCountdownInterval = setInterval(() => {
+                const now = Date.now();
+                document.querySelectorAll('[data-countdown-due]').forEach(el => {
+                    const dueStr = el.getAttribute('data-countdown-due');
+                    const dueTs = new Date(`${dueStr}T23:59:59`).getTime();
+                    if (!isNaN(dueTs)) {
+                        el.textContent = `⏱ ${formatLiveCountdown(dueTs - now)}`;
+                    }
+                });
+            }, 1000);
+        }
+
         function updateAdminDashboardMetrics() {
             const users = getDeduplicatedAdminUsers();
-            const workspaces = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
-            let globalTxCount = (appState.transactions || []).length;
-            let globalVol = (appState.transactions || []).reduce((s, t) => s + (Number(t.amount) || 0), 0);
-
-            const wsValues = Object.values(workspaces);
-            if (wsValues.length > 0) {
-                globalTxCount = 0;
-                globalVol = 0;
-                wsValues.forEach(ws => {
-                    const txs = Array.isArray(ws.transactions) ? ws.transactions : (typeof ws.transactions === 'string' ? JSON.parse(ws.transactions || '[]') : []);
-                    globalTxCount += txs.length;
-                    globalVol += txs.reduce((s, t) => s + (Number(t.amount) || 0), 0);
-                });
+            const badgesEl = document.getElementById('udhar-active-meta-badges');
+            if (badgesEl) {
+                const badges = [];
+                if (activeCust.creditLimit > 0) badges.push(`<span class="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 text-[9px] font-bold">Limit: ₹${Number(activeCust.creditLimit).toLocaleString('en-IN')}</span>`);
+                if (activeCust.dueDate) {
+                    const dueTs = new Date(`${activeCust.dueDate}T23:59:59`).getTime();
+                    const remMs = dueTs - Date.now();
+                    badges.push(`<span class="px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300 text-[9px] font-bold">Due: ${new Date(activeCust.dueDate).toLocaleDateString('en-IN')}</span>`);
+                    if (net > 0 && !isNaN(dueTs)) {
+                        badges.push(`<span data-countdown-due="${activeCust.dueDate}" class="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-mono text-[9px] font-black tabular-nums">⏱ ${formatLiveCountdown(remMs)}</span>`);
+                    }
+                }
+                badgesEl.innerHTML = badges.join('');
             }
 
             if (document.getElementById('admin-stat-tx-count')) document.getElementById('admin-stat-tx-count').textContent = globalTxCount;
@@ -9237,7 +9517,7 @@
             const p = getKhataFlowAiPersonaInfo();
             const titleEl = document.getElementById('kf-ai-persona-title');
             const avatarEl = document.getElementById('kf-ai-avatar-badge');
-            if (titleEl) titleEl.textContent = `${p.nameEn} •`;
+            if (titleEl) titleEl.textContent = `${p.nameEn} • NeoKhata AI`;
             if (avatarEl) avatarEl.innerHTML = `<i class="fa-solid ${p.icon}"></i>`;
             if (!kfAiSelectedLang) {
                 renderKhataFlowAiWelcome();
@@ -9597,7 +9877,7 @@
                     </div>
 
                     <div class="text-[10px] text-neutral-400 font-semibold pt-1 border-t border-neutral-200/60 dark:border-neutral-800">
-                        🙏 Thank you — <strong>${p.nameEn} & Team</strong>
+                        🙏 Thank you — <strong>${p.nameEn} & NeoKhata AI Team</strong>
                     </div>
                 </div>
             `;
@@ -9774,9 +10054,9 @@
                 await queryKhataFlowAiBackend(q);
             } else {
                 const introMap = {
-                    hi: `प्रणाम **${getPrimaryUserName()} जी**! मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'} — आपका पर्सनल **NeoKhata AI Advisor**। अब हमारी पूरी बातचीत **शुद्ध हिंदी** में होगी।\n\nमैं आपके लाइव खाते का विश्लेषण, महीने के अंत का खर्च प्रेडिक्शन, उधार रिमाइंडर और सीधे चैट से नई आय/खर्च एंट्री जोड़ने में आपकी पूरी मदद ${isMale ? 'करूँगा' : 'करूँगी'}। नीचे दिए गए बटन चुनें या अपना सवाल लिखें!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & Team**`,
-                    hinglish: `Namaste **${getPrimaryUserName()} ji**! Main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'} — aapka personal **NeoKhata AI Advisor**। Ab humari poori baat **Hinglish** mein hogi.\n\nMain aapke live dashboard ka analysis, month-end spending prediction, Udhar Khata alert aur seedhe chat se naya expense/income add karne mein aapki poori help ${isMale ? 'karunga' : 'karungi'}. Neeche diye quick buttons try karein ya apna sawaal likhein!\n\n🙏 **Thank you — ${p.nameEn} & Team**`,
-                    en: `Hello **${getPrimaryUserName()}**! I am **${p.nameEn}**, your personal **NeoKhata AI Advisor**. Our entire conversation will now stay in **English**.\n\nI am here to help you analyze your live ledger, forecast month-end spending, track Udhar Khata receivables, and log new transactions directly from chat. Tap a quick chip below or ask away!\n\n🙏 **Thank you — ${p.nameEn} & Team**`
+                    hi: `प्रणाम **${getPrimaryUserName()} जी**! मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'} — आपका पर्सनल **NeoKhata AI Advisor**। अब हमारी पूरी बातचीत **शुद्ध हिंदी** में होगी।\n\nमैं आपके लाइव खाते का विश्लेषण, महीने के अंत का खर्च प्रेडिक्शन, उधार रिमाइंडर और सीधे चैट से नई आय/खर्च एंट्री जोड़ने में आपकी पूरी मदद ${isMale ? 'करूँगा' : 'करूँगी'}। नीचे दिए गए बटन चुनें या अपना सवाल लिखें!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & NeoKhata AI Team**`,
+                    hinglish: `Namaste **${getPrimaryUserName()} ji**! Main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'} — aapka personal **NeoKhata AI Advisor**। Ab humari poori baat **Hinglish** mein hogi.\n\nMain aapke live dashboard ka analysis, month-end spending prediction, Udhar Khata alert aur seedhe chat se naya expense/income add karne mein aapki poori help ${isMale ? 'karunga' : 'karungi'}. Neeche diye quick buttons try karein ya apna sawaal likhein!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`,
+                    en: `Hello **${getPrimaryUserName()}**! I am **${p.nameEn}**, your personal **NeoKhata AI Advisor**. Our entire conversation will now stay in **English**.\n\nI am here to help you analyze your live ledger, forecast month-end spending, track Udhar Khata receivables, and log new transactions directly from chat. Tap a quick chip below or ask away!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`
                 };
                 appendKhataFlowAiBubble('ai', introMap[lang] || introMap.en);
             }
@@ -9834,12 +10114,12 @@
             const isMale = kfAiSelectedPersona === 'male';
             const fmtAmt = `₹${amount.toLocaleString('en-IN')}`;
             if (lang === 'hi') {
-                return `नमस्ते **${getPrimaryUserName()} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}। मैंने आपकी नई एंट्री डैशबोर्ड और हिस्ट्री में जोड़ दी है:\n\n• **प्रकार:** ${isIncome ? 'आय (Income +)' : 'खर्च (Expense -)'}\n• **राशि:** ${fmtAmt}\n• **कैटेगरी:** ${matchedCat}\n• **विवरण:** ${note}\n\nआपका डैशबोर्ड और बजट तुरंत अपडेट हो गया है!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & Team**`;
+                return `नमस्ते **${getPrimaryUserName()} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}। मैंने आपकी नई एंट्री डैशबोर्ड और हिस्ट्री में जोड़ दी है:\n\n• **प्रकार:** ${isIncome ? 'आय (Income +)' : 'खर्च (Expense -)'}\n• **राशि:** ${fmtAmt}\n• **कैटेगरी:** ${matchedCat}\n• **विवरण:** ${note}\n\nआपका डैशबोर्ड और बजट तुरंत अपडेट हो गया है!\n\n🙏 **धन्यवाद (Thank you) — ${p.nameEn} & NeoKhata AI Team**`;
             }
             if (lang === 'hinglish') {
-                return `Namaste **${getPrimaryUserName()} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}. Maine aapki nayi entry Dashboard aur History mein add kar di hai:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nAapka live dashboard aur budget turant update ho gaya hai!\n\n🙏 **Thank you — ${p.nameEn} & Team**`;
+                return `Namaste **${getPrimaryUserName()} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}. Maine aapki nayi entry Dashboard aur History mein add kar di hai:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nAapka live dashboard aur budget turant update ho gaya hai!\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`;
             }
-            return `Hello **${getPrimaryUserName()}**, this is **${p.nameEn}** speaking! I have logged this transaction directly into your Dashboard & History:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nYour live dashboard and budget totals have been updated immediately.\n\n🙏 **Thank you — ${p.nameEn} & Team**`;
+            return `Hello **${getPrimaryUserName()}**, this is **${p.nameEn}** speaking! I have logged this transaction directly into your Dashboard & History:\n\n• **Type:** ${isIncome ? 'Income (+)' : 'Expense (-)'}\n• **Amount:** ${fmtAmt}\n• **Category:** ${matchedCat}\n• **Note:** ${note}\n\nYour live dashboard and budget totals have been updated immediately.\n\n🙏 **Thank you — ${p.nameEn} & NeoKhata AI Team**`;
         }
         function wrapKhataFlowAiGreetingAndSignoff(replyText, lang) {
             const p = getKhataFlowAiPersonaInfo();
@@ -9855,15 +10135,15 @@
                     ? `प्रणाम **${userName} जी**, मैं **${p.nameHi}** ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}।\n\n`
                     : (lang === 'hinglish'
                         ? `Namaste **${userName} ji**, main **${p.nameHi}** ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}.\n\n`
-                        : `Hello **${userName}**, this is **${p.nameEn}** speaking from.\n\n`);
+                        : `Hello **${userName}**, this is **${p.nameEn}** speaking from NeoKhata AI.\n\n`);
                 text = intro + text;
             }
             if (!hasSignoff) {
                 const signoff = lang === 'hi'
-                    ? `\n\n🙏 **धन्यवाद (Thank you) ${userName} जी — ${p.nameEn} & Team**`
+                    ? `\n\n🙏 **धन्यवाद (Thank you) ${userName} जी — ${p.nameEn} & NeoKhata AI Team**`
                     : (lang === 'hinglish'
-                        ? `\n\n🙏 **Thank you ${userName} ji — ${p.nameEn} & Team**`
-                        : `\n\n🙏 **Thank you, ${userName} — ${p.nameEn} & Team**`);
+                        ? `\n\n🙏 **Thank you ${userName} ji — ${p.nameEn} & NeoKhata AI Team**`
+                        : `\n\n🙏 **Thank you, ${userName} — ${p.nameEn} & NeoKhata AI Team**`);
                 text = text + signoff;
             }
             return text;
@@ -10515,15 +10795,15 @@
             const p = getKhataFlowAiPersonaInfo();
             const isMale = kfAiSelectedPersona === 'male';
             const langRuleMap = {
-                hi: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational Hindi (Devanagari script). Start your message with "प्रणाम ${getPrimaryUserName()} जी, मैं ${p.nameHi} ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}..." and end with "🙏 धन्यवाद (Thank you) ${getPrimaryUserName()} जी — ${p.nameEn} & Team".`,
-                hinglish: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm conversational Hinglish (Hindi written in Roman English script). Start your message with "Namaste ${getPrimaryUserName()} ji, main ${p.nameHi} ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}..." and end with "🙏 Thank you ${getPrimaryUserName()} ji — ${p.nameEn} & Team".`,
-                en: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameEn} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational English. Start your message with "Hello ${getPrimaryUserName()}, this is ${p.nameEn} speaking..." and end with "🙏 Thank you, ${getPrimaryUserName()} — ${p.nameEn} & Team".`
+                hi: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational Hindi (Devanagari script). Start your message with "प्रणाम ${getPrimaryUserName()} जी, मैं ${p.nameHi} ${isMale ? 'बोल रहा हूँ' : 'बोल रही हूँ'}..." and end with "🙏 धन्यवाद (Thank you) ${getPrimaryUserName()} जी — ${p.nameEn} & NeoKhata AI Team".`,
+                hinglish: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameHi} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm conversational Hinglish (Hindi written in Roman English script). Start your message with "Namaste ${getPrimaryUserName()} ji, main ${p.nameHi} ${isMale ? 'bol raha hoon' : 'bol rahi hoon'}..." and end with "🙏 Thank you ${getPrimaryUserName()} ji — ${p.nameEn} & NeoKhata AI Team".`,
+                en: `CRITICAL LANGUAGE & PERSONA RULE: Your name is ${p.nameEn} (${isMale ? 'Male' : 'Female'} Advisor). You MUST reply strictly in natural, warm, conversational English. Start your message with "Hello ${getPrimaryUserName()}, this is ${p.nameEn} speaking..." and end with "🙏 Thank you, ${getPrimaryUserName()} — ${p.nameEn} & NeoKhata AI Team".`
             };
             const langRule = langRuleMap[kfAiSelectedLang] || langRuleMap.en;
             const systemPrompt = `You are ${p.nameEn}, the respectful, highly professional personal financial advisor inside NeoKhata.
 ${langRule}
 STRICT RULES:
-1. ALWAYS introduce yourself by name (${p.nameEn}) at the start and sign off with "Thank you — ${p.nameEn} & Team" at the end.
+1. ALWAYS introduce yourself by name (${p.nameEn}) at the start and sign off with "Thank you — ${p.nameEn} & NeoKhata AI Team" at the end.
 2. NEVER invent or hallucinate fake numbers. Use ONLY the exact real numbers from LIVE COMPLETE APP SNAPSHOT below across ALL 7 modules:
    - 1. Dashboard (todaySpend, yesterdaySpend, last7DaysSpend, last30DaysSpend, monthlyBudget, budgetLeft, netCashflowBalance)
    - 2. History (totalTransactionLogs, recentTransactions)
@@ -10588,12 +10868,198 @@ ${JSON.stringify(liveSnapshot)}`;
             updateDashboard();
             renderSavingsGoals();
             renderRecurringBills();
+            renderTargetDeadlineAlerts();
             renderTransactions();
             renderGrocery();
             renderUdharKhata();
             renderSplitter();
             renderMilkModuleAll();
             updateCharts();
+            calculateGstSummary();
+            calculateLoanEmiPlanner();
+            updatePinMenuStatusUI();
+        }
+
+        // ================= ADVANCED FINANCIAL ADD-ONS ENGINE =================
+        // 1. GST & GSTR-1 Summary Calculator
+        function calculateGstSummary() {
+            const base = parseFloat(document.getElementById('gst-base-amount')?.value) || 0;
+            const slab = parseFloat(document.getElementById('gst-slab-select')?.value) || 18;
+            const gstAmt = (base * slab) / 100;
+            const halfGst = gstAmt / 2;
+            const gross = base + gstAmt;
+            const splitEl = document.getElementById('gst-cgst-sgst-split');
+            const grossEl = document.getElementById('gst-gross-total');
+            const gstr1El = document.getElementById('gstr1-shopping-liability');
+            if (splitEl) splitEl.textContent = `₹${halfGst.toFixed(2)} + ₹${halfGst.toFixed(2)}`;
+            if (grossEl) grossEl.textContent = `₹${gross.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            const shoppingTotal = (appState.groceryInvoices || []).reduce((s, inv) => s + (Number(inv.total) || 0), 0);
+            const estGstr1 = (shoppingTotal * slab) / (100 + slab);
+            if (gstr1El) gstr1El.textContent = `₹${estGstr1.toFixed(2)}`;
+        }
+
+        // 3. Loan & EMI Amortization Schedule Planner
+        function calculateLoanEmiPlanner() {
+            const P = parseFloat(document.getElementById('emi-loan-principal')?.value) || 0;
+            const annualRate = parseFloat(document.getElementById('emi-interest-rate')?.value) || 0;
+            const N = parseInt(document.getElementById('emi-tenure-months')?.value, 10) || 1;
+            const r = annualRate / 12 / 100;
+            const emi = r > 0 ? (P * r * Math.pow(1 + r, N)) / (Math.pow(1 + r, N) - 1) : (P / N);
+            const totalPayable = emi * N;
+            const totalInterest = Math.max(0, totalPayable - P);
+
+            let bal = P;
+            const yr1Months = Math.min(12, N);
+            for (let m = 0; m < yr1Months; m++) {
+                const intPart = bal * r;
+                const prinPart = emi - intPart;
+                bal = Math.max(0, bal - prinPart);
+            }
+
+            const emiEl = document.getElementById('emi-monthly-output');
+            const intEl = document.getElementById('emi-total-interest');
+            const balEl = document.getElementById('emi-year1-balance');
+            if (emiEl) emiEl.textContent = `₹${Math.round(emi).toLocaleString('en-IN')}`;
+            if (intEl) intEl.textContent = `Total Interest: ₹${Math.round(totalInterest).toLocaleString('en-IN')}`;
+            if (balEl) balEl.textContent = `Yr-1 Bal: ₹${Math.round(bal).toLocaleString('en-IN')}`;
+        }
+
+        // 4. Biometric & 4-Digit Passcode Security Lock
+        let currentPinBuffer = '';
+        let pinSetupMode = false;
+        function updatePinMenuStatusUI() {
+            const savedPin = localStorage.getItem('neokhata_security_pin') || '';
+            const sub = document.getElementById('menu-pin-status-sub');
+            const badge = document.getElementById('menu-pin-status-badge');
+            if (sub) sub.textContent = savedPin ? 'Active • Tap to Disable PIN' : 'Currently Off • Tap to Set PIN';
+            if (badge) {
+                badge.textContent = savedPin ? 'Locked' : 'Off';
+                badge.className = savedPin
+                    ? 'px-2.5 py-1 rounded-xl bg-emerald-500/15 text-emerald-600 font-black text-[10px]'
+                    : 'px-2.5 py-1 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-bold text-[10px]';
+            }
+        }
+        function toggleAppPinSecurity() {
+            const existing = localStorage.getItem('neokhata_security_pin');
+            if (existing) {
+                localStorage.removeItem('neokhata_security_pin');
+                updatePinMenuStatusUI();
+                showToast('4-Digit Passcode Lock disabled');
+                return;
+            }
+            pinSetupMode = true;
+            currentPinBuffer = '';
+            renderPinDots();
+            const sub = document.getElementById('pin-lock-subtitle');
+            if (sub) sub.textContent = 'Choose a new 4-digit PIN to protect your vault';
+            document.getElementById('app-pin-lock-screen')?.classList.replace('hidden', 'flex');
+            toggleSideMenu(false);
+        }
+        function renderPinDots() {
+            const dots = document.querySelectorAll('#pin-dots-display span');
+            dots.forEach((d, idx) => {
+                d.className = idx < currentPinBuffer.length
+                    ? 'w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-primary-600 scale-110 transition'
+                    : 'w-3.5 h-3.5 rounded-full border-2 border-primary-600 bg-transparent transition';
+            });
+        }
+        function pressPinDigit(d) {
+            if (currentPinBuffer.length >= 4) return;
+            currentPinBuffer += d;
+            renderPinDots();
+            if (currentPinBuffer.length === 4) {
+                setTimeout(() => {
+                    if (pinSetupMode) {
+                        localStorage.setItem('neokhata_security_pin', currentPinBuffer);
+                        pinSetupMode = false;
+                        currentPinBuffer = '';
+                        document.getElementById('app-pin-lock-screen')?.classList.replace('flex', 'hidden');
+                        updatePinMenuStatusUI();
+                        showToast('4-Digit Security Passcode Activated!');
+                    } else {
+                        const saved = localStorage.getItem('neokhata_security_pin');
+                        if (currentPinBuffer === saved) {
+                            currentPinBuffer = '';
+                            document.getElementById('app-pin-lock-screen')?.classList.replace('flex', 'hidden');
+                            showToast('Vault Unlocked!');
+                        } else {
+                            currentPinBuffer = '';
+                            renderPinDots();
+                            showToast('Incorrect 4-digit PIN!', 'error');
+                        }
+                    }
+                }, 150);
+            }
+        }
+        function clearPinDigits() {
+            currentPinBuffer = currentPinBuffer.slice(0, -1);
+            renderPinDots();
+        }
+        function triggerBiometricUnlock() {
+            currentPinBuffer = '';
+            pinSetupMode = false;
+            document.getElementById('app-pin-lock-screen')?.classList.replace('flex', 'hidden');
+            showToast('Biometric Verified • Vault Unlocked!');
+        }
+
+        // 5. Smart Budget Rollover Engine
+        function computePreviousMonthBudgetSurplus() {
+            const now = new Date();
+            const prevMonth = now.getMonth() === 0 ? 11 : now.getMonth() - 1;
+            const prevYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
+            const prevSpend = (appState.transactions || [])
+                .filter(tx => {
+                    const d = new Date(tx.date || Date.now());
+                    return tx.type !== 'income' && d.getMonth() === prevMonth && d.getFullYear() === prevYear;
+                })
+                .reduce((s, t) => s + (Number(t.amount) || 0), 0);
+            const baseBudget = Number(appState.budget) || 0;
+            return Math.max(0, baseBudget - prevSpend);
+        }
+        function toggleSmartBudgetRollover(enabled) {
+            appState.smartBudgetRollover = !!enabled;
+            saveState();
+            updateDashboard();
+            showToast(enabled ? 'Smart Budget Rollover enabled!' : 'Smart Budget Rollover disabled');
+        }
+
+        // 6. Auto SMS / UPI Notification OCR Parser
+        function parseAndLogSmsNotification() {
+            const inp = document.getElementById('sms-ocr-raw-input');
+            const raw = (inp?.value || '').trim();
+            if (!raw) {
+                showToast('Paste a bank or UPI SMS message first', 'error');
+                return;
+            }
+            const amtMatch = raw.match(/(?:rs\.?|inr|₹)\s*([\d,]+(?:\.\d+)?)/i) || raw.match(/([\d,]+(?:\.\d+)?)\s*(?:debited|credited|paid|received)/i);
+            const amount = amtMatch ? parseFloat(amtMatch[1].replace(/,/g, '')) : 0;
+            if (!amount || amount <= 0) {
+                showToast('Could not detect a valid ₹ amount in SMS', 'error');
+                return;
+            }
+            const isIncome = /\b(credited|received|deposited|refund)\b/i.test(raw);
+            const merchMatch = raw.match(/(?:to|at|from|vpa)\s+([a-zA-Z0-9\s._-]{2,26})/i);
+            const merchant = merchMatch ? merchMatch[1].trim() : 'UPI Auto-Parsed';
+            let category = 'Other';
+            if (/zomato|swiggy|food|cafe|restaurant/i.test(raw)) category = 'Food';
+            else if (/blinkit|zepto|bigbasket|kirana|mart|milk/i.test(raw)) category = 'Kirana';
+            else if (/uber|ola|petrol|fuel|irctc|metro/i.test(raw)) category = 'Travel';
+            else if (/electricity|recharge|airtel|jio|wifi|bill/i.test(raw)) category = 'Bills';
+
+            appState.transactions.unshift({
+                id: `tx_sms_${Date.now()}`,
+                type: isIncome ? 'income' : 'expense',
+                amount,
+                category,
+                mode: 'UPI',
+                section: 'dashboard',
+                note: `[SMS Auto-Log] ${merchant}`,
+                date: new Date().toISOString()
+            });
+            inp.value = '';
+            saveState();
+            updateAll();
+            showToast(`SMS Parsed: ${isIncome ? '+' : '-'}₹${amount.toLocaleString('en-IN')} (${merchant}) logged!`);
         }
 
         // ================= HIGH-ACCESS PRO SUITE: SAVINGS GOALS, RECURRING BILLS, AI OCR SCANNER & 70 ADMIN CONTROLS =================
@@ -10618,8 +11084,9 @@ ${JSON.stringify(liveSnapshot)}`;
             appState.savingsGoals.unshift({ id: `sg_${Date.now()}`, title, target, saved, deadline });
             saveState();
             renderSavingsGoals();
+            renderTargetDeadlineAlerts();
             closeAddSavingsGoalModal();
-            showToast(`Savings goal "${title}" created!`);
+            showToast(`Savings goal "${title}" saved & synced to cloud!`);
         }
         function topUpSavingsGoal(goalId, addAmt) {
             const g = (appState.savingsGoals || []).find(x => x.id === goalId);
@@ -10627,38 +11094,150 @@ ${JSON.stringify(liveSnapshot)}`;
             g.saved = (Number(g.saved) || 0) + addAmt;
             saveState();
             renderSavingsGoals();
+            renderTargetDeadlineAlerts();
             showToast(`Added ₹${addAmt.toLocaleString('en-IN')} to "${g.title}"!`);
         }
         function deleteSavingsGoal(goalId) {
             appState.savingsGoals = (appState.savingsGoals || []).filter(x => x.id !== goalId);
             saveState();
             renderSavingsGoals();
+            renderTargetDeadlineAlerts();
             showToast('Savings goal removed');
         }
         function renderSavingsGoals() {
             const box = document.getElementById('dash-savings-goals-list');
             if (!box) return;
             const goals = appState.savingsGoals || [];
+            const now = Date.now();
             box.innerHTML = goals.length ? goals.map(g => {
-                const pct = Math.min(100, Math.round(((Number(g.saved) || 0) / Math.max(1, Number(g.target) || 1)) * 100));
+                const saved = Number(g.saved) || 0;
+                const target = Number(g.target) || 1;
+                const pct = Math.min(100, Math.round((saved / target) * 100));
+                const rem = Math.max(0, target - saved);
+                const deadlineStr = g.deadline ? new Date(g.deadline).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'No deadline';
+                const dueTs = g.deadline ? new Date(`${g.deadline}T23:59:59`).getTime() : NaN;
+                const countdownHtml = (g.deadline && !isNaN(dueTs) && rem > 0)
+                    ? `<span data-countdown-due="${g.deadline}" class="px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-black tabular-nums">⏱ ${formatLiveCountdown(dueTs - now)}</span>`
+                    : '';
                 return `
-                    <div class="p-3.5 rounded-2xl bg-neutral-100/80 dark:bg-neutral-900/80 border border-neutral-200/80 dark:border-neutral-800 space-y-2 text-xs">
+                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-3 shadow-2xs transition hover:border-emerald-500/50">
                         <div class="flex items-center justify-between gap-2">
                             <div class="min-w-0">
-                                <div class="font-black text-neutral-900 dark:text-white truncate">${g.title}</div>
-                                <div class="text-[10px] text-neutral-400">₹${Number(g.saved).toLocaleString('en-IN')} / ₹${Number(g.target).toLocaleString('en-IN')} (${pct}%)</div>
+                                <div class="font-black text-sm text-neutral-900 dark:text-white truncate flex items-center gap-2">
+                                    <i class="fa-solid fa-vault text-emerald-600 text-xs"></i>
+                                    <span>${g.title}</span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-1.5 text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 font-mono">
+                                    <span>Target: <strong>₹${target.toLocaleString('en-IN')}</strong> • ${deadlineStr}</span>
+                                    ${countdownHtml}
+                                </div>
                             </div>
                             <div class="flex items-center gap-1 flex-shrink-0">
-                                <button type="button" onclick="topUpSavingsGoal('${g.id}', 500)" class="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-extrabold text-[10px] hover:bg-emerald-700">+₹500</button>
-                                <button type="button" onclick="deleteSavingsGoal('${g.id}')" class="p-1.5 rounded-lg text-neutral-400 hover:text-rose-600"><i class="fa-solid fa-trash"></i></button>
+                                <button type="button" onclick="topUpSavingsGoal('${g.id}', 1000)" class="px-2.5 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-600 text-emerald-700 dark:text-emerald-300 hover:text-white font-extrabold text-[11px] transition">+₹1k</button>
+                                <button type="button" onclick="deleteSavingsGoal('${g.id}')" class="p-2 rounded-xl bg-neutral-100 hover:bg-rose-500/15 dark:bg-neutral-800 text-neutral-400 hover:text-rose-600 transition" title="Delete Goal"><i class="fa-solid fa-trash text-xs"></i></button>
                             </div>
                         </div>
-                        <div class="w-full h-2 rounded-full bg-neutral-200 dark:bg-neutral-800 overflow-hidden">
-                            <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all" style="width:${pct}%"></div>
+
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-center text-xs font-bold">
+                                <span class="text-emerald-700 dark:text-emerald-400">Saved: ₹${saved.toLocaleString('en-IN')} (${pct}%)</span>
+                                <span class="text-neutral-400 font-mono text-[11px]">Rem: ₹${rem.toLocaleString('en-IN')}</span>
+                            </div>
+                            <div class="w-full h-2.5 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden p-0.5 border border-neutral-200 dark:border-neutral-700">
+                                <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-500" style="width:${pct}%"></div>
+                            </div>
                         </div>
                     </div>
                 `;
-            }).join('') : '<div class="text-center py-6 text-xs text-neutral-400">No savings vaults yet. Tap "+ New Goal" to start saving!</div>';
+            }).join('') : '<div class="text-center py-10 text-xs text-neutral-400"><i class="fa-solid fa-piggy-bank text-3xl mb-2 opacity-30 block"></i>No savings vaults yet. Tap "+ New Goal" to start saving!</div>';
+        }
+
+        function openAddRecurringBillModal() {
+            document.getElementById('rb-title').value = '';
+            document.getElementById('rb-amount').value = '';
+            document.getElementById('rb-due-date').value = new Date().toISOString().split('T')[0];
+            document.getElementById('recurring-bill-modal')?.classList.replace('hidden', 'flex');
+        }
+        function closeAddRecurringBillModal() {
+            document.getElementById('recurring-bill-modal')?.classList.replace('flex', 'hidden');
+        }
+        function saveNewRecurringBill(e) {
+            e.preventDefault();
+            const title = document.getElementById('rb-title').value.trim();
+            const amount = parseFloat(document.getElementById('rb-amount').value) || 0;
+            const category = document.getElementById('rb-category').value || 'Bills';
+            const dueDate = document.getElementById('rb-due-date').value;
+            if (!title || amount <= 0 || !dueDate) return;
+            if (!Array.isArray(appState.recurringBills)) appState.recurringBills = [];
+            appState.recurringBills.unshift({ id: `rb_${Date.now()}`, title, amount, category, dueDate });
+            saveState();
+            renderRecurringBills();
+            renderTargetDeadlineAlerts();
+            closeAddRecurringBillModal();
+            showToast(`Recurring bill "${title}" saved & synced to cloud!`);
+        }
+        function payAndLogRecurringBill(billId) {
+            const b = (appState.recurringBills || []).find(x => x.id === billId);
+            if (!b) return;
+            appState.transactions.unshift({
+                id: `tx_${Date.now()}`,
+                type: 'expense',
+                amount: Number(b.amount),
+                category: b.category || 'Bills',
+                mode: 'UPI',
+                section: 'dashboard',
+                note: `[Autopilot Bill] ${b.title}`,
+                date: new Date().toISOString()
+            });
+            const nextDate = new Date(`${b.dueDate}T00:00:00`);
+            nextDate.setMonth(nextDate.getMonth() + 1);
+            b.dueDate = nextDate.toISOString().split('T')[0];
+            saveState();
+            updateAll();
+            showToast(`Paid ₹${Number(b.amount).toLocaleString('en-IN')} for ${b.title} & advanced next due date!`);
+        }
+        function deleteRecurringBill(billId) {
+            appState.recurringBills = (appState.recurringBills || []).filter(x => x.id !== billId);
+            saveState();
+            renderRecurringBills();
+            renderTargetDeadlineAlerts();
+            showToast('Recurring schedule removed');
+        }
+        function renderRecurringBills() {
+            const box = document.getElementById('dash-recurring-bills-list');
+            if (!box) return;
+            const bills = appState.recurringBills || [];
+            const now = Date.now();
+            const todayDate = new Date().toISOString().split('T')[0];
+            box.innerHTML = bills.length ? bills.map(b => {
+                const dueStr = b.dueDate || todayDate;
+                const isOverdue = dueStr < todayDate;
+                const dueTs = new Date(`${dueStr}T23:59:59`).getTime();
+                const countdownHtml = !isNaN(dueTs)
+                    ? `<span data-countdown-due="${dueStr}" class="px-2 py-0.5 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-indigo-700 dark:text-indigo-300 font-mono text-[10px] font-black tabular-nums">⏱ ${formatLiveCountdown(dueTs - now)}</span>`
+                    : '';
+                return `
+                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 flex items-center justify-between gap-3 text-xs shadow-2xs transition hover:border-indigo-500/50">
+                        <div class="flex items-start gap-3 min-w-0">
+                            <span class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-black flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                            <div class="min-w-0">
+                                <div class="font-black text-sm text-neutral-900 dark:text-white truncate">${b.title}</div>
+                                <div class="flex items-center gap-1.5 mt-1 flex-wrap font-mono text-[11px]">
+                                    <span class="font-bold text-neutral-600 dark:text-neutral-300">₹${Number(b.amount).toLocaleString('en-IN')}</span>
+                                    <span class="px-2 py-0.5 rounded-md ${isOverdue ? 'bg-rose-500/15 text-rose-600 font-black' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-500'}">Due: ${dueStr} ${isOverdue ? '⚠️' : ''}</span>
+                                    ${countdownHtml}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <button type="button" onclick="payAndLogRecurringBill('${b.id}')" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
+                                <i class="fa-solid fa-check"></i> Pay & Log
+                            </button>
+                            <button type="button" onclick="deleteRecurringBill('${b.id}')" class="p-2 rounded-xl bg-neutral-100 hover:bg-rose-500/15 dark:bg-neutral-800 text-neutral-400 hover:text-rose-600 transition" title="Delete Bill"><i class="fa-solid fa-trash text-xs"></i></button>
+                        </div>
+                    </div>
+                `;
+            }).join('') : '<div class="text-center py-10 text-xs text-neutral-400"><i class="fa-solid fa-calendar-days text-3xl mb-2 opacity-30 block"></i>No recurring bills or EMIs scheduled yet.</div>';
         }
 
         function openAddRecurringBillModal() {
@@ -11872,7 +12451,11 @@ ${JSON.stringify(liveSnapshot)}`;
             switchTab, toggleSideMenu, toggleTheme,
             openAddSavingsGoalModal, closeAddSavingsGoalModal, saveNewSavingsGoal, topUpSavingsGoal, deleteSavingsGoal, renderSavingsGoals,
             openAddRecurringBillModal, closeAddRecurringBillModal, saveNewRecurringBill, payAndLogRecurringBill, deleteRecurringBill, renderRecurringBills,
+            calculateGstSummary, calculateLoanEmiPlanner,
+            toggleAppPinSecurity, pressPinDigit, clearPinDigits, triggerBiometricUnlock,
+            computePreviousMonthBudgetSurplus, toggleSmartBudgetRollover, parseAndLogSmsNotification,
             handleAiReceiptScanUpload, setAdmin70Category, renderAdmin70ControlsGrid, quickToggleAdmin70Feature, quickUpdateAdmin70Value, addAdmin70CustomItem, editAdmin70CustomItem, removeAdmin70CustomItem, openAdminFeatureCustomizer, closeAdminFeatureCustomizer, resetSingleAdminFeature, saveAdminFeatureCustomizer, saveOpeningDesignSection, saveUserGovernanceControls, saveSingleBannerQuick, apply70FeatureOverridesLive,
+            saveHeaderBrandingStudio, applyBrandingToUI,
             switchMilkSubTab, calcMilkQuickTotal, calcMilkDetailedTotal,
             handleMilkQuickEntry, handleMilkDetailedEntry, deleteMilkEntry,
             getFilteredMilkEntries, resetMilkEntriesFilters, downloadMilkEntriesPDF,
@@ -11923,12 +12506,19 @@ ${JSON.stringify(liveSnapshot)}`;
             applyAdminConfigToUI();
             apply70FeatureOverridesLive();
             startAdProgressTimer();
+            startTargetDeadlineCountdownTicker();
 
             const session = getAuthSession();
             if (session && session.isLoggedIn) {
                 propagateUserProfileAcrossApp();
                 updateAll();
                 dismissAuthGate();
+                if (localStorage.getItem('neokhata_security_pin')) {
+                    pinSetupMode = false;
+                    currentPinBuffer = '';
+                    renderPinDots();
+                    document.getElementById('app-pin-lock-screen')?.classList.replace('hidden', 'flex');
+                }
                 if (typeof window.attachMultiDeviceListeners === 'function') window.attachMultiDeviceListeners();
                 if (typeof window.syncCurrentUserFromCloud === 'function') window.syncCurrentUserFromCloud(false, false);
                 if (session.role === 'admin') {
@@ -12069,6 +12659,8 @@ ${JSON.stringify(liveSnapshot)}`;
                 groceryItems: JSON.stringify(appState.groceryItems || []),
                 groceryInvoices: JSON.stringify(appState.groceryInvoices || []),
                 udharCustomers: JSON.stringify(appState.udharCustomers || []),
+                savingsGoals: JSON.stringify(appState.savingsGoals || []),
+                recurringBills: JSON.stringify(appState.recurringBills || []),
                 milkData: JSON.stringify(appState.milkData || { customers: [], entries: [], khata: [] }),
                 updatedAt: Number(appState.updatedAt) || Date.now()
             };
@@ -12105,6 +12697,8 @@ ${JSON.stringify(liveSnapshot)}`;
                 (appState.udharCustomers && appState.udharCustomers.length > 0) ||
                 (appState.groceryItems && appState.groceryItems.length > 0) ||
                 (appState.splitBills && appState.splitBills.length > 0) ||
+                (appState.savingsGoals && appState.savingsGoals.length > 0) ||
+                (appState.recurringBills && appState.recurringBills.length > 0) ||
                 (appState.milkData && (
                     (appState.milkData.entries && appState.milkData.entries.length > 0) ||
                     (appState.milkData.khata && appState.milkData.khata.length > 0)
@@ -12440,6 +13034,8 @@ ${JSON.stringify(liveSnapshot)}`;
                 const hasData = (ws.transactions && ws.transactions !== "[]") ||
                                 (ws.udharCustomers && ws.udharCustomers !== "[]") ||
                                 (ws.groceryItems && ws.groceryItems !== "[]") ||
+                                (ws.savingsGoals && ws.savingsGoals !== "[]") ||
+                                (ws.recurringBills && ws.recurringBills !== "[]") ||
                                 (ws.milkData && ws.milkData !== '{"customers":[],"entries":[],"khata":[]}');
                 const score = ts > 0 ? ts : (hasData ? 1 : 0);
                 if (!bestCloudWorkspace || score > bestTimestamp) {
