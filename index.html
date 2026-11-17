@@ -639,7 +639,7 @@
         <div id="target-deadline-alert-strip" class="hidden mb-4 space-y-2"></div>
         <!-- Clean Full-Bleed Sponsored Banner Carousel & Top Adsterra Slot -->
         <div id="adsterra-slot-top" class="hidden mb-6 w-full rounded-3xl overflow-visible transition-all duration-300 flex items-center justify-center"></div>
-        <div id="sponsored-ad-banner" class="mb-6 rounded-3xl overflow-hidden shadow-md border border-neutral-200/80 dark:border-neutral-800/80 relative h-44 sm:h-56 md:h-64 select-none">
+        <div id="sponsored-ad-banner" class="mb-6 rounded-3xl overflow-hidden shadow-md border border-neutral-200/80 dark:border-neutral-800/80 relative h-44 sm:h-56 md:h-64 select-none group">
             <div id="ad-slides-track" class="w-full h-full"></div>
             <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/15 z-20">
                 <div id="ad-progress-bar" class="h-full bg-white/80 transition-all duration-150" style="width: 0%"></div>
@@ -7376,7 +7376,7 @@
             }
         ];
 
-        const STORED_ADS_VERSION = 'v4_custom_6_banners_live';
+        const STORED_ADS_VERSION = 'v5_restored_sponsored_slides';
         if (localStorage.getItem('khataflow_ads_version') !== STORED_ADS_VERSION) {
             localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(DEFAULT_SPONSORED_ADS));
             localStorage.setItem('khataflow_ads_version', STORED_ADS_VERSION);
@@ -7613,11 +7613,7 @@
 
             if (!Array.isArray(SPONSORED_ADS_LIST) || SPONSORED_ADS_LIST.length === 0) {
                 SPONSORED_ADS_LIST = [...DEFAULT_SPONSORED_ADS];
-            }
-            if (adminConfig.adDeliveryMode === 'admob-only') {
-                banner.classList.add('hidden');
-                banner.style.display = 'none';
-                return;
+                localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
             }
             banner.classList.remove('hidden');
             banner.style.display = 'block';
@@ -7664,18 +7660,23 @@
                         <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-white text-neutral-900 font-extrabold text-xs shadow-md">
                             ${slide.ctaText || 'Open'} <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </span>
-                        <div class="flex items-center gap-1.5">
-                            ${SPONSORED_ADS_LIST.map((_, idx) => `<span class="h-1.5 rounded-full transition-all ${idx === currentAdSlideIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/40'}"></span>`).join('')}
-                        </div>
                     </div>
                 </div>
             `;
+        }
+
+        function goToAdSlide(index) {
+            if (!Array.isArray(SPONSORED_ADS_LIST) || SPONSORED_ADS_LIST.length === 0) return;
+            currentAdSlideIndex = ((index % SPONSORED_ADS_LIST.length) + SPONSORED_ADS_LIST.length) % SPONSORED_ADS_LIST.length;
+            renderSponsoredAdCarousel();
+            startAdProgressTimer();
         }
 
         function changeAdSlide(step) {
             if (!Array.isArray(SPONSORED_ADS_LIST) || SPONSORED_ADS_LIST.length === 0) return;
             currentAdSlideIndex = (currentAdSlideIndex + step + SPONSORED_ADS_LIST.length) % SPONSORED_ADS_LIST.length;
             renderSponsoredAdCarousel();
+            startAdProgressTimer();
         }
 
         function startAdProgressTimer() {
@@ -12137,7 +12138,7 @@ ${JSON.stringify(liveSnapshot)}`;
             openBackupRestoreModal, closeBackupRestoreModal, backupAppData, restoreAppData,
             handleRestoreDragOver, handleRestoreDragLeave, handleRestoreDrop, handleRestoreFileSelect,
             exportCSV, downloadHistoryPDF, handleAnalyticsTimeFilterChange, updateCharts,
-            changeAdSlide, closeLiveInterstitialAd, dismissAnnouncement,
+            changeAdSlide, goToAdSlide, closeLiveInterstitialAd, dismissAnnouncement,
             openAddAdModal, openEditAdModal, closeAdminBannerModal, previewAdminBannerImage, saveAdminBannerSlideForm, deleteAdminAdSlide, saveSponsoredBannerChanges,
             renderFooterCustomLinks, addFooterCustomLink, updateFooterCustomLinkField, deleteFooterCustomLink, saveFooterCustomLinks,
             renderFooterSocialHandles, addFooterSocialHandle, updateFooterSocialHandleField, deleteFooterSocialHandle, saveFooterSocialHandles,
@@ -12159,17 +12160,26 @@ ${JSON.stringify(liveSnapshot)}`;
             startAdProgressTimer();
             startTargetDeadlineCountdownTicker();
 
+            // Enable left/right touch swipe on the banner carousel
+            const bannerEl = document.getElementById('sponsored-ad-banner');
+            if (bannerEl) {
+                let touchStartX = 0;
+                bannerEl.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches?.[0]?.screenX || 0;
+                }, { passive: true });
+                bannerEl.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches?.[0]?.screenX || 0;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 35) changeAdSlide(diff > 0 ? 1 : -1);
+                }, { passive: true });
+            }
+
             const session = getAuthSession();
             if (session && session.isLoggedIn) {
-                propagateUserProfileAcrossApp();
-                updateAll();
                 dismissAuthGate();
-                if (localStorage.getItem('neokhata_security_pin')) {
-                    pinSetupMode = false;
-                    currentPinBuffer = '';
-                    renderPinDots();
-                    document.getElementById('app-pin-lock-screen')?.classList.replace('hidden', 'flex');
-                }
+                propagateUserProfileAcrossApp();
+                updateAuthUI();
+                updateAll();
                 if (typeof window.attachMultiDeviceListeners === 'function') window.attachMultiDeviceListeners();
                 if (typeof window.syncCurrentUserFromCloud === 'function') window.syncCurrentUserFromCloud(false, false);
                 if (session.role === 'admin') {
