@@ -2648,480 +2648,364 @@
                     </div>
                     <div class="flex items-center gap-2 flex-wrap">
                         <button onclick="saveAllAdminChangesLive()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-cloud-arrow-up"></i> Save All Live Changes</button>
+                        <button onclick="downloadFullMasterAppBackup()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-download"></i> Full App Backup (All Users)</button>
+                        <button onclick="document.getElementById('admin-master-restore-input').click()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-600 text-white text-xs font-black transition flex items-center gap-2 shadow-lg"><i class="fa-solid fa-upload"></i> Restore Full Backup</button>
+                        <input type="file" id="admin-master-restore-input" accept=".json" onchange="handleMasterAppRestoreFile(event)" class="hidden">
                         <button onclick="resetAdminCustomizationsToDefault()" class="px-3.5 py-2 rounded-xl bg-neutral-200 dark:bg-neutral-800 text-xs font-bold"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
                         <button onclick="logoutCurrentUser()" class="px-3.5 py-2 rounded-xl bg-error-500 hover:bg-error-600 text-white text-xs font-bold"><i class="fa-solid fa-right-from-bracket"></i> Exit Admin Mode</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border"><span class="text-[10px] uppercase font-bold text-neutral-400">Total Transactions</span><div class="text-xl font-black text-primary-600 mt-1" id="admin-stat-tx-count">0</div></div>
-                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border"><span class="text-[10px] uppercase font-bold text-neutral-400">Total Volume</span><div class="text-xl font-black text-emerald-600 mt-1" id="admin-stat-volume">₹0</div></div>
-                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border"><span class="text-[10px] uppercase font-bold text-neutral-400">Active Ad Slots</span><div class="text-xl font-black text-amber-600 mt-1" id="admin-stat-ads-count">0</div></div>
-                    <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border"><span class="text-[10px] uppercase font-bold text-neutral-400">Registered Users</span><div class="text-xl font-black text-purple-600 mt-1" id="admin-stat-users-count">1</div></div>
-                </div>
-
-                <!-- Master 9-Module Live Control Hub (Dashboard, History, Shopping, Udhar, Friends, Reports, Milk, Vyapari, AI Chat) -->
-                <div class="p-5 rounded-3xl bg-gradient-to-br from-indigo-500/10 via-white/95 to-emerald-500/10 dark:from-indigo-950/50 dark:via-neutral-900/90 dark:to-emerald-950/40 border border-indigo-500/30 mb-6 space-y-4 shadow-sm">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-200/80 dark:border-neutral-800">
+                <!-- Master Full-App & All-Users Cloud Vault Backup & Restore Studio -->
+                <div class="p-5 rounded-3xl bg-gradient-to-br from-purple-500/10 via-white/95 to-primary-500/10 dark:from-purple-950/50 dark:via-neutral-900/90 dark:to-primary-950/40 border border-purple-500/30 mb-6 space-y-4 shadow-sm">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pb-3 border-b border-neutral-200/80 dark:border-neutral-800">
                         <div>
-                            <span class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider">9 Core App Modules</span>
+                            <span class="px-2.5 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-black uppercase tracking-wider">Enterprise Disaster Recovery Vault</span>
                             <h4 class="text-base font-black mt-1 text-neutral-900 dark:text-white flex items-center gap-2">
-                                <i class="fa-solid fa-sliders text-indigo-600"></i> All App Modules Master Controller (Enable, Rename & Configure)
+                                <i class="fa-solid fa-server text-purple-600"></i> Full App & All-Users Master Backup / Restore Engine
                             </h4>
-                            <p class="text-[11px] text-neutral-500 mt-0.5">Control Dashboard, History, Shopping, Udhar, Friends, Reports, Milk, Vyapari & AI Chat live for all users.</p>
+                            <p class="text-[11px] text-neutral-500 mt-0.5">Download a complete JSON backup of all registered users, all user ledgers (Transactions, Udhar, Milk, Shopping, Friends, Vyapari, Goals) & admin settings, or restore everything to Firebase Cloud.</p>
                         </div>
-                        <button type="button" onclick="saveMasterModulesControl()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-sm transition flex items-center gap-1.5 active:scale-95">
-                            <i class="fa-solid fa-floppy-disk"></i> Save All 9 Modules
-                        </button>
-                    </div>
-                    <div id="admin-9-modules-control-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-xs"></div>
-                </div>
-
-                <!-- Opening Screen, Font, Color, Look & Design Studio (Immediate Opening Controls with Dedicated Save Buttons) -->
-                <div class="p-5 rounded-3xl bg-gradient-to-br from-primary-500/10 via-white/90 to-indigo-500/10 dark:from-primary-950/50 dark:via-neutral-900/85 dark:to-indigo-950/40 border border-primary-500/30 mb-6 space-y-4 shadow-sm">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-200/80 dark:border-neutral-800">
-                        <div>
-                            <span class="px-2.5 py-0.5 rounded-full bg-primary-600 text-white text-[10px] font-black uppercase tracking-wider">Opening & Look Studio</span>
-                            <h4 class="text-base font-black mt-1 text-neutral-900 dark:text-white">App Opening Screen, Colors, Typography & Visual Look</h4>
-                        </div>
-                        <span class="text-[11px] font-bold text-neutral-500">Each card saves independently</span>
+                        <span id="admin-backup-last-status" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-[11px] font-black">Cloud Snapshot Ready</span>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs">
-                        <!-- Card A: Opening / Auth Gate Screen Customizer -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <!-- Export Full Snapshot Card -->
                         <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-3">
-                            <div class="space-y-2.5">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-black text-neutral-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-door-open text-primary-600"></i> Opening Screen</span>
-                                    <span class="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-primary-500/10 text-primary-600">LOGIN / LANDING</span>
+                            <div class="space-y-1.5">
+                                <div class="font-black text-sm text-neutral-900 dark:text-white flex items-center gap-2">
+                                    <span class="w-8 h-8 rounded-xl bg-primary-600/15 text-primary-600 flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-down"></i></span>
+                                    <span>1. Export Complete App & All-Users Data</span>
                                 </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Opening Brand Title</label>
-                                    <input type="text" id="adm-open-title" placeholder="NeoKhata" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Opening Tagline</label>
-                                    <input type="text" id="adm-open-subtitle" placeholder="Smart Financial OS • Cloud Workspace" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-medium">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Default Opening Screen</label>
-                                    <select id="adm-open-default-tab" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="dashboard">Dashboard Overview</option>
-                                        <option value="udhar">Udhar Khata</option>
-                                        <option value="milk">Milk Ledger</option>
-                                        <option value="grocery">Shopping Checklist</option>
-                                        <option value="transactions">All Transactions</option>
-                                    </select>
-                                </div>
+                                <p class="text-[11px] text-neutral-500 leading-relaxed">Fetches the latest live records of every user from Firebase Cloud & local cache and exports a single encrypted-ready <strong>.json</strong> master vault file.</p>
                             </div>
-                            <button type="button" onclick="saveOpeningDesignSection('opening')" class="w-full py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black text-[11px] shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Opening Screen
+                            <button type="button" onclick="downloadFullMasterAppBackup()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 text-white font-black text-xs transition shadow-md flex items-center justify-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-file-export"></i> Download Full App & All-Users Backup (.JSON)
                             </button>
                         </div>
 
-                        <!-- Card B: Brand Colors & Gradient Customizer -->
-                        <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-3">
-                            <div class="space-y-2.5">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-black text-neutral-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-palette text-rose-600"></i> Brand Colors</span>
-                                    <span class="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-600">PALETTE</span>
+                        <!-- Restore Full Snapshot Card (Click or Drag & Drop) -->
+                        <div ondragover="handleMasterRestoreDragOver(event)" ondragleave="handleMasterRestoreDragLeave(event)" ondrop="handleMasterRestoreDrop(event)" onclick="document.getElementById('admin-master-restore-input').click()" class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border-2 border-dashed border-purple-300 dark:border-purple-800 hover:border-purple-600 cursor-pointer transition flex flex-col justify-between gap-3">
+                            <div class="space-y-1.5">
+                                <div class="font-black text-sm text-neutral-900 dark:text-white flex items-center gap-2">
+                                    <span class="w-8 h-8 rounded-xl bg-purple-600/15 text-purple-600 flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                                    <span>2. Restore Full App & All-Users Data</span>
                                 </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <div>
-                                        <label class="block text-[10px] font-bold text-neutral-500 mb-1">Primary Accent</label>
-                                        <input type="color" id="adm-open-primary-color" value="#2453d6" class="w-full h-9 p-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border cursor-pointer">
-                                    </div>
-                                    <div>
-                                        <label class="block text-[10px] font-bold text-neutral-500 mb-1">Secondary Glow</label>
-                                        <input type="color" id="adm-open-secondary-color" value="#1e9e5a" class="w-full h-9 p-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border cursor-pointer">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Theme Mode Preset</label>
-                                    <select id="adm-open-theme-mode" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="keep">User Choice (Light / Dark)</option>
-                                        <option value="light">Force Crisp Light Mode</option>
-                                        <option value="dark">Force Executive Dark Mode</option>
-                                    </select>
-                                </div>
+                                <p class="text-[11px] text-neutral-500 leading-relaxed">Click here or drag &amp; drop a <strong>NeoKhata_MASTER_FULL_BACKUP.json</strong> file to restore all user accounts, user ledgers, banners, and admin configurations back to Firebase Cloud.</p>
                             </div>
-                            <button type="button" onclick="saveOpeningDesignSection('colors')" class="w-full py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-[11px] shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Brand Colors
-                            </button>
-                        </div>
-
-                        <!-- Card C: Typography & Font Style Customizer -->
-                        <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-3">
-                            <div class="space-y-2.5">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-black text-neutral-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-font text-indigo-600"></i> Font & Typography</span>
-                                    <span class="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600">FONTS</span>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Global Font Family</label>
-                                    <select id="adm-open-font-family" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="'Inter', sans-serif">Inter (Modern Fintech)</option>
-                                        <option value="system-ui, -apple-system, sans-serif">System Native UI</option>
-                                        <option value="Georgia, serif">Classic Editorial Serif</option>
-                                        <option value="ui-monospace, SFMono-Regular, monospace">Executive Monospace</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Global Font Scale</label>
-                                    <select id="adm-open-font-scale" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="15px">Compact (15px)</option>
-                                        <option value="16px" selected>Standard (16px)</option>
-                                        <option value="17.5px">Large Readable (17.5px)</option>
-                                    </select>
-                                </div>
+                            <div class="w-full py-2.5 px-4 rounded-xl bg-purple-600/10 text-purple-700 dark:text-purple-300 font-black text-xs text-center border border-purple-500/20">
+                                <i class="fa-solid fa-upload mr-1.5"></i> Select or Drop Master Backup File (.JSON)
                             </div>
-                            <button type="button" onclick="saveOpeningDesignSection('typography')" class="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[11px] shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Font Settings
-                            </button>
-                        </div>
-
-                        <!-- Card D: Card Look, Shape & Glass Design Customizer -->
-                        <div class="p-4 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-3">
-                            <div class="space-y-2.5">
-                                <div class="flex items-center justify-between">
-                                    <span class="font-black text-neutral-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-wand-sparkles text-emerald-600"></i> Look & UI Design</span>
-                                    <span class="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600">SURFACE</span>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Card Corner Roundness</label>
-                                    <select id="adm-open-card-radius" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="0.75rem">Sharp Pro (12px)</option>
-                                        <option value="1.25rem">Balanced (20px)</option>
-                                        <option value="1.75rem" selected>Soft Modern (28px)</option>
-                                        <option value="2.25rem">Ultra Pill (36px)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-neutral-500 mb-1">Card Glass & Shadow Look</label>
-                                    <select id="adm-open-surface-style" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                        <option value="glass">Frosted Glassmorphism</option>
-                                        <option value="solid">Crisp Solid High-Contrast</option>
-                                        <option value="elevated">Deep Elevated Shadow</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button type="button" onclick="saveOpeningDesignSection('design')" class="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[11px] shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Look & Design
-                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 1. Complete App Governance & Feature Matrix (All 70 Full-Access Controls) -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 mb-6 space-y-4">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                        <div>
-                            <span class="px-2.5 py-0.5 rounded-full bg-primary-600 text-white text-[10px] font-black uppercase tracking-wider">70 Full-Access Controls</span>
-                            <h4 class="text-base font-black mt-1 text-neutral-900 dark:text-white">Complete App Governance & Feature Matrix (1–70)</h4>
-                        </div>
-                        <div class="relative w-full md:w-64">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-neutral-400 text-xs"></i>
-                            <input type="text" id="admin-70-search" oninput="renderAdmin70ControlsGrid()" placeholder="Search 70 features..." class="w-full pl-8 pr-3 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-xs font-semibold">
-                        </div>
+                <!-- 1. Admin Live Telemetry KPI Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+                        <span class="text-[10px] font-black uppercase text-neutral-400">Total Users</span>
+                        <div id="admin-stat-users-count" class="text-2xl font-black text-purple-600 mt-1">0</div>
                     </div>
-                    <div id="admin-70-cat-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
-                        <button type="button" data-cat="ALL" onclick="setAdmin70Category('ALL')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap bg-primary-600 text-white shadow-sm">All (70)</button>
-                        <button type="button" data-cat="brand" onclick="setAdmin70Category('brand')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">1–10 Brand & UI</button>
-                        <button type="button" data-cat="modules" onclick="setAdmin70Category('modules')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">11–20 Modules</button>
-                        <button type="button" data-cat="finance" onclick="setAdmin70Category('finance')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">21–30 Finance</button>
-                        <button type="button" data-cat="udhar_milk" onclick="setAdmin70Category('udhar_milk')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">31–40 Udhar & Milk</button>
-                        <button type="button" data-cat="shop_split" onclick="setAdmin70Category('shop_split')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">41–50 Shop & Split</button>
-                        <button type="button" data-cat="ai_pdf" onclick="setAdmin70Category('ai_pdf')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">51–60 AI & PDF</button>
-                        <button type="button" data-cat="security" onclick="setAdmin70Category('security')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">61–70 Security</button>
+                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+                        <span class="text-[10px] font-black uppercase text-neutral-400">Global Transactions</span>
+                        <div id="admin-stat-tx-count" class="text-2xl font-black text-primary-600 mt-1">0</div>
                     </div>
-                    <div id="admin-70-controls-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+                        <span class="text-[10px] font-black uppercase text-neutral-400">Total Ledger Volume</span>
+                        <div id="admin-stat-volume" class="text-2xl font-black text-emerald-600 mt-1">₹0</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-white/80 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800">
+                        <span class="text-[10px] font-black uppercase text-neutral-400">Active Banner Slides</span>
+                        <div id="admin-stat-ads-count" class="text-2xl font-black text-amber-600 mt-1">6</div>
+                    </div>
                 </div>
 
-                <!-- 2. Registered Users & Global Broadcast Notice -->
+                <!-- 2. Header & Footer Branding Studio + Opening Design Studio -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                    <div class="p-5 rounded-3xl bg-white/80 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-3.5">
-                        <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                            <div>
-                                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-users-gear text-purple-600"></i> Registered Cloud Users</h4>
-                                <span id="admin-users-total-pill" class="text-[10px] font-bold text-neutral-400">Total Users: 0</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <button type="button" onclick="forceAdminCloudReSync()" class="px-2.5 py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[11px] font-bold"><i class="fa-solid fa-rotate"></i> Sync</button>
-                                <button type="button" onclick="openAdminAddUserModal()" class="px-3 py-1.5 rounded-xl bg-purple-600 text-white text-[11px] font-bold"><i class="fa-solid fa-user-plus"></i> Add User</button>
-                            </div>
-                        </div>
-                        <input type="text" id="admin-user-search-input" oninput="renderAdminUsersList()" placeholder="Search users by name, mobile, or email..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-xs font-semibold">
-                        <div id="admin-users-list" class="space-y-2.5 max-h-72 overflow-y-auto pr-1"></div>
-                    </div>
-
-                    <div class="p-5 rounded-3xl bg-white/80 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 space-y-3.5">
+                    <!-- Header & Logo Branding -->
+                    <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3 text-xs">
                         <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-bullhorn text-amber-600"></i> Global Broadcast Announcement</h4>
-                            <span class="text-[10px] font-bold text-amber-600">Live Marquee</span>
-                        </div>
-                        <form onsubmit="handleSaveAnnouncement(event)" class="space-y-3 text-xs">
-                            <label class="flex items-center gap-2 font-bold cursor-pointer">
-                                <input type="checkbox" id="admin-announcement-enabled" class="w-4 h-4 accent-primary-600">
-                                <span>Show Announcement Banner Across App</span>
-                            </label>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Banner Style</label>
-                                <select id="admin-announcement-type" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                                    <option value="info">Primary Info (Blue)</option>
-                                    <option value="success">Success Update (Emerald)</option>
-                                    <option value="warning">Important Notice (Amber)</option>
-                                    <option value="alert">Urgent Alert (Rose)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Announcement Message</label>
-                                <textarea id="admin-announcement-text" rows="3" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold"></textarea>
-                            </div>
-                            <button type="submit" class="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black text-xs shadow-sm">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Announcement
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- 3. Google AdMob & Adsterra Master Controller -->
-                <div class="p-5 rounded-3xl bg-white/80 dark:bg-neutral-900/70 border border-neutral-200 dark:border-neutral-800 mb-6 space-y-5">
-                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                        <div>
-                            <span class="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider">Dual Ad Monetization Engine</span>
-                            <h4 class="text-base font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-rectangle-ad text-blue-600"></i> Google AdMob & Adsterra Network Controller</h4>
-                        </div>
-                        <span id="active-ad-network-badge" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-[11px] font-black">Both Networks Active</span>
-                    </div>
-
-                    <!-- Clear 3-Mode Selector -->
-                    <div class="space-y-2">
-                        <label class="block text-xs font-extrabold text-neutral-700 dark:text-neutral-300">Choose Which Ad Network Runs on Your Website:</label>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <button type="button" onclick="setAdDeliveryMode('admob-only')" id="admode-btn-admob" class="p-4 rounded-2xl border-2 text-left transition space-y-1.5">
-                                <div class="font-black text-xs sm:text-sm flex items-center gap-2"><i class="fa-brands fa-google text-blue-600"></i> 1. Google AdMob Only</div>
-                                <p class="text-[11px] text-neutral-500 leading-relaxed">Only Google AdMob / AdSense ads will display across all enabled app slots.</p>
-                            </button>
-                            <button type="button" onclick="setAdDeliveryMode('custom-only')" id="admode-btn-custom" class="p-4 rounded-2xl border-2 text-left transition space-y-1.5">
-                                <div class="font-black text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-code text-emerald-600"></i> 2. Adsterra Ads Only</div>
-                                <p class="text-[11px] text-neutral-500 leading-relaxed">Only your pasted Adsterra script codes & custom banners will run (Google ads off).</p>
-                            </button>
-                            <button type="button" onclick="setAdDeliveryMode('hybrid')" id="admode-btn-hybrid" class="p-4 rounded-2xl border-2 text-left transition space-y-1.5">
-                                <div class="font-black text-xs sm:text-sm flex items-center gap-2"><i class="fa-solid fa-layer-group text-purple-600"></i> 3. Both (AdMob + Adsterra)</div>
-                                <p class="text-[11px] text-neutral-500 leading-relaxed">Run Google AdMob slots AND Adsterra code banners together for maximum revenue.</p>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Google AdMob / AdSense Section -->
-                    <form onsubmit="handleSaveAdMobConfig(event)" class="p-4 sm:p-5 rounded-2xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-800/60 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <h5 class="text-xs sm:text-sm font-black text-blue-900 dark:text-blue-200 flex items-center gap-2">
-                                <i class="fa-brands fa-google text-blue-600"></i> Google AdMob / AdSense Settings
-                            </h5>
-                            <span class="text-[10px] font-bold text-blue-600">Google Ads</span>
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-crown text-amber-500"></i> Header, Logo & Sticky Mode</h4>
+                            <span class="text-[10px] font-bold text-primary-600">Live Branding</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Google Publisher ID (ca-pub-...)</label>
-                                <input type="text" id="admin-admob-pub-id" placeholder="ca-pub-9624198207640000" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-mono">
+                                <label class="block font-bold mb-1">App Brand Title</label>
+                                <input type="text" id="admin-brand-name-input" value="NeoKhata" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                             </div>
                             <div>
-                                <label class="block text-[11px] font-bold text-neutral-600 dark:text-neutral-300 mb-1">Google Ad Unit / Slot ID</label>
-                                <input type="text" id="admin-admob-slot-id" placeholder="1234567890" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-mono">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs font-bold">
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-top" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Top Header</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-dashboard" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Dashboard Feed</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-history" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>History Feed</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-grocery" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Shopping Screen</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-udhar" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Udhar Khata</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-hub" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Friends Hub</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-analytics" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Reports & Analytics</span></label>
-                            <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white dark:bg-neutral-900 border cursor-pointer"><input type="checkbox" id="admob-place-bottom" class="w-4 h-4 accent-blue-600 flex-shrink-0"> <span>Sticky Bottom</span></label>
-                        </div>
-                        <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-sm transition active:scale-95">
-                            <i class="fa-solid fa-floppy-disk mr-1"></i> Save Google AdMob Settings
-                        </button>
-                    </form>
-
-                    <!-- Dedicated Adsterra Ad Code Manager -->
-                    <form onsubmit="handleSaveAdsterraConfig(event)" class="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-800/60 space-y-3.5">
-                        <div class="flex flex-wrap items-center justify-between gap-2">
-                            <div>
-                                <h5 class="text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-200 flex items-center gap-2">
-                                    <i class="fa-solid fa-code text-emerald-600"></i> Adsterra & Multi-Network Ad Code Manager (Auto-Fluid Sizing)
-                                </h5>
-                                <p class="text-[11px] text-neutral-500 mt-0.5">Paste any <code>&lt;script&gt;</code>, <code>atOptions</code>, Native Banner, or Social Bar tag. Containers automatically resize to match the exact ad dimensions without fixed limits.</p>
-                            </div>
-                            <label class="flex items-center gap-2 text-xs font-extrabold text-emerald-800 dark:text-emerald-300 bg-white dark:bg-neutral-900 px-3 py-1.5 rounded-xl border border-emerald-300 dark:border-emerald-700 cursor-pointer">
-                                <input type="checkbox" id="admin-adsterra-enabled" class="w-4 h-4 accent-emerald-600">
-                                <span>Enable Ad Codes</span>
-                            </label>
-                        </div>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 text-xs">
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="font-bold text-neutral-700 dark:text-neutral-300">1. Top Banner Ad Code (Auto-Fits Any Size)</label>
-                                    <button type="button" onclick="document.getElementById('admin-adsterra-top-code').value=''" class="text-[10px] text-rose-500 font-bold hover:underline">Clear</button>
-                                </div>
-                                <textarea id="admin-adsterra-top-code" rows="4" placeholder='<script type="text/javascript">atOptions = { "key" : "YOUR_ADSTERRA_KEY", "format" : "iframe", "height" : 90, "width" : 728, "params" : {} };</script><script type="text/javascript" src="//www.highperformanceformat.com/YOUR_KEY/invoke.js"></script>' class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px] focus:outline-none focus:border-emerald-500"></textarea>
-                            </div>
-                            <div>
-                                <div class="flex items-center justify-between mb-1">
-                                    <label class="font-bold text-neutral-700 dark:text-neutral-300">2. In-Feed / Native / Social Bar Ad Code (Auto-Fits Any Size)</label>
-                                    <button type="button" onclick="document.getElementById('admin-adsterra-feed-code').value=''" class="text-[10px] text-rose-500 font-bold hover:underline">Clear</button>
-                                </div>
-                                <textarea id="admin-adsterra-feed-code" rows="4" placeholder='<script async="async" data-cfasync="false" src="//pl12345678.highperformanceformat.com/YOUR_NATIVE_KEY/invoke.js"></script><div id="container-YOUR_NATIVE_KEY"></div>' class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px] focus:outline-none focus:border-emerald-500"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Adsterra Direct / Smartlink URL (Optional)</label>
-                                <input type="url" id="admin-adsterra-direct-url" placeholder="https://www.highcpmgate.com/..." class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-mono">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Ad Container Sizing Mode</label>
-                                <select id="admin-adsterra-top-height" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border text-xs font-bold">
-                                    <option value="auto" selected>⚡ 100% Fluid Auto-Size (No Fixed Limit)</option>
-                                    <option value="responsive-fit">📱 Auto-Fit & Scale to Screen Width</option>
+                                <label class="block font-bold mb-1">Header Scroll Mode</label>
+                                <select id="admin-header-sticky-mode" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                    <option value="sticky">Sticky Top Header</option>
+                                    <option value="scrollable">Scrollable Header</option>
                                 </select>
-                                <input type="hidden" id="admin-adsterra-feed-height" value="auto">
                             </div>
                         </div>
-
-                        <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-                            <span class="text-[10px] font-semibold text-neutral-500">Zero fixed height/width limits — automatically adapts to 320×50, 728×90, 300×250, Native & Social Bar</span>
-                            <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-sm transition active:scale-95">
-                                <i class="fa-solid fa-floppy-disk mr-1"></i> Save Adsterra Ad Codes
-                            </button>
+                        <div>
+                            <label class="block font-bold mb-1">Custom Brand Logo URL (Optional)</label>
+                            <input type="url" id="admin-brand-logo-url" placeholder="https://..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono">
                         </div>
+                        <button type="button" onclick="saveHeaderBrandingStudio()" class="w-full py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black">Apply Header & Logo Branding</button>
+                    </div>
+
+                    <!-- Opening Screen, Colors & Typography Studio -->
+                    <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3 text-xs">
+                        <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-palette text-indigo-600"></i> Opening Screen & Theme Studio</h4>
+                            <span class="text-[10px] font-bold text-indigo-600">UI Engine</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block font-bold mb-1">Gate Title</label>
+                                <input type="text" id="adm-open-title" value="NeoKhata" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Default Landing Tab</label>
+                                <select id="adm-open-default-tab" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                    <option value="dashboard">Dashboard</option>
+                                    <option value="udhar">Udhar Khata</option>
+                                    <option value="milk">Milk Ledger</option>
+                                    <option value="vyapari">Vyapari Mandi</option>
+                                    <option value="grocery">Shopping</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-1">Gate Subtitle</label>
+                            <input type="text" id="adm-open-subtitle" value="Smart Financial OS • Enterprise Cloud Workspace" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="block font-bold mb-1">Primary Color</label>
+                                <input type="color" id="adm-open-primary-color" value="#2453d6" class="w-full h-9 p-0.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border">
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Theme Mode</label>
+                                <select id="adm-open-theme-mode" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                    <option value="keep">User Choice</option>
+                                    <option value="light">Force Light</option>
+                                    <option value="dark">Force Dark</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Card Radius</label>
+                                <select id="adm-open-card-radius" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                    <option value="1.5rem">Rounded (24px)</option>
+                                    <option value="1rem">Medium (16px)</option>
+                                    <option value="2rem">Extra Pill (32px)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="saveOpeningDesignSection('opening')" class="py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black">Save Opening Gate</button>
+                            <button type="button" onclick="saveOpeningDesignSection('colors')" class="py-2.5 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-black">Save Theme & Colors</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Registered Users Directory & Live Cloud Inspector -->
+                <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 mb-6 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-users-gear text-purple-600"></i> Registered Cloud Users & Activity Inspector</h4>
+                            <p class="text-[11px] text-neutral-500 mt-0.5">Click any user card to full-edit their profile, backup/restore their single account, or bulk-edit all accounts.</p>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span id="admin-users-total-pill" class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 text-xs font-black">Total Users: 0</span>
+                            <button type="button" onclick="openAdminBulkEditUsersModal()" class="px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-table-list"></i> Bulk Edit All Accounts</button>
+                            <button type="button" onclick="forceAdminCloudReSync()" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-rotate"></i> Force Cloud Sync</button>
+                            <button type="button" onclick="openAdminAddUserModal()" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-user-plus"></i> Add User</button>
+                        </div>
+                    </div>
+                    <input type="text" id="admin-user-search-input" oninput="renderAdminUsersList()" placeholder="Search users by name, mobile number, or email..." class="w-full p-2.5 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border text-xs font-semibold">
+                    <div id="admin-users-list" class="space-y-2.5 max-h-80 overflow-y-auto pr-1"></div>
+                </div>
+
+                <!-- 4. Sponsored Banner Slides & Global Broadcast Announcement -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Sponsored Banner Carousel Studio -->
+                    <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-images text-primary-600"></i> Sponsored Banner Slides</h4>
+                            <button type="button" onclick="openAddAdModal()" class="px-3 py-1.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-plus"></i> Add Slide</button>
+                        </div>
+                        <div id="admin-ads-list" class="space-y-2 max-h-72 overflow-y-auto pr-1"></div>
+                    </div>
+
+                    <!-- Global Live Announcement Broadcaster -->
+                    <form onsubmit="handleSaveAnnouncement(event)" class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3 text-xs flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-bullhorn text-amber-500"></i> Global Broadcast Announcement</h4>
+                                <label class="flex items-center gap-1.5 font-bold cursor-pointer">
+                                    <input type="checkbox" id="admin-announcement-enabled" class="w-4 h-4 accent-primary-600"> Active
+                                </label>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Banner Style</label>
+                                <select id="admin-announcement-type" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                    <option value="info">Royal Blue (Info)</option>
+                                    <option value="success">Emerald Green (Update / Offer)</option>
+                                    <option value="warning">Amber Gold (Notice)</option>
+                                    <option value="alert">Crimson Rose (Urgent Alert)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Announcement Message (Shown to All Users)</label>
+                                <textarea id="admin-announcement-text" rows="3" placeholder="Enter live announcement message..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-black">Publish Live Announcement</button>
                     </form>
                 </div>
 
-                <!-- 4. Custom Promo & Adsterra Banner Slides Manager -->
-                <div class="p-5 rounded-2xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800">
-                    <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+                <!-- 5. Monetization Engine: Google AdMob & Adsterra Ads Control -->
+                <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 mb-6 space-y-4 text-xs">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
                         <div>
-                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-images text-primary-600"></i> Custom Promo & Smartlink Slides Manager</h4>
-                            <p class="text-[11px] text-neutral-500 mt-0.5">Fallback or promotional slides shown alongside Adsterra when no raw script tag is active</p>
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-rectangle-ad text-emerald-600"></i> AdMob & Adsterra Monetization Studio</h4>
+                            <p class="text-[11px] text-neutral-500">Switch ad delivery mode and configure live ad slots across sections.</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button type="button" onclick="openAddAdModal()" class="px-3.5 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs transition active:scale-95"><i class="fa-solid fa-plus"></i> Add New Slide</button>
-                            <button type="button" onclick="saveSponsoredBannerChanges()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95"><i class="fa-solid fa-floppy-disk"></i> Save Slides</button>
-                        </div>
+                        <span id="active-ad-network-badge" class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-black text-[11px]">Both (AdMob + Adsterra) Active</span>
                     </div>
-                    <div id="admin-ads-list" class="space-y-3"></div>
-                </div>
 
-                <!-- 5. Footer Legal & Custom Pages Manager -->
-                <div class="mt-6 p-5 rounded-2xl bg-white/70 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 space-y-4">
-                    <div class="flex flex-wrap justify-between items-center gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                        <div>
-                            <span class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider">Legal & Policy Pages</span>
-                            <h4 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-link text-indigo-600"></i> Footer Pages & Custom Redirect Links Manager</h4>
-                            <p class="text-[11px] text-neutral-500 mt-0.5">Add legal pages (Privacy Policy, Terms, Disclaimer, Contact Us) with their URLs—they appear live in the app footer and redirect on click.</p>
-                        </div>
-                        <button type="button" onclick="saveFooterCustomLinks()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
-                            <i class="fa-solid fa-floppy-disk"></i> Save Footer Pages
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        <button type="button" id="admode-btn-admob" onclick="setAdDeliveryMode('admob-only')" class="p-3 rounded-2xl border-2 text-left">
+                            <div class="font-black">Google AdMob / AdSense</div>
+                            <div class="text-[10px] text-neutral-500">Use ca-pub & Slot IDs only</div>
+                        </button>
+                        <button type="button" id="admode-btn-custom" onclick="setAdDeliveryMode('custom-only')" class="p-3 rounded-2xl border-2 text-left">
+                            <div class="font-black">Adsterra Ads Only</div>
+                            <div class="text-[10px] text-neutral-500">Use Adsterra scripts & Smartlink</div>
+                        </button>
+                        <button type="button" id="admode-btn-hybrid" onclick="setAdDeliveryMode('hybrid')" class="p-3 rounded-2xl border-2 text-left">
+                            <div class="font-black">Hybrid (AdMob + Adsterra)</div>
+                            <div class="text-[10px] text-neutral-500">Serve both ad networks seamlessly</div>
                         </button>
                     </div>
 
-                    <!-- Add New Page Name + URL Form -->
-                    <form onsubmit="addFooterCustomLink(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
-                        <div class="sm:col-span-4">
-                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">Page Name (e.g. Privacy Policy) *</label>
-                            <input type="text" id="admin-footer-page-title" required placeholder="e.g. Privacy Policy" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold focus:outline-none focus:border-indigo-500">
-                        </div>
-                        <div class="sm:col-span-6">
-                            <label class="block text-[10px] font-bold text-neutral-500 mb-1">Page Redirect Link / URL *</label>
-                            <input type="url" id="admin-footer-page-url" required placeholder="https://example.com/privacy-policy" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono font-semibold focus:outline-none focus:border-indigo-500">
-                        </div>
-                        <div class="sm:col-span-2 flex items-end">
-                            <button type="submit" class="w-full py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs transition shadow-sm flex items-center justify-center gap-1.5 active:scale-95">
-                                <i class="fa-solid fa-plus"></i> Add Page
-                            </button>
-                        </div>
-                    </form>
-
-                    <!-- Active Footer Pages List (Editable & Removable) -->
-                    <div id="admin-footer-links-list" class="space-y-2"></div>
-
-                    <!-- Social Media Handles Manager (Platform Logo + Profile URL) -->
-                    <div class="pt-4 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
-                        <div class="flex flex-wrap justify-between items-center gap-2">
-                            <div>
-                                <span class="px-2.5 py-0.5 rounded-full bg-pink-600 text-white text-[10px] font-black uppercase tracking-wider">Social Media Handles</span>
-                                <h5 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-share-nodes text-pink-600"></i> Footer Social Media Logos & Handle URLs</h5>
-                                <p class="text-[11px] text-neutral-500 mt-0.5">Select a social media logo and paste your profile URL—icons appear neatly below Backup & Restore in the footer.</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <!-- Google AdMob Form -->
+                        <form onsubmit="handleSaveAdMobConfig(event)" class="p-4 rounded-2xl bg-neutral-100/80 dark:bg-neutral-800/70 border space-y-3">
+                            <div class="font-black text-primary-600">Google AdMob / AdSense Credentials</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <div>
+                                    <label class="block font-bold mb-1">Publisher ID (ca-pub-...)</label>
+                                    <input type="text" id="admin-admob-pub-id" placeholder="ca-pub-xxxxxxxxxxxxxxxx" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono">
+                                </div>
+                                <div>
+                                    <label class="block font-bold mb-1">Ad Slot ID</label>
+                                    <input type="text" id="admin-admob-slot-id" placeholder="1234567890" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono">
+                                </div>
                             </div>
-                            <button type="button" onclick="saveFooterSocialHandles()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
-                                <i class="fa-solid fa-floppy-disk"></i> Save Social Handles
-                            </button>
-                        </div>
-
-                        <form onsubmit="addFooterSocialHandle(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 text-xs">
-                            <div class="sm:col-span-4">
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Platform & Real Logo *</label>
-                                <select id="admin-footer-social-platform" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold focus:outline-none focus:border-pink-500">
-                                    <option value="instagram">Instagram (fa-brands fa-instagram)</option>
-                                    <option value="twitter">X / Twitter (fa-brands fa-x-twitter)</option>
-                                    <option value="youtube">YouTube (fa-brands fa-youtube)</option>
-                                    <option value="facebook">Facebook (fa-brands fa-facebook-f)</option>
-                                    <option value="whatsapp">WhatsApp (fa-brands fa-whatsapp)</option>
-                                    <option value="telegram">Telegram (fa-brands fa-telegram)</option>
-                                    <option value="linkedin">LinkedIn (fa-brands fa-linkedin-in)</option>
-                                    <option value="website">Website (fa-solid fa-globe)</option>
-                                </select>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-top" checked> Top</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-dashboard" checked> Dashboard</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-history" checked> History</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-grocery" checked> Shopping</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-udhar" checked> Udhar</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-hub" checked> Friends</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-analytics" checked> Reports</label>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admob-place-bottom" checked> Sticky Bottom</label>
                             </div>
-                            <div class="sm:col-span-6">
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Social Handle Profile URL *</label>
-                                <input type="url" id="admin-footer-social-url" required placeholder="https://instagram.com/yourhandle" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono font-semibold focus:outline-none focus:border-pink-500">
-                            </div>
-                            <div class="sm:col-span-2 flex items-end">
-                                <button type="submit" class="w-full py-2.5 px-3 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-black text-xs transition shadow-sm flex items-center justify-center gap-1.5 active:scale-95">
-                                    <i class="fa-solid fa-plus"></i> Add Handle
-                                </button>
-                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-primary-600 text-white font-black">Save AdMob Settings</button>
                         </form>
 
-                        <div id="admin-footer-socials-list" class="space-y-2"></div>
+                        <!-- Adsterra Script & Smartlink Form -->
+                        <form onsubmit="handleSaveAdsterraConfig(event)" class="p-4 rounded-2xl bg-neutral-100/80 dark:bg-neutral-800/70 border space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="font-black text-emerald-600">Adsterra Banner & Smartlink Engine</span>
+                                <label class="flex items-center gap-1.5 font-bold"><input type="checkbox" id="admin-adsterra-enabled" checked> Enabled</label>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Top Banner Adsterra Script / HTML</label>
+                                <textarea id="admin-adsterra-top-code" rows="2" placeholder="Paste Adsterra Top Banner script..." class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono text-[11px]"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">In-Feed / Native Adsterra Script</label>
+                                <textarea id="admin-adsterra-feed-code" rows="2" placeholder="Paste Adsterra Native/In-Feed script..." class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono text-[11px]"></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1">Adsterra Direct Smartlink URL (Optional)</label>
+                                <input type="url" id="admin-adsterra-direct-url" placeholder="https://www.highperformanceformat.com/..." class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono text-[11px]">
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-black">Save Adsterra Code</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 6. Footer Legal Pages & Social Handles Manager -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 text-xs">
+                    <!-- Footer Legal Pages -->
+                    <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-scale-balanced text-primary-600"></i> Footer Legal & Policy Pages</h4>
+                            <button type="button" onclick="saveFooterCustomLinks()" class="px-3 py-1 rounded-xl bg-emerald-600 text-white font-bold text-[11px]">Save Links</button>
+                        </div>
+                        <form onsubmit="addFooterCustomLink(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                            <input type="text" id="admin-footer-page-title" required placeholder="Page Title (e.g. Refund Policy)" class="sm:col-span-5 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <input type="url" id="admin-footer-page-url" required placeholder="https://..." class="sm:col-span-5 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono">
+                            <button type="submit" class="sm:col-span-2 py-2 rounded-xl bg-primary-600 text-white font-black">+ Add</button>
+                        </form>
+                        <div id="admin-footer-links-list" class="space-y-2 max-h-56 overflow-y-auto pr-1"></div>
                     </div>
 
-                    <!-- Header & Footer Branding, Logo and Sticky/Scrollable Header Studio -->
-                    <div class="pt-5 border-t border-neutral-200 dark:border-neutral-800 space-y-3">
-                        <div class="flex flex-wrap justify-between items-center gap-2">
-                            <div>
-                                <span class="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider">Branding & Logo Studio</span>
-                                <h5 class="text-sm font-black mt-1 flex items-center gap-2"><i class="fa-solid fa-image text-blue-600"></i> Header & Footer Logo & Name Studio</h5>
-                                <p class="text-[11px] text-neutral-500 mt-0.5">Change header/footer brand title, logo image URL or initials, and toggle sticky/scrollable header mode.</p>
-                            </div>
-                            <button type="button" onclick="saveHeaderBrandingStudio()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-sm active:scale-95 flex items-center gap-1.5">
-                                <i class="fa-solid fa-floppy-disk"></i> Save Branding
-                            </button>
+                    <!-- Footer Social Media Handles -->
+                    <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-share-nodes text-pink-600"></i> Footer Social Media Handles</h4>
+                            <button type="button" onclick="saveFooterSocialHandles()" class="px-3 py-1 rounded-xl bg-emerald-600 text-white font-bold text-[11px]">Save Socials</button>
                         </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">App Brand Name</label>
-                                <input type="text" id="admin-brand-name-input" placeholder="NeoKhata" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Brand Logo Image URL (Optional)</label>
-                                <input type="url" id="admin-brand-logo-url" placeholder="https://.../logo.png" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-mono text-[11px]">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Header Position Mode</label>
-                                <select id="admin-header-sticky-mode" class="w-full p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 font-bold">
-                                    <option value="sticky">Sticky Header (Fixed on Scroll)</option>
-                                    <option value="scrollable">Scrollable Header (Moves with Page)</option>
-                                </select>
-                            </div>
-                        </div>
+                        <form onsubmit="addFooterSocialHandle(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2">
+                            <select id="admin-footer-social-platform" class="sm:col-span-4 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                                <option value="instagram">Instagram</option>
+                                <option value="twitter">X (Twitter)</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="telegram">Telegram</option>
+                                <option value="linkedin">LinkedIn</option>
+                                <option value="website">Website</option>
+                            </select>
+                            <input type="url" id="admin-footer-social-url" required placeholder="https://..." class="sm:col-span-6 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono">
+                            <button type="submit" class="sm:col-span-2 py-2 rounded-xl bg-pink-600 text-white font-black">+ Add</button>
+                        </form>
+                        <div id="admin-footer-socials-list" class="space-y-2 max-h-56 overflow-y-auto pr-1"></div>
                     </div>
+                </div>
+
+                <!-- 7. Master 9-Modules Control Grid -->
+                <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 mb-6 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-cubes text-primary-600"></i> Master 9-Modules Visibility & Labels Control</h4>
+                            <p class="text-[11px] text-neutral-500">Toggle visibility or rename any of the 9 navigation modules across mobile and desktop.</p>
+                        </div>
+                        <button type="button" onclick="saveMasterModulesControl()" class="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-black">Save All 9 Modules</button>
+                    </div>
+                    <div id="admin-9-modules-control-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs"></div>
+                </div>
+
+                <!-- 8. 70 Full-Access Enterprise Feature Controls Matrix -->
+                <div class="p-5 rounded-3xl bg-white/85 dark:bg-neutral-900/85 border border-neutral-200 dark:border-neutral-800 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-sliders text-indigo-600"></i> 70 Full-Access Feature & Policy Controls</h4>
+                            <p class="text-[11px] text-neutral-500">Fine-tune every feature, threshold, PDF setting, and security policy live.</p>
+                        </div>
+                        <input type="text" id="admin-70-search" oninput="renderAdmin70ControlsGrid()" placeholder="Search 70 controls (#01 - #70)..." class="w-full md:w-64 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border text-xs font-semibold">
+                    </div>
+                    <div id="admin-70-cat-tabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+                        <button type="button" data-cat="ALL" onclick="setAdmin70Category('ALL')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-extrabold whitespace-nowrap bg-primary-600 text-white shadow-sm">All (70)</button>
+                        <button type="button" data-cat="brand" onclick="setAdmin70Category('brand')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Brand & UI</button>
+                        <button type="button" data-cat="modules" onclick="setAdmin70Category('modules')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Modules</button>
+                        <button type="button" data-cat="finance" onclick="setAdmin70Category('finance')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Finance Rules</button>
+                        <button type="button" data-cat="udhar_milk" onclick="setAdmin70Category('udhar_milk')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Udhar & Milk</button>
+                        <button type="button" data-cat="shop_split" onclick="setAdmin70Category('shop_split')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Shop & Split</button>
+                        <button type="button" data-cat="ai_pdf" onclick="setAdmin70Category('ai_pdf')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">AI & PDF</button>
+                        <button type="button" data-cat="security" onclick="setAdmin70Category('security')" class="adm70-tab px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-neutral-100 dark:bg-neutral-800">Security & Sync</button>
+                    </div>
+                    <div id="admin-70-controls-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
                 </div>
             </div>
         </section>
@@ -3910,169 +3794,174 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="uedit-field-meta-row">
-                    <div id="uedit-field-mode-wrap">
-                        <label id="uedit-label-mode" class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Mode / Type</label>
-                        <select id="uedit-mode" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
-                            <option value="UPI">UPI</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Bank">Bank</option>
-                        </select>
-                    </div>
-                    <div id="uedit-field-date-wrap">
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Date</label>
-                        <input type="date" id="uedit-date" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-medium">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 pt-2">
-                    <button type="button" onclick="closeUniversalEditModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold">Save Changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Add New User Modal -->
-    <div id="admin-user-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-user-plus text-purple-600"></i> Create Cloud User Account</h4>
-                <button type="button" onclick="closeAdminAddUserModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" onclick="closeAdminBulkEditUsersModal()" class="px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
+                <button type="button" onclick="saveAdminBulkAllAccounts()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-primary-600 hover:from-indigo-700 hover:to-primary-700 text-white text-xs font-black shadow-md flex items-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Sync All Accounts</button>
             </div>
-            <form onsubmit="handleAdminCreateUser(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Full Name *</label>
-                    <input type="text" id="admin-new-user-name" required placeholder="e.g. Rajesh Kumar" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">10-Digit Mobile *</label>
-                        <input type="tel" id="admin-new-user-phone" maxlength="10" required oninput="this.value=extractCleanPhone(this.value)" placeholder="9876543210" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Email Address</label>
-                        <input type="email" id="admin-new-user-email" placeholder="user@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Initial Password (Min 6 chars) *</label>
-                    <input type="text" id="admin-new-user-password" minlength="6" required placeholder="e.g. User@123" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-mono font-bold">
-                </div>
-                <div class="grid grid-cols-2 gap-2 pt-2">
-                    <button type="button" onclick="closeAdminAddUserModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold">Create & Sync User</button>
-                </div>
-            </form>
         </div>
     </div>
 
-    <!-- Admin User Inspector Modal -->
-    <div id="admin-user-inspector-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card w-full max-w-2xl p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 my-auto max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 id="admin-inspector-title" class="text-sm sm:text-base font-black flex items-center gap-2"><i class="fa-solid fa-user-shield text-purple-600"></i> User Complete Activity Report</h4>
+    <!-- Admin Registered User Full Inspector, Account Editor & Single-User Backup Modal -->
+    <div id="admin-user-inspector-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-2xl p-5 sm:p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 id="admin-inspector-title" class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                    <i class="fa-solid fa-user-shield text-purple-600"></i> User Account Inspector &amp; Editor
+                </h4>
                 <button type="button" onclick="closeAdminUserInspector()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="admin-inspector-body" class="text-xs space-y-4 text-neutral-700 dark:text-neutral-200"></div>
-            <div class="mt-5 pt-3 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
-                <button type="button" onclick="closeAdminUserInspector()" class="px-6 py-2.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-xs font-bold">Close Report</button>
+            <div id="admin-inspector-body" class="space-y-4 text-xs"></div>
+        </div>
+    </div>
+
+    <!-- Admin Bulk Edit All User Accounts Modal -->
+    <div id="admin-bulk-users-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-4xl p-5 sm:p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                    <i class="fa-solid fa-table-list text-indigo-600"></i> Bulk Edit All Registered Accounts
+                </h4>
+                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
+            <div id="admin-bulk-users-list" class="space-y-2.5 max-h-[60vh] overflow-y-auto pr-1 text-xs"></div>
+            <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-neutral-200 dark:border-neutral-800">
+                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
+                <button type="button" onclick="saveAdminBulkAllAccounts()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-primary-600 hover:from-indigo-700 hover:to-primary-700 text-white text-xs font-black shadow-md flex items-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Sync All Accounts</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Add New Cloud User Modal -->
+    <div id="admin-user-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                    <i class="fa-solid fa-user-plus text-purple-600"></i> Create New Cloud User
+                </h4>
+                <button type="button" onclick="closeAdminAddUserModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="handleAdminCreateUser(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold mb-1">Full Name *</label>
+                    <input type="text" id="admin-new-user-name" required placeholder="e.g. Suresh Verma" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">10-Digit Mobile Number *</label>
+                    <input type="tel" id="admin-new-user-phone" maxlength="10" oninput="this.value=extractCleanPhone(this.value)" required placeholder="9876543210" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-bold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Email Address</label>
+                    <input type="email" id="admin-new-user-email" placeholder="user@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Account Password (Min 6 chars) *</label>
+                    <input type="text" id="admin-new-user-password" minlength="6" required placeholder="e.g. User@123" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-bold">
+                </div>
+                <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800">
+                    <button type="button" onclick="closeAdminAddUserModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black shadow-md">Create &amp; Sync User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Self Account Permanent Deletion Confirmation Modal -->
+    <div id="delete-self-account-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-rose-500/30 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 class="text-sm font-black flex items-center gap-2 text-rose-600"><i class="fa-solid fa-triangle-exclamation"></i> Delete Account Permanently</h4>
+                <button type="button" onclick="closeDeleteSelfAccountModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs text-neutral-600 dark:text-neutral-300">This will permanently erase <strong id="delete-self-account-identity">your account</strong> and all cloud ledgers. Type <strong>DELETE</strong> below to confirm.</p>
+            <form onsubmit="confirmDeleteSelfAccount(event)" class="space-y-3 text-xs">
+                <input type="text" id="delete-self-confirm-input" required placeholder="Type DELETE" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-black uppercase">
+                <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="closeDeleteSelfAccountModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black">Erase Forever</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <!-- Admin Sponsored Banner Slide Add / Edit Modal -->
-    <div id="admin-banner-slide-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card w-full max-w-lg p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 my-auto">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 id="admin-banner-modal-title" class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-rectangle-ad text-primary-600"></i> Edit Sponsored Banner Slide</h4>
-                <button type="button" onclick="closeAdminBannerModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    <div id="admin-banner-slide-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-lg p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
+                <h4 id="admin-banner-modal-title" class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
+                    <i class="fa-solid fa-images text-primary-600"></i> Edit Sponsored Banner Slide
+                </h4>
+                <button type="button" onclick="closeAdminBannerModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="saveAdminBannerSlideForm(event)" class="space-y-3">
-                <input type="hidden" id="admin-banner-edit-index" value="-1">
-                <div>
-                    <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Banner Image URL (Optional — Leave blank for Gradient Card)</label>
-                    <input type="url" id="admin-banner-image-url" oninput="previewAdminBannerImage(this.value)" placeholder="https://blogger.googleusercontent.com/..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-mono">
-                    <div id="admin-banner-img-preview-box" class="mt-2 hidden">
-                        <img id="admin-banner-img-preview" src="" alt="Banner Preview" class="w-full h-28 object-cover rounded-xl border border-neutral-200 dark:border-neutral-700">
-                    </div>
-                </div>
+
+            <form onsubmit="saveAdminBannerSlideForm(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="adm-slide-edit-index" value="-1">
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Badge Tag</label>
-                        <input type="text" id="admin-banner-badge" placeholder="e.g. NEO KHATA PRO" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
+                        <label class="block font-bold mb-1">Top Badge Tag *</label>
+                        <input type="text" id="adm-slide-badge" required placeholder="e.g. NEOKHATA / SMART LEDGER" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black uppercase">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Target Tab on Click</label>
-                        <select id="admin-banner-target-tab" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
-                            <option value="dashboard">Dashboard</option>
+                        <label class="block font-bold mb-1">Target Tab on Click</label>
+                        <select id="adm-slide-target" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <option value="dashboard">Dashboard Overview</option>
                             <option value="udhar">Udhar Khata</option>
                             <option value="grocery">Shopping Checklist</option>
-                            <option value="hub">Friends Hub</option>
-                            <option value="transactions">History</option>
-                            <option value="analytics">Analytics & Reports</option>
+                            <option value="hub">Friends Hub Split</option>
+                            <option value="analytics">Analytics &amp; Reports</option>
+                            <option value="transactions">All Transactions History</option>
+                            <option value="milk">Milk Ledger</option>
+                            <option value="vyapari">Vyapari Mandi</option>
                         </select>
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Slide Title *</label>
-                    <input type="text" id="admin-banner-title" required placeholder="e.g. हिसाब-किताब को बनाएं आसान" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold">
+                    <label class="block font-bold mb-1">Main Slide Headline / Title *</label>
+                    <input type="text" id="adm-slide-title" required placeholder="e.g. हिसाब-किताब को बनाएं आसान" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
                 </div>
+
                 <div>
-                    <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Subtitle / Description</label>
-                    <input type="text" id="admin-banner-subtitle" placeholder="e.g. आय, खर्च, खरीदारी और उधार खाता का पूरा रिकॉर्ड..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-medium">
+                    <label class="block font-bold mb-1">Slide Description / Subtitle *</label>
+                    <textarea id="adm-slide-subtitle" rows="2" required placeholder="Enter slide description..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold"></textarea>
                 </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">CTA Button Text</label>
-                        <input type="text" id="admin-banner-cta" placeholder="e.g. Explore Now" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
+                        <label class="block font-bold mb-1">CTA Button Text</label>
+                        <input type="text" id="adm-slide-cta" placeholder="e.g. Explore Now" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Card Gradient Theme</label>
-                        <select id="admin-banner-gradient" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
+                        <label class="block font-bold mb-1">Fallback Gradient Theme</label>
+                        <select id="adm-slide-gradient" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                             <option value="from-primary-700 via-primary-600 to-emerald-600">Royal Blue → Emerald</option>
-                            <option value="from-rose-600 via-amber-600 to-primary-600">Rose → Amber → Blue</option>
+                            <option value="from-rose-600 via-amber-600 to-primary-600">Crimson Rose → Amber</option>
                             <option value="from-emerald-700 via-teal-600 to-primary-600">Emerald → Teal</option>
-                            <option value="from-indigo-700 via-purple-600 to-primary-600">Indigo → Purple</option>
-                            <option value="from-amber-600 via-orange-600 to-rose-600">Amber → Sunset Rose</option>
+                            <option value="from-indigo-700 via-purple-600 to-primary-600">Indigo → Royal Purple</option>
+                            <option value="from-amber-600 via-orange-600 to-rose-600">Amber Gold → Orange</option>
+                            <option value="from-sky-700 via-primary-600 to-emerald-600">Sky Blue → Emerald</option>
                         </select>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-2 pt-2">
-                    <button type="button" onclick="closeAdminBannerModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold">Save Slide</button>
+
+                <div>
+                    <label class="block font-bold mb-1">Banner Image URL (Optional)</label>
+                    <input type="url" id="adm-slide-image-url" oninput="previewAdminBannerImage(this.value)" placeholder="https://..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono text-[11px]">
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-1">High-Res Image URL (Optional)</label>
+                    <input type="url" id="adm-slide-hires-url" placeholder="https://..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono text-[11px]">
+                </div>
+
+                <div id="adm-slide-preview-wrap" class="hidden rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-700 h-28 bg-neutral-100 dark:bg-neutral-800">
+                    <img id="adm-slide-preview-img" src="" alt="Banner Preview" class="w-full h-full object-cover">
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800">
+                    <button type="button" onclick="closeAdminBannerModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-black shadow-md">Save &amp; Publish Slide</button>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <!-- Self-Service Permanent Account Deletion Confirmation Modal -->
-    <div id="delete-self-account-modal" class="fixed inset-0 z-50 bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-rose-500/30">
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2 text-rose-600">
-                    <i class="fa-solid fa-triangle-exclamation"></i> Delete My Account Permanently
-                </h4>
-                <button type="button" onclick="closeDeleteSelfAccountModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div class="space-y-3 text-xs">
-                <div class="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-rose-700 dark:text-rose-300 space-y-1">
-                    <div class="font-black">Warning: This action cannot be undone!</div>
-                    <p class="leading-relaxed text-[11px]">Deleting your account (<strong id="delete-self-account-identity">User</strong>) will permanently remove all your transactions, Udhar Khata customers, shopping checklists, and group splits from both this device and Google Firebase Cloud.</p>
-                </div>
-                <form onsubmit="confirmDeleteSelfAccount(event)" class="space-y-3">
-                    <div>
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Type <span class="font-mono text-rose-600 font-black">DELETE</span> to confirm:</label>
-                        <input type="text" id="delete-self-confirm-input" required autocomplete="off" placeholder="Type DELETE here" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-xs font-mono font-black uppercase focus:outline-none focus:border-rose-500">
-                    </div>
-                    <div class="grid grid-cols-2 gap-2 pt-2">
-                        <button type="button" onclick="closeDeleteSelfAccountModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                        <button type="submit" id="confirm-delete-self-btn" class="py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-black flex items-center justify-center gap-1.5 shadow-md shadow-rose-600/25">
-                            <i class="fa-solid fa-trash-can"></i> Delete Forever
-                        </button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 
@@ -8370,7 +8259,7 @@
                     </div>
                     <div class="flex items-center gap-2 flex-shrink-0 justify-end">
                         <button type="button" onclick="event.stopPropagation(); inspectAdminUserDetails('${userKey}')" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-[11px] transition shadow-sm flex items-center gap-1.5">
-                            <i class="fa-solid fa-eye"></i> Full Info
+                            <i class="fa-solid fa-user-pen"></i> Full Edit &amp; Backup
                         </button>
                         <button type="button" onclick="event.stopPropagation(); deleteAdminRegisteredUser('${userKey}')" class="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-600 text-rose-600 hover:text-white transition" title="Delete User">
                             <i class="fa-solid fa-trash"></i>
@@ -8380,8 +8269,26 @@
             }).join('') || '<div class="text-xs text-neutral-400 text-center py-4">No matching users found. Click "Force Cloud Sync" to refresh.</div>';
         }
 
+        let currentInspectedUserKey = '';
+
+        function resolveRawWorkspaceForUser(u) {
+            const workspaces = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
+            const cleanPhone = extractCleanPhone(u.phone || u.username || '');
+            const candidates = [
+                cleanPhone.length === 10 ? `phone_${cleanPhone}` : '',
+                u.primaryUid || '',
+                u.uid || ''
+            ].filter(Boolean);
+            for (const key of candidates) {
+                if (workspaces[key]) return { wsKey: key, rawWs: workspaces[key] };
+            }
+            const fallbackKey = cleanPhone.length === 10 ? `phone_${cleanPhone}` : (u.uid || `user_${Date.now()}`);
+            return { wsKey: fallbackKey, rawWs: {} };
+        }
+
         async function inspectAdminUserDetails(encodedKey) {
             const key = decodeURIComponent(encodedKey || '');
+            currentInspectedUserKey = key;
             if (typeof window.fetchFirestoreUsersNow === 'function') {
                 await window.fetchFirestoreUsersNow();
             }
@@ -8400,17 +8307,64 @@
             });
 
             const titleEl = document.getElementById('admin-inspector-title');
-            if (titleEl) titleEl.innerHTML = `<i class="fa-solid fa-user-shield text-purple-600"></i> ${user.name} — Complete Activity & Ledger`;
+            if (titleEl) titleEl.innerHTML = `<i class="fa-solid fa-user-shield text-purple-600"></i> ${user.name} — Full Account Editor, Backup &amp; Restore`;
 
             const bodyEl = document.getElementById('admin-inspector-body');
             if (bodyEl) {
                 bodyEl.innerHTML = `
-                    <div class="p-3.5 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <div><span class="text-[10px] text-neutral-400 block uppercase font-bold">Full Name</span><strong class="text-sm">${user.name || '-'}</strong></div>
-                        <div><span class="text-[10px] text-neutral-400 block uppercase font-bold">Mobile & Email</span><strong class="font-mono">${user.phone ? '+91 ' + user.phone : '-'} • ${user.email || '-'}</strong></div>
-                        <div><span class="text-[10px] text-neutral-400 block uppercase font-bold">Monthly Budget</span><strong>₹${ws.budget.toLocaleString('en-IN')}</strong></div>
-                        <div><span class="text-[10px] text-neutral-400 block uppercase font-bold">Joined On</span><strong>${user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Active Cloud User'}</strong></div>
+                    <!-- Single-User Full Backup & Upload Restore Bar -->
+                    <div class="p-3.5 rounded-2xl bg-gradient-to-r from-primary-500/10 via-purple-500/10 to-emerald-500/10 border border-primary-500/25 flex flex-wrap items-center justify-between gap-2.5">
+                        <div>
+                            <div class="font-black text-neutral-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-database text-primary-600"></i> Single-User Account Vault</div>
+                            <div class="text-[10px] text-neutral-500">Download full JSON backup of this user or upload a backup file directly into their account.</div>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <button type="button" onclick="downloadSingleUserBackupByAdmin('${encodeURIComponent(key)}')" class="px-3 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black text-[11px] flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-download"></i> Download User Backup
+                            </button>
+                            <button type="button" onclick="document.getElementById('admin-single-user-restore-input').click()" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black text-[11px] flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-upload"></i> Upload &amp; Restore Backup
+                            </button>
+                            <input type="file" id="admin-single-user-restore-input" accept=".json" onchange="handleSingleUserBackupUploadByAdmin(event, '${encodeURIComponent(key)}')" class="hidden">
+                        </div>
                     </div>
+
+                    <!-- Full Edit Account Info & Credentials Form -->
+                    <form onsubmit="saveAdminEditedUserAccount(event, '${encodeURIComponent(key)}')" class="p-4 rounded-2xl bg-neutral-100/90 dark:bg-neutral-800/90 border border-neutral-200 dark:border-neutral-700 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-black text-xs uppercase tracking-wider text-purple-600"><i class="fa-solid fa-pen-to-square mr-1"></i> Full Edit User Account Details</span>
+                            <span class="text-[10px] font-mono text-neutral-400">UID: ${user.uid || 'N/A'}</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Full Name *</label>
+                                <input type="text" id="adm-edit-u-name" required value="${String(user.name || '').replace(/"/g, '&quot;')}" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-bold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">10-Digit Mobile *</label>
+                                <input type="tel" id="adm-edit-u-phone" maxlength="10" oninput="this.value=extractCleanPhone(this.value)" value="${extractCleanPhone(user.phone || '')}" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono font-bold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Email Address</label>
+                                <input type="email" id="adm-edit-u-email" value="${String(user.email || '').replace(/"/g, '&quot;')}" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-semibold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Monthly Budget (₹)</label>
+                                <input type="number" id="adm-edit-u-budget" min="0" value="${ws.budget || 15000}" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-black">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Business / Shop Name</label>
+                                <input type="text" id="adm-edit-u-business" value="${String(ws.userProfile?.businessName || '').replace(/"/g, '&quot;')}" placeholder="Optional shop name" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-semibold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-neutral-500 mb-1">Set New Password (Leave blank to keep)</label>
+                                <input type="text" id="adm-edit-u-password" minlength="6" placeholder="Min 6 chars to reset" class="w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono font-bold">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black text-xs shadow-sm flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-floppy-disk"></i> Save &amp; Sync User Account Changes
+                        </button>
+                    </form>
 
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                         <div class="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20"><span class="text-[10px] font-bold text-rose-600 block">Total Spent</span><strong class="text-base font-black text-rose-600">₹${totalExp.toLocaleString('en-IN')}</strong></div>
@@ -8420,7 +8374,7 @@
                     </div>
 
                     <div>
-                        <h5 class="font-black text-xs uppercase tracking-wider text-neutral-500 mb-2">Recent Expenses & Income (${ws.transactions.length})</h5>
+                        <h5 class="font-black text-xs uppercase tracking-wider text-neutral-500 mb-2">Recent Expenses &amp; Income (${ws.transactions.length})</h5>
                         <div class="max-h-44 overflow-y-auto space-y-1.5 pr-1">
                             ${ws.transactions.slice(0, 20).map(tx => `
                                 <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/70 border flex items-center justify-between gap-2">
@@ -8433,32 +8387,6 @@
                             `).join('') || '<div class="text-neutral-400 text-center py-3">No transactions recorded by this user yet.</div>'}
                         </div>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div>
-                            <h5 class="font-black text-xs uppercase tracking-wider text-neutral-500 mb-1.5">Udhar Customers (${ws.udharCustomers.length})</h5>
-                            <div class="max-h-32 overflow-y-auto space-y-1">
-                                ${ws.udharCustomers.map(c => {
-                                    const { net } = getUdharCustomerBalance(c);
-                                    return `<div class="p-2 rounded-xl bg-neutral-50 dark:bg-neutral-800/70 border flex justify-between">
-                                        <span class="font-bold truncate">${c.name}</span>
-                                        <span class="font-black ${net > 0 ? 'text-rose-600' : 'text-emerald-600'}">₹${Math.abs(net).toLocaleString('en-IN')}</span>
-                                    </div>`;
-                                }).join('') || '<div class="text-neutral-400 text-[11px]">No Udhar customers</div>'}
-                            </div>
-                        </div>
-                        <div>
-                            <h5 class="font-black text-xs uppercase tracking-wider text-neutral-500 mb-1.5">Shopping & Group Splits</h5>
-                            <div class="max-h-32 overflow-y-auto space-y-1">
-                                ${ws.groceryItems.slice(0, 8).map(g => `
-                                    <div class="p-2 rounded-xl bg-neutral-50 dark:bg-neutral-800/70 border flex justify-between">
-                                        <span class="truncate">${g.name} (${g.qty} ${g.unit})</span>
-                                        <span class="font-bold">${g.checked ? '✓' : 'Pending'}</span>
-                                    </div>
-                                `).join('') || '<div class="text-neutral-400 text-[11px]">No shopping items</div>'}
-                            </div>
-                        </div>
-                    </div>
                 `;
             }
 
@@ -8469,437 +8397,384 @@
             }
         }
 
-        async function deleteAdminRegisteredUser(encodedKey) {
-            const key = decodeURIComponent(encodedKey || '');
-            const rawUsers = JSON.parse(localStorage.getItem('khataflow_registered_users') || '[]');
-            const filtered = rawUsers.filter(u => (u.phone || u.email || u.uid) !== key);
-            localStorage.setItem('khataflow_registered_users', JSON.stringify(filtered));
-            if (typeof window.deleteCloudUserRecord === 'function') {
-                await window.deleteCloudUserRecord(key);
+        async function saveAdminEditedUserAccount(e, encodedKey) {
+            e.preventDefault();
+            const oldKey = decodeURIComponent(encodedKey || '');
+            const allUsers = getDeduplicatedAdminUsers();
+            const user = allUsers.find(u => (u.phone || u.email || u.uid) === oldKey);
+            if (!user) return;
+
+            const newName = document.getElementById('adm-edit-u-name')?.value.trim() || user.name;
+            const newPhone = extractCleanPhone(document.getElementById('adm-edit-u-phone')?.value || user.phone);
+            const newEmail = (document.getElementById('adm-edit-u-email')?.value || user.email || '').trim().toLowerCase();
+            const newBudget = Number(document.getElementById('adm-edit-u-budget')?.value) || 0;
+            const newBusiness = (document.getElementById('adm-edit-u-business')?.value || '').trim();
+            const newPassword = (document.getElementById('adm-edit-u-password')?.value || '').trim();
+
+            const updatedUser = {
+                ...user,
+                name: newName,
+                phone: newPhone || user.phone || '',
+                email: newEmail,
+                username: newPhone || newEmail || user.username,
+                updatedAt: new Date().toISOString()
+            };
+            if (newPassword.length >= 6) {
+                updatedUser.passwordHash = btoa(unescape(encodeURIComponent(newPassword)));
             }
+
+            // Update local users registry
+            const rawUsers = JSON.parse(localStorage.getItem('khataflow_registered_users') || '[]');
+            const replaced = rawUsers.map(u => ((u.phone || u.email || u.uid) === oldKey ? updatedUser : u));
+            if (!replaced.some(u => (u.phone || u.email || u.uid) === (updatedUser.phone || updatedUser.email || updatedUser.uid))) {
+                replaced.unshift(updatedUser);
+            }
+            localStorage.setItem('khataflow_registered_users', JSON.stringify(replaced));
+
+            // Update user's workspace profile & budget
+            const { wsKey, rawWs } = resolveRawWorkspaceForUser(user);
+            const targetWsKey = newPhone.length === 10 ? `phone_${newPhone}` : wsKey;
+            const updatedWs = {
+                ...rawWs,
+                name: newName,
+                phone: newPhone,
+                email: newEmail,
+                budget: newBudget,
+                merchantPhone: newPhone || rawWs.merchantPhone || '',
+                merchantUpi: newPhone.length === 10 ? `${newPhone}@upi` : (rawWs.merchantUpi || ''),
+                userProfile: {
+                    ...(rawWs.userProfile || {}),
+                    name: newName,
+                    phone: newPhone,
+                    email: newEmail,
+                    businessName: newBusiness,
+                    upi: newPhone.length === 10 ? `${newPhone}@upi` : (rawWs.userProfile?.upi || '')
+                },
+                updatedAt: Date.now()
+            };
+
+            const allWs = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
+            allWs[targetWsKey] = updatedWs;
+            localStorage.setItem('khataflow_admin_all_workspaces', JSON.stringify(allWs));
+
+            if (typeof window.adminSaveSingleUserToCloud === 'function') {
+                await window.adminSaveSingleUserToCloud(updatedUser, targetWsKey, updatedWs);
+            }
+
             renderAdminUsersList();
             updateAdminDashboardMetrics();
-            showToast('User removed from directory');
+            showToast(`Updated account & cloud workspace for "${newName}"!`);
+            inspectAdminUserDetails(encodeURIComponent(updatedUser.phone || updatedUser.email || updatedUser.uid));
         }
 
-        function renderAdminAdsList() {
-            const listEl = document.getElementById('admin-ads-list');
-            if (!listEl) return;
-            listEl.innerHTML = SPONSORED_ADS_LIST.map((ad, idx) => `
-                <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between gap-3 text-xs">
-                    <div class="flex items-center gap-3 min-w-0">
-                        ${ad.imageUrl
-                            ? `<img src="${ad.imageUrl}" alt="Banner ${idx + 1}" class="w-16 h-10 rounded-xl object-cover border border-neutral-300 dark:border-neutral-700 flex-shrink-0">`
-                            : `<div class="w-16 h-10 rounded-xl bg-gradient-to-r ${ad.gradient || 'from-primary-600 to-emerald-600'} text-white font-black text-[10px] flex items-center justify-center flex-shrink-0">#${idx + 1}</div>`}
-                        <div class="min-w-0">
-                            <div class="font-black truncate text-neutral-900 dark:text-white">${ad.title}</div>
-                            <div class="text-[10px] text-neutral-500 truncate">${ad.imageUrl || ad.subtitle}</div>
+        async function downloadSingleUserBackupByAdmin(encodedKey) {
+            const key = decodeURIComponent(encodedKey || '');
+            const allUsers = getDeduplicatedAdminUsers();
+            const user = allUsers.find(u => (u.phone || u.email || u.uid) === key);
+            if (!user) return;
+            const { wsKey, rawWs } = resolveRawWorkspaceForUser(user);
+
+            const singleBackupPayload = {
+                backupFormat: 'NEOKHATA_SINGLE_USER_BACKUP_V1',
+                exportedAt: new Date().toISOString(),
+                exportedByAdmin: getPrimaryUserName(),
+                userProfileRecord: user,
+                workspaceKey: wsKey,
+                workspaceData: rawWs
+            };
+            const blob = new Blob([JSON.stringify(singleBackupPayload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const safeName = (user.name || 'User').replace(/\s+/g, '_');
+            a.href = url;
+            a.download = `NeoKhata_UserBackup_${safeName}_${user.phone || 'Account'}_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast(`Downloaded full backup for "${user.name}"!`);
+        }
+
+        async function handleSingleUserBackupUploadByAdmin(e, encodedKey) {
+            const file = e.target?.files?.[0];
+            if (e.target) e.target.value = '';
+            if (!file) return;
+            const key = decodeURIComponent(encodedKey || '');
+            const allUsers = getDeduplicatedAdminUsers();
+            const user = allUsers.find(u => (u.phone || u.email || u.uid) === key);
+            if (!user) return;
+
+            try {
+                const text = await file.text();
+                const parsed = JSON.parse(text);
+                if (!parsed || typeof parsed !== 'object') throw new Error('Invalid JSON');
+
+                const { wsKey } = resolveRawWorkspaceForUser(user);
+                let restoredWs = null;
+                if (parsed.backupFormat === 'NEOKHATA_SINGLE_USER_BACKUP_V1' && parsed.workspaceData) {
+                    restoredWs = parsed.workspaceData;
+                } else if (parsed.transactions || parsed.udharCustomers || parsed.milkData || parsed.budget !== undefined) {
+                    // Also supports restoring a standard user backup file directly into this account
+                    restoredWs = {
+                        ...parsed,
+                        transactions: typeof parsed.transactions === 'string' ? parsed.transactions : JSON.stringify(parsed.transactions || []),
+                        splitMembers: typeof parsed.splitMembers === 'string' ? parsed.splitMembers : JSON.stringify(parsed.splitMembers || []),
+                        splitBills: typeof parsed.splitBills === 'string' ? parsed.splitBills : JSON.stringify(parsed.splitBills || []),
+                        groceryItems: typeof parsed.groceryItems === 'string' ? parsed.groceryItems : JSON.stringify(parsed.groceryItems || []),
+                        groceryInvoices: typeof parsed.groceryInvoices === 'string' ? parsed.groceryInvoices : JSON.stringify(parsed.groceryInvoices || []),
+                        udharCustomers: typeof parsed.udharCustomers === 'string' ? parsed.udharCustomers : JSON.stringify(parsed.udharCustomers || []),
+                        vyapariCommodities: typeof parsed.vyapariCommodities === 'string' ? parsed.vyapariCommodities : JSON.stringify(parsed.vyapariCommodities || []),
+                        vyapariInvoices: typeof parsed.vyapariInvoices === 'string' ? parsed.vyapariInvoices : JSON.stringify(parsed.vyapariInvoices || []),
+                        savingsGoals: typeof parsed.savingsGoals === 'string' ? parsed.savingsGoals : JSON.stringify(parsed.savingsGoals || []),
+                        recurringBills: typeof parsed.recurringBills === 'string' ? parsed.recurringBills : JSON.stringify(parsed.recurringBills || []),
+                        milkData: typeof parsed.milkData === 'string' ? parsed.milkData : JSON.stringify(parsed.milkData || { customers: [], entries: [], khata: [] })
+                    };
+                } else {
+                    throw new Error('Unrecognized user backup file');
+                }
+
+                const finalWs = {
+                    ...restoredWs,
+                    name: user.name,
+                    phone: user.phone,
+                    email: user.email,
+                    updatedAt: Date.now()
+                };
+
+                const allWs = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
+                allWs[wsKey] = finalWs;
+                localStorage.setItem('khataflow_admin_all_workspaces', JSON.stringify(allWs));
+
+                if (typeof window.adminSaveSingleUserToCloud === 'function') {
+                    await window.adminSaveSingleUserToCloud(user, wsKey, finalWs);
+                }
+
+                renderAdminUsersList();
+                updateAdminDashboardMetrics();
+                inspectAdminUserDetails(encodeURIComponent(key));
+                showToast(`Backup uploaded & restored to "${user.name}"'s cloud account!`);
+            } catch (err) {
+                showToast(err?.message || 'Failed to upload user backup', 'error');
+            }
+        }
+
+        function openAdminBulkEditUsersModal() {
+            const listBox = document.getElementById('admin-bulk-users-list');
+            const modal = document.getElementById('admin-bulk-users-modal');
+            if (!listBox || !modal) return;
+            const users = getDeduplicatedAdminUsers();
+            listBox.innerHTML = users.length ? users.map((u, idx) => {
+                const ws = getWorkspaceForAdminUser(u);
+                const origKey = encodeURIComponent(u.phone || u.email || u.uid || String(idx));
+                return `
+                    <div class="bulk-user-row p-3.5 rounded-2xl bg-neutral-100/90 dark:bg-neutral-800/90 border border-neutral-200 dark:border-neutral-700 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-center" data-orig-key="${origKey}">
+                        <div class="sm:col-span-3">
+                            <label class="block text-[9px] font-black uppercase text-neutral-400 mb-0.5">#${idx + 1} Full Name</label>
+                            <input type="text" class="bulk-u-name w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-bold" value="${String(u.name || '').replace(/"/g, '&quot;')}">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-[9px] font-black uppercase text-neutral-400 mb-0.5">Mobile (10-Digit)</label>
+                            <input type="tel" maxlength="10" oninput="this.value=extractCleanPhone(this.value)" class="bulk-u-phone w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono font-bold" value="${extractCleanPhone(u.phone || '')}">
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label class="block text-[9px] font-black uppercase text-neutral-400 mb-0.5">Email</label>
+                            <input type="email" class="bulk-u-email w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-semibold" value="${String(u.email || '').replace(/"/g, '&quot;')}">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-[9px] font-black uppercase text-neutral-400 mb-0.5">Budget (₹)</label>
+                            <input type="number" min="0" class="bulk-u-budget w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-black" value="${ws.budget || 15000}">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-[9px] font-black uppercase text-neutral-400 mb-0.5">Reset Password</label>
+                            <input type="text" placeholder="Optional" class="bulk-u-pwd w-full p-2 rounded-xl bg-white dark:bg-neutral-900 border font-mono">
                         </div>
                     </div>
-                    <div class="flex items-center gap-1.5 flex-shrink-0">
-                        <button type="button" onclick="openEditAdModal(${idx})" class="px-2.5 py-2 rounded-xl bg-primary-600/10 hover:bg-primary-600 text-primary-600 hover:text-white font-bold transition flex items-center gap-1" title="Edit Slide">
-                            <i class="fa-solid fa-pen"></i> <span class="hidden sm:inline">Edit</span>
-                        </button>
-                        <button type="button" onclick="saveSingleBannerQuick(${idx})" class="px-2.5 py-2 rounded-xl bg-emerald-600/10 hover:bg-emerald-600 text-emerald-600 hover:text-white font-bold transition flex items-center gap-1" title="Save Slide">
-                            <i class="fa-solid fa-floppy-disk"></i> <span class="hidden sm:inline">Save</span>
-                        </button>
-                        <button type="button" onclick="deleteAdminAdSlide(${idx})" class="p-2 rounded-xl bg-error-500/10 hover:bg-error-500 text-error-600 hover:text-white transition" title="Delete Slide">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('') || '<div class="text-xs text-neutral-400 text-center py-4">No custom banner slides configured. Click "+ Add New Ad Slide" to create one.</div>';
-        }
+                `;
+            }).join('') : '<div class="text-center py-6 text-neutral-400">No registered users available to edit.</div>';
 
-        function previewAdminBannerImage(url) {
-            const box = document.getElementById('admin-banner-img-preview-box');
-            const img = document.getElementById('admin-banner-img-preview');
-            if (!box || !img) return;
-            const clean = (url || '').trim();
-            if (clean) {
-                img.src = clean;
-                box.classList.remove('hidden');
-            } else {
-                box.classList.add('hidden');
-            }
-        }
-
-        function openAddAdModal() {
-            document.getElementById('admin-banner-modal-title').innerHTML = '<i class="fa-solid fa-plus text-primary-600"></i> Add New Sponsored Banner Slide';
-            document.getElementById('admin-banner-edit-index').value = '-1';
-            document.getElementById('admin-banner-image-url').value = '';
-            document.getElementById('admin-banner-badge').value = 'FEATURED';
-            document.getElementById('admin-banner-title').value = '';
-            document.getElementById('admin-banner-subtitle').value = '';
-            document.getElementById('admin-banner-cta').value = 'Explore Now';
-            document.getElementById('admin-banner-target-tab').value = 'dashboard';
-            document.getElementById('admin-banner-gradient').value = 'from-primary-700 via-primary-600 to-emerald-600';
-            previewAdminBannerImage('');
-            document.getElementById('admin-banner-slide-modal')?.classList.replace('hidden', 'flex');
-        }
-
-        function openEditAdModal(idx) {
-            const ad = SPONSORED_ADS_LIST[idx];
-            if (!ad) return;
-            document.getElementById('admin-banner-modal-title').innerHTML = `<i class="fa-solid fa-pen text-primary-600"></i> Edit Sponsored Banner Slide #${idx + 1}`;
-            document.getElementById('admin-banner-edit-index').value = String(idx);
-            document.getElementById('admin-banner-image-url').value = ad.imageUrl || '';
-            document.getElementById('admin-banner-badge').value = ad.badge || 'FEATURED';
-            document.getElementById('admin-banner-title').value = ad.title || '';
-            document.getElementById('admin-banner-subtitle').value = ad.subtitle || '';
-            document.getElementById('admin-banner-cta').value = ad.ctaText || 'Explore Now';
-            document.getElementById('admin-banner-target-tab').value = ad.targetTab || 'dashboard';
-            document.getElementById('admin-banner-gradient').value = ad.gradient || 'from-primary-700 via-primary-600 to-emerald-600';
-            previewAdminBannerImage(ad.imageUrl || '');
-            document.getElementById('admin-banner-slide-modal')?.classList.replace('hidden', 'flex');
-        }
-        window.openEditAdModal = openEditAdModal;
-        function closeAdminBannerModal() {
-            const modal = document.getElementById('admin-banner-slide-modal');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
-        }
-
-        function saveAdminBannerSlideForm(e) {
-            e.preventDefault();
-            const idx = parseInt(document.getElementById('admin-banner-edit-index')?.value ?? '-1', 10);
-            const imageUrl = (document.getElementById('admin-banner-image-url')?.value || '').trim();
-            const badge = (document.getElementById('admin-banner-badge')?.value || 'FEATURED').trim();
-            const title = (document.getElementById('admin-banner-title')?.value || '').trim();
-            const subtitle = (document.getElementById('admin-banner-subtitle')?.value || '').trim();
-            const ctaText = (document.getElementById('admin-banner-cta')?.value || 'Explore Now').trim();
-            const targetTab = document.getElementById('admin-banner-target-tab')?.value || 'dashboard';
-            const gradient = document.getElementById('admin-banner-gradient')?.value || 'from-primary-700 via-primary-600 to-emerald-600';
-
-            if (!title) return;
-
-            const slideData = {
-                id: idx >= 0 && SPONSORED_ADS_LIST[idx]?.id ? SPONSORED_ADS_LIST[idx].id : `ad_slide_${Date.now()}`,
-                badge,
-                title,
-                subtitle,
-                ctaText,
-                targetTab,
-                imageUrl,
-                hiResUrl: imageUrl,
-                gradient
-            };
-
-            if (idx >= 0 && idx < SPONSORED_ADS_LIST.length) {
-                SPONSORED_ADS_LIST[idx] = slideData;
-            } else {
-                SPONSORED_ADS_LIST.push(slideData);
-            }
-
-            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
-            renderAdminAdsList();
-            renderSponsoredAdCarousel();
-            closeAdminBannerModal();
-            saveAllAdminChangesLive();
-            showToast(idx >= 0 ? `Updated Banner Slide #${idx + 1}!` : 'Added new Banner Slide!');
-        }
-
-        function deleteAdminAdSlide(idx) {
-            SPONSORED_ADS_LIST.splice(idx, 1);
-            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
-            renderAdminAdsList();
-            renderSponsoredAdCarousel();
-            showToast('Ad slide removed');
-        }
-
-        function saveSponsoredBannerChanges() {
-            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
-            saveAllAdminChangesLive();
-        }
-
-        function handleSaveAnnouncement(e) {
-            e.preventDefault();
-            adminConfig.announcementText = document.getElementById('admin-announcement-text')?.value.trim() || '';
-            adminConfig.announcementType = document.getElementById('admin-announcement-type')?.value || 'info';
-            adminConfig.announcementEnabled = !!document.getElementById('admin-announcement-enabled')?.checked;
-            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
-            applyAdminConfigToUI();
-            saveAllAdminChangesLive();
-        }
-
-        function setAdDeliveryMode(mode) {
-            adminConfig.adDeliveryMode = mode;
-            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
-            updateAdModeButtonsUI();
-            applyAdminConfigToUI();
-            renderAdmobSlots();
-            const labelMap = {
-                'admob-only': 'Google AdMob Only',
-                'custom-only': 'Adsterra Ads Only',
-                'hybrid': 'Both (Google AdMob + Adsterra)'
-            };
-            showToast(`Ad Network Mode set to: ${labelMap[mode] || mode}`);
-        }
-
-        function handleSaveAdsterraConfig(e) {
-            e.preventDefault();
-            adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
-            adminConfig.adsterraTopCode = document.getElementById('admin-adsterra-top-code')?.value.trim() || '';
-            adminConfig.adsterraFeedCode = document.getElementById('admin-adsterra-feed-code')?.value.trim() || '';
-            adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
-            adminConfig.adsterraTopHeight = document.getElementById('admin-adsterra-top-height')?.value || '95';
-            adminConfig.adsterraFeedHeight = document.getElementById('admin-adsterra-feed-height')?.value || '255';
-            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
-            renderAdsterraSlots();
-            renderAdmobSlots();
-            saveAllAdminChangesLive();
-            showToast('Adsterra Ad Codes saved & published live!');
-        }
-
-        function handleSaveAdMobConfig(e) {
-            e.preventDefault();
-            adminConfig.admobPubId = document.getElementById('admin-admob-pub-id')?.value.trim() || '';
-            adminConfig.admobSlotId = document.getElementById('admin-admob-slot-id')?.value.trim() || '';
-            adminConfig.places = {
-                top: !!document.getElementById('admob-place-top')?.checked,
-                dashboard: !!document.getElementById('admob-place-dashboard')?.checked,
-                history: !!document.getElementById('admob-place-history')?.checked,
-                grocery: !!document.getElementById('admob-place-grocery')?.checked,
-                udhar: !!document.getElementById('admob-place-udhar')?.checked,
-                hub: !!document.getElementById('admob-place-hub')?.checked,
-                analytics: !!document.getElementById('admob-place-analytics')?.checked,
-                bottom: !!document.getElementById('admob-place-bottom')?.checked
-            };
-            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
-            renderAdmobSlots();
-            saveAllAdminChangesLive();
-        }
-        function hydrateLiveAdSlot(containerId, isEnabled = true, isBottomAnchor = false) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            const mode = adminConfig.adDeliveryMode || 'hybrid';
-            const feedAdsterraCode = (adminConfig.adsterraFeedCode || '').trim();
-            const topAdsterraCode = (adminConfig.adsterraTopCode || '').trim();
-            const activeAdsterraCode = feedAdsterraCode || topAdsterraCode;
-            const allowAdsterra = mode !== 'admob-only' && adminConfig.adsterraEnabled !== false && !!activeAdsterraCode;
-            const allowAdMob = mode !== 'custom-only';
-
-            const pubId = (adminConfig.admobPubId || '').trim();
-            const slotId = (adminConfig.admobSlotId || '').trim();
-            const hasGoogleCreds = Boolean(pubId && slotId);
-
-            // Never leave an empty box when neither Adsterra code nor Google AdMob IDs are configured
-            if (!isEnabled || (!allowAdsterra && (!allowAdMob || !hasGoogleCreds))) {
-                container.classList.add('hidden');
-                container.style.display = 'none';
-                container.innerHTML = '';
-                return;
-            }
-
-            container.classList.remove('hidden');
-            container.style.display = 'block';
-            container.style.width = '100%';
-            container.style.height = 'auto';
-            container.style.overflow = 'visible';
-            const targetBox = isBottomAnchor ? (document.getElementById('admob-bottom-container') || container) : container;
-            targetBox.style.height = 'auto';
-            targetBox.style.minHeight = '0px';
-
-            if (allowAdsterra && (mode === 'custom-only' || !hasGoogleCreds || containerId.endsWith('-2') || containerId.endsWith('-top'))) {
-                delete targetBox.dataset.adSig;
-                renderSandboxedAdsterraFrame(targetBox, activeAdsterraCode);
-                return;
-            }
-
-            if (allowAdMob && hasGoogleCreds) {
-                ensureAdSenseScript(pubId);
-                const sig = `admob_${pubId}_${slotId}`;
-                if (targetBox.dataset.adSig !== sig) {
-                    delete targetBox.dataset.adsterraSig;
-                    targetBox.dataset.adSig = sig;
-                    targetBox.innerHTML = `<ins class="adsbygoogle" style="display:block;width:100%;height:auto;" data-ad-client="${pubId}" data-ad-slot="${slotId}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
-                    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
-                }
-            }
-        }
-
-        function renderAdmobSlots() {
-            const p = adminConfig.places || { top: true, dashboard: true, history: true, grocery: true, udhar: true, hub: true, analytics: true, bottom: true };
-            const slotMap = [
-                { id: 'admob-slot-top', enabled: p.top !== false },
-                { id: 'admob-slot-dashboard', enabled: p.dashboard !== false },
-                { id: 'admob-slot-dashboard-2', enabled: p.dashboard !== false },
-                { id: 'admob-slot-history-top', enabled: p.history !== false },
-                { id: 'admob-slot-history', enabled: p.history !== false },
-                { id: 'admob-slot-grocery-top', enabled: p.grocery !== false },
-                { id: 'admob-slot-grocery', enabled: p.grocery !== false },
-                { id: 'admob-slot-udhar-top', enabled: p.udhar !== false },
-                { id: 'admob-slot-udhar', enabled: p.udhar !== false },
-                { id: 'admob-slot-hub-top', enabled: p.hub !== false },
-                { id: 'admob-slot-hub', enabled: p.hub !== false },
-                { id: 'admob-slot-analytics-top', enabled: p.analytics !== false },
-                { id: 'admob-slot-analytics-2', enabled: p.analytics !== false },
-                { id: 'admob-slot-bottom', enabled: !!p.bottom, isBottom: true }
-            ];
-            slotMap.forEach(s => hydrateLiveAdSlot(s.id, s.enabled, !!s.isBottom));
-        }
-
-        function saveAllAdminChangesLive() {
-            adminConfig.announcementText = document.getElementById('admin-announcement-text')?.value.trim() || '';
-            adminConfig.announcementType = document.getElementById('admin-announcement-type')?.value || 'info';
-            adminConfig.announcementEnabled = !!document.getElementById('admin-announcement-enabled')?.checked;
-            adminConfig.admobPubId = document.getElementById('admin-admob-pub-id')?.value.trim() || '';
-            adminConfig.admobSlotId = document.getElementById('admin-admob-slot-id')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-enabled')) adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
-            if (document.getElementById('admin-adsterra-top-code')) adminConfig.adsterraTopCode = document.getElementById('admin-adsterra-top-code')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-feed-code')) adminConfig.adsterraFeedCode = document.getElementById('admin-adsterra-feed-code')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-direct-url')) adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
-            if (document.getElementById('admin-adsterra-top-height')) adminConfig.adsterraTopHeight = document.getElementById('admin-adsterra-top-height')?.value || '95';
-            if (document.getElementById('admin-adsterra-feed-height')) adminConfig.adsterraFeedHeight = document.getElementById('admin-adsterra-feed-height')?.value || '255';
-            adminConfig.places = {
-                top: !!document.getElementById('admob-place-top')?.checked,
-                dashboard: !!document.getElementById('admob-place-dashboard')?.checked,
-                history: !!document.getElementById('admob-place-history')?.checked,
-                grocery: !!document.getElementById('admob-place-grocery')?.checked,
-                udhar: !!document.getElementById('admob-place-udhar')?.checked,
-                hub: !!document.getElementById('admob-place-hub')?.checked,
-                analytics: !!document.getElementById('admob-place-analytics')?.checked,
-                bottom: !!document.getElementById('admob-place-bottom')?.checked
-            };
-            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
-            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
-
-            if (typeof window.publishAdminBroadcastToCloud === 'function') {
-                window.publishAdminBroadcastToCloud({
-                    adminConfig,
-                    sponsoredAds: SPONSORED_ADS_LIST
-                }).catch(() => {});
-            }
-
-            applyAdminConfigToUI();
-            renderAdmobSlots();
-            showToast('All admin settings published live!');
-        }
-
-        function resetAdminCustomizationsToDefault() {
-            SPONSORED_ADS_LIST = [...DEFAULT_SPONSORED_ADS];
-            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
-            applyAdminConfigToUI();
-            renderAdminAdsList();
-            showToast('Admin settings reset to defaults');
-        }
-
-        function openPaymentAppChooser() { launchTargetPaymentApp(); }
-        function closePaymentAppChooser() { closeUpiQrModal(); }
-
-        let adSenseScriptInjected = false;
-        function ensureAdSenseScript(pubId) {
-            if (!pubId || !pubId.startsWith('ca-pub-') || adSenseScriptInjected) return;
-            adSenseScriptInjected = true;
-            const s = document.createElement('script');
-            s.async = true;
-            s.crossOrigin = 'anonymous';
-            s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(pubId)}`;
-            document.head.appendChild(s);
-        }
-
-        function runWithLiveRewardedAd(callback) {
-            if (typeof callback !== 'function') return;
-            const overlay = document.getElementById('live-rewarded-overlay');
-            const slot = document.getElementById('live-rewarded-slot');
-            const badge = document.getElementById('live-rewarded-timer-badge');
-            const mode = adminConfig.adDeliveryMode || 'hybrid';
-            const pubId = (adminConfig.admobPubId || '').trim();
-            const slotId = (adminConfig.admobSlotId || '').trim();
-            const adsterraCode = (adminConfig.adsterraFeedCode || adminConfig.adsterraTopCode || '').trim();
-
-            const canShowAdMob = mode !== 'custom-only' && pubId && slotId;
-            const canShowAdsterra = mode !== 'admob-only' && adminConfig.adsterraEnabled !== false && adsterraCode;
-
-            if (!overlay || !slot || (!canShowAdMob && !canShowAdsterra)) {
-                callback();
-                return;
-            }
-
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-
-            if (canShowAdMob) {
-                ensureAdSenseScript(pubId);
-                slot.innerHTML = `<ins class="adsbygoogle" style="display:block;width:300px;height:250px" data-ad-client="${pubId}" data-ad-slot="${slotId}"></ins>`;
-                try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
-            } else if (canShowAdsterra) {
-                renderSandboxedAdsterraFrame(slot, adsterraCode, 255);
-            }
-
-            let sec = 3;
-            if (badge) badge.textContent = `Preparing Download in ${sec}s...`;
-            const iv = setInterval(() => {
-                sec--;
-                if (sec > 0) {
-                    if (badge) badge.textContent = `Preparing Download in ${sec}s...`;
-                } else {
-                    clearInterval(iv);
-                    overlay.classList.add('hidden');
-                    overlay.classList.remove('flex');
-                    callback();
-                }
-            }, 1000);
-        }
-
-        function closeLiveInterstitialAd() {
-            const ov = document.getElementById('live-interstitial-overlay');
-            if (ov) {
-                ov.classList.add('hidden');
-                ov.classList.remove('flex');
-            }
-        }
-
-        function openAdminAddUserModal() {
-            const modal = document.getElementById('admin-user-modal');
-            if (!modal) return;
-            ['admin-new-user-name', 'admin-new-user-phone', 'admin-new-user-email', 'admin-new-user-password'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '';
-            });
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
-        function closeAdminAddUserModal() {
-            const modal = document.getElementById('admin-user-modal');
+
+        function closeAdminBulkEditUsersModal() {
+            const modal = document.getElementById('admin-bulk-users-modal');
             if (modal) {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
         }
-        async function handleAdminCreateUser(e) {
-            e.preventDefault();
-            const name = document.getElementById('admin-new-user-name')?.value.trim() || '';
-            const phone = extractCleanPhone(document.getElementById('admin-new-user-phone')?.value || '');
-            const emailInput = document.getElementById('admin-new-user-email')?.value.trim().toLowerCase() || '';
-            const password = document.getElementById('admin-new-user-password')?.value || '';
 
-            if (!name || phone.length !== 10 || password.length < 6) {
-                showToast('Enter Name, 10-digit Mobile, and 6+ char Password', 'error');
-                return;
-            }
-            const email = emailInput || `${phone}@khataflow.app`;
+        async function saveAdminBulkAllAccounts() {
+            const rows = Array.from(document.querySelectorAll('#admin-bulk-users-list .bulk-user-row'));
+            if (rows.length === 0) return;
+
+            showLiveProcessOverlay({
+                badge: 'Bulk Account Sync',
+                title: 'Updating All User Accounts...',
+                subtitle: 'कृपया प्रतीक्षा करें, सभी यूज़र्स की प्रोफ़ाइल और बजट जानकारी क्लाउड पर सेव की जा रही है...',
+                step: `Syncing ${rows.length} user accounts...`,
+                progress: 50,
+                iconClass: 'fa-solid fa-users-cog fa-bounce'
+            });
+
             try {
-                if (typeof window.firebaseRegister === 'function') {
-                    await window.firebaseRegister(email, password, name, phone);
+                const allUsers = getDeduplicatedAdminUsers();
+                const allWs = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
+                const updatedUsersList = [];
+
+                for (const row of rows) {
+                    const origKey = decodeURIComponent(row.dataset.origKey || '');
+                    const user = allUsers.find(u => (u.phone || u.email || u.uid) === origKey);
+                    if (!user) continue;
+
+                    const name = row.querySelector('.bulk-u-name')?.value.trim() || user.name;
+                    const phone = extractCleanPhone(row.querySelector('.bulk-u-phone')?.value || user.phone);
+                    const email = (row.querySelector('.bulk-u-email')?.value || user.email || '').trim().toLowerCase();
+                    const budget = Number(row.querySelector('.bulk-u-budget')?.value) || 0;
+                    const pwd = (row.querySelector('.bulk-u-pwd')?.value || '').trim();
+
+                    const updatedUser = {
+                        ...user,
+                        name,
+                        phone: phone || user.phone || '',
+                        email,
+                        username: phone || email || user.username,
+                        updatedAt: new Date().toISOString()
+                    };
+                    if (pwd.length >= 6) {
+                        updatedUser.passwordHash = btoa(unescape(encodeURIComponent(pwd)));
+                    }
+                    updatedUsersList.push(updatedUser);
+
+                    const { wsKey, rawWs } = resolveRawWorkspaceForUser(user);
+                    const targetWsKey = phone.length === 10 ? `phone_${phone}` : wsKey;
+                    const updatedWs = {
+                        ...rawWs,
+                        name,
+                        phone,
+                        email,
+                        budget,
+                        userProfile: { ...(rawWs.userProfile || {}), name, phone, email },
+                        updatedAt: Date.now()
+                    };
+                    allWs[targetWsKey] = updatedWs;
+
+                    if (typeof window.adminSaveSingleUserToCloud === 'function') {
+                        await window.adminSaveSingleUserToCloud(updatedUser, targetWsKey, updatedWs);
+                    }
                 }
-                const users = JSON.parse(localStorage.getItem('khataflow_registered_users') || '[]');
-                users.unshift({ name, phone, email, username: phone, createdAt: new Date().toISOString() });
-                localStorage.setItem('khataflow_registered_users', JSON.stringify(users));
+
+                localStorage.setItem('khataflow_registered_users', JSON.stringify(updatedUsersList));
+                localStorage.setItem('khataflow_admin_all_workspaces', JSON.stringify(allWs));
                 renderAdminUsersList();
                 updateAdminDashboardMetrics();
-                closeAdminAddUserModal();
-                showToast(`Cloud user "${name}" created & synced!`);
+                closeAdminBulkEditUsersModal();
+                showToast(`Updated & synced all ${updatedUsersList.length} accounts to cloud!`);
             } catch (err) {
-                showToast(err?.message || 'Could not create user', 'error');
+                showToast('Error saving bulk accounts', 'error');
+            } finally {
+                hideLiveProcessOverlay();
             }
         }
-        function forceAdminCloudReSync() {
-            if (typeof window.fetchFirestoreUsersNow === 'function') window.fetchFirestoreUsersNow();
-            showToast('Cloud directory synced');
+
+        function handleMasterRestoreDragOver(e) {
+            e.preventDefault();
+            e.currentTarget?.classList.add('border-purple-600', 'bg-purple-50/40');
+        }
+        function handleMasterRestoreDragLeave(e) {
+            e.currentTarget?.classList.remove('border-purple-600', 'bg-purple-50/40');
+        }
+        function handleMasterRestoreDrop(e) {
+            e.preventDefault();
+            e.currentTarget?.classList.remove('border-purple-600', 'bg-purple-50/40');
+            const file = e.dataTransfer?.files?.[0];
+            if (file) processMasterAppRestoreFile(file);
+        }
+        function handleMasterAppRestoreFile(e) {
+            const file = e.target?.files?.[0];
+            if (file) processMasterAppRestoreFile(file);
+            if (e.target) e.target.value = '';
+        }
+
+        async function processMasterAppRestoreFile(file) {
+            if (!file) return;
+            showLiveProcessOverlay({
+                badge: 'Master Cloud Restore',
+                title: 'Restoring Full App & All-Users Data...',
+                subtitle: 'कृपया प्रतीक्षा करें, सभी यूज़र्स का डेटा और ऐप सेटिंग्स क्लाउड पर रिस्टोर की जा रही हैं...',
+                step: 'Validating Master Backup JSON file...',
+                progress: 25,
+                iconClass: 'fa-solid fa-cloud-arrow-up fa-bounce'
+            });
+            try {
+                const rawText = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(String(reader.result || ''));
+                    reader.onerror = reject;
+                    reader.readAsText(file);
+                });
+                const parsed = JSON.parse(rawText);
+                if (!parsed || typeof parsed !== 'object') throw new Error('Invalid JSON file');
+
+                // Support both Master Full Backup files and single-user JSON backup files
+                if (parsed.backupFormat === 'NEOKHATA_MASTER_FULL_BACKUP_V1' || parsed.allUserWorkspaces || parsed.registeredUsers) {
+                    const usersList = Array.isArray(parsed.registeredUsers) ? parsed.registeredUsers : [];
+                    const workspacesMap = (parsed.allUserWorkspaces && typeof parsed.allUserWorkspaces === 'object') ? parsed.allUserWorkspaces : {};
+
+                    localStorage.setItem('khataflow_registered_users', JSON.stringify(usersList));
+                    localStorage.setItem('khataflow_admin_all_workspaces', JSON.stringify(workspacesMap));
+
+                    if (parsed.adminConfig && typeof parsed.adminConfig === 'object') {
+                        adminConfig = { ...adminConfig, ...parsed.adminConfig };
+                        localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+                    }
+                    if (Array.isArray(parsed.sponsoredAds) && parsed.sponsoredAds.length > 0) {
+                        SPONSORED_ADS_LIST = parsed.sponsoredAds;
+                        localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
+                    }
+                    if (parsed.adminLocalWorkspace && typeof parsed.adminLocalWorkspace === 'object') {
+                        appState = { ...createEmptyAppState(), ...parsed.adminLocalWorkspace };
+                        localStorage.setItem('khataflow_state_v3', JSON.stringify(appState));
+                    }
+
+                    updateLiveProcessOverlay({ step: `Uploading ${usersList.length} user accounts & workspaces to Firebase Cloud...`, progress: 65 });
+                    if (typeof window.restoreMasterBackupToCloud === 'function') {
+                        await window.restoreMasterBackupToCloud({
+                            registeredUsers: usersList,
+                            allUserWorkspaces: workspacesMap,
+                            adminConfig,
+                            sponsoredAds: SPONSORED_ADS_LIST
+                        });
+                    }
+
+                    applyAdminConfigToUI();
+                    applyBrandingToUI();
+                    apply70FeatureOverridesLive();
+                    renderAdminUsersList();
+                    renderAdminAdsList();
+                    updateAdminDashboardMetrics();
+                    updateAll();
+
+                    const statusBadge = document.getElementById('admin-backup-last-status');
+                    if (statusBadge) statusBadge.textContent = `Restored ${usersList.length} Users • ${new Date().toLocaleTimeString('en-IN')}`;
+                    updateLiveProcessOverlay({ step: 'All users & app settings restored to cloud!', progress: 100 });
+                    await new Promise(r => setTimeout(r, 400));
+                    showToast(`Master Restore Complete: ${usersList.length} users & ${Object.keys(workspacesMap).length} workspaces restored!`);
+                } else if (parsed.transactions || parsed.udharCustomers || parsed.milkData) {
+                    // Single-user backup fallback
+                    appState = { ...createEmptyAppState(), ...parsed };
+                    ensureUnifiedPrimaryMember();
+                    saveState();
+                    updateAll();
+                    showToast('Single-user backup restored!');
+                } else {
+                    throw new Error('Unrecognized backup format');
+                }
+            } catch (err) {
+                showToast(err?.message || 'Invalid Master Backup JSON file', 'error');
+            } finally {
+                hideLiveProcessOverlay();
+            }
         }
         function closeAdminUserInspector() {
             const modal = document.getElementById('admin-user-inspector-modal');
@@ -11704,6 +11579,9 @@ ${JSON.stringify(liveSnapshot)}`;
                 renderAdminAdsList();
                 renderFooterCustomLinks();
                 renderFooterSocialHandles();
+                if (typeof window.fetchFirestoreUsersNow === 'function') {
+                    window.fetchFirestoreUsersNow().catch(() => {});
+                }
             } else if (tabId === 'milk') {
                 renderMilkModuleAll();
             } else if (tabId === 'vyapari') {
@@ -12093,6 +11971,271 @@ ${JSON.stringify(liveSnapshot)}`;
             renderMilkKhataTable();
         }
 
+        function openPaymentAppChooser() {
+            launchTargetPaymentApp();
+        }
+        function closePaymentAppChooser() {
+            closeUpiQrModal();
+        }
+        function runWithLiveRewardedAd(cb) {
+            if (typeof cb === 'function') cb();
+        }
+        function closeLiveInterstitialAd() {}
+        function renderAdmobSlots() {}
+
+        function saveAllAdminChangesLive() {
+            localStorage.setItem('khataflow_admin_config', JSON.stringify(adminConfig));
+            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
+            if (typeof window.publishAdminBroadcastToCloud === 'function') {
+                window.publishAdminBroadcastToCloud({ adminConfig, sponsoredAds: SPONSORED_ADS_LIST });
+            }
+            showToast('All Admin changes saved & published live!');
+        }
+
+        function resetAdminCustomizationsToDefault() {
+            SPONSORED_ADS_LIST = [...DEFAULT_SPONSORED_ADS];
+            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
+            applyAdminConfigToUI();
+            renderAdminAdsList();
+            showToast('Admin settings reset to defaults');
+        }
+
+        function renderAdminAdsList() {
+            const box = document.getElementById('admin-ads-list');
+            if (!box) return;
+            box.innerHTML = SPONSORED_ADS_LIST.map((ad, idx) => `
+                <div class="p-3 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between gap-2.5 text-xs">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        ${ad.imageUrl
+                            ? `<img src="${ad.imageUrl}" alt="Slide ${idx + 1}" class="w-12 h-9 rounded-xl object-cover flex-shrink-0 border border-neutral-300 dark:border-neutral-700" onerror="this.style.display='none'">`
+                            : `<div class="w-12 h-9 rounded-xl bg-gradient-to-r ${ad.gradient || 'from-primary-700 via-primary-600 to-emerald-600'} text-white font-black text-[10px] flex items-center justify-center flex-shrink-0">#${idx + 1}</div>`}
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-1.5">
+                                <span class="px-1.5 py-0.5 rounded bg-primary-600/10 text-primary-600 font-black text-[9px] uppercase">${ad.badge || 'FEATURED'}</span>
+                                <span class="font-black truncate text-neutral-900 dark:text-white">${ad.title || 'Banner Slide'}</span>
+                            </div>
+                            <div class="text-[10px] text-neutral-500 truncate mt-0.5">${ad.subtitle || ''} • Target: <strong>${ad.targetTab || 'dashboard'}</strong></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 flex-shrink-0">
+                        <button type="button" onclick="openEditAdModal(${idx})" class="px-2.5 py-1.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold text-[11px] transition">Edit</button>
+                        <button type="button" onclick="deleteAdminAdSlide(${idx})" class="p-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-600 text-rose-600 hover:text-white transition" title="Delete Slide"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('') || '<div class="text-center py-4 text-xs text-neutral-400">No slides added.</div>';
+        }
+
+        function openAddAdModal() {
+            document.getElementById('admin-banner-modal-title').innerHTML = '<i class="fa-solid fa-plus text-primary-600"></i> Add New Sponsored Banner Slide';
+            document.getElementById('adm-slide-edit-index').value = '-1';
+            document.getElementById('adm-slide-badge').value = 'FEATURED';
+            document.getElementById('adm-slide-target').value = 'dashboard';
+            document.getElementById('adm-slide-title').value = '';
+            document.getElementById('adm-slide-subtitle').value = '';
+            document.getElementById('adm-slide-cta').value = 'Explore Now';
+            document.getElementById('adm-slide-gradient').value = 'from-primary-700 via-primary-600 to-emerald-600';
+            document.getElementById('adm-slide-image-url').value = '';
+            document.getElementById('adm-slide-hires-url').value = '';
+            document.getElementById('adm-slide-preview-wrap')?.classList.add('hidden');
+            document.getElementById('admin-banner-slide-modal')?.classList.replace('hidden', 'flex');
+        }
+        function openEditAdModal(idx) {
+            const slide = SPONSORED_ADS_LIST[idx];
+            if (!slide) return;
+            document.getElementById('admin-banner-modal-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-primary-600"></i> Edit Sponsored Slide #${idx + 1}`;
+            document.getElementById('adm-slide-edit-index').value = String(idx);
+            document.getElementById('adm-slide-badge').value = slide.badge || 'FEATURED';
+            document.getElementById('adm-slide-target').value = slide.targetTab || 'dashboard';
+            document.getElementById('adm-slide-title').value = slide.title || '';
+            document.getElementById('adm-slide-subtitle').value = slide.subtitle || '';
+            document.getElementById('adm-slide-cta').value = slide.ctaText || 'Explore Now';
+            document.getElementById('adm-slide-gradient').value = slide.gradient || 'from-primary-700 via-primary-600 to-emerald-600';
+            document.getElementById('adm-slide-image-url').value = slide.imageUrl || '';
+            document.getElementById('adm-slide-hires-url').value = slide.hiResUrl || '';
+            previewAdminBannerImage(slide.hiResUrl || slide.imageUrl || '');
+            document.getElementById('admin-banner-slide-modal')?.classList.replace('hidden', 'flex');
+        }
+        function closeAdminBannerModal() {
+            const modal = document.getElementById('admin-banner-slide-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+        function previewAdminBannerImage(url) {
+            const wrap = document.getElementById('adm-slide-preview-wrap');
+            const img = document.getElementById('adm-slide-preview-img');
+            const clean = (url || '').trim();
+            if (!wrap || !img) return;
+            if (clean) {
+                img.src = clean;
+                wrap.classList.remove('hidden');
+            } else {
+                wrap.classList.add('hidden');
+            }
+        }
+        function saveAdminBannerSlideForm(e) {
+            if (e) e.preventDefault();
+            const idx = parseInt(document.getElementById('adm-slide-edit-index')?.value ?? '-1', 10);
+            const badge = (document.getElementById('adm-slide-badge')?.value || 'FEATURED').trim();
+            const targetTab = document.getElementById('adm-slide-target')?.value || 'dashboard';
+            const title = (document.getElementById('adm-slide-title')?.value || '').trim();
+            const subtitle = (document.getElementById('adm-slide-subtitle')?.value || '').trim();
+            const ctaText = (document.getElementById('adm-slide-cta')?.value || 'Explore Now').trim();
+            const gradient = document.getElementById('adm-slide-gradient')?.value || 'from-primary-700 via-primary-600 to-emerald-600';
+            const imageUrl = (document.getElementById('adm-slide-image-url')?.value || '').trim();
+            const hiResUrl = (document.getElementById('adm-slide-hires-url')?.value || imageUrl).trim();
+            if (!title) return;
+
+            const existingId = idx >= 0 && SPONSORED_ADS_LIST[idx] ? SPONSORED_ADS_LIST[idx].id : `ad_slide_${Date.now()}`;
+            const updatedSlide = {
+                id: existingId,
+                badge,
+                title,
+                subtitle,
+                ctaText,
+                targetTab,
+                imageUrl,
+                hiResUrl,
+                gradient
+            };
+
+            if (idx >= 0 && idx < SPONSORED_ADS_LIST.length) {
+                SPONSORED_ADS_LIST[idx] = updatedSlide;
+                currentAdSlideIndex = idx;
+            } else {
+                SPONSORED_ADS_LIST.push(updatedSlide);
+                currentAdSlideIndex = SPONSORED_ADS_LIST.length - 1;
+            }
+
+            localStorage.setItem('khataflow_sponsored_ads', JSON.stringify(SPONSORED_ADS_LIST));
+            renderAdminAdsList();
+            renderSponsoredAdCarousel();
+            saveAllAdminChangesLive();
+            closeAdminBannerModal();
+            showToast(idx >= 0 ? `Updated Sponsored Slide #${idx + 1}!` : 'Added new Sponsored Banner Slide!');
+        }
+        function deleteAdminAdSlide(idx) {
+            if (SPONSORED_ADS_LIST.length <= 1) { showToast('At least 1 slide is required', 'error'); return; }
+            SPONSORED_ADS_LIST.splice(idx, 1);
+            saveAllAdminChangesLive();
+            renderAdminAdsList();
+            renderSponsoredAdCarousel();
+        }
+        function saveSponsoredBannerChanges() { saveAllAdminChangesLive(); }
+
+        function handleSaveAnnouncement(e) {
+            e.preventDefault();
+            adminConfig.announcementEnabled = !!document.getElementById('admin-announcement-enabled')?.checked;
+            adminConfig.announcementType = document.getElementById('admin-announcement-type')?.value || 'info';
+            adminConfig.announcementText = document.getElementById('admin-announcement-text')?.value.trim() || '';
+            applyAdminConfigToUI();
+            saveAllAdminChangesLive();
+        }
+
+        function setAdDeliveryMode(mode) {
+            adminConfig.adDeliveryMode = mode;
+            updateAdModeButtonsUI();
+            applyAdminConfigToUI();
+            saveAllAdminChangesLive();
+        }
+
+        function handleSaveAdMobConfig(e) {
+            e.preventDefault();
+            adminConfig.admobPubId = document.getElementById('admin-admob-pub-id')?.value.trim() || '';
+            adminConfig.admobSlotId = document.getElementById('admin-admob-slot-id')?.value.trim() || '';
+            saveAllAdminChangesLive();
+        }
+
+        function handleSaveAdsterraConfig(e) {
+            e.preventDefault();
+            adminConfig.adsterraEnabled = !!document.getElementById('admin-adsterra-enabled')?.checked;
+            adminConfig.adsterraTopCode = document.getElementById('admin-adsterra-top-code')?.value || '';
+            adminConfig.adsterraFeedCode = document.getElementById('admin-adsterra-feed-code')?.value || '';
+            adminConfig.adsterraDirectUrl = document.getElementById('admin-adsterra-direct-url')?.value.trim() || '';
+            applyAdminConfigToUI();
+            saveAllAdminChangesLive();
+        }
+
+        function openAdminAddUserModal() {
+            document.getElementById('admin-user-modal')?.classList.replace('hidden', 'flex');
+        }
+        function closeAdminAddUserModal() {
+            document.getElementById('admin-user-modal')?.classList.replace('flex', 'hidden');
+        }
+        async function handleAdminCreateUser(e) {
+            e.preventDefault();
+            const name = document.getElementById('admin-new-user-name')?.value.trim();
+            const phone = extractCleanPhone(document.getElementById('admin-new-user-phone')?.value || '');
+            const email = (document.getElementById('admin-new-user-email')?.value || `${phone}@khataflow.app`).trim().toLowerCase();
+            const password = document.getElementById('admin-new-user-password')?.value || '';
+            if (!name || phone.length !== 10 || password.length < 6) return;
+
+            const newUser = {
+                uid: `phone_${phone}`,
+                primaryUid: `phone_${phone}`,
+                name,
+                phone,
+                email,
+                username: phone,
+                passwordHash: btoa(unescape(encodeURIComponent(password))),
+                createdAt: new Date().toISOString()
+            };
+            const list = getDeduplicatedAdminUsers();
+            list.unshift(newUser);
+            localStorage.setItem('khataflow_registered_users', JSON.stringify(list));
+            if (typeof window.adminSaveSingleUserToCloud === 'function') {
+                await window.adminSaveSingleUserToCloud(newUser, `phone_${phone}`, { name, phone, email, budget: 15000, updatedAt: Date.now() });
+            }
+            closeAdminAddUserModal();
+            renderAdminUsersList();
+            updateAdminDashboardMetrics();
+            showToast(`Created & synced user "${name}"!`);
+        }
+
+        async function forceAdminCloudReSync() {
+            if (typeof window.fetchFirestoreUsersNow === 'function') {
+                await window.fetchFirestoreUsersNow();
+                showToast('Synced latest users & workspaces from Firebase Cloud!');
+            }
+        }
+
+        async function downloadFullMasterAppBackup() {
+            if (typeof window.fetchFirestoreUsersNow === 'function') {
+                await window.fetchFirestoreUsersNow();
+            }
+            const users = getDeduplicatedAdminUsers();
+            const workspaces = JSON.parse(localStorage.getItem('khataflow_admin_all_workspaces') || '{}');
+            const masterPayload = {
+                backupFormat: 'NEOKHATA_MASTER_FULL_BACKUP_V1',
+                exportedAt: new Date().toISOString(),
+                registeredUsers: users,
+                allUserWorkspaces: workspaces,
+                adminConfig,
+                sponsoredAds: SPONSORED_ADS_LIST,
+                adminLocalWorkspace: appState
+            };
+            const blob = new Blob([JSON.stringify(masterPayload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NeoKhata_MASTER_FULL_BACKUP_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast(`Full Master Backup downloaded (${users.length} users)!`);
+        }
+
+        function deleteAdminRegisteredUser(encodedKey) {
+            const key = decodeURIComponent(encodedKey || '');
+            const filtered = getDeduplicatedAdminUsers().filter(u => (u.phone || u.email || u.uid) !== key);
+            localStorage.setItem('khataflow_registered_users', JSON.stringify(filtered));
+            renderAdminUsersList();
+            updateAdminDashboardMetrics();
+            showToast('User removed from local registry');
+        }
+
         // Expose all functions globally on window
         Object.assign(window, {
             switchTab, scrollBottomNavSlider, jumpToGoalsAndBills, toggleSideMenu, toggleTheme,
@@ -12143,8 +12286,10 @@ ${JSON.stringify(liveSnapshot)}`;
             renderFooterCustomLinks, addFooterCustomLink, updateFooterCustomLinkField, deleteFooterCustomLink, saveFooterCustomLinks,
             renderFooterSocialHandles, addFooterSocialHandle, updateFooterSocialHandleField, deleteFooterSocialHandle, saveFooterSocialHandles,
             openAdminAddUserModal, closeAdminAddUserModal, handleAdminCreateUser, forceAdminCloudReSync,
-            inspectAdminUserDetails, deleteAdminRegisteredUser, closeAdminUserInspector, switchInspectorTab,
-            handleSaveAnnouncement, setAdDeliveryMode, handleSaveAdMobConfig, handleSaveAdsterraConfig, saveAllAdminChangesLive, resetAdminCustomizationsToDefault
+            downloadFullMasterAppBackup, handleMasterRestoreDragOver, handleMasterRestoreDragLeave, handleMasterRestoreDrop, handleMasterAppRestoreFile, processMasterAppRestoreFile,
+            inspectAdminUserDetails, saveAdminEditedUserAccount, downloadSingleUserBackupByAdmin, handleSingleUserBackupUploadByAdmin,
+            openAdminBulkEditUsersModal, closeAdminBulkEditUsersModal, saveAdminBulkAllAccounts,
+            deleteAdminRegisteredUser, closeAdminUserInspector, switchInspectorTab
         });
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -12873,71 +13018,103 @@ ${JSON.stringify(liveSnapshot)}`;
                 Object.assign(allWorkspaces, rtWorkspaces);
             }
             if (db) {
-                const wsSnap = await getDocs(collection(db, "user_workspaces")).catch(() => null);
-                if (wsSnap) {
-                    wsSnap.forEach(d => {
-                        allWorkspaces[d.id] = { ...(allWorkspaces[d.id] || {}), ...d.data() };
+                const wsDirectSnap = await getDocs(collection(db, "user_workspaces")).catch(() => null);
+                if (wsDirectSnap) {
+                    wsDirectSnap.forEach(d => {
+                        if (d.id) allWorkspaces[d.id] = { ...(allWorkspaces[d.id] || {}), ...d.data() };
+                    });
+                }
+                const wsPubSnap = await getDocs(collection(db, "artifacts", appId, "public", "data", "user_workspaces")).catch(() => null);
+                if (wsPubSnap) {
+                    wsPubSnap.forEach(d => {
+                        if (d.id) allWorkspaces[d.id] = { ...(allWorkspaces[d.id] || {}), ...d.data() };
                     });
                 }
             }
-            localStorage.setItem("khataflow_admin_all_workspaces", JSON.stringify(allWorkspaces));
+            try {
+                localStorage.setItem("khataflow_admin_all_workspaces", JSON.stringify(allWorkspaces));
+            } catch (e) {}
 
-            if (users.length > 0 && typeof window.syncCloudUsersToLocal === "function") {
+            if (typeof window.syncCloudUsersToLocal === "function") {
                 window.syncCloudUsersToLocal(users);
             }
+            return users;
         };
 
-        window.deleteCloudUserRecord = async function(identifier) {
-            const clean = window.extractCleanPhone ? window.extractCleanPhone(identifier) : "";
-            if (clean.length === 10) {
-                await rtdbRestPut(`user_directory/${clean}`, null);
-                await rtdbRestPut(`user_workspaces/phone_${clean}`, null);
-                if (db) {
-                    await deleteDoc(doc(db, "public_users", `phone_${clean}`)).catch(() => {});
-                    await deleteDoc(doc(db, "user_workspaces", `phone_${clean}`)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "public", "data", "public_users", `phone_${clean}`)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "public", "data", "user_workspaces", `phone_${clean}`)).catch(() => {});
-                }
-            }
-        };
-
-        window.deleteSelfCloudAccount = async function({ phone = "", email = "", uid = "" } = {}) {
-            if (userWorkspaceUnsub) {
-                userWorkspaceUnsub();
-                userWorkspaceUnsub = null;
-            }
-            const cleanPhone = window.extractCleanPhone ? window.extractCleanPhone(phone) : "";
-            const targetUid = uid || auth?.currentUser?.uid || "";
-
-            // 1. Erase from Firebase Realtime Database
-            if (cleanPhone.length === 10) {
-                await rtdbRestPut(`user_directory/${cleanPhone}`, null);
-                await rtdbRestPut(`user_workspaces/phone_${cleanPhone}`, null);
-            }
-            if (targetUid) {
-                await rtdbRestPut(`users_by_uid/${targetUid}`, null);
-                await rtdbRestPut(`user_workspaces/${targetUid}`, null);
-            }
-
-            // 2. Erase from Cloud Firestore
-            if (db) {
+        window.adminSaveSingleUserToCloud = async function(userProfile, wsKey, wsData) {
+            await ensureFirebaseSessionAuthenticated();
+            if (userProfile && typeof userProfile === "object") {
+                const cleanPhone = window.extractCleanPhone ? window.extractCleanPhone(userProfile.phone || userProfile.username || "") : "";
+                const uid = userProfile.uid || (cleanPhone.length === 10 ? `phone_${cleanPhone}` : "");
                 if (cleanPhone.length === 10) {
-                    await deleteDoc(doc(db, "public_users", `phone_${cleanPhone}`)).catch(() => {});
-                    await deleteDoc(doc(db, "user_workspaces", `phone_${cleanPhone}`)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "public", "data", "public_users", `phone_${cleanPhone}`)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "public", "data", "user_workspaces", `phone_${cleanPhone}`)).catch(() => {});
+                    await rtdbRestPut(`user_directory/${cleanPhone}`, userProfile);
+                    if (rtdb) await set(ref(rtdb, `user_directory/${cleanPhone}`), userProfile).catch(() => {});
+                    if (db) {
+                        await setDoc(doc(db, "public_users", `phone_${cleanPhone}`), userProfile, { merge: true }).catch(() => {});
+                        await setDoc(doc(db, "artifacts", appId, "public", "data", "public_users", `phone_${cleanPhone}`), userProfile, { merge: true }).catch(() => {});
+                    }
                 }
-                if (targetUid) {
-                    await deleteDoc(doc(db, "public_users", targetUid)).catch(() => {});
-                    await deleteDoc(doc(db, "user_workspaces", targetUid)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "public", "data", "public_users", targetUid)).catch(() => {});
-                    await deleteDoc(doc(db, "artifacts", appId, "users", targetUid, "workspace", "data")).catch(() => {});
+                if (uid) {
+                    await rtdbRestPut(`users_by_uid/${uid}`, userProfile);
+                    if (db) {
+                        await setDoc(doc(db, "public_users", uid), userProfile, { merge: true }).catch(() => {});
+                        await setDoc(doc(db, "artifacts", appId, "public", "data", "public_users", uid), userProfile, { merge: true }).catch(() => {});
+                    }
+                }
+            }
+            if (wsKey && wsData && typeof wsData === "object") {
+                const payload = { ...wsData, updatedAt: Date.now() };
+                await rtdbRestPut(`user_workspaces/${wsKey}`, payload);
+                if (rtdb) await set(ref(rtdb, `user_workspaces/${wsKey}`), payload).catch(() => {});
+                if (db) {
+                    await setDoc(doc(db, "user_workspaces", wsKey), payload, { merge: true }).catch(() => {});
+                    await setDoc(doc(db, "artifacts", appId, "public", "data", "user_workspaces", wsKey), payload, { merge: true }).catch(() => {});
+                }
+            }
+        };
+
+        window.restoreMasterBackupToCloud = async function({ registeredUsers = [], allUserWorkspaces = {}, adminConfig: cfg = null, sponsoredAds: ads = null } = {}) {
+            await ensureFirebaseSessionAuthenticated();
+            // 1. Restore all registered user profiles to RTDB & Firestore
+            for (const u of registeredUsers) {
+                if (!u || typeof u !== "object") continue;
+                const cleanPhone = window.extractCleanPhone ? window.extractCleanPhone(u.phone || u.username || "") : "";
+                const uid = u.uid || (cleanPhone.length === 10 ? `phone_${cleanPhone}` : "");
+                if (cleanPhone.length === 10) {
+                    await rtdbRestPut(`user_directory/${cleanPhone}`, u);
+                    if (rtdb) await set(ref(rtdb, `user_directory/${cleanPhone}`), u).catch(() => {});
+                    if (db) {
+                        await setDoc(doc(db, "public_users", `phone_${cleanPhone}`), u, { merge: true }).catch(() => {});
+                        await setDoc(doc(db, "artifacts", appId, "public", "data", "public_users", `phone_${cleanPhone}`), u, { merge: true }).catch(() => {});
+                    }
+                }
+                if (uid) {
+                    await rtdbRestPut(`users_by_uid/${uid}`, u);
+                    if (db) {
+                        await setDoc(doc(db, "public_users", uid), u, { merge: true }).catch(() => {});
+                        await setDoc(doc(db, "artifacts", appId, "public", "data", "public_users", uid), u, { merge: true }).catch(() => {});
+                    }
                 }
             }
 
-            // 3. Delete Firebase Authentication user record if signed in
-            if (auth?.currentUser) {
-                await deleteUser(auth.currentUser).catch(() => {});
+            // 2. Restore every user's workspace (Transactions, Udhar, Milk, Shopping, Friends, Vyapari, Goals)
+            for (const [wsKey, wsData] of Object.entries(allUserWorkspaces || {})) {
+                if (!wsKey || !wsData || typeof wsData !== "object") continue;
+                const payload = { ...wsData, updatedAt: Date.now() };
+                await rtdbRestPut(`user_workspaces/${wsKey}`, payload);
+                if (rtdb) await set(ref(rtdb, `user_workspaces/${wsKey}`), payload).catch(() => {});
+                if (db) {
+                    await setDoc(doc(db, "user_workspaces", wsKey), payload, { merge: true }).catch(() => {});
+                    await setDoc(doc(db, "artifacts", appId, "public", "data", "user_workspaces", wsKey), payload, { merge: true }).catch(() => {});
+                }
+            }
+
+            // 3. Publish restored Admin Config & Sponsored Banners globally
+            if (cfg || ads) {
+                await window.publishAdminBroadcastToCloud({
+                    adminConfig: cfg || adminConfig,
+                    sponsoredAds: ads || SPONSORED_ADS_LIST
+                });
             }
         };
 
