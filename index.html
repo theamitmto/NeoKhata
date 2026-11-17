@@ -1211,7 +1211,8 @@
                                 </h4>
                                 <span id="grocery-bill-total" class="text-lg font-black text-emerald-600">₹0</span>
                             </div>
-                            <div id="grocery-pricing-list" class="space-y-2 max-h-52 overflow-y-auto pr-1"></div>
+                            <p class="text-[10px] text-neutral-500">Adjust quantity, unit, or market price (₹) anytime — totals update live.</p>
+                            <div id="grocery-pricing-list" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                         </div>
 
                         <div class="pt-3 border-t border-emerald-200/70 dark:border-emerald-800/60 space-y-2.5">
@@ -3615,17 +3616,16 @@
                                 <div>
                                     <span style="display: inline-block; padding: 3px 9px; border-radius: 6px; background-color: #dcfce7; color: #15803d; font-size: 9px; font-weight: 900; text-transform: uppercase;">SCAN & PAY EXACT AMOUNT</span>
                                     <div style="font-size: 11.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">GPay • PhonePe • Paytm • BHIM</div>
-                                    <div style="font-size: 9.5px; color: #64748b; font-weight: 600;">Pre-filled amount & direct merchant credit</div>
+                                    <div style="font-size: 9.5px; color: #64748b; font-weight: 600;">Pre-filled balance & direct settlement</div>
                                 </div>
                             </div>
                             <div style="text-align: right;">
-                                <div style="font-size: 9.5px; color: #64748b; font-weight: 800; text-transform: uppercase;">TOTAL NET PAYABLE</div>
+                                <div style="font-size: 9.5px; color: #64748b; font-weight: 800; text-transform: uppercase;">NET BALANCE DUE</div>
                                 <div id="udhar-pdf-footer-bal" style="font-size: 26px; font-weight: 900; color: #2453d6; margin-top: 2px;">₹0</div>
-                                <div style="font-size: 9.5px; color: #16a34a; font-weight: 800;">● Amount Authenticated</div>
                             </div>
                         </div>
                         <div style="text-align: center; margin-top: 8px; font-size: 9px; color: #94a3b8; font-weight: 700;">
-                            Digital Khata Record • Computed & Generated via <strong style="color: #2453d6;">NeoKhata</strong>
+                            Digital Bahi-Khata Statement • Generated via <strong style="color: #2453d6;">NeoKhata</strong>
                         </div>
                     </div>
                 </div>
@@ -3633,7 +3633,7 @@
         </div>
     </div>
 
-    <!-- Hidden Grocery Tax Invoice Export Template (Royal Blue Double-Border + Dynamic UPI QR) -->
+    <!-- Hidden Grocery, Friends Split & Vyapari Tax Invoice Export Template -->
     <div id="grocery-export-canvas-container" style="position: fixed; left: -9999px; top: -9999px; width: 794px; z-index: -1;">
         <div id="grocery-invoice-slip" style="width: 794px; height: 1123px; background-color: #f8fafc; color: #0f172a; font-family: 'Inter', sans-serif; padding: 22px; box-sizing: border-box;">
             <div style="width: 100%; height: 100%; background-color: #ffffff; border: 2px solid #93c5fd; border-radius: 22px; padding: 8px; box-sizing: border-box;">
@@ -3646,37 +3646,39 @@
                                         <path d="M21 7.28V5c0-1.1-.9-2-2-2H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a2 2 0 0 0 2-2v-2.28c.59-.35 1-.99 1-1.72V9c0-.73-.41-1.37-1-1.72zM20 9v6h-3a3 3 0 0 1 0-6h3zM5 5h14v.28c-.59.35-1 .99-1 1.72v.5H5a1 1 0 0 1-1-1c0-.55.45-1 1-1zm14 14H5a1 1 0 0 1-1-1V9.26A2.96 2.96 0 0 0 5 9.5h12v.5a3 3 0 0 1 0 4v.5h3v2zm-2-5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                                     </svg>
                                 </div>
-                                <div style="font-size: 22px; font-weight: 900; color: #1d42ad; letter-spacing: -0.02em;">NeoKhata</div>
+                                <div>
+                                    <div style="font-size: 22px; font-weight: 900; color: #1d42ad; letter-spacing: -0.02em;">NeoKhata</div>
+                                    <div id="invoice-category-sub-lbl" style="font-size: 10.5px; font-weight: 700; color: #64748b;">Smart Shopping Checklist</div>
+                                </div>
                             </div>
                             <div style="text-align: right;">
-                                <span id="invoice-header-pill-badge" style="display: inline-block; padding: 4px 12px; border-radius: 999px; background-color: #e0e7ff; color: #2453d6; font-size: 9.5px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase;">TAX INVOICE / CASH MEMO</span>
+                                <span id="invoice-header-pill-badge" style="display: inline-block; padding: 4px 12px; border-radius: 999px; background-color: #e0e7ff; color: #2453d6; font-size: 9.5px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase;">KIRANA & GROCERY TAX INVOICE</span>
                                 <div id="invoice-bill-no" style="font-size: 11px; font-weight: 800; font-family: monospace; color: #334155; margin-top: 6px;">INV-000000</div>
-                                <div id="invoice-bill-date" style="font-size: 9.5px; color: #64748b; font-weight: 600; margin-top: 2px;">Date: Today</div>
+                                <div id="invoice-bill-date" style="font-size: 10px; color: #64748b; font-weight: 700; margin-top: 2px;">Generated Today</div>
                             </div>
                         </div>
 
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 0;">
                             <div>
-                                <div id="invoice-billed-to-lbl" style="font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">BILLED TO / CUSTOMER</div>
-                                <div id="invoice-billed-user-name" style="font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 2px;">Customer</div>
+                                <div id="invoice-billed-to-lbl" style="font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">BILLED TO / SHOPPER</div>
+                                <div id="invoice-billed-user-name" style="font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 2px;">User</div>
                                 <div id="invoice-billed-user-phone" style="font-family: monospace; font-size: 11px; color: #2453d6; font-weight: 800; margin-top: 2px;"></div>
-                                <div id="invoice-category-sub-lbl" style="font-size: 9.5px; color: #64748b; font-weight: 600; margin-top: 2px;">Category: Kirana, Grocery & Essentials</div>
                             </div>
                             <div style="text-align: right;">
                                 <div id="invoice-payment-target-lbl" style="font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">STORE PAYMENT TARGET</div>
                                 <div id="invoice-merchant-upi-display" style="font-family: monospace; font-size: 11.5px; color: #16a34a; font-weight: 900; margin-top: 2px;">store@upi</div>
-                                <div id="invoice-qr-sub-lbl" style="font-size: 9.5px; color: #64748b; font-weight: 600; margin-top: 2px;">Instant Dynamic QR Pay Enabled</div>
+                                <div id="invoice-qr-sub-lbl" style="font-size: 9.5px; color: #64748b; font-weight: 600;">Instant Grocery Bill QR Pay</div>
                             </div>
                         </div>
 
-                        <div style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; margin-top: 4px;">
-                            <table style="width: 100%; border-collapse: collapse; font-size: 11.5px;">
+                        <div style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
                                 <thead>
                                     <tr style="background-color: #f1f5f9; border-bottom: 1px solid #e2e8f0; text-align: left; font-size: 9px; font-weight: 900; text-transform: uppercase; color: #475569;">
-                                        <th style="padding: 10px 14px; width: 42px;">#</th>
-                                        <th id="invoice-col-desc-hdr" style="padding: 10px 14px;">Item Description</th>
-                                        <th id="invoice-col-qty-hdr" style="padding: 10px 14px; text-align: center; width: 150px;">Quantity</th>
-                                        <th id="invoice-col-amt-hdr" style="padding: 10px 14px; text-align: right; width: 120px;">Amount (₹)</th>
+                                        <th style="padding: 9px 14px; width: 42px;">#</th>
+                                        <th id="invoice-col-desc-hdr" style="padding: 9px 14px;">Grocery / Kirana Item</th>
+                                        <th id="invoice-col-qty-hdr" style="padding: 9px 14px; text-align: center; width: 140px;">Quantity & Unit</th>
+                                        <th id="invoice-col-amt-hdr" style="padding: 9px 14px; text-align: right; width: 120px;">Item Total (₹)</th>
                                     </tr>
                                 </thead>
                                 <tbody id="invoice-items-body"></tbody>
@@ -3687,21 +3689,20 @@
                     <div>
                         <div style="padding: 14px 18px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; display: flex; justify-content: space-between; align-items: center;">
                             <div style="display: flex; align-items: center; gap: 14px;">
-                                <img id="invoice-dynamic-upi-qr" src="" alt="UPI QR" style="width: 78px; height: 78px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; padding: 3px;">
+                                <img id="invoice-dynamic-upi-qr" src="" alt="QR" style="width: 78px; height: 78px; border: 1px solid #cbd5e1; border-radius: 10px; background: #fff; padding: 3px;">
                                 <div>
                                     <span id="invoice-footer-qr-badge" style="display: inline-block; padding: 3px 9px; border-radius: 6px; background-color: #dcfce7; color: #15803d; font-size: 9px; font-weight: 900; text-transform: uppercase;">SCAN & PAY EXACT AMOUNT</span>
-                                    <div id="invoice-footer-qr-apps" style="font-size: 11.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">GPay • PhonePe • Paytm • BHIM</div>
+                                    <div style="font-size: 11.5px; font-weight: 800; color: #0f172a; margin-top: 4px;">GPay • PhonePe • Paytm • BHIM</div>
                                     <div id="invoice-footer-qr-sub" style="font-size: 9.5px; color: #64748b; font-weight: 600;">Pre-filled amount & direct merchant credit</div>
                                 </div>
                             </div>
                             <div style="text-align: right;">
-                                <div id="invoice-footer-total-lbl" style="font-size: 9.5px; color: #64748b; font-weight: 800; text-transform: uppercase;">TOTAL NET PAYABLE</div>
+                                <div id="invoice-footer-total-lbl" style="font-size: 9.5px; color: #64748b; font-weight: 800; text-transform: uppercase;">TOTAL BILL PAYABLE</div>
                                 <div id="invoice-bill-grand-total" style="font-size: 26px; font-weight: 900; color: #2453d6; margin-top: 2px;">₹0</div>
-                                <div id="invoice-footer-auth-lbl" style="font-size: 9.5px; color: #16a34a; font-weight: 800;">● Amount Authenticated</div>
                             </div>
                         </div>
                         <div id="invoice-footer-bottom-note" style="text-align: center; margin-top: 8px; font-size: 9px; color: #94a3b8; font-weight: 700;">
-                            Thank you for your purchase! • Computed & Generated via <strong style="color: #2453d6;">NeoKhata</strong>
+                            Tax Invoice & Digital Receipt • Generated via <strong style="color: #2453d6;">NeoKhata</strong>
                         </div>
                     </div>
                 </div>
@@ -3709,66 +3710,28 @@
         </div>
     </div>
 
-    <!-- Forgot / Reset Password Modal -->
-    <div id="forgot-password-modal" class="fixed inset-0 z-[120] bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-key text-primary-600"></i> Reset Account Password</h4>
-                <button type="button" onclick="closeForgotPasswordModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold mb-1">Registered Mobile Number or Email *</label>
-                    <input type="text" id="fp-identifier" required placeholder="e.g. 9876543210 or name@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <div>
-                        <label class="block font-bold mb-1">New Password (Min 6) *</label>
-                        <input type="password" id="fp-new-password" minlength="6" required placeholder="New password" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-1">Confirm Password *</label>
-                        <input type="password" id="fp-confirm-password" minlength="6" required placeholder="Repeat password" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
-                    </div>
-                </div>
-                <div class="p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border flex items-center gap-2">
-                    <div id="fp-captcha-display" onclick="refreshForgotCaptcha()" class="px-3 py-1.5 rounded-lg bg-slate-900 text-white font-mono font-black tracking-widest cursor-pointer">K8P4M</div>
-                    <button type="button" onclick="refreshForgotCaptcha()" class="p-2 rounded-lg bg-white dark:bg-neutral-900 border text-primary-600"><i class="fa-solid fa-arrows-rotate"></i></button>
-                    <input type="text" id="fp-input-captcha" required maxlength="6" placeholder="Captcha" class="w-full p-2 rounded-lg bg-white dark:bg-neutral-900 border font-mono font-black uppercase">
-                </div>
-                <div id="fp-status-msg" class="text-[11px] font-bold text-center min-h-[1.25rem] text-neutral-500"></div>
-                <div class="grid grid-cols-2 gap-2 pt-1">
-                    <button type="button" onclick="closeForgotPasswordModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" id="fp-submit-btn" class="py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-black">Update Password</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Universal Quick Edit Item Modal (Transactions, Shopping, Udhar Entries, Split Bills) -->
+    <!-- Universal Edit Modal -->
     <div id="universal-edit-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
+        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
                 <h4 id="universal-edit-title" class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-pen-to-square text-primary-600"></i> Edit Entry</h4>
                 <button type="button" onclick="closeUniversalEditModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form onsubmit="saveUniversalEdit(event)" class="space-y-3">
-                <input type="hidden" id="uedit-kind" value="">
-                <input type="hidden" id="uedit-id" value="">
-
-                <div id="uedit-field-title-wrap">
-                    <label id="uedit-label-title" class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Description / Name</label>
-                    <input type="text" id="uedit-title" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-semibold">
+            <form onsubmit="saveUniversalEdit(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="uedit-kind">
+                <input type="hidden" id="uedit-id">
+                <div>
+                    <label id="uedit-label-title" class="block font-bold mb-1">Description</label>
+                    <input type="text" id="uedit-title" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-2 gap-2.5">
                     <div id="uedit-field-amount-wrap">
-                        <label id="uedit-label-amount" class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Amount (₹)</label>
-                        <input type="number" step="any" min="0" id="uedit-amount" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-black">
+                        <label id="uedit-label-amount" class="block font-bold mb-1">Amount (₹)</label>
+                        <input type="number" id="uedit-amount" step="any" min="0" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
                     </div>
                     <div id="uedit-field-unit-wrap" class="hidden">
-                        <label class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Unit</label>
-                        <select id="uedit-unit" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
+                        <label class="block font-bold mb-1">Unit</label>
+                        <select id="uedit-unit" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                             <option value="Kg">Kg</option>
                             <option value="Grams (gm)">Grams (gm)</option>
                             <option value="Packets">Packets</option>
@@ -3777,300 +3740,299 @@
                         </select>
                     </div>
                     <div id="uedit-field-category-wrap">
-                        <label id="uedit-label-category" class="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-1">Category</label>
-                        <select id="uedit-category" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs font-bold">
-                            <option value="Food">🍔 Food & Dining</option>
-                            <option value="Fast Food">🍟 Fast Food</option>
-                            <option value="Kirana">🛒 Kirana & Grocery</option>
-                            <option value="Rent">🏠 Rent & Stay</option>
-                            <option value="Bills">⚡ Utilities & Bills</option>
-                            <option value="Shopping">🛍️ Shopping</option>
-                            <option value="Travel">🚗 Travel & Fuel</option>
-                            <option value="Education">📚 Education & Books</option>
-                            <option value="Medical">💊 Medical & Health</option>
-                            <option value="Party">🎉 Party & Fun</option>
-                            <option value="Other">✨ Other</option>
+                        <label class="block font-bold mb-1">Category</label>
+                        <select id="uedit-category" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <option value="Food">Food</option><option value="Fast Food">Fast Food</option><option value="Kirana">Kirana</option>
+                            <option value="Rent">Rent</option><option value="Bills">Bills</option><option value="Shopping">Shopping</option>
+                            <option value="Travel">Travel</option><option value="Education">Education</option><option value="Medical">Medical</option><option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
-
-                    <button type="button" onclick="closeAdminBulkEditUsersModal()" class="px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                <button type="button" onclick="saveAdminBulkAllAccounts()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-primary-600 hover:from-indigo-700 hover:to-primary-700 text-white text-xs font-black shadow-md flex items-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Sync All Accounts</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Registered User Full Inspector, Account Editor & Single-User Backup Modal -->
-    <div id="admin-user-inspector-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card w-full max-w-2xl p-5 sm:p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4 max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 id="admin-inspector-title" class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                    <i class="fa-solid fa-user-shield text-purple-600"></i> User Account Inspector &amp; Editor
-                </h4>
-                <button type="button" onclick="closeAdminUserInspector()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="admin-inspector-body" class="space-y-4 text-xs"></div>
-        </div>
-    </div>
-
-    <!-- Admin Bulk Edit All User Accounts Modal -->
-    <div id="admin-bulk-users-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card w-full max-w-4xl p-5 sm:p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4 max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                    <i class="fa-solid fa-table-list text-indigo-600"></i> Bulk Edit All Registered Accounts
-                </h4>
-                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="admin-bulk-users-list" class="space-y-2.5 max-h-[60vh] overflow-y-auto pr-1 text-xs"></div>
-            <div class="flex items-center justify-end gap-2.5 pt-3 border-t border-neutral-200 dark:border-neutral-800">
-                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="px-5 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
-                <button type="button" onclick="saveAdminBulkAllAccounts()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-primary-600 hover:from-indigo-700 hover:to-primary-700 text-white text-xs font-black shadow-md flex items-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up"></i> Save &amp; Sync All Accounts</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Add New Cloud User Modal -->
-    <div id="admin-user-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                    <i class="fa-solid fa-user-plus text-purple-600"></i> Create New Cloud User
-                </h4>
-                <button type="button" onclick="closeAdminAddUserModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form onsubmit="handleAdminCreateUser(event)" class="space-y-3 text-xs">
-                <div>
-                    <label class="block font-bold mb-1">Full Name *</label>
-                    <input type="text" id="admin-new-user-name" required placeholder="e.g. Suresh Verma" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                <div id="uedit-field-meta-row" class="grid grid-cols-2 gap-2.5">
+                    <div id="uedit-field-mode-wrap">
+                        <label class="block font-bold mb-1">Mode</label>
+                        <select id="uedit-mode" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <option value="UPI">UPI</option><option value="Cash">Cash</option><option value="Bank">Bank</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Date</label>
+                        <input type="date" id="uedit-date" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                    </div>
                 </div>
-                <div>
-                    <label class="block font-bold mb-1">10-Digit Mobile Number *</label>
-                    <input type="tel" id="admin-new-user-phone" maxlength="10" oninput="this.value=extractCleanPhone(this.value)" required placeholder="9876543210" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-bold">
-                </div>
-                <div>
-                    <label class="block font-bold mb-1">Email Address</label>
-                    <input type="email" id="admin-new-user-email" placeholder="user@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
-                </div>
-                <div>
-                    <label class="block font-bold mb-1">Account Password (Min 6 chars) *</label>
-                    <input type="text" id="admin-new-user-password" minlength="6" required placeholder="e.g. User@123" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-bold">
-                </div>
-                <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800">
-                    <button type="button" onclick="closeAdminAddUserModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-black shadow-md">Create &amp; Sync User</button>
+                <div class="grid grid-cols-2 gap-2 pt-2">
+                    <button type="button" onclick="closeUniversalEditModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-primary-600 text-white font-bold">Save Changes</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Self Account Permanent Deletion Confirmation Modal -->
-    <div id="delete-self-account-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-rose-500/30 space-y-4">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2 text-rose-600"><i class="fa-solid fa-triangle-exclamation"></i> Delete Account Permanently</h4>
-                <button type="button" onclick="closeDeleteSelfAccountModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <p class="text-xs text-neutral-600 dark:text-neutral-300">This will permanently erase <strong id="delete-self-account-identity">your account</strong> and all cloud ledgers. Type <strong>DELETE</strong> below to confirm.</p>
-            <form onsubmit="confirmDeleteSelfAccount(event)" class="space-y-3 text-xs">
-                <input type="text" id="delete-self-confirm-input" required placeholder="Type DELETE" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-black uppercase">
-                <div class="grid grid-cols-2 gap-2">
-                    <button type="button" onclick="closeDeleteSelfAccountModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black">Erase Forever</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Sponsored Banner Slide Add / Edit Modal -->
-    <div id="admin-banner-slide-modal" class="fixed inset-0 z-[155] bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="glass-card w-full max-w-lg p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 my-auto space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 id="admin-banner-modal-title" class="text-sm sm:text-base font-black flex items-center gap-2 text-neutral-900 dark:text-white">
-                    <i class="fa-solid fa-images text-primary-600"></i> Edit Sponsored Banner Slide
-                </h4>
-                <button type="button" onclick="closeAdminBannerModal()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <form onsubmit="saveAdminBannerSlideForm(event)" class="space-y-3 text-xs">
-                <input type="hidden" id="adm-slide-edit-index" value="-1">
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-bold mb-1">Top Badge Tag *</label>
-                        <input type="text" id="adm-slide-badge" required placeholder="e.g. NEOKHATA / SMART LEDGER" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black uppercase">
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-1">Target Tab on Click</label>
-                        <select id="adm-slide-target" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                            <option value="dashboard">Dashboard Overview</option>
-                            <option value="udhar">Udhar Khata</option>
-                            <option value="grocery">Shopping Checklist</option>
-                            <option value="hub">Friends Hub Split</option>
-                            <option value="analytics">Analytics &amp; Reports</option>
-                            <option value="transactions">All Transactions History</option>
-                            <option value="milk">Milk Ledger</option>
-                            <option value="vyapari">Vyapari Mandi</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-bold mb-1">Main Slide Headline / Title *</label>
-                    <input type="text" id="adm-slide-title" required placeholder="e.g. हिसाब-किताब को बनाएं आसान" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
-                </div>
-
-                <div>
-                    <label class="block font-bold mb-1">Slide Description / Subtitle *</label>
-                    <textarea id="adm-slide-subtitle" rows="2" required placeholder="Enter slide description..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold"></textarea>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-bold mb-1">CTA Button Text</label>
-                        <input type="text" id="adm-slide-cta" placeholder="e.g. Explore Now" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                    </div>
-                    <div>
-                        <label class="block font-bold mb-1">Fallback Gradient Theme</label>
-                        <select id="adm-slide-gradient" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                            <option value="from-primary-700 via-primary-600 to-emerald-600">Royal Blue → Emerald</option>
-                            <option value="from-rose-600 via-amber-600 to-primary-600">Crimson Rose → Amber</option>
-                            <option value="from-emerald-700 via-teal-600 to-primary-600">Emerald → Teal</option>
-                            <option value="from-indigo-700 via-purple-600 to-primary-600">Indigo → Royal Purple</option>
-                            <option value="from-amber-600 via-orange-600 to-rose-600">Amber Gold → Orange</option>
-                            <option value="from-sky-700 via-primary-600 to-emerald-600">Sky Blue → Emerald</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-bold mb-1">Banner Image URL (Optional)</label>
-                    <input type="url" id="adm-slide-image-url" oninput="previewAdminBannerImage(this.value)" placeholder="https://..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono text-[11px]">
-                </div>
-
-                <div>
-                    <label class="block font-bold mb-1">High-Res Image URL (Optional)</label>
-                    <input type="url" id="adm-slide-hires-url" placeholder="https://..." class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono text-[11px]">
-                </div>
-
-                <div id="adm-slide-preview-wrap" class="hidden rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-700 h-28 bg-neutral-100 dark:bg-neutral-800">
-                    <img id="adm-slide-preview-img" src="" alt="Banner Preview" class="w-full h-full object-cover">
-                </div>
-
-                <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800">
-                    <button type="button" onclick="closeAdminBannerModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-black shadow-md">Save &amp; Publish Slide</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Add Savings Goal Modal -->
+    <!-- Savings Goal Modal -->
     <div id="savings-goal-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
         <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-piggy-bank text-emerald-600"></i> Create Savings Vault</h4>
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-piggy-bank text-emerald-600"></i> New Savings Goal</h4>
                 <button type="button" onclick="closeAddSavingsGoalModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <form onsubmit="saveNewSavingsGoal(event)" class="space-y-3 text-xs">
                 <div>
                     <label class="block font-bold mb-1">Goal Title *</label>
-                    <input type="text" id="sg-title" required placeholder="e.g. Emergency Fund, New Phone, Trip" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                    <input type="text" id="sg-title" required placeholder="e.g. Emergency Fund / New Bike" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                 </div>
                 <div class="grid grid-cols-2 gap-2.5">
                     <div>
                         <label class="block font-bold mb-1">Target Amount (₹) *</label>
-                        <input type="number" id="sg-target" min="100" required placeholder="50000" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
+                        <input type="number" id="sg-target" min="1" required placeholder="50000" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
                     </div>
                     <div>
-                        <label class="block font-bold mb-1">Saved So Far (₹)</label>
+                        <label class="block font-bold mb-1">Initial Saved (₹)</label>
                         <input type="number" id="sg-saved" min="0" value="0" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
                     </div>
                 </div>
                 <div>
-                    <label class="block font-bold mb-1">Target Date</label>
-                    <input type="date" id="sg-deadline" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                    <label class="block font-bold mb-1">Target Deadline</label>
+                    <input type="date" id="sg-deadline" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                 </div>
                 <div class="grid grid-cols-2 gap-2 pt-2">
                     <button type="button" onclick="closeAddSavingsGoalModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-emerald-600 text-white font-black">Create Goal</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-emerald-600 text-white font-bold">Save Goal</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Add Recurring Bill / EMI Modal -->
+    <!-- Recurring Bill / EMI Modal -->
     <div id="recurring-bill-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
         <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
-            <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-calendar-check text-indigo-600"></i> Schedule Bill / EMI</h4>
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-calendar-check text-indigo-600"></i> Add Recurring Bill / EMI</h4>
                 <button type="button" onclick="closeAddRecurringBillModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <form onsubmit="saveNewRecurringBill(event)" class="space-y-3 text-xs">
                 <div>
                     <label class="block font-bold mb-1">Bill / EMI Title *</label>
-                    <input type="text" id="rb-title" required placeholder="e.g. House Rent, WiFi Fiber, Bike EMI" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                    <input type="text" id="rb-title" required placeholder="e.g. Home Rent / WiFi / Car EMI" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
                 </div>
                 <div class="grid grid-cols-2 gap-2.5">
                     <div>
-                        <label class="block font-bold mb-1">Amount (₹) *</label>
+                        <label class="block font-bold mb-1">Monthly Amount (₹) *</label>
                         <input type="number" id="rb-amount" min="1" required placeholder="3500" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-black">
                     </div>
                     <div>
                         <label class="block font-bold mb-1">Category</label>
                         <select id="rb-category" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
-                            <option value="Bills">Bills & Utilities</option>
-                            <option value="Rent">Rent & Stay</option>
-                            <option value="Education">Education</option>
-                            <option value="Other">EMI / Subscription</option>
+                            <option value="Bills">Bills</option><option value="Rent">Rent</option><option value="Education">Education</option><option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
                 <div>
                     <label class="block font-bold mb-1">Next Due Date *</label>
-                    <input type="date" id="rb-due-date" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                    <input type="date" id="rb-due-date" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
                 </div>
                 <div class="grid grid-cols-2 gap-2 pt-2">
                     <button type="button" onclick="closeAddRecurringBillModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
-                    <button type="submit" class="py-2.5 rounded-xl bg-indigo-600 text-white font-black">Save Schedule</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-indigo-600 text-white font-bold">Save Schedule</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Admin 70-Feature Tailored Bottom-Sheet Customizer Modal -->
-    <div id="admin-feature-customizer-modal" class="fixed inset-0 z-[150] bg-neutral-950/80 backdrop-blur-xl hidden items-end sm:items-center justify-center p-0 sm:p-4">
-        <div class="glass-card w-full max-w-lg rounded-t-[2rem] sm:rounded-[2rem] p-5 sm:p-6 shadow-2xl bg-white/95 dark:bg-neutral-900/95 border border-neutral-200 dark:border-neutral-800 space-y-4 max-h-[90vh] overflow-y-auto animate-fade-in">
-            <div class="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800">
-                <div class="flex items-center gap-2.5">
-                    <span id="afc-icon" class="w-9 h-9 rounded-2xl bg-primary-600 text-white flex items-center justify-center text-sm shadow-sm"><i class="fa-solid fa-sliders"></i></span>
-                    <div>
-                        <span id="afc-code-badge" class="text-[10px] font-mono font-black uppercase text-primary-600">FEATURE #01</span>
-                        <h4 id="afc-title" class="text-sm sm:text-base font-black text-neutral-900 dark:text-white leading-tight">Feature Customizer</h4>
-                    </div>
-                </div>
-                <button type="button" onclick="closeAdminFeatureCustomizer()" class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Admin User Inspector Modal -->
+    <div id="admin-user-inspector-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-2xl p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 my-auto max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 id="admin-inspector-title" class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-user-shield text-purple-600"></i> User Account Inspector</h4>
+                <button type="button" onclick="closeAdminUserInspector()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div id="afc-dynamic-body" class="space-y-3.5 text-xs"></div>
-            <div class="grid grid-cols-2 gap-2.5 pt-2 border-t border-neutral-200 dark:border-neutral-800">
-                <button type="button" onclick="closeAdminFeatureCustomizer()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold text-xs">Cancel</button>
-                <button type="button" onclick="saveAdminFeatureCustomizer()" class="py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-black text-xs shadow-md">Apply & Publish Live</button>
+            <div id="admin-inspector-body" class="space-y-4 text-xs"></div>
+        </div>
+    </div>
+
+    <!-- Admin Bulk Edit All Accounts Modal -->
+    <div id="admin-bulk-users-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-4xl p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 my-auto max-h-[90vh] overflow-y-auto space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-table-list text-indigo-600"></i> Bulk Edit All Registered User Accounts</h4>
+                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="admin-bulk-users-list" class="space-y-2.5 max-h-[60vh] overflow-y-auto pr-1 text-xs"></div>
+            <div class="flex justify-end gap-2 pt-2 border-t">
+                <button type="button" onclick="closeAdminBulkEditUsersModal()" class="px-4 py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
+                <button type="button" onclick="saveAdminBulkAllAccounts()" class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-black">Save & Sync All Accounts</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Synchronous Application Script -->
+    <!-- Admin Add New User Modal -->
+    <div id="admin-user-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-user-plus text-purple-600"></i> Create Cloud User</h4>
+                <button type="button" onclick="closeAdminAddUserModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="handleAdminCreateUser(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold mb-1">Full Name *</label>
+                    <input type="text" id="admin-new-user-name" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">10-Digit Mobile *</label>
+                    <input type="tel" id="admin-new-user-phone" maxlength="10" oninput="this.value=extractCleanPhone(this.value)" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Email</label>
+                    <input type="email" id="admin-new-user-email" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Password (Min 6 chars) *</label>
+                    <input type="text" id="admin-new-user-password" minlength="6" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-bold">
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-2">
+                    <button type="button" onclick="closeAdminAddUserModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-purple-600 text-white font-bold">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Banner Slide Editor Modal -->
+    <div id="admin-banner-slide-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 my-auto">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 id="admin-banner-modal-title" class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-images text-primary-600"></i> Edit Sponsored Slide</h4>
+                <button type="button" onclick="closeAdminBannerModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="saveAdminBannerSlideForm(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="adm-slide-edit-index" value="-1">
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div>
+                        <label class="block font-bold mb-1">Badge Tag</label>
+                        <input type="text" id="adm-slide-badge" value="FEATURED" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Target Tab</label>
+                        <select id="adm-slide-target" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <option value="dashboard">Dashboard</option><option value="udhar">Udhar Khata</option><option value="grocery">Shopping</option>
+                            <option value="hub">Friends Split</option><option value="milk">Milk Ledger</option><option value="vyapari">Vyapari Mandi</option><option value="analytics">Reports</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Slide Title *</label>
+                    <input type="text" id="adm-slide-title" required class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Subtitle</label>
+                    <input type="text" id="adm-slide-subtitle" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border">
+                </div>
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div>
+                        <label class="block font-bold mb-1">CTA Button Text</label>
+                        <input type="text" id="adm-slide-cta" value="Explore Now" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1">Gradient Class</label>
+                        <select id="adm-slide-gradient" class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-bold">
+                            <option value="from-primary-700 via-primary-600 to-emerald-600">Royal Blue → Emerald</option>
+                            <option value="from-rose-600 via-amber-600 to-primary-600">Crimson → Amber</option>
+                            <option value="from-indigo-700 via-purple-600 to-primary-600">Indigo → Purple</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Banner Image URL</label>
+                    <input type="url" id="adm-slide-image-url" oninput="previewAdminBannerImage(this.value)" placeholder="https://..." class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">High-Res Image URL (Optional)</label>
+                    <input type="url" id="adm-slide-hires-url" placeholder="https://..." class="w-full p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono">
+                </div>
+                <div id="adm-slide-preview-wrap" class="hidden rounded-xl overflow-hidden border h-24">
+                    <img id="adm-slide-preview-img" src="" alt="Preview" class="w-full h-full object-cover">
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-2">
+                    <button type="button" onclick="closeAdminBannerModal()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 font-bold">Cancel</button>
+                    <button type="submit" class="py-2.5 rounded-xl bg-primary-600 text-white font-bold">Save Slide</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin 70-Control Customizer Modal -->
+    <div id="admin-feature-customizer-modal" class="fixed inset-0 z-50 bg-neutral-950/80 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b">
+                <div>
+                    <span id="afc-code-badge" class="text-[10px] font-mono font-black text-primary-600">CONTROL #01</span>
+                    <h4 id="afc-title" class="text-sm font-black">Control Settings</h4>
+                </div>
+                <button type="button" onclick="closeAdminFeatureCustomizer()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="afc-dynamic-body" class="space-y-3 text-xs"></div>
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t">
+                <button type="button" onclick="closeAdminFeatureCustomizer()" class="py-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-bold">Cancel</button>
+                <button type="button" onclick="saveAdminFeatureCustomizer()" class="py-2.5 rounded-xl bg-primary-600 text-white text-xs font-bold">Save Control</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-password-modal" class="fixed inset-0 z-[120] bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95">
+            <div class="flex items-center justify-between mb-4 pb-2 border-b">
+                <h4 class="text-sm font-black flex items-center gap-2"><i class="fa-solid fa-key text-primary-600"></i> Reset Account Password</h4>
+                <button type="button" onclick="closeForgotPasswordModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="handleForgotPasswordSubmit(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-bold mb-1">Registered Mobile or Email *</label>
+                    <input type="text" id="fp-identifier" required placeholder="9876543210 or email@example.com" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">New Password (Min 6 chars) *</label>
+                    <input type="password" id="fp-new-password" minlength="6" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div>
+                    <label class="block font-bold mb-1">Confirm New Password *</label>
+                    <input type="password" id="fp-confirm-password" minlength="6" required class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-semibold">
+                </div>
+                <div class="flex items-center gap-2">
+                    <div id="fp-captcha-display" onclick="refreshForgotCaptcha()" class="px-3 py-2 rounded-xl bg-slate-900 text-white font-mono font-black tracking-widest cursor-pointer">K7M2P</div>
+                    <input type="text" id="fp-input-captcha" required maxlength="6" placeholder="Captcha" class="flex-1 p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-black uppercase">
+                </div>
+                <div id="fp-status-msg" class="text-[11px] font-bold text-center"></div>
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-primary-600 text-white font-black">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Self Account Modal -->
+    <div id="delete-self-account-modal" class="fixed inset-0 z-[120] bg-neutral-950/85 backdrop-blur-xl hidden items-center justify-center p-4">
+        <div class="glass-card w-full max-w-sm p-6 rounded-[2rem] shadow-2xl relative bg-white/95 dark:bg-neutral-900/95 space-y-4 text-xs">
+            <div class="flex items-center justify-between pb-2 border-b">
+                <h4 class="text-sm font-black text-rose-600 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> Permanent Account Delete</h4>
+                <button type="button" onclick="closeDeleteSelfAccountModal()" class="w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-400 text-xs flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-neutral-600 dark:text-neutral-300">This will permanently erase <strong id="delete-self-account-identity">your account</strong> and all cloud ledgers. Type <strong>DELETE</strong> to confirm:</p>
+            <form onsubmit="confirmDeleteSelfAccount(event)" class="space-y-3">
+                <input type="text" id="delete-self-confirm-input" required placeholder="Type DELETE" class="w-full p-2.5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border font-mono font-black uppercase">
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-rose-600 text-white font-black">Permanently Erase My Data</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         function createEmptyAppState() {
             return {
-                budget: 15000,
+                budget: 0,
                 categoryBudgets: {},
-                smartBudgetRollover: false,
+                customCatalogPrices: {},
                 merchantPhone: '',
-                merchantUpi: '9876543210@upi',
-                userProfile: { name: 'User', phone: '', email: '', upi: '', businessName: '', gstin: '', address: '', cityPin: '', registered: false },
+                merchantUpi: '',
+                userProfile: { name: 'User', phone: '', email: '', upi: '', businessName: '', gstin: '', address: '', cityPin: '' },
                 transactions: [],
-                splitMembers: [{ name: 'You', upi: '9876543210@upi' }],
+                splitMembers: [],
                 splitBills: [],
                 groceryItems: [],
                 groceryInvoices: [],
@@ -4078,33 +4040,37 @@
                 vyapariCommodities: [
                     { id: 'vcomm_wheat', name: 'गेहूँ (Wheat)', rate: 24.5, icon: '🌾' },
                     { id: 'vcomm_paddy', name: 'धान (Paddy)', rate: 22.0, icon: '🌾' },
-                    { id: 'vcomm_mustard', name: 'सरसों (Mustard)', rate: 56.0, icon: '🟡' },
-                    { id: 'vcomm_gram', name: 'चना (Gram)', rate: 62.0, icon: '🫘' },
-                    { id: 'vcomm_maize', name: 'मक्का (Maize)', rate: 21.5, icon: '🌽' }
+                    { id: 'vcomm_mustard', name: 'सरसों (Mustard)', rate: 56.0, icon: '🟡' }
                 ],
                 vyapariInvoices: [],
                 savingsGoals: [],
                 recurringBills: [],
                 milkData: { customers: [], entries: [], khata: [] },
-                updatedAt: Date.now()
+                smartBudgetRollover: false,
+                updatedAt: 0
             };
         }
 
         let appState = (() => {
             try {
-                const raw = localStorage.getItem('khataflow_state_v3');
-                return raw ? { ...createEmptyAppState(), ...JSON.parse(raw) } : createEmptyAppState();
+                const raw = JSON.parse(localStorage.getItem('khataflow_state_v3') || 'null');
+                return raw && typeof raw === 'object' ? { ...createEmptyAppState(), ...raw } : createEmptyAppState();
             } catch (e) {
                 return createEmptyAppState();
             }
         })();
 
-        let pieChartInstance = null, barChartInstance = null, paymentModeChartInstance = null;
-        let incomeExpenseBarChartInstance = null, cumulativeLineChartInstance = null, polarCategoryChartInstance = null, radarCategoryChartInstance = null;
         let currentHistorySegment = 'all';
         let currentHistoryPage = 1;
         let selectedUdharCustomerId = null;
         let vyapariCart = [];
+        let pieChartInstance = null;
+        let barChartInstance = null;
+        let paymentModeChartInstance = null;
+        let incomeExpenseBarChartInstance = null;
+        let cumulativeLineChartInstance = null;
+        let polarCategoryChartInstance = null;
+        let radarCategoryChartInstance = null;
 
         function saveState() {
             appState.updatedAt = Date.now();
@@ -4118,7 +4084,9 @@
             el.innerHTML = `<i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation text-rose-500' : 'fa-circle-check text-emerald-500'}"></i> <span>${msg}</span>`;
             el.classList.remove('translate-y-20', 'opacity-0');
             clearTimeout(window._toastTimer);
-            window._toastTimer = setTimeout(() => el.classList.add('translate-y-20', 'opacity-0'), 3000);
+            window._toastTimer = setTimeout(() => {
+                el.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
         }
 
         function showLiveProcessOverlay({ badge = 'Processing', title = 'Please Wait...', subtitle = '', step = '', progress = 35, iconClass = 'fa-solid fa-spinner fa-spin' } = {}) {
@@ -4130,20 +4098,524 @@
             if (document.getElementById('live-process-step-text')) document.getElementById('live-process-step-text').textContent = step;
             if (document.getElementById('live-process-bar')) document.getElementById('live-process-bar').style.width = `${progress}%`;
             if (document.getElementById('live-process-icon-box')) document.getElementById('live-process-icon-box').innerHTML = `<i class="${iconClass}"></i>`;
-            ov.classList.remove('hidden');
-            ov.classList.add('flex');
+            ov.classList.replace('hidden', 'flex');
         }
 
         function updateLiveProcessOverlay({ step, progress } = {}) {
             if (step && document.getElementById('live-process-step-text')) document.getElementById('live-process-step-text').textContent = step;
-            if (typeof progress === 'number' && document.getElementById('live-process-bar')) document.getElementById('live-process-bar').style.width = `${progress}%`;
+            if (progress !== undefined && document.getElementById('live-process-bar')) document.getElementById('live-process-bar').style.width = `${progress}%`;
         }
 
         function hideLiveProcessOverlay() {
-            const ov = document.getElementById('live-process-overlay');
-            if (ov) {
-                ov.classList.add('hidden');
-                ov.classList.remove('flex');
+            document.getElementById('live-process-overlay')?.classList.replace('flex', 'hidden');
+        }
+
+        window.KhataFlowHistorySyncAPI = {
+            cascadeEditFromHistory(tx, newTitle, newAmount, newCategory, newDate) {
+                if (!tx?.sourceRefId) return;
+                const refId = tx.sourceRefId;
+                const bill = (appState.splitBills || []).find(b => b.id === refId);
+                if (bill) {
+                    bill.desc = newTitle;
+                    bill.amount = newAmount;
+                    bill.category = newCategory;
+                    if (newDate) bill.date = new Date(newDate).toISOString();
+                }
+            }
+        };
+
+        // ================= SHOPPING & KIRANA CATALOG ENGINE (1,300+ ITEMS) =================
+        const KIRANA_BASE_SEEDS = {
+            'अनाज व आटा': {
+                icon: '🌾', unit: 'Kg',
+                items: [
+                    ['Chakki Fresh Wheat Atta (चक्की आटा)', 42], ['MP Sharbati Gehu Atta (शरबती आटा)', 54], ['Multigrain Atta (मल्टीग्रेन आटा)', 65],
+                    ['Aashirvaad Shudh Chakki Atta', 48], ['Fortune Chakki Fresh Atta', 45], ['Pillsbury Chakki Fresh Atta', 46],
+                    ['Basmati Rice Classic (बासमती चावल)', 110], ['India Gate Dubar Basmati Rice', 95], ['India Gate Tibar Basmati Rice', 105],
+                    ['Daawat Rozana Basmati Rice', 82], ['Kolam Steam Rice (कोलम चावल)', 62], ['Sona Masoori Raw Rice (सोना मसूरी)', 58],
+                    ['Parmal Boiled Rice (परमल चावल)', 44], ['Brown Basmati Rice (ब्राउन राइस)', 125], ['Idli Dosa Rice (इडली चावल)', 52],
+                    ['Poha Thick (पोहा मोटा)', 48], ['Poha Thin Nylon (पोहा पतला)', 54], ['Murmura / Puffed Rice (मुरमुरा)', 60],
+                    ['Suji / Rava Fine (सूजी बारीक)', 46], ['Bansi Rava / Coarse Suji (रवा मोटा)', 48], ['Maida Refined Flour (मैदा)', 40],
+                    ['Chana Besan Fine (चना बेसन)', 88], ['Makai Atta / Corn Flour (मक्की आटा)', 44], ['Bajra Atta / Pearl Millet (बाजरा आटा)', 46],
+                    ['Jowar Atta / Sorghum (ज्वार आटा)', 52], ['Ragi / Nachni Flour (रागी आटा)', 58], ['Kuttu Atta / Buckwheat (कुट्टू आटा)', 115],
+                    ['Singhara Atta / Water Chestnut (सिंघाड़ा आटा)', 140], ['Sattu Roasted Chana (चना सत्तू)', 110], ['Daliya Broken Wheat (गेहूँ दलिया)', 48],
+                    ['Rolled Oats Plain (ओट्स)', 145], ['Masala Oats Classic', 165], ['Sabudana Medium (साबूदाना)', 78],
+                    ['Sabudana Nylon Small (नयलॉन साबूदाना)', 86], ['Vermicelli / Sevai Roasted (भुनी सेवई)', 68], ['Rice Flour (चावल का आटा)', 46]
+                ]
+            },
+            'दालें व दलहन': {
+                icon: '🌱', unit: 'Kg',
+                items: [
+                    ['Toor / Arhar Dal Unpolished (अरहर दाल)', 152], ['Toor Dal Oily / Polished (तुअर दाल)', 146], ['Yellow Moong Dal Split (पीली मूंग दाल)', 122],
+                    ['Green Moong Dal Split (हरी मूंग दाल)', 118], ['Sabut Green Moong (साबुत मूंग)', 115], ['Chana Dal Split (चना दाल)', 88],
+                    ['Kala Chana / Desi Chickpeas (काला चना)', 82], ['Kabuli Chana Big (काबुली चना)', 138], ['Kabuli Chana Medium (छोले चना)', 124],
+                    ['Red Masoor Dal Split (लाल मसूर दाल)', 96], ['Sabut Kali Masoor (साबुत काली मसूर)', 94], ['Urad Dal White Gota (सफेद उड़द दाल)', 136],
+                    ['Urad Dal Black Split (काली उड़द दाल)', 128], ['Sabut Kali Urad (साबुत काली उड़द)', 126], ['Rajma Chitra (राजमा चित्रा)', 135],
+                    ['Rajma Red Kashmiri (लाल राजमा)', 148], ['Rajma Jammu Small (जम्मू राजमा)', 155], ['White Matar / Vatana (सफेद मटर)', 78],
+                    ['Green Dried Peas (सूखा हरा मटर)', 86], ['Lobia / Black Eyed Beans (लोबिया)', 108], ['Soyabean Sabut (सोयाबीन दाना)', 76],
+                    ['Nutrela Soya Chunks (सोया बड़ी)', 130], ['Soya Mini Granules (सोया चूरा)', 125], ['Mix Panchratna Dal (पंचरत्न दाल)', 128],
+                    ['Moth Beans / Matki (मोठ दाल)', 112], ['Horse Gram / Kulthi Dal (कुलथी दाल)', 98], ['Roasted Chana Without Skin (भुना चना)', 115],
+                    ['Raw Peanuts / Moongfali (कच्ची मूंगफली)', 128], ['Salted Peanuts (नमकीन मूंगफली)', 150], ['Makhana / Fox Nuts (मखाना)', 880]
+                ]
+            },
+            'तेल व घी': {
+                icon: '🛢️', unit: 'Litre (L)',
+                items: [
+                    ['Fortune Kachi Ghani Mustard Oil (सरसों तेल)', 145], ['Engine Agmark Mustard Oil (इंजन सरसों तेल)', 155], ['Patanjali Mustard Oil (पतंजलि सरसों तेल)', 142],
+                    ['Fortune Sunlite Sunflower Oil (सूरजमुखी तेल)', 128], ['Saffola Gold Blended Oil (सफोला गोल्ड)', 158], ['Saffola Active Pro Oil', 148],
+                    ['Fortune Soyabean Refined Oil (सोयाबीन तेल)', 122], ['Nature Fresh Acti-Lite Oil', 120], ['Dhara Groundnut Oil (मूंगफली तेल)', 178],
+                    ['Fortune Filtered Groundnut Oil', 175], ['Rice Bran Health Oil (राइस ब्रान तेल)', 135], ['Til / Sesame Cooking Oil (तिल का तेल)', 260],
+                    ['Extra Virgin Olive Oil (जैतून तेल)', 780], ['Olive Pomace Cooking Oil', 490], ['Cold Pressed Coconut Oil (नारियल तेल)', 290],
+                    ['Amul Pure Desi Cow Ghee (अमूल गाय घी)', 610], ['Amul Pure Buffalo Ghee (अमूल घी)', 595], ['Patanjali Cow Desi Ghee (पतंजलि गाय घी)', 625],
+                    ['Gowardhan Pure Cow Ghee (गोवर्धन घी)', 640], ['Mother Dairy Pure Ghee', 605], ['Ananda Pure Desi Ghee', 585],
+                    ['Dalda Vanaspati Ghee (वनस्पति घी)', 135], ['Nutralite Table Margarine Butter', 240]
+                ]
+            },
+            'मसाले व हर्ब्स': {
+                icon: '🌶️', unit: 'Packets',
+                items: [
+                    ['Tata Sampann Haldi Powder (हल्दी पाउडर)', 42], ['MDH Deggi Mirch Powder (देगी मिर्च)', 88], ['Everest Tikhalal Chilli Powder (लाल मिर्च)', 68],
+                    ['Catch Dhaniya Powder (धनिया पाउडर)', 45], ['MDH Garam Masala (गरम मसाला)', 84], ['Everest Kitchen King Masala', 78],
+                    ['Everest Chhole Masala (छोले मसाला)', 72], ['MDH Pav Bhaji Masala (पाव भाजी मसाला)', 74], ['Everest Sambhar Masala (सांभर मसाला)', 70],
+                    ['MDH Chicken / Meat Masala', 82], ['Everest Paneer Tikka Masala', 76], ['Catch Chat Masala (चाट मसाला)', 58],
+                    ['Jeera / Cumin Seeds Whole (साबुत जीरा)', 95], ['Jeera Roasted Powder (भुना जीरा)', 65], ['Rai / Mustard Seeds Black (सरसों दाना)', 34],
+                    ['Yellow Mustard Seeds (पीली सरसों)', 42], ['Methi Dana / Fenugreek (मेथी दाना)', 32], ['Saunf / Fennel Seeds (सौंफ)', 56],
+                    ['Ajwain / Carom Seeds (अजवाइन)', 48], ['Kalonji / Nigella Seeds (कलौंजी)', 52], ['Kali Mirch Whole (काली मिर्च)', 110],
+                    ['Laung / Cloves (लौंग)', 120], ['Hari Elaichi / Green Cardamom (हरी इलायची)', 165], ['Badi Elaichi / Black Cardamom (बड़ी इलायची)', 130],
+                    ['Dalchini / Cinnamon Sticks (दालचीनी)', 64], ['Tej Patta / Bay Leaf (तेज पत्ता)', 25], ['Hing / Asafoetida Compounded (हींग)', 85],
+                    ['Kasuri Methi Dried (कसूरी मेथी)', 38], ['Amchur / Dry Mango Powder (अमचूर)', 54], ['Tata Iodized Salt (टाटा नमक 1Kg)', 28],
+                    ['Tata Rock Salt / Sendha Namak (सेंधा नमक)', 45], ['Kala Namak Powder (काला नमक)', 32], ['Imli Seedless Tamarind (इमली)', 48],
+                    ['Dry Red Chilli Whole (साबुत लाल मिर्च)', 62], ['Sabut Dhaniya Coriander Seeds (साबुत धनिया)', 44], ['Poppy Seeds / Khus Khus (खसखस)', 140],
+                    ['Dry Ginger Powder / Sonth (सोंठ पाउडर)', 58], ['Nutmeg / Jaiphal Whole (जायफल)', 75], ['Mace / Javitri Whole (जावित्री)', 115]
+                ]
+            },
+            'डेयरी व ब्रेड': {
+                icon: '🥛', unit: 'Litre (L)',
+                items: [
+                    ['Amul Gold Full Cream Milk (अमूल गोल्ड दूध)', 68], ['Amul Taaza Toned Milk (अमूल ताज़ा)', 56], ['Mother Dairy Full Cream Milk', 68],
+                    ['Mother Dairy Toned Milk', 56], ['Fresh Buffalo Farm Milk (भैंस का दूध)', 65], ['Fresh Desi Cow Milk (गाय का दूध)', 58],
+                    ['Amul Masti Dahi Cup (अमूल दही)', 45], ['Mother Dairy Classic Curd', 44], ['Amul Fresh Malai Paneer (अमूल पनीर)', 92],
+                    ['Mother Dairy Malai Paneer', 90], ['Amul Pasteurised Butter (अमूल मक्खन)', 58], ['Amul Garlic & Herbs Butter', 62],
+                    ['Amul Cheese Slices Pack (चीज़ स्लाइस)', 135], ['Amul Mozzarella Diced Cheese', 145], ['Amul Fresh Cream Pack (फ्रेश क्रीम)', 68],
+                    ['Amul Buttermilk / Chaas (अमूल छाछ)', 15], ['Amul Sweet Lassi Pack (अमूल लस्सी)', 25], ['Milkmaid Condensed Milk Tin', 142],
+                    ['Whole Wheat Brown Bread (ब्राउन ब्रेड)', 48], ['Multigrain Healthy Bread', 55], ['Classic White Sandwich Bread', 42],
+                    ['Pav Bun Pack of 6 (पाव ब्रेड)', 32], ['Burger Buns Pack of 4', 36], ['Fresh Farm White Eggs (6 pcs)', 48], ['Brown Organic Eggs (6 pcs)', 68]
+                ]
+            },
+            'सब्जियां व फल': {
+                icon: '🥔', unit: 'Kg',
+                items: [
+                    ['Potato / Aloo Fresh (आलू)', 26], ['New Baby Potato (छोटा आलू)', 34], ['Red Onion / Pyaz (प्याज)', 34],
+                    ['White Onion (सफेद प्याज)', 40], ['Hybrid Red Tomato (टमाटर)', 36], ['Desi Khatta Tomato (देसी टमाटर)', 32],
+                    ['Green Chilli / Hari Mirch (हरी मिर्च)', 60], ['Fresh Ginger / Adrak (अदरक)', 110], ['Garlic / Lahsun Whole (लहसुन)', 140],
+                    ['Fresh Coriander Leaves (हरा धनिया)', 40], ['Fresh Mint Leaves / Pudina (पुदीना)', 35], ['Curry Leaves / Kadi Patta (कड़ी पत्ता)', 30],
+                    ['Lemon / Nimbu Fresh (नींबू)', 80], ['Cauliflower / Phool Gobhi (फूलगोभी)', 42], ['Cabbage / Patta Gobhi (पत्तागोभी)', 32],
+                    ['Lady Finger / Bhindi (भिंडी)', 48], ['Brinjal / Baingan Purple (बैंगन)', 40], ['Bottle Gourd / Lauki (लौकी)', 32],
+                    ['Ridge Gourd / Turai (तुरई)', 44], ['Bitter Gourd / Karela (करेला)', 52], ['Pumpkin / Kaddu Yellow (कद्दू)', 30],
+                    ['Green Capsicum / Shimla Mirch (शिमला मिर्च)', 65], ['Red Carrot / Gajar (गाजर)', 42], ['Green Peas / Matar Fresh (हरा मटर)', 70],
+                    ['French Beans (फ्रेंच बीन्स)', 68], ['Cucumber / Kheera (खीरा)', 36], ['Radish / Mooli White (मूली)', 28],
+                    ['Spinach / Palak Bunch (पालक)', 30], ['Fenugreek Leaves / Methi (हरी मेथी)', 36], ['Beetroot / Chukandar (चुकंदर)', 44],
+                    ['Sweet Potato / Shakarkandi (शकरकंद)', 48], ['Drumstick / Sahjan (सहजन)', 75], ['Raw Banana / Kachcha Kela (कच्चा केला)', 45],
+                    ['Ripe Robusta Banana (पका केला 1 दर्जन)', 55], ['Shimla Royal Apple (सेब)', 160], ['Kashmiri Red Apple', 145],
+                    ['Pomegranate / Anar (अनार)', 150], ['Nagpur Orange / Santra (संतरा)', 80], ['Sweet Lime / Mosambi (मौसंबी)', 75],
+                    ['Ripe Papaya (पपीता)', 48], ['Watermelon / Tarbooz (तरबूज)', 30], ['Green Seedless Grapes (अंगूर)', 95], ['Alphonso / Safeda Mango (आम)', 110]
+                ]
+            },
+            'स्नैक्स व बिस्कुट': {
+                icon: '🍪', unit: 'Packets',
+                items: [
+                    ['Parle-G Original Gluco Biscuits', 10], ['Britannia Good Day Cashew (गुड डे)', 35], ['Britannia Marie Gold Biscuits', 32],
+                    ['Sunfeast Dark Fantasy Choco Fills', 40], ['Oreo Vanilla Creme Biscuits', 35], ['Britannia NutriChoice Digestive', 45],
+                    ['Hide & Seek Chocolate Chip Cookies', 40], ['Monaco Salted Cracker Biscuits', 25], ['Krackjack Sweet & Salty', 25],
+                    ['Little Hearts Sugar Biscuits', 20], ['Bourbon Chocolate Cream Biscuits', 35], ['Haldiram Aloo Bhujia (आलू भुजिया)', 55],
+                    ['Haldiram Bhujia Sev (भुजिया सेव)', 58], ['Haldiram Khatta Meetha Mix', 52], ['Haldiram Moong Dal Namkeen', 54],
+                    ['Bikaji Bikaneri Bhujia', 60], ['Lay’s Classic Salted Chips', 20], ['Lay’s India’s Magic Masala', 20],
+                    ['Kurkure Masala Munch', 20], ['Bingo Mad Angles Achaari Masti', 20], ['Maggi 2-Minute Masala Noodles (Pack of 4)', 56],
+                    ['Sunfeast YiPPee! Magic Masala Noodles', 52], ['Ching’s Schezwan Instant Noodles', 55], ['Knorr Classic Thick Tomato Soup', 65],
+                    ['Kissan Fresh Tomato Ketchup (कॅचप)', 125], ['Maggi Hot & Sweet Tomato Chilli Sauce', 135], ['Veeba Eggless Mayonnaise', 95],
+                    ['FunFoods Peanut Butter Crunchy', 165], ['Kissan Mixed Fruit Jam', 135], ['Dabur Pure Honey (शहद)', 195],
+                    ['Britannia Suji Toast Rusk (रस्क)', 45], ['Cadbury Dairy Milk Silk Chocolate', 85], ['Nestle KitKat 4 Finger', 35]
+                ]
+            },
+            'चाय, कॉफी व पेय': {
+                icon: '☕', unit: 'Packets',
+                items: [
+                    ['Tata Tea Gold Leaf (टाटा टी गोल्ड)', 145], ['Tata Tea Premium Chai Patti', 130], ['Brooke Bond Red Label Tea', 138],
+                    ['Brooke Bond Taj Mahal Tea', 175], ['Wagh Bakri Premium Leaf Tea', 142], ['Lipton Honey Lemon Green Tea (25 Bags)', 165],
+                    ['Tetley Ginger Mint Green Tea', 155], ['Nescafe Classic Instant Coffee Jar', 180], ['Bru Instant Coffee Pouch', 145],
+                    ['Bournvita Health Drink Jar', 235], ['Horlicks Classic Malt Jar', 245], ['Complan Royale Chocolate', 260],
+                    ['Real Mixed Fruit Juice (1L)', 115], ['Tropicana Orange 100% Juice (1L)', 125], ['Paper Boat Aamras Drink', 40],
+                    ['Rooh Afza Sharbat Bottle', 175], ['Glucon-D Tangy Orange Powder', 155], ['Tang Instant Orange Drink Mix', 130],
+                    ['Bisleri Mineral Water (1L)', 20], ['Kinley Club Soda Bottle', 20], ['Coca-Cola / Thums Up (750ml)', 45],
+                    ['Sprite / Limca Lime Drink (750ml)', 45], ['Amul Kool Badam Milk Bottle', 30]
+                ]
+            },
+            'ड्राई फ्रूट्स व पूजा': {
+                icon: '🥜', unit: 'Packets',
+                items: [
+                    ['California Almonds / Badam (बादाम 250g)', 235], ['Whole Cashew Nuts / Kaju (काजू 250g)', 245], ['Premium Green Raisins / Kishmish (किशमिश)', 110],
+                    ['Walnut Kernels / Akhrot Giri (अखरोट)', 290], ['Roasted Salted Pistachios / Pista (पिस्ता)', 285], ['Lion Seedless Khajoor / Dates (खजूर)', 145],
+                    ['Anjeer / Dried Figs (अंजीर)', 310], ['Chia Seeds Superfood Pack', 120], ['Flax Seeds / Alsi Roasted (अलसी)', 75],
+                    ['Pumpkin & Sunflower Seeds Mix', 140], ['Mangaldeep Sandalwood Agarbatti (अगरबत्ती)', 55], ['Cycle Pure Three in One Agarbatti', 60],
+                    ['Dhoop Cones Guggal & Loban (धूपबत्ती)', 45], ['Pure Camphor / Kapoor Tablets (कपूर)', 65], ['Cotton Wicks / Rui Batti Round (रुई बत्ती)', 25],
+                    ['Puja Til Oil / Deepak Tel (पूजा तेल)', 120], ['Kumkum, Haldi & Chandan Tilak Pack', 35], ['Matchbox Pack of 10 (माचिस)', 20]
+                ]
+            },
+            'घरेलू सफाई': {
+                icon: '🧼', unit: 'Packets',
+                items: [
+                    ['Surf Excel Easy Wash Detergent (सर्फ एक्सेल)', 135], ['Surf Excel Matic Liquid Front Load', 240], ['Ariel Matic Detergent Powder', 185],
+                    ['Tide Plus Jasmine & Rose Powder', 125], ['Ghadi Detergent Powder (घड़ी डिटर्जेंट)', 72], ['Rin Refresh Detergent Bar Pack', 48],
+                    ['Comfort After Wash Fabric Conditioner', 115], ['Vanish Oxi Action Stain Remover', 145], ['Vim Dishwash Gel Lemon Bottle', 115],
+                    ['Vim Dishwash Bar Tub (विम बार)', 45], ['Pril Tamarind Utensil Liquid', 125], ['Scotch-Brite Scrub Pad (Pack of 3)', 48],
+                    ['Steel Scrubber Juna Pack', 30], ['Lizol Disinfectant Floor Cleaner Citrus', 195], ['Harpic Power Plus Toilet Cleaner', 105],
+                    ['Domex Disinfectant Floor Cleaner', 110], ['Colin Glass & Surface Cleaner Spray', 98], ['Dettol Antiseptic Liquid Disinfectant', 135],
+                    ['Odonil Bathroom Air Freshener Block', 58], ['Godrej Aer Pocket Room Freshener', 65], ['Good Knight Gold Flash Liquid Refill', 82],
+                    ['All Out Ultra Mosquito Refill', 80], ['Hit Cockroach & Mosquito Spray', 145], ['Garbage Bags Medium Black (Roll of 30)', 75],
+                    ['Aluminium Foil Roll 9m (एल्युमिनियम फॉयल)', 85], ['Origami Kitchen Tissue Paper Roll', 70], ['Soft Broom / Phool Jhadu (फूल झाड़ू)', 110],
+                    ['Coconut Stick Broom / Seekh Jhadu', 65], ['Spin Floor Mop Refill Head', 140]
+                ]
+            },
+            'पर्सनल केयर': {
+                icon: '🧴', unit: 'Pieces (pcs)',
+                items: [
+                    ['Dettol Original Bathing Soap (Pack of 4)', 148], ['Dove Cream Beauty Bathing Bar (Pack of 3)', 175], ['Lux Velvet Glow Soap Pack', 125],
+                    ['Lifebuoy Total 10 Soap Pack', 115], ['Pears Pure & Gentle Glycerine Soap', 165], ['Fiama Gel Bar Celebration Pack', 195],
+                    ['Dettol Liquid Handwash Pump Bottle', 99], ['Lifebuoy Handwash Refill Pouch', 85], ['Clinic Plus Strong & Long Shampoo', 145],
+                    ['Head & Shoulders Anti-Dandruff Shampoo', 185], ['Dove Intense Repair Shampoo', 195], ['Sunsilk Luscious Thick & Long Shampoo', 155],
+                    ['Parachute 100% Pure Coconut Hair Oil', 110], ['Dabur Amla Hair Oil', 98], ['Bajaj Almond Drops Hair Oil', 125],
+                    ['Colgate Strong Teeth Toothpaste (200g)', 115], ['Colgate MaxFresh Red Gel Toothpaste', 120], ['Sensodyne Fresh Mint Toothpaste', 155],
+                    ['Pepsodent Germicheck Toothpaste', 105], ['Oral-B Soft Toothbrush (Pack of 4)', 95], ['Listerine Cool Mint Mouthwash', 135],
+                    ['Nivea Soft Light Moisturizing Cream', 165], ['Vaseline Intensive Care Body Lotion', 190], ['Pond’s Dreamflower Talcum Powder', 115],
+                    ['Nivea Men Roll-On Deodorant', 185], ['Gillette Mach3 Shaving Cartridge', 240], ['Whisper Ultra Clean Sanitary Pads (XL)', 145],
+                    ['Stayfree Secure Cottony Regular Pads', 95], ['Pampers Active Baby Diapers Medium', 340], ['Johnson’s Baby Soap & Powder Combo', 160]
+                ]
+            }
+        };
+
+        const PACK_SIZE_VARIANTS = [
+            { suffix: ' (250g / Small Pack)', mult: 0.28, unitOverride: 'Grams (gm)' },
+            { suffix: ' (500g / Half Pack)', mult: 0.52, unitOverride: 'Grams (gm)' },
+            { suffix: ' (1 Kg / Standard)', mult: 1.0, unitOverride: null },
+            { suffix: ' (5 Kg / Family Saver)', mult: 4.75, unitOverride: 'Kg' }
+        ];
+
+        const KIRANA_CATALOG = (() => {
+            const fullList = [];
+            Object.entries(KIRANA_BASE_SEEDS).forEach(([cat, cfg]) => {
+                cfg.items.forEach(([baseName, basePrice]) => {
+                    // 1. Base Standard Item
+                    fullList.push({
+                        name: baseName,
+                        cat,
+                        unit: cfg.unit,
+                        price: Math.round(basePrice),
+                        icon: cfg.icon
+                    });
+                    // 2. Pack-size variants to provide 1,300+ comprehensive Kirana & Grocery SKUs
+                    PACK_SIZE_VARIANTS.forEach(v => {
+                        const isWeightOrPack = cfg.unit === 'Kg' || cfg.unit === 'Packets' || cfg.unit === 'Litre (L)';
+                        if (!isWeightOrPack && v.mult > 1) return;
+                        let variantLabel = v.suffix;
+                        let variantUnit = v.unitOverride || cfg.unit;
+                        if (cfg.unit === 'Litre (L)') {
+                            if (v.mult === 0.28) { variantLabel = ' (250ml Pouch)'; variantUnit = 'Packets'; }
+                            else if (v.mult === 0.52) { variantLabel = ' (500ml Pack)'; variantUnit = 'Packets'; }
+                            else if (v.mult === 1.0) { variantLabel = ' (1 Litre Bottle/Pouch)'; variantUnit = 'Litre (L)'; }
+                            else { variantLabel = ' (5 Litre Jar)'; variantUnit = 'Litre (L)'; }
+                        } else if (cfg.unit === 'Packets' || cfg.unit === 'Pieces (pcs)') {
+                            if (v.mult === 0.28) variantLabel = ' (Mini Pack)';
+                            else if (v.mult === 0.52) variantLabel = ' (Medium Pack)';
+                            else if (v.mult === 1.0) variantLabel = ' (Regular Pack)';
+                            else variantLabel = ' (Combo Value Pack)';
+                        }
+                        fullList.push({
+                            name: `${baseName}${variantLabel}`,
+                            cat,
+                            unit: variantUnit,
+                            price: Math.max(5, Math.round(basePrice * v.mult)),
+                            icon: cfg.icon
+                        });
+                    });
+                });
+            });
+            return fullList;
+        })();
+
+        let activeSliderCat = 'ALL';
+        let sliderVisibleLimit = 48;
+
+        function filterSliderCategory(cat) {
+            activeSliderCat = cat;
+            sliderVisibleLimit = 48;
+            document.querySelectorAll('.cat-chip-btn').forEach(b => {
+                const match = b.getAttribute('onclick')?.includes(`'${cat}'`);
+                b.className = match
+                    ? 'cat-chip-btn px-2.5 py-1 rounded-xl text-[10px] font-bold whitespace-nowrap bg-primary-600 text-white shadow-sm transition'
+                    : 'cat-chip-btn px-2.5 py-1 rounded-xl text-[10px] font-bold whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 transition';
+            });
+            renderProductSlider();
+        }
+        function scrollProductSlider(dx) {
+            const box = document.getElementById('product-cards-slider');
+            if (!box) return;
+            box.scrollBy({ left: dx, behavior: 'smooth' });
+            if (dx > 0 && box.scrollLeft + box.clientWidth >= box.scrollWidth - 320) {
+                loadMoreSliderProducts();
+            }
+        }
+        function loadMoreSliderProducts() {
+            const list = activeSliderCat === 'ALL' ? KIRANA_CATALOG : KIRANA_CATALOG.filter(x => x.cat === activeSliderCat);
+            if (sliderVisibleLimit < list.length) {
+                sliderVisibleLimit += 48;
+                renderProductSlider();
+            }
+        }
+        function getCatalogEffectivePrice(item) {
+            if (!item) return 0;
+            if (appState.customCatalogPrices && typeof appState.customCatalogPrices[item.name] === 'number') {
+                return appState.customCatalogPrices[item.name];
+            }
+            return Number(item.price) || 0;
+        }
+        function updateCatalogCustomPrice(name, newVal) {
+            const parsed = Math.max(0, parseFloat(newVal) || 0);
+            if (!appState.customCatalogPrices || typeof appState.customCatalogPrices !== 'object') {
+                appState.customCatalogPrices = {};
+            }
+            appState.customCatalogPrices[name] = parsed;
+            saveState();
+            showToast(`Updated "${name}" catalog price to ₹${parsed}`);
+        }
+        function renderProductSlider() {
+            const box = document.getElementById('product-cards-slider');
+            if (!box) return;
+            const list = activeSliderCat === 'ALL' ? KIRANA_CATALOG : KIRANA_CATALOG.filter(x => x.cat === activeSliderCat);
+            const slice = list.slice(0, sliderVisibleLimit);
+            const hasMore = slice.length < list.length;
+            box.innerHTML = slice.map(item => {
+                const effPrice = getCatalogEffectivePrice(item);
+                const escapedName = item.name.replace(/'/g, "\\'");
+                return `
+                <div onclick="quickAddCatalogProduct('${escapedName}', '${item.unit}', getCatalogEffectivePrice({name: '${escapedName}', price: ${item.price}}))" class="p-3 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary-500 text-left snap-start transition shadow-2xs flex flex-col justify-between gap-1.5 cursor-pointer group">
+                    <div class="flex items-center justify-between gap-1">
+                        <span class="text-lg">${item.icon}</span>
+                        <div onclick="event.stopPropagation()" class="flex items-center gap-0.5 px-1.5 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-400/40 focus-within:border-primary-500" title="Edit Catalog Price (₹)">
+                            <span class="text-[10px] font-black text-emerald-700 dark:text-emerald-300">₹</span>
+                            <input type="number" step="any" min="0" value="${effPrice}" onchange="updateCatalogCustomPrice('${escapedName}', this.value)" class="w-11 bg-transparent text-right text-[11px] font-black text-emerald-700 dark:text-emerald-300 focus:outline-none">
+                            <i class="fa-solid fa-pen text-[8px] text-emerald-600/70"></i>
+                        </div>
+                    </div>
+                    <div class="text-xs font-extrabold text-neutral-900 dark:text-white line-clamp-2 leading-snug">${item.name}</div>
+                    <div class="flex items-center justify-between text-[10px] text-neutral-400 pt-0.5">
+                        <span>1 ${item.unit}</span>
+                        <span class="font-extrabold text-primary-600 group-hover:underline">+ Add</span>
+                    </div>
+                </div>
+            `;
+            }).join('') + (hasMore ? `
+                <button type="button" onclick="loadMoreSliderProducts()" class="p-3 rounded-2xl bg-primary-50/80 dark:bg-primary-950/50 border border-primary-300 dark:border-primary-800 text-center snap-start transition flex flex-col items-center justify-center gap-1 text-primary-700 dark:text-primary-300 font-black text-xs">
+                    <i class="fa-solid fa-angles-right text-base"></i>
+                    <span>Load More</span>
+                    <span class="text-[9px] font-bold opacity-75">(${list.length - slice.length} left)</span>
+                </button>
+            ` : '');
+        }
+        function quickAddCatalogProduct(name, unit, price) {
+            if (!Array.isArray(appState.groceryItems)) appState.groceryItems = [];
+            const catalogItem = KIRANA_CATALOG.find(c => c.name === name);
+            const unitRate = catalogItem ? getCatalogEffectivePrice(catalogItem) : Math.max(0, Number(price) || 0);
+            appState.groceryItems.unshift({
+                id: `groc_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+                name,
+                qty: 1,
+                unit,
+                unitPrice: unitRate,
+                price: unitRate,
+                checked: true
+            });
+            saveState();
+            renderGrocery();
+            showToast(`Added ${name} (₹${unitRate}) — customize Qty or Price anytime!`);
+        }
+        function openKiranaDropdown() { filterKiranaDropdown(document.getElementById('grocery-name')?.value || ''); }
+        function closeKiranaDropdown() { document.getElementById('custom-kirana-dropdown')?.classList.add('hidden'); }
+        function clearKiranaInput() {
+            const inp = document.getElementById('grocery-name');
+            if (inp) inp.value = '';
+            closeKiranaDropdown();
+        }
+        function filterKiranaDropdown(val) {
+            const dd = document.getElementById('custom-kirana-dropdown');
+            const box = document.getElementById('kirana-dropdown-items');
+            if (!dd || !box) return;
+            const q = (val || '').toLowerCase().trim();
+            const matches = KIRANA_CATALOG.filter(x => !q || x.name.toLowerCase().includes(q) || x.cat.toLowerCase().includes(q));
+            if (document.getElementById('dropdown-match-count')) {
+                document.getElementById('dropdown-match-count').textContent = `${matches.length} / ${KIRANA_CATALOG.length} items`;
+            }
+            dd.classList.remove('hidden');
+            box.innerHTML = matches.slice(0, 25).map(m => {
+                const effPrice = getCatalogEffectivePrice(m);
+                const escapedName = m.name.replace(/'/g, "\\'");
+                return `
+                <div onclick="selectKiranaItem('${escapedName}', '${m.unit}', ${effPrice})" class="w-full p-2 rounded-xl hover:bg-primary-50 dark:hover:bg-neutral-800 flex items-center justify-between gap-2 text-xs text-left cursor-pointer">
+                    <div class="min-w-0 flex-1">
+                        <div class="font-bold truncate">${m.icon} ${m.name}</div>
+                        <div class="text-[9px] text-neutral-400">${m.cat} • / ${m.unit}</div>
+                    </div>
+                    <div onclick="event.stopPropagation()" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-400/40 flex-shrink-0">
+                        <span class="text-[10px] font-black text-emerald-600">₹</span>
+                        <input type="number" step="any" min="0" value="${effPrice}" onchange="updateCatalogCustomPrice('${escapedName}', this.value)" class="w-12 bg-transparent text-right text-[11px] font-black text-emerald-600 focus:outline-none">
+                    </div>
+                </div>
+            `;
+            }).join('') || '<div class="text-center py-3 text-xs text-neutral-400">No catalog match — click "+ Add Item" to add custom item</div>';
+        }
+        function selectKiranaItem(name, unit, price) {
+            document.getElementById('grocery-name').value = name;
+            document.getElementById('grocery-unit').value = unit;
+            closeKiranaDropdown();
+            quickAddCatalogProduct(name, unit, price);
+            document.getElementById('grocery-name').value = '';
+        }
+        function handleKiranaKeydown(e) { if (e.key === 'Escape') closeKiranaDropdown(); }
+
+        function addGroceryItem(e) {
+            e.preventDefault();
+            const name = document.getElementById('grocery-name')?.value.trim();
+            const qty = Math.max(0.01, parseFloat(document.getElementById('grocery-qty')?.value) || 1);
+            const unit = document.getElementById('grocery-unit')?.value || 'Kg';
+            if (!name) return;
+            const catalogMatch = KIRANA_CATALOG.find(c => c.name.toLowerCase() === name.toLowerCase());
+            const defaultUnitRate = catalogMatch ? Number(catalogMatch.price) : 0;
+            const initialLineTotal = Number((defaultUnitRate * qty).toFixed(2));
+            if (!Array.isArray(appState.groceryItems)) appState.groceryItems = [];
+            appState.groceryItems.unshift({
+                id: `groc_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`,
+                name,
+                qty,
+                unit,
+                unitPrice: defaultUnitRate,
+                price: initialLineTotal,
+                checked: true
+            });
+            document.getElementById('grocery-name').value = '';
+            document.getElementById('grocery-qty').value = '';
+            closeKiranaDropdown();
+            saveState();
+            renderGrocery();
+            showToast(`Added "${name}" (${qty} ${unit}) to checklist`);
+        }
+        function toggleGroceryChecked(id) {
+            const it = (appState.groceryItems || []).find(x => x.id === id);
+            if (it) it.checked = !it.checked;
+            saveState();
+            renderGrocery();
+        }
+        function updateGroceryItemQty(id, val) {
+            const it = (appState.groceryItems || []).find(x => x.id === id);
+            if (!it) return;
+            const oldQty = Math.max(0.01, Number(it.qty) || 1);
+            const newQty = Math.max(0.01, parseFloat(val) || 1);
+            const inferredUnitRate = typeof it.unitPrice === 'number' && it.unitPrice > 0
+                ? it.unitPrice
+                : ((Number(it.price) || 0) / oldQty);
+            it.qty = newQty;
+            if (inferredUnitRate > 0) {
+                it.unitPrice = Number(inferredUnitRate.toFixed(2));
+                it.price = Number((inferredUnitRate * newQty).toFixed(2));
+            }
+            saveState();
+            renderGrocery();
+        }
+        function updateGroceryItemUnit(id, newUnit) {
+            const it = (appState.groceryItems || []).find(x => x.id === id);
+            if (!it) return;
+            it.unit = newUnit || 'Kg';
+            saveState();
+            renderGrocery();
+        }
+        function updateGroceryItemPrice(id, val) {
+            const it = (appState.groceryItems || []).find(x => x.id === id);
+            if (!it) return;
+            const newTotal = Math.max(0, parseFloat(val) || 0);
+            const q = Math.max(0.01, Number(it.qty) || 1);
+            it.price = newTotal;
+            it.unitPrice = Number((newTotal / q).toFixed(2));
+            saveState();
+            renderGrocery();
+        }
+        function deleteGroceryItem(id) {
+            appState.groceryItems = (appState.groceryItems || []).filter(x => x.id !== id);
+            saveState();
+            renderGrocery();
+        }
+        function clearCheckedGrocery() {
+            appState.groceryItems = (appState.groceryItems || []).filter(x => !x.checked);
+            saveState();
+            renderGrocery();
+            showToast('Cleared checked items');
+        }
+        function handlePhoneUpiInput(val) {
+            const clean = extractCleanPhone(val);
+            const inp = document.getElementById('grocery-merchant-phone');
+            if (inp && inp.value !== clean) inp.value = clean;
+            const prev = document.getElementById('formatted-preview-upi');
+            if (prev) prev.textContent = clean.length === 10 ? `${clean}@upi` : '@upi';
+        }
+        function renderGrocery() {
+            renderProductSlider();
+            const items = appState.groceryItems || [];
+            const pending = items.filter(x => !x.checked);
+            const checked = items.filter(x => x.checked);
+            const totalBill = checked.reduce((s, x) => s + (Number(x.price) || 0), 0);
+
+            if (document.getElementById('grocery-pending-count')) document.getElementById('grocery-pending-count').textContent = pending.length;
+            if (document.getElementById('grocery-bill-total')) document.getElementById('grocery-bill-total').textContent = `₹${totalBill.toLocaleString('en-IN')}`;
+
+            const clEl = document.getElementById('grocery-checklist');
+            if (clEl) {
+                clEl.innerHTML = items.length ? items.map(it => `
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <label class="flex items-center gap-2 min-w-0 cursor-pointer flex-1">
+                            <input type="checkbox" ${it.checked ? 'checked' : ''} onchange="toggleGroceryChecked('${it.id}')" class="w-4 h-4 accent-emerald-600 rounded flex-shrink-0">
+                            <span class="font-bold truncate ${it.checked ? 'text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-300'}">${it.name}</span>
+                        </label>
+                        <div class="flex items-center gap-1 flex-shrink-0">
+                            <input type="number" step="any" min="0.01" value="${it.qty}" onchange="updateGroceryItemQty('${it.id}', this.value)" title="Customize Quantity" class="w-14 px-1.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-center font-black text-[11px]">
+                            <select onchange="updateGroceryItemUnit('${it.id}', this.value)" title="Customize Unit" class="px-1.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 font-bold text-[10px]">
+                                ${['Kg', 'Grams (gm)', 'Packets', 'Pieces (pcs)', 'Litre (L)'].map(u => `<option value="${u}" ${it.unit === u ? 'selected' : ''}>${u.split(' ')[0]}</option>`).join('')}
+                            </select>
+                            <button type="button" onclick="openEditGroceryItem('${it.id}')" class="text-primary-600 p-1" title="Edit Item"><i class="fa-solid fa-pen"></i></button>
+                            <button type="button" onclick="deleteGroceryItem('${it.id}')" class="text-rose-500 p-1" title="Delete Item"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `).join('') : '<div class="text-center py-8 text-xs text-neutral-400">Your shopping checklist is empty. Tap any of the 1,300+ Kirana items above!</div>';
+            }
+
+            const prEl = document.getElementById('grocery-pricing-list');
+            if (prEl) {
+                prEl.innerHTML = checked.length ? checked.map(it => `
+                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-emerald-200 dark:border-neutral-800 space-y-1.5 text-xs">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="font-extrabold text-neutral-900 dark:text-white truncate flex-1">${it.name}</span>
+                            <button type="button" onclick="deleteGroceryItem('${it.id}')" class="text-rose-500 text-[10px] p-0.5"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-1">
+                                <input type="number" step="any" min="0.01" value="${it.qty}" onchange="updateGroceryItemQty('${it.id}', this.value)" class="w-14 p-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 border text-center font-black text-[11px]">
+                                <select onchange="updateGroceryItemUnit('${it.id}', this.value)" class="p-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 border font-bold text-[10px]">
+                                    ${['Kg', 'Grams (gm)', 'Packets', 'Pieces (pcs)', 'Litre (L)'].map(u => `<option value="${u}" ${it.unit === u ? 'selected' : ''}>${u.split(' ')[0]}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="text-[10px] font-bold text-neutral-400">Price ₹</span>
+                                <input type="number" step="any" min="0" value="${it.price || ''}" placeholder="0" onchange="updateGroceryItemPrice('${it.id}', this.value)" class="w-20 p-1 rounded-lg bg-emerald-500/10 dark:bg-neutral-800 border border-emerald-400/50 text-right font-black text-emerald-700 dark:text-emerald-300">
+                            </div>
+                        </div>
+                    </div>
+                `).join('') : '<div class="text-center py-6 text-xs text-neutral-400">Tick items on the left to calculate & adjust bill prices.</div>';
             }
         }
 
@@ -4809,179 +5281,6 @@
             }
         }
 
-        // ================= SHOPPING & KIRANA CATALOG ENGINE =================
-        const KIRANA_CATALOG = [
-            { name: 'Chakki Fresh Atta', cat: 'अनाज व आटा', unit: 'Kg', price: 42, icon: '🌾' },
-            { name: 'Basmati Rice', cat: 'अनाज व आटा', unit: 'Kg', price: 95, icon: '🍚' },
-            { name: 'Toor / Arhar Dal', cat: 'दालें व दलहन', unit: 'Kg', price: 145, icon: '🌱' },
-            { name: 'Moong Dal', cat: 'दालें व दलहन', unit: 'Kg', price: 118, icon: '🌱' },
-            { name: 'Chana Dal', cat: 'दालें व दलहन', unit: 'Kg', price: 88, icon: '🌱' },
-            { name: 'Mustard Oil (सरसों तेल)', cat: 'तेल व घी', unit: 'Litre (L)', price: 140, icon: '🛢️' },
-            { name: 'Desi Cow Ghee', cat: 'तेल व घी', unit: 'Litre (L)', price: 580, icon: '🧈' },
-            { name: 'Turmeric Powder (हल्दी)', cat: 'मसाले व हर्ब्स', unit: 'Packets', price: 45, icon: '🌶️' },
-            { name: 'Red Chilli Powder', cat: 'मसाले व हर्ब्स', unit: 'Packets', price: 55, icon: '🌶️' },
-            { name: 'Amul Full Cream Milk', cat: 'डेयरी व ब्रेड', unit: 'Litre (L)', price: 66, icon: '🥛' },
-            { name: 'Fresh Paneer', cat: 'डेयरी व ब्रेड', unit: 'Grams (gm)', price: 90, icon: '🧀' },
-            { name: 'Potato (आलू)', cat: 'सब्जियां व फल', unit: 'Kg', price: 25, icon: '🥔' },
-            { name: 'Onion (प्याज)', cat: 'सब्जियां व फल', unit: 'Kg', price: 32, icon: '🧅' },
-            { name: 'Tomato (टमाटर)', cat: 'सब्जियां व फल', unit: 'Kg', price: 35, icon: '🍅' },
-            { name: 'Digestive Biscuits', cat: 'स्नैक्स व बिस्कुट', unit: 'Packets', price: 30, icon: '🍪' },
-            { name: 'Detergent Powder', cat: 'घरेलू सफाई', unit: 'Kg', price: 110, icon: '🧼' },
-            { name: 'Bath Soap Pack', cat: 'पर्सनल केयर', unit: 'Pieces (pcs)', price: 120, icon: '🧴' }
-        ];
-        let activeSliderCat = 'ALL';
-
-        function filterSliderCategory(cat) {
-            activeSliderCat = cat;
-            document.querySelectorAll('.cat-chip-btn').forEach(b => {
-                const match = b.getAttribute('onclick')?.includes(`'${cat}'`);
-                b.className = match
-                    ? 'cat-chip-btn px-2.5 py-1 rounded-xl text-[10px] font-bold whitespace-nowrap bg-primary-600 text-white shadow-sm transition'
-                    : 'cat-chip-btn px-2.5 py-1 rounded-xl text-[10px] font-bold whitespace-nowrap bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 transition';
-            });
-            renderProductSlider();
-        }
-        function scrollProductSlider(dx) {
-            document.getElementById('product-cards-slider')?.scrollBy({ left: dx, behavior: 'smooth' });
-        }
-        function loadMoreSliderProducts() {}
-        function renderProductSlider() {
-            const box = document.getElementById('product-cards-slider');
-            if (!box) return;
-            const list = activeSliderCat === 'ALL' ? KIRANA_CATALOG : KIRANA_CATALOG.filter(x => x.cat === activeSliderCat);
-            box.innerHTML = list.map(item => `
-                <button type="button" onclick="quickAddCatalogProduct('${item.name.replace(/'/g, "\\'")}', '${item.unit}', ${item.price})" class="p-3 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-primary-500 text-left snap-start transition shadow-2xs flex flex-col justify-between gap-1.5">
-                    <div class="flex items-center justify-between">
-                        <span class="text-lg">${item.icon}</span>
-                        <span class="text-[10px] font-black text-emerald-600">₹${item.price}</span>
-                    </div>
-                    <div class="text-xs font-extrabold text-neutral-900 dark:text-white truncate">${item.name}</div>
-                    <div class="text-[10px] text-neutral-400">1 ${item.unit} • + Add</div>
-                </button>
-            `).join('');
-        }
-        function quickAddCatalogProduct(name, unit, price) {
-            if (!Array.isArray(appState.groceryItems)) appState.groceryItems = [];
-            appState.groceryItems.unshift({ id: `groc_${Date.now()}`, name, qty: 1, unit, checked: true, price });
-            saveState();
-            renderGrocery();
-            showToast(`Added ${name} (₹${price})`);
-        }
-        function openKiranaDropdown() { filterKiranaDropdown(document.getElementById('grocery-name')?.value || ''); }
-        function closeKiranaDropdown() { document.getElementById('custom-kirana-dropdown')?.classList.add('hidden'); }
-        function clearKiranaInput() {
-            const inp = document.getElementById('grocery-name');
-            if (inp) inp.value = '';
-            closeKiranaDropdown();
-        }
-        function filterKiranaDropdown(val) {
-            const dd = document.getElementById('custom-kirana-dropdown');
-            const box = document.getElementById('kirana-dropdown-items');
-            if (!dd || !box) return;
-            const q = (val || '').toLowerCase().trim();
-            const matches = KIRANA_CATALOG.filter(x => !q || x.name.toLowerCase().includes(q));
-            if (document.getElementById('dropdown-match-count')) document.getElementById('dropdown-match-count').textContent = `${matches.length} items`;
-            dd.classList.remove('hidden');
-            box.innerHTML = matches.slice(0, 8).map(m => `
-                <button type="button" onclick="selectKiranaItem('${m.name.replace(/'/g, "\\'")}', '${m.unit}', ${m.price})" class="w-full p-2 rounded-xl hover:bg-primary-50 dark:hover:bg-neutral-800 flex items-center justify-between text-xs text-left">
-                    <span class="font-bold">${m.icon} ${m.name}</span>
-                    <span class="text-[10px] font-black text-emerald-600">₹${m.price} / ${m.unit}</span>
-                </button>
-            `).join('');
-        }
-        function selectKiranaItem(name, unit, price) {
-            document.getElementById('grocery-name').value = name;
-            document.getElementById('grocery-unit').value = unit;
-            closeKiranaDropdown();
-            quickAddCatalogProduct(name, unit, price);
-            document.getElementById('grocery-name').value = '';
-        }
-        function handleKiranaKeydown(e) { if (e.key === 'Escape') closeKiranaDropdown(); }
-
-        function addGroceryItem(e) {
-            e.preventDefault();
-            const name = document.getElementById('grocery-name')?.value.trim();
-            const qty = parseFloat(document.getElementById('grocery-qty')?.value) || 1;
-            const unit = document.getElementById('grocery-unit')?.value || 'Kg';
-            if (!name) return;
-            if (!Array.isArray(appState.groceryItems)) appState.groceryItems = [];
-            appState.groceryItems.unshift({ id: `groc_${Date.now()}`, name, qty, unit, checked: false, price: 0 });
-            document.getElementById('grocery-name').value = '';
-            document.getElementById('grocery-qty').value = '';
-            closeKiranaDropdown();
-            saveState();
-            renderGrocery();
-            showToast(`Added "${name}" to checklist`);
-        }
-        function toggleGroceryChecked(id) {
-            const it = (appState.groceryItems || []).find(x => x.id === id);
-            if (it) it.checked = !it.checked;
-            saveState();
-            renderGrocery();
-        }
-        function updateGroceryItemPrice(id, val) {
-            const it = (appState.groceryItems || []).find(x => x.id === id);
-            if (it) it.price = Math.max(0, parseFloat(val) || 0);
-            saveState();
-            renderGrocery();
-        }
-        function deleteGroceryItem(id) {
-            appState.groceryItems = (appState.groceryItems || []).filter(x => x.id !== id);
-            saveState();
-            renderGrocery();
-        }
-        function clearCheckedGrocery() {
-            appState.groceryItems = (appState.groceryItems || []).filter(x => !x.checked);
-            saveState();
-            renderGrocery();
-            showToast('Cleared checked items');
-        }
-        function handlePhoneUpiInput(val) {
-            const clean = extractCleanPhone(val);
-            const inp = document.getElementById('grocery-merchant-phone');
-            if (inp && inp.value !== clean) inp.value = clean;
-            const prev = document.getElementById('formatted-preview-upi');
-            if (prev) prev.textContent = clean.length === 10 ? `${clean}@upi` : '@upi';
-        }
-        function renderGrocery() {
-            renderProductSlider();
-            const items = appState.groceryItems || [];
-            const pending = items.filter(x => !x.checked);
-            const checked = items.filter(x => x.checked);
-            const totalBill = checked.reduce((s, x) => s + (Number(x.price) || 0), 0);
-
-            if (document.getElementById('grocery-pending-count')) document.getElementById('grocery-pending-count').textContent = pending.length;
-            if (document.getElementById('grocery-bill-total')) document.getElementById('grocery-bill-total').textContent = `₹${totalBill.toLocaleString('en-IN')}`;
-
-            const clEl = document.getElementById('grocery-checklist');
-            if (clEl) {
-                clEl.innerHTML = items.length ? items.map(it => `
-                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between gap-2 text-xs">
-                        <label class="flex items-center gap-2.5 min-w-0 cursor-pointer flex-1">
-                            <input type="checkbox" ${it.checked ? 'checked' : ''} onchange="toggleGroceryChecked('${it.id}')" class="w-4 h-4 accent-emerald-600 rounded">
-                            <span class="font-bold truncate ${it.checked ? 'line-through text-neutral-400' : 'text-neutral-900 dark:text-white'}">${it.name} (${it.qty} ${it.unit})</span>
-                        </label>
-                        <div class="flex items-center gap-1.5 flex-shrink-0">
-                            <button type="button" onclick="openEditGroceryItem('${it.id}')" class="text-primary-600 p-1"><i class="fa-solid fa-pen"></i></button>
-                            <button type="button" onclick="deleteGroceryItem('${it.id}')" class="text-rose-500 p-1"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                    </div>
-                `).join('') : '<div class="text-center py-8 text-xs text-neutral-400">Your shopping checklist is empty.</div>';
-            }
-
-            const prEl = document.getElementById('grocery-pricing-list');
-            if (prEl) {
-                prEl.innerHTML = checked.length ? checked.map(it => `
-                    <div class="p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-emerald-200 dark:border-neutral-800 flex items-center justify-between gap-2 text-xs">
-                        <span class="font-bold truncate flex-1">${it.name} (${it.qty} ${it.unit})</span>
-                        <div class="flex items-center gap-1">
-                            <span class="font-bold text-neutral-400">₹</span>
-                            <input type="number" step="any" min="0" value="${it.price || ''}" placeholder="0" onchange="updateGroceryItemPrice('${it.id}', this.value)" class="w-20 p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 border text-right font-black">
-                        </div>
-                    </div>
-                `).join('') : '<div class="text-center py-6 text-xs text-neutral-400">Tick items on the left to calculate bill.</div>';
-            }
-        }
         function addGroceryBillToDashboard() {
             const checked = (appState.groceryItems || []).filter(x => x.checked);
             const total = checked.reduce((s, x) => s + (Number(x.price) || 0), 0);
