@@ -3237,10 +3237,6 @@
                     <div class="relative w-7 h-7 rounded-lg flex items-center justify-center transition-all bg-orange-500/15 text-orange-600 dark:text-orange-400 group-hover:scale-105"><i class="fa-solid fa-chart-line text-[11px]"></i></div>
                     <span class="nav-label text-[9.5px] font-bold mt-0.5 tracking-tight whitespace-nowrap text-neutral-800 dark:text-neutral-200">Reports</span>
                 </button>
-                <button onclick="jumpToGoalsAndBills()" id="nav-btn-goals" class="nav-tab-btn min-w-[64px] sm:min-w-[74px] flex-shrink-0 snap-start flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition-all duration-200 group hover:bg-white/40 dark:hover:bg-neutral-800/40 text-neutral-600 dark:text-neutral-300">
-                    <div class="relative w-7 h-7 rounded-lg flex items-center justify-center transition-all bg-teal-500/15 text-teal-600 dark:text-teal-400 group-hover:scale-105"><i class="fa-solid fa-piggy-bank text-[11px]"></i></div>
-                    <span class="nav-label text-[9.5px] font-bold mt-0.5 tracking-tight whitespace-nowrap text-neutral-800 dark:text-neutral-200">Goals & EMI</span>
-                </button>
                 <button onclick="openKhataFlowAiChat()" id="nav-btn-ai" class="nav-tab-btn min-w-[64px] sm:min-w-[74px] flex-shrink-0 snap-start flex flex-col items-center justify-center py-1 px-1.5 rounded-xl transition-all duration-200 group hover:bg-indigo-500/15 text-indigo-600 dark:text-indigo-400" title="NeoKhata AI Assistant">
                     <div class="relative w-7 h-7 rounded-lg flex items-center justify-center transition-all bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xs shadow-indigo-500/25 group-hover:scale-105"><i class="fa-solid fa-robot text-[11px]"></i><span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 ring-1 ring-white dark:ring-neutral-900"></span></div>
                     <span class="nav-label text-[9.5px] font-extrabold mt-0.5 tracking-tight whitespace-nowrap text-indigo-700 dark:text-indigo-300">AI Advisor</span>
@@ -4449,11 +4445,20 @@
                     if (statusEl) { statusEl.textContent = 'Passwords do not match.'; statusEl.className = 'text-center text-xs pt-1 font-bold text-rose-600'; }
                     return;
                 }
+                showLiveProcessOverlay({
+                    badge: 'Account Creation',
+                    title: 'Creating Your Account, Please Wait...',
+                    subtitle: 'आपका अकाउंट बनाया जा रहा है, कृपया वेट करें... सुरक्षित क्लाउड वर्कस्पेस तैयार हो रहा है।',
+                    step: 'Registering secure cloud profile...',
+                    progress: 35,
+                    iconClass: 'fa-solid fa-user-plus fa-bounce'
+                });
                 try {
                     if (statusEl) { statusEl.textContent = 'Creating cloud workspace...'; statusEl.className = 'text-center text-xs pt-1 font-bold text-primary-600'; }
                     const res = typeof window.firebaseRegister === 'function'
                         ? await window.firebaseRegister(email, password, fullName, phone)
                         : { user: { uid: `phone_${phone}`, email, displayName: fullName } };
+                    updateLiveProcessOverlay({ step: 'Account created! Preparing your workspace...', progress: 85 });
                     const sess = { isLoggedIn: true, role: 'user', uid: res.user.uid, name: fullName, phone, email, username: phone };
                     setAuthSession(sess);
                     appState = createEmptyAppState();
@@ -4463,10 +4468,14 @@
                     propagateUserProfileAcrossApp();
                     saveState();
                     updateAll();
+                    updateLiveProcessOverlay({ step: 'Opening NeoKhata Workspace...', progress: 100 });
+                    await new Promise(r => setTimeout(r, 450));
+                    hideLiveProcessOverlay();
                     dismissAuthGate();
                     if (typeof window.attachMultiDeviceListeners === 'function') window.attachMultiDeviceListeners();
                     showToast(`Welcome ${fullName}!`);
                 } catch (err) {
+                    hideLiveProcessOverlay();
                     refreshAuthCaptcha();
                     if (statusEl) { statusEl.textContent = err?.message || 'Registration failed.'; statusEl.className = 'text-center text-xs pt-1 font-bold text-rose-600'; }
                 }
@@ -4479,10 +4488,20 @@
                 const isAdminIdentifier = (lowerId === 'admin' || cleanIdPhone === '9999999999' || lowerId === 'admin@neokhata.app' || lowerId === 'admin@khataflow.app');
                 const isAdminPassword = (password === 'Admin@123' || password === 'admin123');
                 if (isAdminIdentifier && isAdminPassword) {
+                    showLiveProcessOverlay({
+                        badge: 'Admin Identity Verified',
+                        title: 'Your Identity is Verified, Please Wait...',
+                        subtitle: 'आपकी एडमिन आइडेंटिटी वेरीफाई हो गई है, मास्टर कंट्रोल पैनल लोड किया जा रहा है...',
+                        step: 'Loading Master Admin Studio...',
+                        progress: 80,
+                        iconClass: 'fa-solid fa-shield-check fa-bounce'
+                    });
                     const sess = { isLoggedIn: true, role: 'admin', uid: 'master_admin', name: 'Master Admin', phone: '9999999999', email: 'admin@neokhata.app', username: 'admin' };
                     setAuthSession(sess);
                     updateAuthUI();
                     updateAll();
+                    await new Promise(r => setTimeout(r, 450));
+                    hideLiveProcessOverlay();
                     dismissAuthGate();
                     if (typeof window.attachMultiDeviceListeners === 'function') window.attachMultiDeviceListeners();
                     if (typeof window.fetchFirestoreUsersNow === 'function') window.fetchFirestoreUsersNow().catch(() => {});
@@ -4498,21 +4517,34 @@
                     }
                     return;
                 }
+                showLiveProcessOverlay({
+                    badge: 'Identity Verification',
+                    title: 'Your Identity is Verified, Please Wait...',
+                    subtitle: 'आपकी आइडेंटिटी वेरीफाई की जा रही है और आपका डेटा सिंक लोड किया जा रहा है, कृपया प्रतीक्षा करें...',
+                    step: 'Verifying credentials & syncing cloud vault...',
+                    progress: 40,
+                    iconClass: 'fa-solid fa-shield-halved fa-bounce'
+                });
                 try {
                     if (statusEl) { statusEl.textContent = 'Authenticating with cloud...'; statusEl.className = 'text-center text-xs pt-1 font-bold text-primary-600'; }
                     const res = typeof window.firebaseLogin === 'function'
                         ? await window.firebaseLogin(identifier, password)
                         : { user: { uid: `user_${identifier}`, email: identifier, displayName: identifier, phone: extractCleanPhone(identifier) } };
+                    updateLiveProcessOverlay({ step: 'Identity Verified! Loading your cloud data sync...', progress: 75 });
                     const u = res.user;
                     const sess = { isLoggedIn: true, role: 'user', uid: u.uid, name: u.displayName || 'User', phone: u.phone || extractCleanPhone(identifier), email: u.email || '', username: u.phone || identifier };
                     setAuthSession(sess);
                     propagateUserProfileAcrossApp();
                     updateAll();
-                    dismissAuthGate();
                     if (typeof window.attachMultiDeviceListeners === 'function') window.attachMultiDeviceListeners();
                     if (typeof window.syncCurrentUserFromCloud === 'function') await window.syncCurrentUserFromCloud(true, true);
+                    updateLiveProcessOverlay({ step: 'Cloud sync complete! Opening workspace...', progress: 100 });
+                    await new Promise(r => setTimeout(r, 400));
+                    hideLiveProcessOverlay();
+                    dismissAuthGate();
                     showToast(`Welcome back, ${sess.name}!`);
                 } catch (err) {
+                    hideLiveProcessOverlay();
                     refreshAuthCaptcha();
                     if (statusEl) { statusEl.textContent = err?.message || 'Login failed.'; statusEl.className = 'text-center text-xs pt-1 font-bold text-rose-600'; }
                 }
